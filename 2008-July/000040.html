@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] CIF conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20conversion&In-Reply-To=%3C48695957.8020108%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000041.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] CIF conversion</H1>
+    <B>Svilen</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20conversion&In-Reply-To=%3C48695957.8020108%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] CIF conversion">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Tue Jul  1 00:08:23 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000041.html">[Toped-development] Fwd:  CIF conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Now when the CIF parser is functional, I'm facing a couple of questions 
+concerning CIF to TDT conversion
+
+2 step conversion.
+It appears that a 2 step conversion is going to be needed: parse - 
+convert. It is a bit funny, because CIF according to its authors is 
+supposed to be processed in a single pass, but this doesn't appear to be 
+feasible - see below.
+
+Layer numbers.
+CIF defines layers only by name (up to 4 letter string). I found nothing 
+neither in the format nor in the user extensions that would make the 
+correspondence between a layer name and the GDSII (or TDT) layer number. 
+This means that the layer correspondence have to be defined before the 
+conversion or at least after the first pass. It can be done in the 
+following ways:
+1. Separate TELL command - for example :
+    defineciflay(&quot;&lt;cif name&gt;&quot;, &lt;tdt number&gt;);
+2. To add a parameter to layprop function:
+    layprop(&quot;&lt;tdt name&gt;&quot; , &lt;tdt layer number&gt;  ,&quot;&lt;colour&gt;&quot; ,&quot;&lt;fill&gt;&quot; , 
+&quot;&lt;sel. line style&gt;&quot;, &lt;cif name&gt; );
+3. To have a parameter in the conversion function defining layer 
+correspondence. The layer correspondence then can be defined using TELL:
+   struct CIFlays {string cifname; int tdtlayno};
+  CIFlays list cif_layer_definition = {{&quot;L01&quot;, 1},{&quot;L04&quot;, 4},{&quot;L08&quot;, 
+8},{&quot;L07&quot;, 7}};
+   cifimport(&lt;top_structure&gt;, cif_layer_definition);
+
+Cell names.
+Unlike layers the cells in CIF have an associated number, not a name. 
+Besides it is possible to undefine a cell which implies that technically 
+cells with the same number can be redefined and coexist within a certain 
+CIF file. There is an user extension of the format which binds a name to 
+the cell definition, but this is not mandatory - it is rather a good 
+will. The question here is do we need a &quot;dictionary&quot; for the cell names?
+1. cifread returns the &quot;dictionary&quot; extracted from the CIF file. Toped 
+suggest cell names (based on cell numbers) in case there are no cell 
+names defined. The dictionary can be edited and then handled as a 
+parameter of cifimport function.
+2. No dictionary, Toped generate cell names according to an internal 
+algorithm based on cell numbers. Cell names parsed from the CIF file are 
+preserved in all cases.
+
+Cell hierarchy and Layout data outside a cell.
+Is is perfectly legal ( mandatory ? ) in CIF to have layout data outside 
+a cell. This data must be converted to some kind of a cell. The only 
+suggestion here is to create a cell with the name of the file. He good 
+news is that this resolves automatically the question about the top 
+level structure.
+1. Do we need top level cell name (number) as an input parameter to 
+cifimport ?
+2. Do we have to visualize the CIF cell hierarchy after the first pass?
+
+The last two points require a robust algorithm to avoid cell name clashes.
+
+Comments? Preferences? Ideas?
+
+
+Regards
+Svilen
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000041.html">[Toped-development] Fwd:  CIF conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

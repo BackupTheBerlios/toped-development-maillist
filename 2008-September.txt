@@ -1,0 +1,34 @@
+From krustev.svilen at googlemail.com  Tue Sep  2 01:38:45 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Tue, 02 Sep 2008 00:38:45 +0100
+Subject: [Toped-development] HELP! gdsii data_type example
+In-Reply-To: <48B5A8C2.2070600@tiscali.co.uk>
+References: <48B5A8C2.2070600@tiscali.co.uk>
+Message-ID: <48BC7D05.5000308@googlemail.com>
+
+
+Just a line to say THANKS for the examples!
+
+Svilen wrote:
+> Hi,
+>
+> I started working on the  GDSII conversion update (data types). It 
+> appears though that I don't have a stream file which utilises 
+> DATA_TYPE property. All DATA_TYPE properties in the stream files that 
+> I have are assigned to 0.
+> This is not a terribly bad problem, but having a real example might 
+> help anyway.
+>
+> It would be really appreciated if somebody can drop an example. It 
+> could be anything, not necessarily meaningful layout. The important 
+> point is to contain more than one data type per layer.
+>
+> Thanks in advance!
+> Svilen
+>
+> P.S. If you don't want to send the file publicly (or if the file is 
+> too big) please use the e-mail address on the web site.
+>
+
+
+

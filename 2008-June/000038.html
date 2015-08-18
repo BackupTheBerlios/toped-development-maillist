@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Issues on Fedora 9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Issues%20on%20Fedora%209&In-Reply-To=%3C484C5E3C.6050409%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000037.html">
+   <LINK REL="Next"  HREF="000039.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Issues on Fedora 9</H1>
+    <B>Svilen</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Issues%20on%20Fedora%209&In-Reply-To=%3C484C5E3C.6050409%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] Issues on Fedora 9">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Mon Jun  9 00:33:32 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000037.html">[Toped-development] Issues on Fedora 9
+</A></li>
+        <LI>Next message: <A HREF="000039.html">[Toped-development] 0.9 patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi Chitlesh,
+
+It seems that I fixed the immediate problem that causes the crashes, 
+nevertheless I wanted to double check a couple of more things and I'll 
+appreciate your help.
+
+I was wondering whether you(or somebody else)  tried to run Toped 0.9 on 
+Fedora 9 with nVidia or ATI . I saw on the web that nVidia released 
+their dirvers - didn't see anything about ATI (my card is ATI). This is 
+just to double-check that it starts-up properly even without the fix.
+
+By the way - I was wondering whether mesa was used when you're doing the 
+packages for previous Fedora releases. The problem seems to be there for 
+quite some time.
+
+Regards
+Svilen
+
+
+
+
+Svilen wrote:
+&gt;<i> Hi
+</I>&gt;<i>
+</I>&gt;<i> We have a number of issues with the latest Fedora 9 release.
+</I>&gt;<i>
+</I>&gt;<i> It was reported by the packagers first (thanks Chitlesh) that Toped is
+</I>&gt;<i> crashing at startup. The root problem there appears to be the lack of
+</I>&gt;<i> error handling if we can't initialize GL with required attributes - see
+</I>&gt;<i> MBug 78. Curiously enough the GL initialization is working with a number
+</I>&gt;<i> of fedora releases, but not with fc9.
+</I>&gt;<i>
+</I>&gt;<i> On top of this there is also an issue with the visualization of the
+</I>&gt;<i> interactive commands. This has to be still investigated - usually the
+</I>&gt;<i> reason for this kind of troubles is the double buffering
+</I>&gt;<i>
+</I>&gt;<i> It seems that both issues are coming down to the state of the mesa
+</I>&gt;<i> library(7.1 pre-release) used in FC9 release. I didn't try ATI or nVidia
+</I>&gt;<i> drivers to confirm this.
+</I>&gt;<i>
+</I>&gt;<i> Independently of the above there are also a couple of more known bugs
+</I>&gt;<i> (see  MBug 76) in 0.9 release. It appears that a bugfix release is
+</I>&gt;<i> pending as soon as we get those fixed.
+</I>&gt;<i>
+</I>&gt;<i> Regards
+</I>&gt;<i> Svilen
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000037.html">[Toped-development] Issues on Fedora 9
+</A></li>
+	<LI>Next message: <A HREF="000039.html">[Toped-development] 0.9 patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] CIF texts and sizes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20texts%20and%20sizes&In-Reply-To=%3C916408.43429.qm%40web203.biz.mail.re2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000112.html">
+   <LINK REL="Next"  HREF="000117.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] CIF texts and sizes</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20texts%20and%20sizes&In-Reply-To=%3C916408.43429.qm%40web203.biz.mail.re2.yahoo.com%3E"
+       TITLE="[Toped-development] CIF texts and sizes">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Tue Feb 10 19:16:36 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000112.html">[Toped-development] CIF texts and sizes
+</A></li>
+        <LI>Next message: <A HREF="000117.html">[Toped-development] CIF texts and sizes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Svilen,
+   I checked my CIF files for the correct usage of the scaling
+factor on the Definition Start (DS) line.
+
+   With a 2um techno I have
+
+DS 1 100 2;
+L CCC;
+B 4 4 10 126;
+
+The scaling is 100/2=50 which transforms the Box (B) to
+
+B 200 200 500 6300;
+
+These co-ordinates are in centimicrons, so in microns we
+have a box 2x2um centred at (x,y)=(5,63).
+
+   With a 0.13um techno I have
+
+DS 1 1 4;
+L CCC;
+B 64 64 110 1386;
+
+The scaling is 1/4 which transforms the Box (B) to
+
+B 16 16 27.5 346.5;
+
+These co-ordinates are in centimicrons, so in microns we
+have a box 0.16x0.16um centred at (x,y)=(0.275,3.465).
+
+In the case of the 2um techno, I think the CIF writer has used the
+scaling factor as a way to reduce the CIF file size. All
+co-ordinates are on an integer multiple and one could use
+
+DS 1 1 1;
+B 200 200 500 6300;
+
+In the case of the 0.13um techno, the resolution is 5nm which is
+less than 1 centimetre. So a scaling factor must be used to force
+all geometry turnpoints in the CIF file to an integer multiple.
+
+In both cases, the CIF writer (these examples come from Magic)
+has chosen the scaling factor which gives the smallest set of
+integer numbers (should be min file size) compatible with the
+turnpoints all being an even multiple.
+
+I think this is because the centre point of a box can be off
+grid.
+
+For the 2um techno, the 2x2 contact above goes from
+(4,62) to (6,64). If we have a 3x3 contact extending from
+(4,62) to (7,65), then this is a box
+
+DS 1 100 2;
+L CCC;
+B 6 6 11 127;
+
+with centre point at (5.5,63.5). So even if the turnpoints in this
+techno are all on a 1um multiple, the centre point of boxes will
+be on a 0.5um multiple. This has to remain an integer in the
+CIF file.
+
+Same with the 0.13um techno and a 0.165x0.165um contact
+extending from (0.195,3.385) to (0.36,3.55). This is a box
+
+DS 1 1 4;
+L CCC;
+B 66 66 111 1387;
+
+with centre point at (0.2775,3.4675). Again the turnpoints are
+on a 5nm (0.005um) multiple, but the box centre points are on
+a 2.5nm one.
+
+The CIF writer has to analyse the geometry turnpoints to find
+the correct choice of scaling factor.
+
+hope this helps, Graham Petley
+
+--- On Mon, 2/9/09, <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+
+&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i> Subject: Re: [Toped-development] CIF texts and sizes
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;<i> Date: Monday, February 9, 2009, 4:51 PM
+</I>&gt;<i> Hi Graham,
+</I>&gt;<i> 
+</I>&gt;<i> Sorry - I allowed myself to change the subject.
+</I>&gt;<i> 
+</I>&gt;<i> About CIF coordinates - you're right. I can see the difference after 
+</I>&gt;<i> importing GDS and CIF. I've missed the coefficient when transferring CIF 
+</I>&gt;<i> coordinates to TDT. My problem however is that I can't get to a factor 
+</I>&gt;<i> of 500.
+</I>&gt;<i> Currently the TDT DB is using the GDSII convention:
+</I>&gt;<i> DBU - Size of database units in meters (1e-9 by default)
+</I>&gt;<i> UU - Size of user unit in DBU (1e-3 by default)
+</I>&gt;<i> Then all coordinates are represented internally in database units as 
+</I>&gt;<i> 32-bit integers. UU is used in the user interfaces for convenience. 
+</I>&gt;<i> Import/Export to GDSII is trivial in this matter, because it is 
+</I>&gt;<i> virtually the same.
+</I>&gt;<i> 
+</I>&gt;<i> CIF is using also integers to represent the coordinates and they are 
+</I>&gt;<i> talking about the precision 1/100 microns (i.e. 1e-8) which is a 
+</I>&gt;<i> constant. If I understand this properly my coefficient on CIF import 
+</I>&gt;<i> should be 10. Where the other 50 are coming from?
+</I>&gt;<i> 
+</I>&gt;<i> Regards
+</I>&gt;<i> Svilen
+</I>&gt;<i> 
+</I>&gt;<i> P.S. Because CIF definition is quite fuzzy and there are a lot of 
+</I>&gt;<i> interpretations - I did a wiki page. You can find a reference to the 
+</I>&gt;<i> paper I was using there
+</I>&gt;<i> <A HREF="http://toped.wikispaces.com/Toped+CIF+parser">http://toped.wikispaces.com/Toped+CIF+parser</A>
+</I>&gt;<i> &gt; Hi Svilen,
+</I>&gt;<i> &gt; I've just noticed that the gds file exported from the cif2tdt
+</I>&gt;<i> &gt; TELL script has its geometries scaled 500X too small. A cell
+</I>&gt;<i> &gt; which should be 32um wide is actually 0.064um.
+</I>&gt;<i> &gt; The gds2tdt script exports correctly sized gds files.
+</I>&gt;<i> &gt; I think this is where the text size discrepancy comes from.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; best regards, Graham Petley
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000112.html">[Toped-development] CIF texts and sizes
+</A></li>
+	<LI>Next message: <A HREF="000117.html">[Toped-development] CIF texts and sizes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

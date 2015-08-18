@@ -1,0 +1,145 @@
+From toped-development at lists.berlios.de  Sat May 23 02:04:54 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 23 May 2009 01:04:54 +0100 (BST)
+Subject: [Toped-development] [Bug #15732] Crash on selectall() function
+Message-ID: <200905230004.n4N04sd7010412@unicorn.berlios.de>
+
+Bug #15732, was updated on 2009-May-23 01:04
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: Crash
+Status: Open
+Resolution: None
+Bug Group: bug
+Priority: 5
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: Crash on selectall() function
+
+Details: It crashes on assert @ line tedcell.cpp:1308
+1307    delete ssl;
+1308    assert(viewprop.layselmask() != laydata::_lmall);
+if an array of cells is the only object in the current cell. There is no problem if the object is selected by double-click (calling different method of tedcell class)
+
+It's most likely not a problem, but I need to refresh my memories about this assert and to update it eventually
+
+For detailed info, follow this link:
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=15732&group_id=5037
+
+
+From toped-development at lists.berlios.de  Fri May 29 01:13:44 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Fri, 29 May 2009 01:13:44 +0200
+Subject: [Toped-development] questions about the new renderer
+Message-ID: <20090528231344.288380@gmx.net>
+
+Hi Svlien,
+
+I read your post on the new renderer from April with much interest.
+
+Do you have an update on how your "pre-tesselate polygon" datastructure turned out ?
+I'm assuming you're breaking down the polygons into trapezoids, right ?
+What algorithm to you use ?
+
+I'm working with GB sized gds'es, so a compact representation is really important.
+Any thoughts on the "most compact" datastructure ?
+
+1) This might be of interest to you. Keyword bindless graphics
+
+http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&Number=256729
+
+2) opengl and server farms
+
+My biggest problem with OpenGL is that I run programs on a server farm and use X to display on a windows machine. 
+Either there is no fast OpenGL on the server or even worse it must be shared between several applications.
+
+Any thoughts on this ?
+
+3) chipmap
+ 
+With regard to display speed and quality have a look at the work from Jeff Solomon http://velox.stanford.edu/~jsolomon/chipmap/
+
+4) how does toped's memory footprint/render speed compare against the "other tools out there" ?
+
+www.klayout.de, http://www.peardrop.co.uk/glade, http://www.layouteditor.net
+
+
+Stefan
+
+There are two things I'm currently struggling to find a good reference for
+a) an algorithm to grow/shring arbitrary polygons (the simpler the better, I don't need performance)
+b) a description of the algorithm for rendering subpixel accurate aliased trapezoids
+
+-- 
+Nur bis 31.05.: GMX FreeDSL Komplettanschluss mit DSL 6.000 Flatrate und
+Telefonanschluss nur 17,95 Euro/mtl.!* http://portal.gmx.net/de/go/dsl02
+
+
+From toped-development at lists.berlios.de  Fri May 29 23:00:50 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Fri, 29 May 2009 22:00:50 +0100 (BST)
+Subject: [Toped-development] [Bug #15775] GDS containing objects on layer 0
+Message-ID: <200905292100.n4TL0oiL003762@unicorn.berlios.de>
+
+Bug #15775, was updated on 2009-May-29 22:00
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: Crash
+Status: Open
+Resolution: None
+Bug Group: bug
+Priority: 5
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: GDS containing objects on layer 0
+
+Details: Layer 0 is used internally for reference representation. There is an assert in datacenter.cpp which is the immediate cause for the crash. GDS import seems to parse layer 0 properly without complaints.
+
+> 158         switch( wd->gdsDataType() )
+> 159        {
+> 160            case gds_SREF: ref (static_cast<GDSin::GdsRef*>(wd)   , 
+> dst);  break;
+> 161            case gds_AREF: aref(static_cast<GDSin::GdsARef*>(wd)  , 
+> dst);  break;
+> 162                  default: assert(false); /*Error - unexpected type*/
+> 163         }
+> 164         wd = wd->last();
+
+Having a look at gds documentation - it appears that 0 layer is legal. Curiously enough this problem was never seen before. Even more interesting is why I decided that layer 0 should not be used for ordinary layout objects.
+
+The fix will require deeper changes in the DB organisation. The good news is that it will fulfil Sergey's requiest related to the SKILL convertor
+
+For detailed info, follow this link:
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=15775&group_id=5037
+
+
+From toped-development at lists.berlios.de  Fri May 29 23:48:01 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Fri, 29 May 2009 22:48:01 +0100 (BST)
+Subject: [Toped-development] [Bug #15776] Library context menu in the cell
+	browser panel
+Message-ID: <200905292148.n4TLm1Kl006000@unicorn.berlios.de>
+
+Bug #15776, was updated on 2009-May-29 22:48
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: User Interface
+Status: Open
+Resolution: None
+Bug Group: bug
+Priority: 5
+Submitted by: s_krustev
+Assigned to : none
+Summary: Library context menu in the cell browser panel
+
+Details: The library context menu in the cell browser panel is the same as for the cells. It is wrong and really confusing.
+The browser needs at least two more icons for the target design, and the library
+
+
+For detailed info, follow this link:
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=15776&group_id=5037
+
+

@@ -1,0 +1,841 @@
+From toped-development at lists.berlios.de  Wed Nov  5 00:19:05 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Tue, 04 Nov 2008 23:19:05 +0000
+Subject: [Toped-development] Branch "0.92 Release Candidate"
+In-Reply-To: <48FBB5A8.9050706@tiscali.co.uk>
+References: <48FBB5A8.9050706@tiscali.co.uk>
+Message-ID: <4910D869.4030003@tiscali.co.uk>
+
+
+Hi,
+
+We are two weeks late from the anticipated release date, nevertheless 
+the good news is that the release tag has been created:
+
+http://svn.berlios.de/svnroot/repos/toped/tags/release_0.9.2/
+
+The tag above should be used for generation of the installation packet 
+(Windows) and source tarballs (Linux). All repository updates should be 
+held until the release happens which is scheduled for tomorrow - 5/11/2008.
+
+Sergey, I'm expecting the Windows packet - so I can upload it to Berlios.
+
+Regards
+Svilen
+
+
+Svilen wrote:
+>
+> I just created a branch 
+> http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.92_CAND/
+>
+> It should be used for critical or annoying bug fixes before and after 
+> the release 0.92. If everything goes according to the plan (fingers 
+> crossed!) the release should happen before the end of this week.
+>
+> The web site is also updated - mainly GDS and CIF interfaces - but not 
+> finished yet. Wiki page also needs further updates. All kind of 
+> feedback is really appreciated.
+>
+> Cheers!
+> Svilen
+>
+
+
+
+From toped-development at lists.berlios.de  Thu Nov  6 00:09:57 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 05 Nov 2008 23:09:57 +0000
+Subject: [Toped-development] 0.9.2 released
+Message-ID: <491227C5.90806@tiscali.co.uk>
+
+We're happy to announce that Toped 0.9.2 has been released and is now 
+available for download at Berlios.
+http://developer.berlios.de/projects/toped <https://developer.berlios.de/projects/toped/>
+
+The release highlights:
+    * CIF import/export
+    * GDS data types are now taken into account during import and export operations
+    * Further updates on the user interface customization.
+    * Number of bug fixes
+
+The initial release of a  SKILL - TELL conversion script will be announced shortly. It is designed to help in the translation of layout environment setup.
+
+Call for packagers. I guess it is a good time to put some effort on Ubuntu Packaging.
+
+For further information - visit www/toped.org.uk
+
+Toped developers
+
+
+
+
+From toped-development at lists.berlios.de  Thu Nov  6 00:38:46 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Thu, 6 Nov 2008 00:38:46 +0100
+Subject: [Toped-development] 0.9.2 released
+In-Reply-To: <491227C5.90806@tiscali.co.uk>
+References: <491227C5.90806@tiscali.co.uk>
+Message-ID: <adc51dea0811051538r526f7ae7p5d3aa315af4332b9@mail.gmail.com>
+
+On Thu, Nov 6, 2008 at 12:09 AM,  <toped-development at lists.berlios.de> wrote:
+> Call for packagers. I guess it is a good time to put some effort on Ubuntu Packaging.
+
+Ubuntu Intrepid still has wxWidgets 2.8.8 but this toped release
+requires 2.8.9. Is there something I am missing here? Or can I get it
+down to 2.8.8 in the script?
+
+Thanks and Regards,
+Aanjhan
+
+
+From toped-development at lists.berlios.de  Thu Nov  6 01:09:23 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Thu, 06 Nov 2008 00:09:23 +0000
+Subject: [Toped-development] 0.9.2 released
+In-Reply-To: <adc51dea0811051538r526f7ae7p5d3aa315af4332b9@mail.gmail.com>
+References: <491227C5.90806@tiscali.co.uk>
+	<adc51dea0811051538r526f7ae7p5d3aa315af4332b9@mail.gmail.com>
+Message-ID: <491235B3.30709@googlemail.com>
+
+Aanjhan,
+
+I guess it is safe to bring it down to 2.8.8. That's what we use on 
+Windows at the moment. I've updated the configure script a couple of 
+days ago, because fedora released officially 2.8.9. Otherwise the 
+development was done on 2.8.8.
+
+Please don't hesitate to ask questions. I'll be happy to help!
+
+Regards
+Svilen
+
+toped-development at lists.berlios.de wrote:
+> On Thu, Nov 6, 2008 at 12:09 AM,  <toped-development at lists.berlios.de> wrote:
+>   
+>> Call for packagers. I guess it is a good time to put some effort on Ubuntu Packaging.
+>>     
+>
+> Ubuntu Intrepid still has wxWidgets 2.8.8 but this toped release
+> requires 2.8.9. Is there something I am missing here? Or can I get it
+> down to 2.8.8 in the script?
+>
+> Thanks and Regards,
+> Aanjhan
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From toped-development at lists.berlios.de  Sun Nov  9 16:37:41 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 09 Nov 2008 15:37:41 +0000
+Subject: [Toped-development] Roadmap to the next release
+Message-ID: <491703C5.3010204@googlemail.com>
+
+Hi,
+
+It seems a proper time to share some thoughts and discuss some ideas 
+about the next Toped release.
+
+We do have some major development threads in the "official" TODO list, 
+nevertheless it seems that it's a time to look around and make sure that 
+the existing features are really finished, stable and usable. In other 
+words it seems that we have to spend some time to consolidate and polish 
+the existing features. Here is what I mean
+
+Undocumented or unusable features.
+- PostScript output. It exists for a couple of releases now. Not fully 
+tested, not included in the menus, not documented, no examples etc.
+- Screen snapshots. Some restrictions on the correct image generation, 
+nevertheless it's there for some time now, but not included in the 
+menus, not documented, no examples etc.
+- User drawing optimisation - cell depth visibility, minimum object size 
+visibility etc. - it's all there, but has to be wrapped with tell 
+commands and user menus or dialogue boxes
+- Controllable undo depth - same as above.
+
+User interface. There is a lot of potential in the UI framework, but 
+still some missing parts on it's way to "rise & shine".
+- Customisable menu. It is there, but we didn't really advertise it, it 
+is vaguely mentioned on the web site, no examples, no tll files with 
+real configurations.
+- Customisable toolbars. Some tell functions are missing there to 
+achieve the planned functionality.
+- Layer panel. Pretty much there, but still needs some attention and 
+some polishing.
+- Cell browser panel. Functionality is significantly improved in the 
+last release, but still some odd behavior can be observed during "edit 
+in place".
+- Status line. Updated occasionally.
+- tell lib panel. Missing documentation links of the build-in TELL 
+functions.
+- Dialogue boxes. Effectively all of them need polishing. We need to 
+make sure that they look as expected on all platforms. Some of them (for 
+example layer/fill/color definition) are very basic and require more 
+substantial attention.
+
+OpenGL drawing. The graphic hardware became powerful yet relatively 
+cheap and accessible these days. We need to use the graphic hardware 
+more intensively - this means to explore an alternative way of drawing 
+keeping the existing one and giving the user a choice which one to use.
+
+Multithreading. Although fairly stable, some locking can still be 
+observed and depending on the platform it can be irritating.
+- Main troubles are coming from the synchronisation of the cell browser 
+panel with the database.
+- Semaphores that we use need polishing and some additional features to 
+give more control and visibility to the user.
+- The openGL drawing which now is executed in the main thread should be 
+launched in a separate thread.
+- Still some situations (long GDSII conversions for example) which 
+freeze the entire Toped window.Need investigation and updates.
+
+Recovery. Needs more extensive and focused debugging to make sure that 
+all individual TELL functions are executed properly in recovery mode.
+
+TELL parser.
+- Requires some relatively simple additions to give more visibility and 
+control to the user. For example: Report/Clear variables or function 
+definitions.
+- Some additions to the lists and structures to make them more usable. 
+Static typecasting to help the parser to recognise more complex 
+anonymous structures.
+
+In addition to all this it seems a good idea to add some libraries. They 
+can be shipped/downloaded separately from the release. I mean
+- Digital cell library directly in TDT format.
+- library of TELL functions
+
+All the above is telling to me that the next release should be a 
+"consolidation" release. Nothing really new from development point of 
+view. It looks like a long list and it is not full. Nevertheless most of 
+the tasks require relatively little effort yet they will help to improve 
+the overall stability and appearance of Toped.
+
+Comments....
+Updates....
+
+
+Svilen
+
+
+
+From toped-development at lists.berlios.de  Mon Nov 10 15:49:18 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 10 Nov 2008 22:49:18 +0800
+Subject: [Toped-development] Roadmap to the next release
+In-Reply-To: <491703C5.3010204@googlemail.com>
+References: <491703C5.3010204@googlemail.com>
+Message-ID: <fda822f80811100649va0683e7o6228142acaf75f4c@mail.gmail.com>
+
+Hello.
+So many tasks :)
+But I think we have to add new features.
+At least those that already in development.
+
+Most mentioned UI things are my job. I hope to finish it soon.
+
+Beside it  we need more convenient hot keys for frequent operations
+(cadence-like may be).
+
+Another important thing is better error diagnostic for TELL.  We have it in
+todo list and we need it ASAP.
+
+ Regards,
+   Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081110/3569d202/attachment.html>
+
+From toped-development at lists.berlios.de  Mon Nov 10 18:06:08 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 10 Nov 2008 18:06:08 +0100
+Subject: [Toped-development] shared-lib-calls-exit
+Message-ID: <13dbfe4f0811100906g7577471ek7294dae69362fcde@mail.gmail.com>
+
+Hello there,
+
+I have the following rpmlint warnings on 0.9.2. Can anyone have a look
+at these have them fixed for the next release, please?
+
+chitlesh(devel)[0]$ rpmlint -i
+/home/chitlesh/rpmbuild/RPMS/i386/toped-0.9.2-1.fc9.i386.rpm
+
+toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_ifaces.so.0.0.0
+exit at GLIBC_2.0
+
+toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_common.so.0.0.0
+exit at GLIBC_2.0
+
+toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_parser.so.0.0.0
+exit at GLIBC_2.0
+
+This library package calls exit() or _exit(), probably in a non-fork()
+context. Doing so from a library is strongly discouraged - when a library
+function calls exit(), it prevents the calling program from handling the
+error, reporting it to the user, closing files properly, and cleaning up any
+state that the program has. It is preferred for the library to return an
+actual error code and let the calling program decide how to handle the
+situation
+
+Kind regards,
+Chitlesh
+
+
+From toped-development at lists.berlios.de  Mon Nov 10 18:43:18 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 10 Nov 2008 18:43:18 +0100
+Subject: [Toped-development] shared-lib-calls-exit
+In-Reply-To: <13dbfe4f0811100906g7577471ek7294dae69362fcde@mail.gmail.com>
+References: <13dbfe4f0811100906g7577471ek7294dae69362fcde@mail.gmail.com>
+Message-ID: <13dbfe4f0811100943l4e043a5co1b843d6de6e309b4@mail.gmail.com>
+
+Hello there,
+
+Below you will fine additional warnings that for the moment already
+fixed in the Fedora toped 0.9.2 package. But it would be nice to have
+those fixed upstream as well.
+
+Kind regards,
+Chitlesh
+
+chitlesh(devel)[0]$ rpmlint -i toped
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libGLU.so.1
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_gtk2u_gl-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_gtk2u_richtext-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_gtk2u_aui-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_gtk2u_xrc-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_gtk2u_qa-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_gtk2u_html-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_gtk2u_adv-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_baseu_xml-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_common.so.0.0.0 /usr/lib/libwx_baseu_net-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_gtk2u_gl-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_gtk2u_richtext-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_gtk2u_xrc-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_gtk2u_qa-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_gtk2u_html-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_gtk2u_adv-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_baseu_xml-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libwx_baseu_net-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_DB.so.0.0.0 /usr/lib/libtpd_parser.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libGLU.so.1
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libGL.so.1
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_gtk2u_gl-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_gtk2u_richtext-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_gtk2u_aui-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_gtk2u_xrc-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_gtk2u_qa-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_gtk2u_html-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_gtk2u_adv-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_baseu_xml-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_parser.so.0.0.0 /usr/lib/libwx_baseu_net-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_ifaces.so.0.0.0
+exit at GLIBC_2.0
+This library package calls exit() or _exit(), probably in a non-fork()
+context. Doing so from a library is strongly discouraged - when a
+library
+function calls exit(), it prevents the calling program from handling
+the
+error, reporting it to the user, closing files properly, and cleaning
+up any
+state that the program has. It is preferred for the library to return
+an
+actual error code and let the calling program decide how to handle the
+situation.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libGLU.so.1
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libGL.so.1
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_gtk2u_gl-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_gtk2u_richtext-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_gtk2u_aui-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_gtk2u_xrc-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_gtk2u_qa-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_gtk2u_html-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_gtk2u_adv-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_baseu_xml-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libwx_baseu_net-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_ifaces.so.0.0.0 /usr/lib/libtpd_parser.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libGLU.so.1
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libGL.so.1
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_gtk2u_gl-2.8.so.0
+The binary contains unused direct shared library dependencies.  This
+may
+indicate gratuitously bloated linkage; check that the binary has been
+linked
+with the intended shared libraries only.
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0
+/usr/lib/libwx_gtk2u_richtext-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_gtk2u_aui-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_gtk2u_xrc-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_gtk2u_qa-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_gtk2u_html-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_gtk2u_adv-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_baseu_xml-2.8.so.0
+
+toped.i386: W: unused-direct-shlib-dependency
+/usr/lib/libtpd_bidfunc.so.0.0.0 /usr/lib/libwx_baseu_net-2.8.so.0
+The binary contains unused direct shared library dependencies.  This may
+indicate gratuitously bloated linkage; check that the binary has been linked
+with the intended shared libraries only.
+
+
+From toped-development at lists.berlios.de  Mon Nov 10 23:47:48 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 10 Nov 2008 22:47:48 +0000
+Subject: [Toped-development] shared-lib-calls-exit
+In-Reply-To: <13dbfe4f0811100906g7577471ek7294dae69362fcde@mail.gmail.com>
+References: <13dbfe4f0811100906g7577471ek7294dae69362fcde@mail.gmail.com>
+Message-ID: <4918BA14.4070605@googlemail.com>
+
+Chitlesh,
+
+I'm trying to reproduce those warnings but without success for the 
+moment. Obviously I'm missing something. Can you drop me link to the RPM?
+
+Regards
+Svilen
+
+toped-development at lists.berlios.de wrote:
+> Hello there,
+>
+> I have the following rpmlint warnings on 0.9.2. Can anyone have a look
+> at these have them fixed for the next release, please?
+>
+> chitlesh(devel)[0]$ rpmlint -i
+> /home/chitlesh/rpmbuild/RPMS/i386/toped-0.9.2-1.fc9.i386.rpm
+>
+> toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_ifaces.so.0.0.0
+> exit at GLIBC_2.0
+>
+> toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_common.so.0.0.0
+> exit at GLIBC_2.0
+>
+> toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_parser.so.0.0.0
+> exit at GLIBC_2.0
+>
+> This library package calls exit() or _exit(), probably in a non-fork()
+> context. Doing so from a library is strongly discouraged - when a library
+> function calls exit(), it prevents the calling program from handling the
+> error, reporting it to the user, closing files properly, and cleaning up any
+> state that the program has. It is preferred for the library to return an
+> actual error code and let the calling program decide how to handle the
+> situation
+>
+> Kind regards,
+> Chitlesh
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From toped-development at lists.berlios.de  Wed Nov 12 22:05:10 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 12 Nov 2008 22:05:10 +0100
+Subject: [Toped-development] Fwd: Build Result: 737 - toped on fedora-5-epel
+In-Reply-To: <20081112192212.163CB188107@buildsys.fedoraproject.org>
+References: <20081112192212.163CB188107@buildsys.fedoraproject.org>
+Message-ID: <13dbfe4f0811121305j652280a5mecae8f86875971ab@mail.gmail.com>
+
+Hello there,
+
+I have started deploying Fedora Electronic Lab (FEL) to EPEL
+repositories. I am having to say that "toped" is the first package of
+this deployment.
+
+It is now a matter of time till it hits EPEL mirrors.
+http://fedoraproject.org/wiki/EPEL
+
+
+---------- Forwarded message ----------
+From:  <buildsys fedoraproject org>
+Date: Wed, Nov 12, 2008 at 8:22 PM
+Subject: Build Result: 737 - toped on fedora-5-epel
+To: chitlesh fedora project org
+
+
+ 737 (toped): Build on target fedora-5-epel succeeded.
+    Build logs may be found at
+http://buildsys.fedoraproject.org/logs/fedora-5-epel/737-toped-0.9.2-2.el5/
+
+Kind regards,
+Chitlesh
+
+
+From toped-development at lists.berlios.de  Wed Nov 12 22:40:45 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 12 Nov 2008 21:40:45 +0000
+Subject: [Toped-development] Fwd: Build Result: 737 - toped on
+	fedora-5-epel
+In-Reply-To: <13dbfe4f0811121305j652280a5mecae8f86875971ab@mail.gmail.com>
+References: <20081112192212.163CB188107@buildsys.fedoraproject.org>
+	<13dbfe4f0811121305j652280a5mecae8f86875971ab@mail.gmail.com>
+Message-ID: <491B4D5D.8040202@googlemail.com>
+
+Chitlesh,
+
+Thanks for the package. I saw your post about EPEL - I think it's a good 
+idea and I'll be happy to help and conrtibute.
+Well done!
+
+Regards
+Svilen
+
+toped-development at lists.berlios.de wrote:
+> Hello there,
+>
+> I have started deploying Fedora Electronic Lab (FEL) to EPEL
+> repositories. I am having to say that "toped" is the first package of
+> this deployment.
+>
+> It is now a matter of time till it hits EPEL mirrors.
+> http://fedoraproject.org/wiki/EPEL
+>
+>
+> ---------- Forwarded message ----------
+> From:  <buildsys fedoraproject org>
+> Date: Wed, Nov 12, 2008 at 8:22 PM
+> Subject: Build Result: 737 - toped on fedora-5-epel
+> To: chitlesh fedora project org
+>
+>
+>  737 (toped): Build on target fedora-5-epel succeeded.
+>     Build logs may be found at
+> http://buildsys.fedoraproject.org/logs/fedora-5-epel/737-toped-0.9.2-2.el5/
+>
+> Kind regards,
+> Chitlesh
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From toped-development at lists.berlios.de  Sat Nov 15 12:24:39 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 15 Nov 2008 11:24:39 +0000
+Subject: [Toped-development] shared-lib-calls-exit
+In-Reply-To: <13dbfe4f0811100943l4e043a5co1b843d6de6e309b4@mail.gmail.com>
+References: <13dbfe4f0811100906g7577471ek7294dae69362fcde@mail.gmail.com>
+	<13dbfe4f0811100943l4e043a5co1b843d6de6e309b4@mail.gmail.com>
+Message-ID: <491EB177.3050504@googlemail.com>
+
+Hi Chitlesh,
+
+I need your help here. I'm not an autotools expert and you can save me a 
+lot of time flipping their howto's :)
+I can see the problem and completely agree that this kind of "generous" 
+linking should better be avoided. Can you tell me how did you fix the 
+problem or maybe just point me to the .spec file that (I believe) 
+contains the fix?
+
+Regards
+Svilen
+
+toped-development at lists.berlios.de wrote:
+> Hello there,
+>
+> Below you will fine additional warnings that for the moment already
+> fixed in the Fedora toped 0.9.2 package. But it would be nice to have
+> those fixed upstream as well.
+>
+> Kind regards,
+> Chitlesh
+>
+>   
+
+
+
+From toped-development at lists.berlios.de  Tue Nov 18 23:38:55 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Tue, 18 Nov 2008 23:38:55 +0100
+Subject: [Toped-development]  shared-lib-calls-exit
+In-Reply-To: <mailman.62.1227047894.19311.toped-development@lists.berlios.de>
+References: <mailman.62.1227047894.19311.toped-development@lists.berlios.de>
+Message-ID: <13dbfe4f0811181438j5ceeaa38l7ec9da26826d26d7@mail.gmail.com>
+
+From: "Chitlesh GOORAH" <chitlesh at gmail.com>
+To: toped-development at lists.berlios.de
+Date: Tue, 18 Nov 2008 23:38:11 +0100
+Subject: Re: [Toped-development] shared-lib-calls-exit
+On Sat, Nov 15, 2008 at 12:24 PM,  <toped-development at lists.berlios.de> wrote:
+> Hi Chitlesh,
+>
+> I need your help here. I'm not an autotools expert and you can save me a
+> lot of time flipping their howto's :)
+> I can see the problem and completely agree that this kind of "generous"
+> linking should better be avoided. Can you tell me how did you fix the
+> problem or maybe just point me to the .spec file that (I believe)
+> contains the fix?
+>
+
+Hello Svilen,
+
+Actually,my 2 mentioned rpmlint warnings are:
+- shared-lib-calls-exit (I have no fix for that, I was counting on you :) )
+- unused-direct-shlib-dependency
+In my spec file, I used:
+%configure         \
+  --with-gtk      \
+  --with-opengl   \
+  --disable-rpath \
+  --enable-threads
+
+# Remove rpath from libtool
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+
+# clean unused-direct-shlib-dependencies
+sed -i -e 's! -shared ! -Wl,--as-needed\0!g' libtool
+
+for more details, for fixing before configure:
+http://www.gentoo.org/proj/en/qa/asneeded.xml
+
+
+I have another request:
+Since most distribution, I guess, have now already bundled
+"electronics-menu", it would be nice to remove the categories:
+- Education
+- Science
+from toped.desktop.
+"electronics-menu" create an additional menu for "Electronics"
+dedicated for engineering applications. Toped is not an education
+application but engineering. Also gEDA & gaf and gerbv have been
+actively supporting this new "electronic" menu structure.
+
+Kind regards,
+Chitlesh
+
+

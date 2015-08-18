@@ -1,0 +1,1368 @@
+From krustev.svilen at googlemail.com  Tue Jul  1 00:08:23 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Mon, 30 Jun 2008 23:08:23 +0100
+Subject: [Toped-development] CIF conversion
+Message-ID: <48695957.8020108@tiscali.co.uk>
+
+
+Now when the CIF parser is functional, I'm facing a couple of questions 
+concerning CIF to TDT conversion
+
+2 step conversion.
+It appears that a 2 step conversion is going to be needed: parse - 
+convert. It is a bit funny, because CIF according to its authors is 
+supposed to be processed in a single pass, but this doesn't appear to be 
+feasible - see below.
+
+Layer numbers.
+CIF defines layers only by name (up to 4 letter string). I found nothing 
+neither in the format nor in the user extensions that would make the 
+correspondence between a layer name and the GDSII (or TDT) layer number. 
+This means that the layer correspondence have to be defined before the 
+conversion or at least after the first pass. It can be done in the 
+following ways:
+1. Separate TELL command - for example :
+    defineciflay("<cif name>", <tdt number>);
+2. To add a parameter to layprop function:
+    layprop("<tdt name>" , <tdt layer number>  ,"<colour>" ,"<fill>" , 
+"<sel. line style>", <cif name> );
+3. To have a parameter in the conversion function defining layer 
+correspondence. The layer correspondence then can be defined using TELL:
+   struct CIFlays {string cifname; int tdtlayno};
+  CIFlays list cif_layer_definition = {{"L01", 1},{"L04", 4},{"L08", 
+8},{"L07", 7}};
+   cifimport(<top_structure>, cif_layer_definition);
+
+Cell names.
+Unlike layers the cells in CIF have an associated number, not a name. 
+Besides it is possible to undefine a cell which implies that technically 
+cells with the same number can be redefined and coexist within a certain 
+CIF file. There is an user extension of the format which binds a name to 
+the cell definition, but this is not mandatory - it is rather a good 
+will. The question here is do we need a "dictionary" for the cell names?
+1. cifread returns the "dictionary" extracted from the CIF file. Toped 
+suggest cell names (based on cell numbers) in case there are no cell 
+names defined. The dictionary can be edited and then handled as a 
+parameter of cifimport function.
+2. No dictionary, Toped generate cell names according to an internal 
+algorithm based on cell numbers. Cell names parsed from the CIF file are 
+preserved in all cases.
+
+Cell hierarchy and Layout data outside a cell.
+Is is perfectly legal ( mandatory ? ) in CIF to have layout data outside 
+a cell. This data must be converted to some kind of a cell. The only 
+suggestion here is to create a cell with the name of the file. He good 
+news is that this resolves automatically the question about the top 
+level structure.
+1. Do we need top level cell name (number) as an input parameter to 
+cifimport ?
+2. Do we have to visualize the CIF cell hierarchy after the first pass?
+
+The last two points require a robust algorithm to avoid cell name clashes.
+
+Comments? Preferences? Ideas?
+
+
+Regards
+Svilen
+
+
+
+
+From gaitukevich.s at gmail.com  Wed Jul  2 17:37:08 2008
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Wed, 2 Jul 2008 23:37:08 +0800
+Subject: [Toped-development] Fwd:  CIF conversion
+In-Reply-To: <fda822f80807020643v3ea39972h298c93f0e4f36d19@mail.gmail.com>
+References: <48695957.8020108@tiscali.co.uk>
+	<fda822f80807020643v3ea39972h298c93f0e4f36d19@mail.gmail.com>
+Message-ID: <fda822f80807020837p73b42f0dv2a54e5c777583330@mail.gmail.com>
+
+2008/7/1 Svilen <krustev.svilen at googlemail.com>:
+
+>
+> Now when the CIF parser is functional, I'm facing a couple of questions
+> concerning CIF to TDT conversion
+>
+>
+
+> Layer numbers.
+> CIF defines layers only by name (up to 4 letter string). I found nothing
+> neither in the format nor in the user extensions that would make the
+> correspondence between a layer name and the GDSII (or TDT) layer number.
+> This means that the layer correspondence have to be defined before the
+> conversion or at least after the first pass. It can be done in the
+> following ways:
+> 1. Separate TELL command - for example :
+>    defineciflay("<cif name>", <tdt number>);
+> 2. To add a parameter to layprop function:
+>    layprop("<tdt name>" , <tdt layer number>  ,"<colour>" ,"<fill>" ,
+> "<sel. line style>", <cif name> );
+> 3. To have a parameter in the conversion function defining layer
+> correspondence. The layer correspondence then can be defined using TELL:
+>   struct CIFlays {string cifname; int tdtlayno};
+>  CIFlays list cif_layer_definition = {{"L01", 1},{"L04", 4},{"L08",
+> 8},{"L07", 7}};
+>   cifimport(<top_structure>, cif_layer_definition);
+>
+
+We can combine approaches 1 and 3.
+
+defineciflay("<cif name>", <tdt number>);
+put in separate file and use
+
+cifimport(<top_structure>, cif_layer_map_file);
+This is a  more convenient way to reuse layer map.
+
+By the way, we need to have the similar function for gds
+ definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+
+
+> Cell names.
+> Unlike layers the cells in CIF have an associated number, not a name.
+> Besides it is possible to undefine a cell which implies that technically
+> cells with the same number can be redefined and coexist within a certain
+> CIF file. There is an user extension of the format which binds a name to
+> the cell definition, but this is not mandatory - it is rather a good
+> will. The question here is do we need a "dictionary" for the cell names?
+> 1. cifread returns the "dictionary" extracted from the CIF file. Toped
+> suggest cell names (based on cell numbers) in case there are no cell
+> names defined. The dictionary can be edited and then handled as a
+> parameter of cifimport function.
+> 2. No dictionary, Toped generate cell names according to an internal
+> algorithm based on cell numbers. Cell names parsed from the CIF file are
+> preserved in all cases.
+
+
+I think we don't need a dictionary. There is more interesting question: what
+about cif export?
+Do we need to have such dictionary for export?
+
+>
+> Cell hierarchy and Layout data outside a cell.
+> Is is perfectly legal ( mandatory ? ) in CIF to have layout data outside
+> a cell. This data must be converted to some kind of a cell. The only
+> suggestion here is to create a cell with the name of the file. He good
+> news is that this resolves automatically the question about the top
+> level structure.
+
+
+
+>
+> 1. Do we need top level cell name (number) as an input parameter to
+> cifimport ?
+
+ IMHO cell with name of file is enough.
+
+>
+> 2. Do we have to visualize the CIF cell hierarchy after the first pass?
+>
+Anyway we are going to have visualization without translating at least for
+gds in future, aren't we? So it can be useful.
+
+
+>
+> The last two points require a robust algorithm to avoid cell name clashes.
+>
+> Comments? Preferences? Ideas?
+
+
+
+Sergey Gaitukevich
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080702/849ad7ea/attachment.html>
+
+From krustev.svilen at googlemail.com  Thu Jul  3 01:05:28 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Thu, 03 Jul 2008 00:05:28 +0100
+Subject: [Toped-development] CIF conversion
+In-Reply-To: <fda822f80807020837p73b42f0dv2a54e5c777583330@mail.gmail.com>
+References: <48695957.8020108@tiscali.co.uk>	<fda822f80807020643v3ea39972h298c93f0e4f36d19@mail.gmail.com>
+	<fda822f80807020837p73b42f0dv2a54e5c777583330@mail.gmail.com>
+Message-ID: <486C09B8.90503@tiscali.co.uk>
+
+Something else comes up. Usually CIF is used for libraries. In this case 
+there are a lot of relatively short CIF files - each of them containing 
+a single cell. Maybe we have to think about more general CIF conversion 
+- possibly a TELL function which will take a whole directory and will 
+import it in Toped.
+TELL doesn't have a OS or file operations yet, but apart from this it 
+seems perfectly feasible
+
+Comments follow:
+
+Sergey Gaitukevich wrote:
+>
+>
+> 2008/7/1 Svilen <krustev.svilen at googlemail.com 
+> <mailto:krustev.svilen at googlemail.com>>:
+>
+>
+>     Layer numbers.
+>     CIF defines layers only by name (up to 4 letter string). I found
+>     nothing
+>     neither in the format nor in the user extensions that would make the
+>     correspondence between a layer name and the GDSII (or TDT) layer
+>     number.
+>     This means that the layer correspondence have to be defined before the
+>     conversion or at least after the first pass. It can be done in the
+>     following ways:
+>     1. Separate TELL command - for example :
+>        defineciflay("<cif name>", <tdt number>);
+>     2. To add a parameter to layprop function:
+>        layprop("<tdt name>" , <tdt layer number>  ,"<colour>" ,"<fill>" ,
+>     "<sel. line style>", <cif name> );
+>     3. To have a parameter in the conversion function defining layer
+>     correspondence. The layer correspondence then can be defined using
+>     TELL:
+>       struct CIFlays {string cifname; int tdtlayno};
+>      CIFlays list cif_layer_definition = {{"L01", 1},{"L04", 4},{"L08",
+>     8},{"L07", 7}};
+>       cifimport(<top_structure>, cif_layer_definition);
+>
+>
+> We can combine approaches 1 and 3.
+>
+>
+> defineciflay("<cif name>", <tdt number>);
+> put in separate file and use
+>
+> cifimport(<top_structure>, cif_layer_map_file);
+> This is a  more convenient way to reuse layer map.
+I agree that the last suggestion looks the best. Maybe I'm missing 
+something here, but why then we would need a defineciflay function? The 
+point is to have the CIF layer correspondence defined somewhere - it's 
+either internally in the toped engine (1,2) or in a TELL variable (3). 
+Either way this information will be used by the cifimport function.
+OK, I'm working on (3) .It can be updated if we decide that we certainly 
+need (1)
+> By the way, we need to have the similar function for gds
+>  definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+I guess you mean <gds number>, because GDS doesn't define layer names. 
+You know that <tdt number> and <gds number> in Toped are the same thing. 
+We've simply adopted layer number approach. The interesting point above 
+is <gdsdatatype>.  Do you mean here GDSII DATATYPE record or data type 
+in a sense of box, polygon, text, pattern etc. ?
+In all cases I would suggest to open a separate thread about this - it 
+has nothing to do with CIF
+>
+>
+>     Cell names.
+>     Unlike layers the cells in CIF have an associated number, not a name.
+>     Besides it is possible to undefine a cell which implies that
+>     technically
+>     cells with the same number can be redefined and coexist within a
+>     certain
+>     CIF file. There is an user extension of the format which binds a
+>     name to
+>     the cell definition, but this is not mandatory - it is rather a good
+>     will. The question here is do we need a "dictionary" for the cell
+>     names?
+>     1. cifread returns the "dictionary" extracted from the CIF file. Toped
+>     suggest cell names (based on cell numbers) in case there are no cell
+>     names defined. The dictionary can be edited and then handled as a
+>     parameter of cifimport function.
+>     2. No dictionary, Toped generate cell names according to an internal
+>     algorithm based on cell numbers. Cell names parsed from the CIF
+>     file are
+>     preserved in all cases.
+>
+>  
+> I think we don't need a dictionary. There is more interesting 
+> question: what about cif export?
+> Do we need to have such dictionary for export?
+I don't think that the export is a problem -  it should be trivial to 
+replace cell names with numbers during the export. The CIF user doesn't 
+care what exactly is the cell number as long as the numbers are 
+different for the different cells.
+OK, there will not be an user dictionary. Cell names defined in the CIF 
+will be preserved(except in the case of name clash). Unnamed cells will 
+be named automatically using the scheme below:
+<filename>_unnamed_<cif_cell_no>[_<variant>]
+We need a tell function for automatic cell renaming. I'll raise a 
+feature bug in Berlios
+>
+>
+>     Cell hierarchy and Layout data outside a cell.
+>     Is is perfectly legal ( mandatory ? ) in CIF to have layout data
+>     outside
+>     a cell. This data must be converted to some kind of a cell. The only
+>     suggestion here is to create a cell with the name of the file. He good
+>     news is that this resolves automatically the question about the top
+>     level structure.
+>
+>  
+>
+>
+>     1. Do we need top level cell name (number) as an input parameter to
+>     cifimport ?
+>
+>  IMHO cell with name of file is enough.
+See below
+>
+>
+>     2. Do we have to visualize the CIF cell hierarchy after the first
+>     pass?
+>
+> Anyway we are going to have visualization without translating at least 
+> for gds in future, aren't we? So it can be useful.
+I agree - we have this already for GDS we'll need to have it most likely 
+for OASIS, then obviously we'll need it have it for CIF. In this case 
+though - we're going to need a cell name (number) as an input parameter 
+to cifimport. The point is that if we visualize the hierarchy then 
+inevitably the user will want to be able to convert only a part of it.
+Actually we'll do both. cifimport will be overloaded - so if it is 
+called without a parameter it will convert the entire CIF file. 
+Otherwise - the conversion will start from the cell stated as an input 
+parameter.
+
+
+Regards
+Svilen
+
+
+
+From gaitukevich.s at gmail.com  Thu Jul  3 14:37:56 2008
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Thu, 3 Jul 2008 20:37:56 +0800
+Subject: [Toped-development] GDS conversion
+Message-ID: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>
+
+>
+>
+> > By the way, we need to have the similar function for gds
+> >  definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+> I guess you mean <gds number>, because GDS doesn't define layer names.
+> You know that <tdt number> and <gds number> in Toped are the same thing.
+> We've simply adopted layer number approach.
+
+Yes,  it must be  <gds number>
+
+
+> The interesting point above
+> is <gdsdatatype>.  Do you mean here GDSII DATATYPE record or data type
+> in a sense of box, polygon, text, pattern etc. ?
+> In all cases I would suggest to open a separate thread about this - it
+> has nothing to do with CIF
+
+
+I mean GDSII DATATYPE record.
+I saw few foundries that provide their lists of layers like
+<layer name> <layer gds number> <layer GDS datatype>.
+
+For example
+NWELL        1    10
+
+It can be trouble to use current version of toped with such foundries.
+
+I never seen it before but potentially it can be happened that different
+layers can use same layer number but different datatypes. For instance, for
+lvs purposes.
+
+Regards
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080703/4a14caf3/attachment.html>
+
+From gaitukevich.s at gmail.com  Thu Jul  3 14:52:04 2008
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Thu, 3 Jul 2008 20:52:04 +0800
+Subject: [Toped-development] CIF conversion
+In-Reply-To: <486C09B8.90503@tiscali.co.uk>
+References: <48695957.8020108@tiscali.co.uk>
+	<fda822f80807020643v3ea39972h298c93f0e4f36d19@mail.gmail.com>
+	<fda822f80807020837p73b42f0dv2a54e5c777583330@mail.gmail.com>
+	<486C09B8.90503@tiscali.co.uk>
+Message-ID: <fda822f80807030552j4da8b9ccha0bdbc25377efb19@mail.gmail.com>
+
+>
+> I agree that the last suggestion looks the best. Maybe I'm missing
+> something here, but why then we would need a defineciflay function? The
+> point is to have the CIF layer correspondence defined somewhere - it's
+> either internally in the toped engine (1,2) or in a TELL variable (3).
+> Either way this information will be used by the cifimport function.
+> OK, I'm working on (3) .It can be updated if we decide that we certainly
+> need (1)
+
+
+From williamloolulu at gmail.com  Fri Jul  4 06:03:25 2008
+From: williamloolulu at gmail.com (Lu Lu)
+Date: Fri, 4 Jul 2008 12:03:25 +0800
+Subject: [Toped-development] GDS conversion
+In-Reply-To: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>
+References: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>
+Message-ID: <613debac0807032103hd6d7d52o2d1b98d1b773ad73@mail.gmail.com>
+
+As far as my experience ( Toped 0.8.6 ), there is only datatype "0" exported
+to GDSII file. My wolkaround solution is to change it manully.
+First open that GDSII file in a hex editor and find the layer datetype tag,
+of course in hex format of four digits. For example, "0E02" reprsents
+structure datatype, and "1602" is for texttype ( Toped will exporting tag
+"1602" if that layer is created using  text command , a good manner ! ).
+Four digits following these tags are datetype number in hex format. As i
+mentioned before, it should be "0000" or zero in decimal number before any
+changes.  The next step is relatively simple, just change whatever number
+you want your datetype to be and save it afterwards. Remember using hex
+format. I have changed my layout files this way and all passed DRC and LVS
+with no error on layer representation.
+
+
+On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich <gaitukevich.s at gmail.com>
+wrote:
+
+>
+>> > By the way, we need to have the similar function for gds
+>> >  definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+>> I guess you mean <gds number>, because GDS doesn't define layer names.
+>> You know that <tdt number> and <gds number> in Toped are the same thing.
+>> We've simply adopted layer number approach.
+>
+> Yes,  it must be  <gds number>
+>
+>
+>> The interesting point above
+>> is <gdsdatatype>.  Do you mean here GDSII DATATYPE record or data type
+>> in a sense of box, polygon, text, pattern etc. ?
+>> In all cases I would suggest to open a separate thread about this - it
+>> has nothing to do with CIF
+>
+>
+> I mean GDSII DATATYPE record.
+> I saw few foundries that provide their lists of layers like
+> <layer name> <layer gds number> <layer GDS datatype>.
+>
+> For example
+> NWELL        1    10
+>
+> It can be trouble to use current version of toped with such foundries.
+>
+> I never seen it before but potentially it can be happened that different
+> layers can use same layer number but different datatypes. For instance, for
+> lvs purposes.
+>
+> Regards
+> Sergey
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080704/1463bd76/attachment.html>
+
+From krustev.svilen at googlemail.com  Fri Jul  4 18:40:17 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Fri, 04 Jul 2008 17:40:17 +0100
+Subject: [Toped-development] GDS conversion
+In-Reply-To: <613debac0807032103hd6d7d52o2d1b98d1b773ad73@mail.gmail.com>
+References: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>
+	<613debac0807032103hd6d7d52o2d1b98d1b773ad73@mail.gmail.com>
+Message-ID: <486E5271.4060801@tiscali.co.uk>
+
+Hi,
+
+For me the question is what we want the data type to be.
+We can have anything there, but my problem is that I don't know what is 
+the use of those DATATYPE fields? What the other tools expect to find there?
+
+I haven't found an official description how DATATYPE field shall be 
+used. Can somebody help here?
+I would appreciate to see also the layer definitions form those fabs - 
+if of course they are not covered by NDA (Non Disclosure Agreement)
+
+In all cases it appears that we need to get back to the GDS 
+import/export and to update what we have there.
+
+Regards
+Svilen
+
+Lu Lu wrote:
+> As far as my experience ( Toped 0.8.6 ), there is only datatype "0" 
+> exported to GDSII file. My wolkaround solution is to change it manully.
+> First open that GDSII file in a hex editor and find the layer datetype 
+> tag, of course in hex format of four digits. For example, "0E02" 
+> reprsents structure datatype, and "1602" is for texttype ( Toped 
+> will exporting tag "1602" if that layer is created using  text command 
+> , a good manner ! ). Four digits following these tags are datetype 
+> number in hex format. As i mentioned before, it should be "0000" or 
+> zero in decimal number before any changes.  The next step is 
+> relatively simple, just change whatever number you want your datetype 
+> to be and save it afterwards. Remember using hex format. I have 
+> changed my layout files this way and all passed DRC and LVS with no 
+> error on layer representation.   
+>  
+>  
+> On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich 
+> <gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>> wrote:
+>
+>
+>         > By the way, we need to have the similar function for gds
+>         >  definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+>         I guess you mean <gds number>, because GDS doesn't define
+>         layer names.
+>         You know that <tdt number> and <gds number> in Toped are the
+>         same thing.
+>         We've simply adopted layer number approach. 
+>
+>     Yes,  it must be  <gds number>
+>      
+>
+>         The interesting point above
+>         is <gdsdatatype>.  Do you mean here GDSII DATATYPE record or
+>         data type
+>         in a sense of box, polygon, text, pattern etc. ?
+>         In all cases I would suggest to open a separate thread about
+>         this - it
+>         has nothing to do with CIF
+>
+>
+>     I mean GDSII DATATYPE record.
+>     I saw few foundries that provide their lists of layers like
+>     <layer name> <layer gds number> <layer GDS datatype>.
+>
+>     For example
+>     NWELL        1    10
+>
+>     It can be trouble to use current version of toped with such foundries.
+>
+>     I never seen it before but potentially it can be happened that
+>     different layers can use same layer number but different
+>     datatypes. For instance, for lvs purposes.
+>
+>     Regards
+>     Sergey
+>
+>     _______________________________________________
+>     Toped-development mailing list
+>     Toped-development at lists.berlios.de
+>     <mailto:Toped-development at lists.berlios.de>
+>     https://lists.berlios.de/mailman/listinfo/toped-development
+>
+>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From williamloolulu at gmail.com  Sat Jul  5 05:03:05 2008
+From: williamloolulu at gmail.com (Lu Lu)
+Date: Sat, 5 Jul 2008 11:03:05 +0800
+Subject: [Toped-development] GDS conversion
+In-Reply-To: <486E5271.4060801@tiscali.co.uk>
+References: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>
+	<613debac0807032103hd6d7d52o2d1b98d1b773ad73@mail.gmail.com>
+	<486E5271.4060801@tiscali.co.uk>
+Message-ID: <613debac0807042003q66328c3cn54b6f927221654c9@mail.gmail.com>
+
+Hi,
+
+Datatype is used mostly when performing layers generation or combination in
+DRC , and structures recognition in LVS, to distinguish different "layer
+purpose" .
+
+Frankly speaking, there is no restriction on what those datatypes should be.
+What is important is that every fab may have its own layer definition, that
+is, every layer purpose and its datatype *as a pair*, to favor its own use.
+For example, a fab may define a layer along with its purpose  "POLY Drawn"
+to have "number 30 datatype 0" ; "POLY Dummy" to have "number 30 datatype
+4", and "POLY Label" to have "number 30 datatype 10". These different
+purposes may  trigger differnet DRC or LVS commands. For example, when
+excluding text label from DRC, the tool may collect those layers with
+datatype 10 and attach them to appropriate layers but not treat them as part
+of structures to be checked . If some datatype is missing or were another
+number, the tool may find wrongly text labels to be device structures. That
+is nightmare since tools can not read as human do :( .
+
+However, if fab had defined all those text layers to be different layer
+numbers that have not been used before, then there would be no need to
+consider datatype since all layers' datatypes are zero.  But in today's
+manufacture technology, there are so many layers to be used that all 255
+layers may exhausted too early before every layer is defined porperly. On
+the other hand, datatypes could be as many as 64 different numbers, from 0
+through 63. So, in my opinion, the method datatype is a good walkaround to
+extend layer definition ability.
+
+Hope this may help!
+
+
+
+On Sat, Jul 5, 2008 at 12:40 AM, Svilen <krustev.svilen at googlemail.com>
+wrote:
+
+> Hi,
+>
+> For me the question is what we want the data type to be.
+> We can have anything there, but my problem is that I don't know what is
+> the use of those DATATYPE fields? What the other tools expect to find
+> there?
+>
+> I haven't found an official description how DATATYPE field shall be
+> used. Can somebody help here?
+> I would appreciate to see also the layer definitions form those fabs -
+> if of course they are not covered by NDA (Non Disclosure Agreement)
+>
+> In all cases it appears that we need to get back to the GDS
+> import/export and to update what we have there.
+>
+> Regards
+> Svilen
+>
+> Lu Lu wrote:
+> > As far as my experience ( Toped 0.8.6 ), there is only datatype "0"
+> > exported to GDSII file. My wolkaround solution is to change it manully.
+> > First open that GDSII file in a hex editor and find the layer datetype
+> > tag, of course in hex format of four digits. For example, "0E02"
+> > reprsents structure datatype, and "1602" is for texttype ( Toped
+> > will exporting tag "1602" if that layer is created using  text command
+> > , a good manner ! ). Four digits following these tags are datetype
+> > number in hex format. As i mentioned before, it should be "0000" or
+> > zero in decimal number before any changes.  The next step is
+> > relatively simple, just change whatever number you want your datetype
+> > to be and save it afterwards. Remember using hex format. I have
+> > changed my layout files this way and all passed DRC and LVS with no
+> > error on layer representation.
+> >
+> >
+> > On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich
+>  > <gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>> wrote:
+> >
+> >
+> >         > By the way, we need to have the similar function for gds
+> >         >  definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+> >         I guess you mean <gds number>, because GDS doesn't define
+> >         layer names.
+> >         You know that <tdt number> and <gds number> in Toped are the
+> >         same thing.
+> >         We've simply adopted layer number approach.
+> >
+> >     Yes,  it must be  <gds number>
+> >
+> >
+> >         The interesting point above
+> >         is <gdsdatatype>.  Do you mean here GDSII DATATYPE record or
+> >         data type
+> >         in a sense of box, polygon, text, pattern etc. ?
+> >         In all cases I would suggest to open a separate thread about
+> >         this - it
+> >         has nothing to do with CIF
+> >
+> >
+> >     I mean GDSII DATATYPE record.
+> >     I saw few foundries that provide their lists of layers like
+> >     <layer name> <layer gds number> <layer GDS datatype>.
+> >
+> >     For example
+> >     NWELL        1    10
+> >
+> >     It can be trouble to use current version of toped with such
+> foundries.
+> >
+> >     I never seen it before but potentially it can be happened that
+> >     different layers can use same layer number but different
+> >     datatypes. For instance, for lvs purposes.
+> >
+> >     Regards
+> >     Sergey
+> >
+> >     _______________________________________________
+> >     Toped-development mailing list
+> >     Toped-development at lists.berlios.de
+> >     <mailto:Toped-development at lists.berlios.de>
+> >     https://lists.berlios.de/mailman/listinfo/toped-development
+> >
+> >
+> > ------------------------------------------------------------------------
+>  >
+> > _______________________________________________
+> > Toped-development mailing list
+> > Toped-development at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/toped-development
+> >
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080705/bfdae951/attachment.html>
+
+From krustev.svilen at googlemail.com  Sat Jul  5 19:01:07 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sat, 05 Jul 2008 18:01:07 +0100
+Subject: [Toped-development] GDS conversion
+In-Reply-To: <613debac0807042003q66328c3cn54b6f927221654c9@mail.gmail.com>
+References: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>	<613debac0807032103hd6d7d52o2d1b98d1b773ad73@mail.gmail.com>	<486E5271.4060801@tiscali.co.uk>
+	<613debac0807042003q66328c3cn54b6f927221654c9@mail.gmail.com>
+Message-ID: <486FA8D3.90609@tiscali.co.uk>
+
+Hi,
+
+If I understand this properly - it is all driven from the GDS limitation 
+for the number of defined layers.
+
+OK, I'll come back to this as soon as I finish with the CIF.
+
+Thanks!
+
+Lu Lu wrote:
+> Hi,
+>  
+> Datatype is used mostly when performing layers generation or 
+> combination in DRC , and structures recognition in LVS, to distinguish 
+> different "layer purpose" .  
+>  
+> Frankly speaking, there is no restriction on what those 
+> datatypes should be. What is important is that every fab may have its 
+> own layer definition, that is, every layer purpose and its datatype 
+> _as a pair_, to favor its own use. For example, a fab may define a 
+> layer along with its purpose  "POLY Drawn" to have "number 30 datatype 
+> 0" ; "POLY Dummy" to have "number 30 datatype 4", and "POLY Label" to 
+> have "number 30 datatype 10". These different purposes may  trigger 
+> differnet DRC or LVS commands. For example, when excluding text label 
+> from DRC, the tool may collect those layers with datatype 10 and 
+> attach them to appropriate layers but not treat them as part of 
+> structures to be checked . If some datatype is missing or were another 
+> number, the tool may find wrongly text labels to be device structures. 
+> That is nightmare since tools can not read as human do :( .
+>  
+> However, if fab had defined all those text layers to be different 
+> layer numbers that have not been used before, then there would be 
+> no need to consider datatype since all layers' datatypes are zero. 
+>  But in today's manufacture technology, there are so many layers to be 
+> used that all 255 layers may exhausted too early before every layer is 
+> defined porperly. On the other hand, datatypes could be as many as 64 
+> different numbers, from 0 through 63. So, in my opinion, the method 
+> datatype is a good walkaround to extend layer definition ability.
+>  
+> Hope this may help!
+>  
+>
+>  
+> On Sat, Jul 5, 2008 at 12:40 AM, Svilen <krustev.svilen at googlemail.com 
+> <mailto:krustev.svilen at googlemail.com>> wrote:
+>
+>     Hi,
+>
+>     For me the question is what we want the data type to be.
+>     We can have anything there, but my problem is that I don't know
+>     what is
+>     the use of those DATATYPE fields? What the other tools expect to
+>     find there?
+>
+>     I haven't found an official description how DATATYPE field shall be
+>     used. Can somebody help here?
+>     I would appreciate to see also the layer definitions form those fabs -
+>     if of course they are not covered by NDA (Non Disclosure Agreement)
+>
+>     In all cases it appears that we need to get back to the GDS
+>     import/export and to update what we have there.
+>
+>     Regards
+>     Svilen
+>
+>     Lu Lu wrote:
+>     > As far as my experience ( Toped 0.8.6 ), there is only datatype "0"
+>     > exported to GDSII file. My wolkaround solution is to change it
+>     manully.
+>     > First open that GDSII file in a hex editor and find the layer
+>     datetype
+>     > tag, of course in hex format of four digits. For example, "0E02"
+>     > reprsents structure datatype, and "1602" is for texttype ( Toped
+>     > will exporting tag "1602" if that layer is created using  text
+>     command
+>     > , a good manner ! ). Four digits following these tags are datetype
+>     > number in hex format. As i mentioned before, it should be "0000" or
+>     > zero in decimal number before any changes.  The next step is
+>     > relatively simple, just change whatever number you want your
+>     datetype
+>     > to be and save it afterwards. Remember using hex format. I have
+>     > changed my layout files this way and all passed DRC and LVS with no
+>     > error on layer representation.
+>     >
+>     >
+>     > On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich
+>     > <gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>
+>     <mailto:gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>>>
+>     wrote:
+>     >
+>     >
+>     >         > By the way, we need to have the similar function for gds
+>     >         >  definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+>     >         I guess you mean <gds number>, because GDS doesn't define
+>     >         layer names.
+>     >         You know that <tdt number> and <gds number> in Toped are the
+>     >         same thing.
+>     >         We've simply adopted layer number approach.
+>     >
+>     >     Yes,  it must be  <gds number>
+>     >
+>     >
+>     >         The interesting point above
+>     >         is <gdsdatatype>.  Do you mean here GDSII DATATYPE record or
+>     >         data type
+>     >         in a sense of box, polygon, text, pattern etc. ?
+>     >         In all cases I would suggest to open a separate thread about
+>     >         this - it
+>     >         has nothing to do with CIF
+>     >
+>     >
+>     >     I mean GDSII DATATYPE record.
+>     >     I saw few foundries that provide their lists of layers like
+>     >     <layer name> <layer gds number> <layer GDS datatype>.
+>     >
+>     >     For example
+>     >     NWELL        1    10
+>     >
+>     >     It can be trouble to use current version of toped with such
+>     foundries.
+>     >
+>     >     I never seen it before but potentially it can be happened that
+>     >     different layers can use same layer number but different
+>     >     datatypes. For instance, for lvs purposes.
+>     >
+>     >     Regards
+>     >     Sergey
+>     >
+>     >     _______________________________________________
+>     >     Toped-development mailing list
+>     >     Toped-development at lists.berlios.de
+>     <mailto:Toped-development at lists.berlios.de>
+>     >     <mailto:Toped-development at lists.berlios.de
+>     <mailto:Toped-development at lists.berlios.de>>
+>     >     https://lists.berlios.de/mailman/listinfo/toped-development
+>     >
+>     >
+>     >
+>     ------------------------------------------------------------------------
+>     >
+>     > _______________________________________________
+>     > Toped-development mailing list
+>     > Toped-development at lists.berlios.de
+>     <mailto:Toped-development at lists.berlios.de>
+>     > https://lists.berlios.de/mailman/listinfo/toped-development
+>     >
+>
+>     _______________________________________________
+>     Toped-development mailing list
+>     Toped-development at lists.berlios.de
+>     <mailto:Toped-development at lists.berlios.de>
+>     https://lists.berlios.de/mailman/listinfo/toped-development
+>
+>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From williamloolulu at gmail.com  Sun Jul  6 15:24:30 2008
+From: williamloolulu at gmail.com (Lu Lu)
+Date: Sun, 6 Jul 2008 21:24:30 +0800
+Subject: [Toped-development] GDS conversion
+In-Reply-To: <486FA8D3.90609@tiscali.co.uk>
+References: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>
+	<613debac0807032103hd6d7d52o2d1b98d1b773ad73@mail.gmail.com>
+	<486E5271.4060801@tiscali.co.uk>
+	<613debac0807042003q66328c3cn54b6f927221654c9@mail.gmail.com>
+	<486FA8D3.90609@tiscali.co.uk>
+Message-ID: <613debac0807060624l54551f7v462d707829ad633f@mail.gmail.com>
+
+Well, that is right. What we want gds exporting in toped is simply
+the ability of recognizing datatypes; or at least several pre-defined
+datatypes that can be assigned to gds layers when defining .
+
+By the way, Toped is still a good work !
+
+On Sun, Jul 6, 2008 at 1:01 AM, Svilen <krustev.svilen at googlemail.com>
+wrote:
+
+> Hi,
+>
+> If I understand this properly - it is all driven from the GDS limitation
+> for the number of defined layers.
+>
+> OK, I'll come back to this as soon as I finish with the CIF.
+>
+> Thanks!
+>
+> Lu Lu wrote:
+>
+>> Hi,
+>>  Datatype is used mostly when performing layers generation or combination
+>> in DRC , and structures recognition in LVS, to distinguish different "layer
+>> purpose" .   Frankly speaking, there is no restriction on what those
+>> datatypes should be. What is important is that every fab may have its own
+>> layer definition, that is, every layer purpose and its datatype _as a pair_,
+>> to favor its own use. For example, a fab may define a layer along with its
+>> purpose  "POLY Drawn" to have "number 30 datatype 0" ; "POLY Dummy" to have
+>> "number 30 datatype 4", and "POLY Label" to have "number 30 datatype 10".
+>> These different purposes may  trigger differnet DRC or LVS commands. For
+>> example, when excluding text label from DRC, the tool may collect those
+>> layers with datatype 10 and attach them to appropriate layers but not treat
+>> them as part of structures to be checked . If some datatype is missing or
+>> were another number, the tool may find wrongly text labels to be device
+>> structures. That is nightmare since tools can not read as human do :( .
+>>  However, if fab had defined all those text layers to be different layer
+>> numbers that have not been used before, then there would be no need to
+>> consider datatype since all layers' datatypes are zero.  But in today's
+>> manufacture technology, there are so many layers to be used that all 255
+>> layers may exhausted too early before every layer is defined porperly. On
+>> the other hand, datatypes could be as many as 64 different numbers, from 0
+>> through 63. So, in my opinion, the method datatype is a good walkaround to
+>> extend layer definition ability.
+>>  Hope this may help!
+>>
+>>   On Sat, Jul 5, 2008 at 12:40 AM, Svilen <krustev.svilen at googlemail.com<mailto:
+>> krustev.svilen at googlemail.com>> wrote:
+>>
+>>    Hi,
+>>
+>>    For me the question is what we want the data type to be.
+>>    We can have anything there, but my problem is that I don't know
+>>    what is
+>>    the use of those DATATYPE fields? What the other tools expect to
+>>    find there?
+>>
+>>    I haven't found an official description how DATATYPE field shall be
+>>    used. Can somebody help here?
+>>    I would appreciate to see also the layer definitions form those fabs -
+>>    if of course they are not covered by NDA (Non Disclosure Agreement)
+>>
+>>    In all cases it appears that we need to get back to the GDS
+>>    import/export and to update what we have there.
+>>
+>>    Regards
+>>    Svilen
+>>
+>>    Lu Lu wrote:
+>>    > As far as my experience ( Toped 0.8.6 ), there is only datatype "0"
+>>    > exported to GDSII file. My wolkaround solution is to change it
+>>    manully.
+>>    > First open that GDSII file in a hex editor and find the layer
+>>    datetype
+>>    > tag, of course in hex format of four digits. For example, "0E02"
+>>    > reprsents structure datatype, and "1602" is for texttype ( Toped
+>>    > will exporting tag "1602" if that layer is created using  text
+>>    command
+>>    > , a good manner ! ). Four digits following these tags are datetype
+>>    > number in hex format. As i mentioned before, it should be "0000" or
+>>    > zero in decimal number before any changes.  The next step is
+>>    > relatively simple, just change whatever number you want your
+>>    datetype
+>>    > to be and save it afterwards. Remember using hex format. I have
+>>    > changed my layout files this way and all passed DRC and LVS with no
+>>    > error on layer representation.
+>>    >
+>>    >
+>>    > On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich
+>>    > <gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>
+>>    <mailto:gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>>>
+>>
+>>    wrote:
+>>    >
+>>    >
+>>    >         > By the way, we need to have the similar function for gds
+>>    >         >  definegdslay(<gds name>, <gdsdatatype> , <tdt number>);
+>>    >         I guess you mean <gds number>, because GDS doesn't define
+>>    >         layer names.
+>>    >         You know that <tdt number> and <gds number> in Toped are the
+>>    >         same thing.
+>>    >         We've simply adopted layer number approach.
+>>    >
+>>    >     Yes,  it must be  <gds number>
+>>    >
+>>    >
+>>    >         The interesting point above
+>>    >         is <gdsdatatype>.  Do you mean here GDSII DATATYPE record or
+>>    >         data type
+>>    >         in a sense of box, polygon, text, pattern etc. ?
+>>    >         In all cases I would suggest to open a separate thread about
+>>    >         this - it
+>>    >         has nothing to do with CIF
+>>    >
+>>    >
+>>    >     I mean GDSII DATATYPE record.
+>>    >     I saw few foundries that provide their lists of layers like
+>>    >     <layer name> <layer gds number> <layer GDS datatype>.
+>>    >
+>>    >     For example
+>>    >     NWELL        1    10
+>>    >
+>>    >     It can be trouble to use current version of toped with such
+>>    foundries.
+>>    >
+>>    >     I never seen it before but potentially it can be happened that
+>>    >     different layers can use same layer number but different
+>>    >     datatypes. For instance, for lvs purposes.
+>>    >
+>>    >     Regards
+>>    >     Sergey
+>>    >
+>>    >     _______________________________________________
+>>    >     Toped-development mailing list
+>>    >     Toped-development at lists.berlios.de
+>>    <mailto:Toped-development at lists.berlios.de>
+>>    >     <mailto:Toped-development at lists.berlios.de
+>>    <mailto:Toped-development at lists.berlios.de>>
+>>    >     https://lists.berlios.de/mailman/listinfo/toped-development
+>>    >
+>>    >
+>>    >
+>>
+>>  ------------------------------------------------------------------------
+>>    >
+>>    > _______________________________________________
+>>    > Toped-development mailing list
+>>    > Toped-development at lists.berlios.de
+>>    <mailto:Toped-development at lists.berlios.de>
+>>    > https://lists.berlios.de/mailman/listinfo/toped-development
+>>    >
+>>
+>>    _______________________________________________
+>>    Toped-development mailing list
+>>    Toped-development at lists.berlios.de
+>>    <mailto:Toped-development at lists.berlios.de>
+>>    https://lists.berlios.de/mailman/listinfo/toped-development
+>>
+>>
+>> ------------------------------------------------------------------------
+>>
+>> _______________________________________________
+>> Toped-development mailing list
+>> Toped-development at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/toped-development
+>>
+>>
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080706/d18f6898/attachment.html>
+
+From krustev.svilen at googlemail.com  Fri Jul 11 00:47:20 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Thu, 10 Jul 2008 23:47:20 +0100
+Subject: [Toped-development] GDS conversion
+In-Reply-To: <613debac0807060624l54551f7v462d707829ad633f@mail.gmail.com>
+References: <fda822f80807030537g1d30ebd0sb708c248266d5240@mail.gmail.com>	<613debac0807032103hd6d7d52o2d1b98d1b773ad73@mail.gmail.com>	<486E5271.4060801@tiscali.co.uk>	<613debac0807042003q66328c3cn54b6f927221654c9@mail.gmail.com>	<486FA8D3.90609@tiscali.co.uk>
+	<613debac0807060624l54551f7v462d707829ad633f@mail.gmail.com>
+Message-ID: <48769178.8090509@tiscali.co.uk>
+
+
+Hi,
+
+I've raised a feature request concerning GDS datatypes. In can be seen & 
+tracked here:
+
+https://developer.berlios.de/bugs/?func=detailbug&bug_id=14179&group_id=5037
+
+Thanks Lu Lu!
+
+Regards
+Svilen
+
+Lu Lu wrote:
+> Well, that is right. What we want gds exporting in toped is simply 
+> the ability of recognizing datatypes; or at least several pre-defined 
+> datatypes that can be assigned to gds layers when defining .
+>  
+> By the way, Toped is still a good work !
+>
+> On Sun, Jul 6, 2008 at 1:01 AM, Svilen <krustev.svilen at googlemail.com 
+> <mailto:krustev.svilen at googlemail.com>> wrote:
+>
+>     Hi,
+>
+>     If I understand this properly - it is all driven from the GDS
+>     limitation for the number of defined layers.
+>
+>     OK, I'll come back to this as soon as I finish with the CIF.
+>
+>     Thanks!
+>
+>     Lu Lu wrote:
+>
+>         Hi,
+>          Datatype is used mostly when performing layers generation or
+>         combination in DRC , and structures recognition in LVS, to
+>         distinguish different "layer purpose" .   Frankly speaking,
+>         there is no restriction on what those datatypes should be.
+>         What is important is that every fab may have its own layer
+>         definition, that is, every layer purpose and its datatype _as
+>         a pair_, to favor its own use. For example, a fab may define a
+>         layer along with its purpose  "POLY Drawn" to have "number 30
+>         datatype 0" ; "POLY Dummy" to have "number 30 datatype 4", and
+>         "POLY Label" to have "number 30 datatype 10". These different
+>         purposes may  trigger differnet DRC or LVS commands. For
+>         example, when excluding text label from DRC, the tool may
+>         collect those layers with datatype 10 and attach them to
+>         appropriate layers but not treat them as part of structures to
+>         be checked . If some datatype is missing or were another
+>         number, the tool may find wrongly text labels to be device
+>         structures. That is nightmare since tools can not read as
+>         human do :( .
+>          However, if fab had defined all those text layers to be
+>         different layer numbers that have not been used before, then
+>         there would be no need to consider datatype since all layers'
+>         datatypes are zero.  But in today's manufacture technology,
+>         there are so many layers to be used that all 255 layers may
+>         exhausted too early before every layer is defined porperly. On
+>         the other hand, datatypes could be as many as 64 different
+>         numbers, from 0 through 63. So, in my opinion, the method
+>         datatype is a good walkaround to extend layer definition ability.
+>          Hope this may help!
+>          
+>          On Sat, Jul 5, 2008 at 12:40 AM, Svilen
+>         <krustev.svilen at googlemail.com
+>         <mailto:krustev.svilen at googlemail.com>
+>         <mailto:krustev.svilen at googlemail.com
+>         <mailto:krustev.svilen at googlemail.com>>> wrote:
+>
+>            Hi,
+>
+>            For me the question is what we want the data type to be.
+>            We can have anything there, but my problem is that I don't know
+>            what is
+>            the use of those DATATYPE fields? What the other tools
+>         expect to
+>            find there?
+>
+>            I haven't found an official description how DATATYPE field
+>         shall be
+>            used. Can somebody help here?
+>            I would appreciate to see also the layer definitions form
+>         those fabs -
+>            if of course they are not covered by NDA (Non Disclosure
+>         Agreement)
+>
+>            In all cases it appears that we need to get back to the GDS
+>            import/export and to update what we have there.
+>
+>            Regards
+>            Svilen
+>
+>            Lu Lu wrote:
+>            > As far as my experience ( Toped 0.8.6 ), there is only
+>         datatype "0"
+>            > exported to GDSII file. My wolkaround solution is to
+>         change it
+>            manully.
+>            > First open that GDSII file in a hex editor and find the layer
+>            datetype
+>            > tag, of course in hex format of four digits. For example,
+>         "0E02"
+>            > reprsents structure datatype, and "1602" is for texttype
+>         ( Toped
+>            > will exporting tag "1602" if that layer is created using
+>          text
+>            command
+>            > , a good manner ! ). Four digits following these tags are
+>         datetype
+>            > number in hex format. As i mentioned before, it should be
+>         "0000" or
+>            > zero in decimal number before any changes.  The next step is
+>            > relatively simple, just change whatever number you want your
+>            datetype
+>            > to be and save it afterwards. Remember using hex format.
+>         I have
+>            > changed my layout files this way and all passed DRC and
+>         LVS with no
+>            > error on layer representation.
+>            >
+>            >
+>            > On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich
+>            > <gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>
+>         <mailto:gaitukevich.s at gmail.com <mailto:gaitukevich.s at gmail.com>>
+>            <mailto:gaitukevich.s at gmail.com
+>         <mailto:gaitukevich.s at gmail.com>
+>         <mailto:gaitukevich.s at gmail.com
+>         <mailto:gaitukevich.s at gmail.com>>>>
+>
+>            wrote:
+>            >
+>            >
+>            >         > By the way, we need to have the similar
+>         function for gds
+>            >         >  definegdslay(<gds name>, <gdsdatatype> , <tdt
+>         number>);
+>            >         I guess you mean <gds number>, because GDS
+>         doesn't define
+>            >         layer names.
+>            >         You know that <tdt number> and <gds number> in
+>         Toped are the
+>            >         same thing.
+>            >         We've simply adopted layer number approach.
+>            >
+>            >     Yes,  it must be  <gds number>
+>            >
+>            >
+>            >         The interesting point above
+>            >         is <gdsdatatype>.  Do you mean here GDSII
+>         DATATYPE record or
+>            >         data type
+>            >         in a sense of box, polygon, text, pattern etc. ?
+>            >         In all cases I would suggest to open a separate
+>         thread about
+>            >         this - it
+>            >         has nothing to do with CIF
+>            >
+>            >
+>            >     I mean GDSII DATATYPE record.
+>            >     I saw few foundries that provide their lists of
+>         layers like
+>            >     <layer name> <layer gds number> <layer GDS datatype>.
+>            >
+>            >     For example
+>            >     NWELL        1    10
+>            >
+>            >     It can be trouble to use current version of toped
+>         with such
+>            foundries.
+>            >
+>            >     I never seen it before but potentially it can be
+>         happened that
+>            >     different layers can use same layer number but different
+>            >     datatypes. For instance, for lvs purposes.
+>            >
+>            >     Regards
+>            >     Sergey
+>            >
+>            >     _______________________________________________
+>            >     Toped-development mailing list
+>            >     Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>
+>            <mailto:Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>>
+>            >     <mailto:Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>
+>            <mailto:Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>>>
+>            >    
+>         https://lists.berlios.de/mailman/listinfo/toped-development
+>            >
+>            >
+>            >
+>          
+>          ------------------------------------------------------------------------
+>            >
+>            > _______________________________________________
+>            > Toped-development mailing list
+>            > Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>
+>            <mailto:Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>>
+>            > https://lists.berlios.de/mailman/listinfo/toped-development
+>            >
+>
+>            _______________________________________________
+>            Toped-development mailing list
+>            Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>
+>            <mailto:Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>>
+>            https://lists.berlios.de/mailman/listinfo/toped-development
+>
+>
+>         ------------------------------------------------------------------------
+>
+>         _______________________________________________
+>         Toped-development mailing list
+>         Toped-development at lists.berlios.de
+>         <mailto:Toped-development at lists.berlios.de>
+>         https://lists.berlios.de/mailman/listinfo/toped-development
+>          
+>
+>
+>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From Brian at tela-inc.com  Tue Jul 22 01:20:09 2008
+From: Brian at tela-inc.com (Brian Reed)
+Date: Mon, 21 Jul 2008 16:20:09 -0700
+Subject: [Toped-development] feature request
+Message-ID: <5D78CCBCAF07664CAD59F9E9C9FB86931BFB09@tela-mail.tela-inc.com>
+
+I'm new to the forum, let me know if these request have already come up.
+  
+1. Could data type be added to the layer definition?
+2. Would it be possible to use Ubuntu as one of your Linux distributors?  
+
+Brian Reed
+Member of Technical Staff
+Tela Innovations, Inc.
+655 Campbell Technology Parkway
+Suite 150
+Campbell, CA 95008
+Direct: (408) 558-6316
+Main:   (408) 558-6300
+
+NOTICE: This email message is for the sole use of the intended recipient(s) and may contain confidential and privileged information. Any unauthorized review, use, disclosure or distribution is prohibited. If you are not the intended recipient, please contact the sender by reply email and destroy all copies of the original message.
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080721/7433214a/attachment.html>
+
+From krustev.svilen at googlemail.com  Wed Jul 23 21:44:29 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Wed, 23 Jul 2008 20:44:29 +0100
+Subject: [Toped-development] feature request
+In-Reply-To: <5D78CCBCAF07664CAD59F9E9C9FB86931BFB09@tela-mail.tela-inc.com>
+References: <5D78CCBCAF07664CAD59F9E9C9FB86931BFB09@tela-mail.tela-inc.com>
+Message-ID: <48878A1D.4060301@tiscali.co.uk>
+
+Hi Brian,
+>
+> 1. Could data type be added to the layer definition?
+>
+I guess you have in mind GDSII data types. If it is so - there is 
+already a feature request and soon (I hope) it will be assigned. You can 
+track the progress here:
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=14179&group_id=5037
+>
+> 2. Would it be possible to use Ubuntu as one of your Linux distributors?
+>
+This one is a bit more demanding. I'll try to explain why.
+- The proper way to do that is to get an "official" packager who will 
+include toped in one of the ubuntu databases. Then it will be possible 
+to install it and update it exactly as any other ubuntu package. 
+Unfortunately we still don't have such person - so I don't know when 
+this will happen.
+- There is of course another possibility -  to generate ubuntu packages 
+"in house".  I don't have myself an ubuntu installation at the moment, 
+but it is quite popular distro and it looks a good idea to make one.  
+Unless a volunteer pops-up with an existing ubuntu installation ( 
+anybody? ) I'll try to produce myself an ubuntu package for the next 
+release.
+
+Regards
+Svilen
+
+
+
+

@@ -1,0 +1,258 @@
+From krustev.svilen at googlemail.com  Wed Dec  5 01:22:55 2007
+From: krustev.svilen at googlemail.com (Svilen Krastev)
+Date: Wed, 05 Dec 2007 00:22:55 +0000
+Subject: [Toped-development] circles & arcs in Toped
+Message-ID: <4755EF5F.1030107@tiscali.co.uk>
+
+
+Currently Toped and respectively TELL doesn't have a dedicated functions 
+for circles, arcs and similar curves. This is an attempt to discuss the 
+matter and to try to get better idea what shall be implemented and how.
+
+WHAT: - It seems obvious that we need to implement some kind of curve 
+primitive here - one or more. Circle alone doesn't seem to be that 
+commonly used. Arc or segment of a circle are more often needed. Ideas?
+
+HOW: - there are generally two possibilities:
+- to keep toped clean from curves and to use tell functions producing 
+appropriate polygons.
+- to add one or more new data type in toped, and to update the tdt format.
+First one will be easier and quicker to implement. It might result in a 
+simpler view of the final rounded shapes and is likely will be more 
+flexible.
+The second one will produce more compact databases and most likely will 
+be quicker to run.
+
+In both cases we need a clear idea how to build the equivalent polygons. 
+There use to be (I believe there still are) a lot of troubles with the 
+back-end tools - DRC, fractioning etc.
+
+It could be a good idea to combine both approaches. For more often used 
+shapes - to introduce new toped data type(s). In the same time - we can 
+add some math functions in tell which combined with lists will bring us 
+all the flexibility we need. I mean sin/cos and it can be done really quick.
+
+Regards
+Svilen
+
+
+
+From gaitukevich.s at gmail.com  Thu Dec  6 18:01:29 2007
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Fri, 7 Dec 2007 01:01:29 +0800
+Subject: [Toped-development] Fwd:  circles & arcs in Toped
+In-Reply-To: <fda822f80712060539qd744e41w30891a6d730f7356@mail.gmail.com>
+References: <4755EF5F.1030107@tiscali.co.uk>
+	<fda822f80712060539qd744e41w30891a6d730f7356@mail.gmail.com>
+Message-ID: <fda822f80712060901p42a9f740g9c60904e9ad2f749@mail.gmail.com>
+
+I agree with you. We can combine to approaches if provide function
+converttopoly();
+But there are two questions what we need to decide before start work:
+1. What about accuracy of positions of vertex? Most of them will be
+off-grid.
+2. Is it easily to add support of arcs to logical operations?
+
+Regards,
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20071207/e9a414d9/attachment.html>
+
+From krustev.svilen at googlemail.com  Thu Dec  6 23:55:14 2007
+From: krustev.svilen at googlemail.com (Svilen Krastev)
+Date: Thu, 06 Dec 2007 22:55:14 +0000
+Subject: [Toped-development] Fwd:  circles & arcs in Toped
+In-Reply-To: <fda822f80712060901p42a9f740g9c60904e9ad2f749@mail.gmail.com>
+References: <4755EF5F.1030107@tiscali.co.uk>	<fda822f80712060539qd744e41w30891a6d730f7356@mail.gmail.com>
+	<fda822f80712060901p42a9f740g9c60904e9ad2f749@mail.gmail.com>
+Message-ID: <47587DD2.7060808@tiscali.co.uk>
+
+Hi,
+If we decide to have a new data types we will need converttopoly() or 
+maybe even implicit conversion, hidden from the user. It must be done 
+also for the wires, although it virtually exists already - that's the 
+way we draw them.
+
+1. Vertex accuracy will be determined by the user units of the database. 
+(see the definition of the tdtdesign class  in tedesign.h DBU & UU) The 
+default and only possible at the moment is 1e-3. Good point - I have to 
+update newdesign() function with an overloaded member with DBU and UU 
+arguments.
+You know of course that improving the accuracy will reduce the maximum 
+possible size of the chip. At the end of the day it all comes down to 32 
+bit integers which must be used in GDSII. Of course this won't remove 
+the troubles with the DRC.
+
+Concerning the off-grid points. As long as we have a dedicated type and 
+store the arcs/circles using that type - everything should be on grid. 
+When we convert that to a polygon, or create similar polygon from tell - 
+everything will be off-grid potentially. Not sure we can do something 
+about that anyway, because GDSII doesn't have similar types. Don't know 
+about oasis - we have to check this!
+
+2. If I understand the question properly - the short answer is no. The 
+only way I see is conversion to a polygon and then applying the logic 
+operations. Same for the logic operations with wires(which is not done 
+yet) , although I'm quite tempted to try to preserve the type there  
+when possible.
+Anyway - polygons are the most common shape and logic operations are 
+supposed to work for them.
+
+On the second thought.
+Correct me if I'm wrong, but you're thinking here about the high voltage 
+devices and possibly bipolar? Then what about a box with rounded 
+corners? And polygon and wire with rounded corners? Possibly with 
+different radius for every corner... or that's too much? Circle and 
+ellipse are then naturally produced from a box with rounded corners? HV 
+gates can be drawn as a wire with rounded corners? Then we can think 
+about preservation of the type after a logic operation.
+What about this?
+
+Regards
+Svilen
+
+Sergey Gaitukevich wrote:
+>
+> I agree with you. We can combine to approaches if provide function 
+> converttopoly();
+> But there are two questions what we need to decide before start work:
+> 1. What about accuracy of positions of vertex? Most of them will be 
+> off-grid.
+> 2. Is it easily to add support of arcs to logical operations?
+>
+> Regards,
+> Sergey
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From gaitukevich.s at gmail.com  Fri Dec 14 17:38:10 2007
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Sat, 15 Dec 2007 00:38:10 +0800
+Subject: [Toped-development] Fwd:  Fwd: circles & arcs in Toped
+In-Reply-To: <47587DD2.7060808@tiscali.co.uk>
+References: <4755EF5F.1030107@tiscali.co.uk>
+	<fda822f80712060539qd744e41w30891a6d730f7356@mail.gmail.com>
+	<fda822f80712060901p42a9f740g9c60904e9ad2f749@mail.gmail.com>
+	<47587DD2.7060808@tiscali.co.uk>
+Message-ID: <fda822f80712140838o5c938486m8c31228048cbb0db@mail.gmail.com>
+
+Hello
+
+
+>On the second thought.
+>Correct me if I'm wrong, but you're thinking here about the high voltage
+>devices and possibly bipolar?
+
+Yes, my main interest now is high voltage devices.
+
+>Then what about a box with rounded
+>corners? And polygon and wire with rounded corners? Possibly with
+>different radius for every corner... or that's too much? Circle and
+>ellipse are then naturally produced from a box with rounded corners? HV
+>gates can be drawn as a wire with rounded corners? Then we can think
+>about preservation of the type after a logic operation.
+>What about this?
+
+pro:
+1. I evaluated few tools for such features, but didn't find any convenient
+approach. Finally I returned to simple polygons, arcs and
+logical operations between them. Such tool can be useful.
+2. High voltage and bipolar IC layout design can be a good niche for Toped.
+
+con:
+1. I am not sure that we can create easy to use tool for such purposes.
+Main challenge is keep non-arc operations without any changes.
+2. Not so many persons create high voltage devices.
+3. We can spend many efforts meanwhile Toped needs more essential features.
+
+Regards,
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20071215/195e8961/attachment.html>
+
+From krustev.svilen at googlemail.com  Sun Dec 16 23:27:32 2007
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sun, 16 Dec 2007 22:27:32 +0000
+Subject: [Toped-development] : circles & arcs in Toped
+In-Reply-To: <fda822f80712140838o5c938486m8c31228048cbb0db@mail.gmail.com>
+References: <4755EF5F.1030107@tiscali.co.uk>	<fda822f80712060539qd744e41w30891a6d730f7356@mail.gmail.com>	<fda822f80712060901p42a9f740g9c60904e9ad2f749@mail.gmail.com>	<47587DD2.7060808@tiscali.co.uk>
+	<fda822f80712140838o5c938486m8c31228048cbb0db@mail.gmail.com>
+Message-ID: <4765A654.7050802@googlemail.com>
+
+Hi
+
+As I mention - the tell implementation should be quick and easy. I added 
+two functions - sin and cos.
+A basic demo is available at tll/arccheck.tll.
+Have a look. The suggested arc function generates all arcs/circles 
+counterclockwise. It seems that we'll need one for clockwise cases 
+either. Then I can't see a problem generating any polygon with any 
+combination of rounded or normal vertexes.
+Maybe we have to create a small tell library with some functions 
+generating rounded shapes.
+
+The only potential trouble is precision and how the backend tools are 
+handling this kind of polygons. This however would be there with any 
+implementation.
+
+By the way with this kind of polygons the remaining troubles in the 
+cut/merge operations are much easier to spot.
+
+Regards
+Svilen
+
+Sergey Gaitukevich wrote:
+> Hello
+>
+>
+> >On the second thought.
+> >Correct me if I'm wrong, but you're thinking here about the high voltage
+> >devices and possibly bipolar?
+>
+> Yes, my main interest now is high voltage devices.
+>
+> >Then what about a box with rounded
+> >corners? And polygon and wire with rounded corners? Possibly with
+> >different radius for every corner... or that's too much? Circle and
+> >ellipse are then naturally produced from a box with rounded corners? HV
+> >gates can be drawn as a wire with rounded corners? Then we can think
+> >about preservation of the type after a logic operation.
+> >What about this?
+>
+> pro:
+> 1. I evaluated few tools for such features, but didn't find any 
+> convenient approach. Finally I returned to simple polygons, arcs and
+> logical operations between them. Such tool can be useful.
+> 2. High voltage and bipolar IC layout design can be a good niche for 
+> Toped.
+>
+> con:
+> 1. I am not sure that we can create easy to use tool for such 
+> purposes.  Main challenge is keep non-arc operations without any changes.
+> 2. Not so many persons create high voltage devices.
+> 3. We can spend many efforts meanwhile Toped needs more essential 
+> features.
+>
+> Regards,
+> Sergey
+>
+>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+

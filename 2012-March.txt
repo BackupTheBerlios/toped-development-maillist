@@ -1,0 +1,57 @@
+From bogus@does.not.exist.com  Wed Mar 14 16:27:18 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 15:27:18 -0000
+Subject: No subject
+Message-ID: <mailman.0.1331738838.13213.toped-development@lists.berlios.de>
+
+than manipulation with
+different variables. But you are right. This is a not so important.
+
+Regards
+Sergey
+
+------=_Part_9614_15922617.1215089524633
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+<div class="gmail_quote"><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">I agree that the last suggestion looks the best. Maybe I&#39;m missing<br>
+
+something here, but why then we would need a defineciflay function? The<br>
+point is to have the CIF layer correspondence defined somewhere - it&#39;s<br>
+either internally in the toped engine (1,2) or in a TELL variable (3).<br>
+Either way this information will be used by the cifimport function.<br>
+OK, I&#39;m working on (3) .It can be updated if we decide that we certainly<br>
+need (1)</blockquote><div>&nbsp;<br>From safety point of view. It is more easely to control function calling than manipulation with<br>different variables. But you are right. This is a not so important.<br><br>Regards<br>Sergey<br>
+</div></div>
+
+------=_Part_9614_15922617.1215089524633--
+
+
+From bogus@does.not.exist.com  Wed Mar 14 16:27:18 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 15:27:18 -0000
+Subject: No subject
+Message-ID: <mailman.1.1331738838.13213.toped-development@lists.berlios.de>
+
+For example hide some inessential layers (N+, P+ etc) and concentrate only a
+few important layers (active, poly, contact) for rapid layout development.
+Then show all layers and add missing data.
+It can be easily realized by adding add/show functions for layer tab and by
+using TELL.
+
+Regards,
+Sergey
+
+------=_Part_63501_15546439.1224419822729
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+<div dir="ltr">Hi all.<br>I want to discuss feature request #14698<br><a href="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14698&amp;group_id=5037">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14698&amp;group_id=5037</a><br>
+<br>Do we really need such behavior?&nbsp; What is a use case?<br><br>From my layout experience more useful feature is groups of layers. <br>For example hide some inessential layers (N+, P+ etc) and concentrate only a few important layers (active, poly, contact) for rapid layout development. Then show all layers and add missing data.<br>
+It can be easily realized by adding add/show functions for layer tab and by using TELL.<br><br>Regards,<br>Sergey<br><br></div>
+
+------=_Part_63501_15546439.1224419822729--
+
+

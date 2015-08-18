@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Issues on Fedora 9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Issues%20on%20Fedora%209&In-Reply-To=%3C48487B7A.8090605%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Issues on Fedora 9</H1>
+    <B>Svilen</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Issues%20on%20Fedora%209&In-Reply-To=%3C48487B7A.8090605%40googlemail.com%3E"
+       TITLE="[Toped-development] Issues on Fedora 9">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Fri Jun  6 01:49:14 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000038.html">[Toped-development] Issues on Fedora 9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi
+
+We have a number of issues with the latest Fedora 9 release.
+
+It was reported by the packagers first (thanks Chitlesh) that Toped is
+crashing at startup. The root problem there appears to be the lack of
+error handling if we can't initialize GL with required attributes - see
+MBug 78. Curiously enough the GL initialization is working with a number
+of fedora releases, but not with fc9.
+
+On top of this there is also an issue with the visualization of the
+interactive commands. This has to be still investigated - usually the
+reason for this kind of troubles is the double buffering
+
+It seems that both issues are coming down to the state of the mesa
+library(7.1 pre-release) used in FC9 release. I didn't try ATI or nVidia
+drivers to confirm this.
+
+Independently of the above there are also a couple of more known bugs
+(see  MBug 76) in 0.9 release. It appears that a bugfix release is
+pending as soon as we get those fixed.
+
+Regards
+Svilen
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000038.html">[Toped-development] Issues on Fedora 9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

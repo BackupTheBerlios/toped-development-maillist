@@ -1,0 +1,260 @@
+From krustev.svilen at googlemail.com  Sat Feb  3 14:21:35 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Sat, 03 Feb 2007 13:21:35 +0000
+Subject: [Toped-development] missing edit operations
+Message-ID: <45C48C5F.9040406@tiscali.co.uk>
+
+Hi,
+At the moment there are at least two areas of edit operations where 
+Toped lacks functionality.
+
+Property changes in layout objects.
+    - Contents and size of the text objects (not mentioning fonts yet)
+    - Referenced cells in cellref and cellaref objects
+    - Layer change - for all objects
+
+Layer and cross-layer transfers
+    - move/copy a layer (as a whole) to another layer
+    - move/copy selected objects to another layer
+
+Here is the initial idea for the new TELL functions, that should fill-up 
+this gap.
+
+--> Changing the object layer of selected objects:
+    changelayer(<target_layer>)
+    The question is whether we need a source layer in this function or 
+not. If we don't have a source layer parameter, then it's possible to 
+select objects from different layers and to move them to the target 
+layer. This seems to be more flexible but more dangerous functionality.
+
+--> Layer transfer:
+    trasferlayer(<source_layer>, <target_layer>, <hierarchical>)
+    This is supposed to work over the entire layer, not on the selected 
+objects. That's why source_layer parameter is required. The hierarchical 
+option will make possible to change the layers in the entire design or 
+just on a branch of the hierarchy. If there were objects selected in the 
+source_layer they should remain selected in the target one.
+    copylayer(<source_layer>, <target_layer>, <hierarchical>)
+    Not sure we need this...at last not for editor purposes
+
+--> Text manipulation - all functions work on the selected text objects.
+    changetextsize(<new_size>)
+    The idea here seems to be trivial. More interesting will be if we 
+have to increase/decrease the text size by X...
+    changetext(<new_text>, <old_text>)
+    It's interesting here. Not very often you'll need to change the 
+contents of a bunch of text object to a new common one. In the same time 
+- quite often the one will have to change part of the string. For 
+example changing the bus name, or more general - replacing a substring 
+on a list of strings. The idea is that parameters here can contain 
+global characters or even better - to keep the door open for some 
+limited regular expression syntax embedded in both parameters. Although 
+the implementation seems to be quite a lot of work, that's what will be 
+useful. In the same time we still can have:
+    changetext(<new_text>)
+    Which can be the trivial version
+
+--> Reference cell manipulation
+    changereference(<old_cell_name>,<new_cell_name>,<hierarchical>)
+    This function should work with entire database - not the selected 
+objects only. The functionality should be similar to the trasferlayer, 
+but targeting cells. This should allow to change a reference over the 
+entire design.
+    changereference(<new_cell_name>)
+    Should work on selected references only. Again the question is - do 
+we need an old_cell_name parameter here. Without it, the function is 
+more powerful, but I can't think of a case when the user will want to 
+modify reference objects pointing to different cells, and to make them 
+referencing another common cell. And to do it in one shot. Means it 
+might be a source of troubles.
+
+On top of the above it seems that some parametrization of the select 
+functions have to be added as well.
+There is no way to select text objects only. Neither wires only. Same is 
+for cells, although it should be quite easy to implement the latter. 
+Some selection parameters might be useful also, like cell names or text 
+strings. They can be a good addition to the functions described above.
+
+Ideas, comments?
+
+Regards
+Svilen
+
+
+
+From gaitukevich.s at gmail.com  Mon Feb  5 17:48:36 2007
+From: gaitukevich.s at gmail.com (Gaitukevich Sergey)
+Date: Tue, 6 Feb 2007 00:48:36 +0800
+Subject: [Toped-development]  missing edit operations
+Message-ID: <fda822f80702050848k6d43669bt2bb9bf11c1ffcd4d@mail.gmail.com>
+
+Hi.
+>--> Changing the object layer of selected objects:
+>    changelayer(<target_layer>)
+>    The question is whether we need a source layer in this function or
+>not. If we don't have a source layer parameter, then it's possible to
+>select objects from different layers and to move them to the target
+>layer. This seems to be more flexible but more dangerous functionality.
+
+We can warn user when he use this function for multiple layers.
+
+More useful function what we need (at least i need):
+    resizelayer(<target_layer>, step)
+
+>--> Layer transfer:
+>    trasferlayer(<source_layer>, <target_layer>, <hierarchical>)
+>    This is supposed to work over the entire layer, not on the selected
+>objects. That's why source_layer parameter is required. The hierarchical
+>option will make possible to change the layers in the entire design or
+>just on a branch of the hierarchy. If there were objects selected in the
+>source_layer they should remain selected in the target one.
+>    copylayer(<source_layer>, <target_layer>, <hierarchical>)
+>    Not sure we need this...at last not for editor purposes
+
+I think this functionality must be placed into import/export gds.
+Too dangerous for regular operation.
+
+>--> Text manipulation - all functions work on the selected text objects.
+>    changetextsize(<new_size>)
+>    The idea here seems to be trivial. More interesting will be if we
+>have to increase/decrease the text size by X...
+
+I agree
+
+>    changetext(<new_text>, <old_text>)
+>.........
+Too many cases we must take account(replace sizes, fonts and so on).
+I think much better provide syntax sugar for such operation in TELL. Like
+this
+
+all_texts = selectobject(text, regexp("path*"));
+for_each(all_texts, lambda(x)
+{
+    string str = getproperty(x, text);
+    string str1 = replacesubstring(str, "path", "bus");
+    replaceproperty(x, text, str1))
+}
+
+The same for
+    changereference(<old_cell_name>,<new_cell_name>,<hierarchical>)
+It's useful function, but
+    changereference(<new_cell_name>)
+only on script level.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20070206/7e7935c9/attachment.html>
+
+From krustev.svilen at googlemail.com  Mon Feb  5 23:21:17 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Mon, 05 Feb 2007 22:21:17 +0000
+Subject: [Toped-development] missing edit operations
+In-Reply-To: <fda822f80702050848k6d43669bt2bb9bf11c1ffcd4d@mail.gmail.com>
+References: <fda822f80702050848k6d43669bt2bb9bf11c1ffcd4d@mail.gmail.com>
+Message-ID: <45C7ADDD.50407@googlemail.com>
+
+Hi,
+One thing I missed in my initial post was the size and step of the array 
+references. It seems that one function here replacing all four 
+parameters at once should be enough.
+> >--> Changing the object layer of selected objects:
+> >    changelayer(<target_layer>)
+> >    The question is whether we need a source layer in this function or
+> >not. If we don't have a source layer parameter, then it's possible to
+> >select objects from different layers and to move them to the target
+> >layer. This seems to be more flexible but more dangerous functionality.
+>
+> We can warn user when he use this function for multiple layers.
+OK
+There will be undo available, so a warning in the log window should be 
+enough. No source_layer parameter.
+>
+> More useful function what we need (at least i need):
+>     resizelayer(<target_layer>, step)   
+This is a logic operation.  I know they are missing, but it is a subject 
+of another discussion. Actually there is nothing to discuss - we need 
+this. The only trouble is that it will require more time.
+> >--> Layer transfer:
+> >    trasferlayer(<source_layer>, <target_layer>, <hierarchical>)
+> >    This is supposed to work over the entire layer, not on the selected
+> >objects. That's why source_layer parameter is required. The hierarchical
+> >option will make possible to change the layers in the entire design or
+> >just on a branch of the hierarchy. If there were objects selected in the
+> >source_layer they should remain selected in the target one.
+> >    copylayer(<source_layer>, <target_layer>, <hierarchical>)
+> >    Not sure we need this...at last not for editor purposes
+>
+> I think this functionality must be placed into import/export gds.
+> Too dangerous for regular operation.
+I though that it's a good idea, and meanwhile I start implementing it. 
+The forward operation is not a problem. The problem comes with undo. It 
+breaks literally the basics of the undo operation, because it should 
+work on a hierarchy of cells i.e. the undo related data should contain 
+information about the cell, while all other undo operations work 
+strictly on the current cell. To cut the long story short - undo is not 
+feasible if the operation is hierarchical. Then the whole function is 
+redundant, because it is not any different from changelayer(<target_layer>)
+Putting it in the gds import/export is a known idea - we already have 
+two pass gds conversion. Nevertheless the initial idea was that the 
+function can be used as a regular operation and if undo was available - 
+then it wasn't that dangerous.
+So the way forward seem to be TELL with something similar to what you 
+are proposing below about texts.
+>
+> >--> Text manipulation - all functions work on the selected text objects.
+> >    changetextsize(<new_size>)
+> >    The idea here seems to be trivial. More interesting will be if we
+> >have to increase/decrease the text size by X...
+>
+> I agree
+>
+> >    changetext(<new_text>, <old_text>)
+> >.........
+> Too many cases we must take account(replace sizes, fonts and so on).
+> I think much better provide syntax sugar for such operation in TELL. 
+> Like this
+>
+> all_texts = selectobject(text, regexp("path*"));
+> for_each(all_texts, lambda(x)
+> {
+>     string str = getproperty(x, text);
+>     string str1 = replacesubstring(str, "path", "bus");
+>     replaceproperty(x, text, str1))
+> }
+I already kind of agreed with this. Of course the syntax above is just 
+an example I guess. It requires two , actually 3 major updates in TELL 
+and one in toped.
+- work with lists - we have lists at the moment, but we can't use them 
+really, except for some build-in toped functions. Lists are waiting for 
+some basic functionality like adding/removing first/last etc.
+- another type of loop - foreach. This I would agree is the syntactic 
+sugar for traversing the lists, because it can be done using more 
+"traditional" loop operators.
+- recursion. Simple thing that we don't have in TELL. Like all simple 
+things it might be a source of troubles. We going to need it in order to 
+implement layer transfer across the hierarchy, cell reference changes 
+and similar things. Maybe I forgot to mention that it's relatively 
+simple to introduce a function that will return all the child cells of 
+the current cell, then using recursive calls it will be possible to do 
+stuff across the hierarchy. And having undo as well.
+- in toped we'll need to introduce select filters - not only shape 
+types(text,ref,wire etc) , but also property values
+> The same for
+>     changereference(<old_cell
+> _name>,<new_cell_name>,<hierarchical>)
+> It's useful function, but
+>     changereference(<new_cell_name>)
+> only on script level.
+We'll have to drop the <hierarchical> parameter here. Reasons are the 
+same as for transferlayer. Then it appears that only one function - the 
+second one will be enough. And undo will be there. Hierarchical 
+operations will be possible via TELL as discussed above - and that's a 
+script level.
+Well any user function can be added to the toped menu by the user, so 
+I'm not sure what do you mean to keep it on script level.
+
+
+Regards
+Svilen
+
+
+

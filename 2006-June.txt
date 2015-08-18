@@ -1,0 +1,30 @@
+From s_krustev at tiscali.co.uk  Tue Jun 13 23:26:23 2006
+From: s_krustev at tiscali.co.uk (Svilen)
+Date: Tue, 13 Jun 2006 22:26:23 +0100
+Subject: [Toped-development] Toped 0.8 released
+Message-ID: <448F2D7F.7080502@tiscali.co.uk>
+
+It's a pleasure to anounce that /Toped 0.8/ has been released.
+
+/Toped/ is an open source cross-platform IC layout editor, based on 
+openGL and wxWidgets. It defines a new layout command script and layout 
+file format. /Toped/ is fully driven by a build-in /TELL/ interpreter. 
+All operations are executed as a response to a /TELL/ command. Further 
+information can be found at http://www.toped.org.uk
+
+Among the new features are:
+- GDSII output
+- crash recovery
+- customizable menus
+- log and crash files location and policy
+- environmental variables are now recognized and expanded in all 
+functions working with files
+- Introduction of user defined structures (records) in TELL.
+- TELL function parser
+
+The release includes also Fedora RPM's and Windows installation
+
+Enjoy
+Toped developers
+
+

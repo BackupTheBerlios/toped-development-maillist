@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] [Bug #15241] CIF import doesn't take in mind	the DB coefficients
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2315241%5D%20CIF%20import%20doesn%27t%20take%20in%20mind%0A%09the%20DB%20coefficients&In-Reply-To=%3C200902102356.n1ANuVg4022768%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000107.html">
+   <LINK REL="Next"  HREF="000115.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] [Bug #15241] CIF import doesn't take in mind	the DB coefficients</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2315241%5D%20CIF%20import%20doesn%27t%20take%20in%20mind%0A%09the%20DB%20coefficients&In-Reply-To=%3C200902102356.n1ANuVg4022768%40unicorn.berlios.de%3E"
+       TITLE="[Toped-development] [Bug #15241] CIF import doesn't take in mind	the DB coefficients">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Wed Feb 11 00:56:31 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000107.html">[Toped-development] [Bug #15225] Troubles with CIF mutex
+</A></li>
+        <LI>Next message: <A HREF="000115.html">[Toped-development] [Bug #15242] CIF export is ignoring DS	coefficients (a, b)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15241, was updated on 2009-Feb-10 23:56
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: other
+Status: Open
+Resolution: None
+Bug Group: bug
+Priority: 5
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: CIF import doesn't take in mind the DB coefficients
+
+Details: Each CIF coordinate on import has to be multiplied by a coefficient (1e-8/DBU)*(a/b) where:
+- a and b a coefficients defined by DS command, 
+- DBU is the database unit coefficient of the current TDT
+- 1e-8 is the CIF integer precision which is constant.
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15241&amp;group_id=5037">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15241&amp;group_id=5037</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000107.html">[Toped-development] [Bug #15225] Troubles with CIF mutex
+</A></li>
+	<LI>Next message: <A HREF="000115.html">[Toped-development] [Bug #15242] CIF export is ignoring DS	coefficients (a, b)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

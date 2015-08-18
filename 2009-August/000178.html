@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] How about host changing ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20How%20about%20host%20changing%20%3F&In-Reply-To=%3C4A7CC60B.1040500%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000177.html">
+   <LINK REL="Next"  HREF="000180.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] How about host changing ?</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20How%20about%20host%20changing%20%3F&In-Reply-To=%3C4A7CC60B.1040500%40googlemail.com%3E"
+       TITLE="[Toped-development] How about host changing ?">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sat Aug  8 02:25:47 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000177.html">[Toped-development] How about host changing ?
+</A></li>
+        <LI>Next message: <A HREF="000180.html">[Toped-development] How about host changing ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+Over the last couple of days the project was effectively transferred to 
+a new host:
+
+<A HREF="http://toped.googlecode.com">http://toped.googlecode.com</A>
+
+The subversion data base took ~12 hours to move, nevertheless without 
+troubles.
+The open bugs were transferred manually to the new bug tracking system 
+offered by googlecode
+The wiki pages were also transferred from <A HREF="http://toped.wikispaces.com/">http://toped.wikispaces.com/</A>
+
+I've already committed a couple of code updates - everything seems to be 
+fine.
+
+Sergey, Sandesh - you're already added to the project members. Please 
+check-out a fresh local svn copies using the instructions here:
+<A HREF="http://code.google.com/p/toped/source/checkout">http://code.google.com/p/toped/source/checkout</A>
+Don't try svn switch - it won't work because the svn DBs on berlios and 
+google have different IDs
+Please no more commits to berlios. All code updates shall be submitted 
+from now on to the new host. Let me know if you have troubles.
+
+Web site will be updated over the weekend. I'll try to request a project 
+close on berlios, but not quite sure how and when this might happen.
+
+Please feel free to browse trough our new home. There are some 
+interesting opportunities which are new for us (Code review, wiki etc.). 
+I'll be happy to hear your comments and feedback.
+
+Remaining activity : new public mailing list - I'll drop a follow-up as 
+soon as we have one. Until then - please use the current mailing list.
+
+Regards
+Svilen
+
+Svilen wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> After the latest troubles with berlios.de which are not over yet, I've 
+</I>&gt;<i> started thinking about changing the source hosting site. To be honest 
+</I>&gt;<i> - that's not a new idea, but recently it's getting more and more 
+</I>&gt;<i> clear. Here are the obvious alternatives as I can see them:
+</I>&gt;<i>
+</I>&gt;<i> 1. sourceforge (<A HREF="http://sourceforge.net/">http://sourceforge.net/</A>)
+</I>&gt;<i> 2. google code (<A HREF="http://code.google.com/projecthosting/">http://code.google.com/projecthosting/</A>)
+</I>&gt;<i>
+</I>&gt;<i> Now, after the release - it seems to be the best time for doing such a 
+</I>&gt;<i> thing. A week or two from now we'll be deeply into something new and 
+</I>&gt;<i> just waiting for the next trouble to happen. As usual - there is no 
+</I>&gt;<i> explanation whatsoever on their site. I've raised a bug 
+</I>&gt;<i> (<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16088&amp;group_id=1">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=16088&amp;group_id=1</A>). 
+</I>&gt;<i> Hopefully the reply will come soon. Curiously enough - there is no 
+</I>&gt;<i> bugs submitted there for more than a week.
+</I>&gt;<i>
+</I>&gt;<i> What an eventual move will involve.
+</I>&gt;<i> - Stop the development for several days
+</I>&gt;<i> - Transfer the SVN database to the new host (that's the part I'm a bit 
+</I>&gt;<i> afraid of)
+</I>&gt;<i> - Transfer the bug tracking DB. Most likely we'll loose the closed 
+</I>&gt;<i> issues, the open ones will have to be transferred manually.
+</I>&gt;<i> - Updating the toped.org.uk with the new links.
+</I>&gt;<i> - closing the project on berlios
+</I>&gt;<i>
+</I>&gt;<i> For the developers:
+</I>&gt;<i> - switch the local copies to the new repository
+</I>&gt;<i> - the above will involve inevitably troubles with ssh certificates, 
+</I>&gt;<i> passwords
+</I>&gt;<i> - switch to a new mailing list
+</I>&gt;<i>
+</I>&gt;<i> For users:
+</I>&gt;<i> - The trouble is that the active contributors will have to 
+</I>&gt;<i> re-subscribe to a new mailing list. In this process unfortunately we 
+</I>&gt;<i> might loose some of them.
+</I>&gt;<i>
+</I>&gt;<i> Having a quick look my sympathies seem to be with google. Their 
+</I>&gt;<i> services are under development yet it looks like they have everything 
+</I>&gt;<i> we need.
+</I>&gt;<i>
+</I>&gt;<i> I'll appreciate your feedback
+</I>&gt;<i> Regards
+</I>&gt;<i> Svilen
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000177.html">[Toped-development] How about host changing ?
+</A></li>
+	<LI>Next message: <A HREF="000180.html">[Toped-development] How about host changing ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

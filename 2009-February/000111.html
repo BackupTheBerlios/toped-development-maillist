@@ -1,0 +1,1188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Difficulties visualising Toped graphics
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Difficulties%20visualising%20Toped%20graphics&In-Reply-To=%3C4990C97F.9070509%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000110.html">
+   <LINK REL="Next"  HREF="000116.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Difficulties visualising Toped graphics</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Difficulties%20visualising%20Toped%20graphics&In-Reply-To=%3C4990C97F.9070509%40googlemail.com%3E"
+       TITLE="[Toped-development] Difficulties visualising Toped graphics">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Tue Feb 10 01:25:35 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000110.html">[Toped-development] Difficulties visualising Toped graphics
+</A></li>
+        <LI>Next message: <A HREF="000116.html">[Toped-development] Difficulties visualising Toped graphics
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#111">[ date ]</a>
+              <a href="thread.html#111">[ thread ]</a>
+              <a href="subject.html#111">[ subject ]</a>
+              <a href="author.html#111">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Graham,
+
+All that you did looks fine to me. It's a bit of a disappointment about 
+the graphics. See more comments in the text below.
+
+Regards
+Svilen
+
+&gt;<i> Hi Svilen,
+</I>&gt;<i>
+</I>&gt;<i> I recompiled toped from the cvs. It's the first time I've
+</I>&gt;<i> done this, and the process wasn't exactly like the doc, so
+</I>&gt;<i> I'll describe it here to make sure I did it properly.
+</I>&gt;<i>
+</I>&gt;<i> 1/ Checking my original compile from source, I see that
+</I>&gt;<i>    in order to get it to work I had to hack the ./configure
+</I>&gt;<i>    file. It was checking for version 2.8.9 of wxWidgets,
+</I>&gt;<i>    and I have 2.8.7. The web site says this version of
+</I>&gt;<i>    wxWidgets is OK. Is this right?
+</I>&gt;<i>   
+</I>That's right. I realise that you did this before for the tarball, that's 
+why I didn't mentioned it.
+&gt;<i> 2/ I don't have gmake on my system. Googling showed that
+</I>&gt;<i>    make is the same.
+</I>&gt;<i>   
+</I>Yes, it is the same.
+&gt;<i> 3/ The svn command created a directory toped. Running
+</I>&gt;<i>    make failed:
+</I>&gt;<i>
+</I>&gt;<i>    $ make -f Makefile.cvs
+</I>&gt;<i>    srcdir=`pwd` sh macros/autogen.sh
+</I>&gt;<i>    macros/autogen.sh: 2: aclocal: not found
+</I>&gt;<i>    macros/autogen.sh: 3: libtoolize: not found
+</I>&gt;<i>    macros/autogen.sh: 4: automake: not found
+</I>&gt;<i>    macros/autogen.sh: 5: autoconf: not found
+</I>&gt;<i>    make: *** [all] Error 127
+</I>&gt;<i>
+</I>&gt;<i>    I didn't have any of aclocal, libtoolize, automake or
+</I>&gt;<i>    autoconf. Installing automake and autoconf also gave me
+</I>&gt;<i>    aclocal. To get libtoolize I had to install libtool.
+</I>&gt;<i>   
+</I>Sorry for the troubles.  I also had to install the tools one by one - 
+couldn't find an option to install the &quot;standard&quot; development pack at 
+once on Ubuntu.
+&gt;<i> 4/ The compile sequence to install toped to /home/cad/bin
+</I>&gt;<i>    is then
+</I>&gt;<i>
+</I>&gt;<i>    $ make -f Makefile.cvs
+</I>&gt;<i>    $ ./configure2 --prefix=/home/cad
+</I>&gt;<i>    $ make
+</I>&gt;<i>    $ make install
+</I>&gt;<i>
+</I>&gt;<i>    ./configure2 is my hacked version of configure which
+</I>&gt;<i>    checks for wxWidgets 2.8.7 instead of 2.8.9.
+</I>&gt;<i>   
+</I>That should be right.
+&gt;<i> I don't get any graphics, but the cif read TELL script
+</I>&gt;<i> now works OK. Thanks. I have a similar gds read script
+</I>&gt;<i> which doesn't work properly, which I have attached.
+</I>&gt;<i>   
+</I>Sorry about the graphics. As I thought it will take longer 
+unfortunately. I have for the moment all info I need from you. It works 
+for me now, but I have some ideas which I have to double check.
+The problem with the GDS is completely the same. I have it fixed 
+locally, but want to do some more work before asking you to try again :)
+
+&gt;<i> best regards, Graham Petley
+</I>&gt;<i> --- On Sun, 2/8/09, <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;&gt;<i> Subject: Re: [Toped-development] Difficulties visualising Toped graphics
+</I>&gt;&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;<i> Date: Sunday, February 8, 2009, 4:11 PM
+</I>&gt;&gt;<i> Hi Graham,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks for the feedback. I did some updates that seem to fix some of the 
+</I>&gt;&gt;<i> troubles on Ubuntu. If they work for you - I hope it will keep you going 
+</I>&gt;&gt;<i> for some time. I didn't prepare a separate patch, because my intention 
+</I>&gt;&gt;<i> is to keep going with the updates (at least the toolbar), nevertheless 
+</I>&gt;&gt;<i> you can try them already.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The patched version of 0.9.2 release can be checked out using the 
+</I>&gt;&gt;<i> command below
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> svn co <A HREF="http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.92_CAND">http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.92_CAND</A> toped
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  From this point on it's pretty much the same as compiling the tarball - 
+</I>&gt;&gt;<i> you can see some short instructions on the web here
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.toped.org.uk/faq.html#id320400">http://www.toped.org.uk/faq.html#id320400</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If you don't have svn already installed - you need subversion package.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Please let me know whether you can see any difference. I wanted also to 
+</I>&gt;&gt;<i> warn you about the files you've succeeded to produce (GDS &amp; TDT) from 
+</I>&gt;&gt;<i> the CIF sources. With the mutex bug in it's highly likely that they 
+</I>&gt;&gt;<i> won't contain all the source cells. In other words - if the fixes work 
+</I>&gt;&gt;<i> as expected please regenerate the output files.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I didn't do any changes about the text sizes - I would like to discuss 
+</I>&gt;&gt;<i> this with you in a bit more details.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Regards
+</I>&gt;&gt;<i> Svilen
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> P.S. If you're curious - you can find a bit more details about the bugs 
+</I>&gt;&gt;<i> here:
+</I>&gt;&gt;<i> <A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15225&amp;group_id=5037">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15225&amp;group_id=5037</A>
+</I>&gt;&gt;<i> <A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14220&amp;group_id=5037">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14220&amp;group_id=5037</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Hi Svilen,
+</I>&gt;&gt;&gt;<i>    Here it is.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> &lt;= Please report a bugs to
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> or <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">bugs at toped.org.uk</A>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> =&gt; #include
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> &quot;/home/cad/src/toped-0.9.2/tll/tcase.tll&quot;;
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> &lt;= Parsing
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> &quot;/home/cad/src/toped-0.9.2/tll/tcase.tll&quot; ...
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> &lt;= Parsing
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> &quot;/home/cad/share/toped/tll/seed.tll&quot; ...
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> &lt;= line 252: col 0: Can't redeclare internal
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> function &quot;addbox&quot;
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> I'm glad you can reproduce the error. I'm
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> looking for a fix
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> soon!
+</I>&gt;&gt;&gt;<i>    I had been unable to compile version 0.8.6. I
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> don't know if this
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> has some connection.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>    The Toped start screen is also too tall. I have to
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> lower the top
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> to the bottom of the toolbar with the icons. I
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> don't know if you
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> see the same problem.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> best regards, Graham Petley
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --- On Sun, 2/8/09, <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> Subject: Re: [Toped-development] Difficulties
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> visualising Toped graphics
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> Date: Sunday, February 8, 2009, 8:20 AM
+</I>&gt;&gt;&gt;&gt;<i> Hi Graham,
+</I>&gt;&gt;&gt;&gt;<i> Thanks for the info. When I realise that
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> you're running
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> on MacBook I was
+</I>&gt;&gt;&gt;&gt;<i> almost sure that the problems should be mac
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> specific, but
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> decided to see
+</I>&gt;&gt;&gt;&gt;<i> first how Toped will perform on my Ubuntu.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> It took me some time today to put together an
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> Ubuntu
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> development
+</I>&gt;&gt;&gt;&gt;<i> environment, but I have it now. It was a surprise
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> for me to
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> see troubles
+</I>&gt;&gt;&gt;&gt;<i> with the graphics - very similar to what you see.
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> The
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> canvas is empty
+</I>&gt;&gt;&gt;&gt;<i> and intermittently if I zoom in/out I can see
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> something.
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> I've just
+</I>&gt;&gt;&gt;&gt;<i> started to dig - at the moment don't know yet
+</I>&gt;&gt;&gt;&gt;<i> what's the problem.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> One more question for you. Can you please post
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> (when
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> convenient for you)
+</I>&gt;&gt;&gt;&gt;<i> the contents of your log window when you execute
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> tcase.tll
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> just after
+</I>&gt;&gt;&gt;&gt;<i> launching Toped. The file is in the package and
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> should be
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> in tll
+</I>&gt;&gt;&gt;&gt;<i> directory.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I'll get back to the CIF texts later.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Regards
+</I>&gt;&gt;&gt;&gt;<i> Svilen
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> On Sun, 2009-02-08 at 02:36 -0800,
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> wrote:
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hi Svilen,
+</I>&gt;&gt;&gt;&gt;&gt;<i>    I've pasted the glxinfo and xdpyinfo
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> below. My
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> machine is
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> a MacBook Pro with two processors, the 32 bit
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> ones
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> running at
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> 2.17MHz. I'm dual booting Ubuntu and MAC
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> OS X
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> Tiger.
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>    The odd thing about the text read in with
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> CIF is
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> that a
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> GDS file written out appears to have correct
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> text. I
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> use
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> Klayout to visualise the GDS.
+</I>&gt;&gt;&gt;&gt;&gt;<i> best regards, Graham Petley
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> --- On Sat, 2/7/09,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Subject: Re: [Toped-development]
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> Difficulties
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> visualising Toped graphics
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Date: Saturday, February 7, 2009, 4:21 PM
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Hi Graham,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> I'll have some questions on this one
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> first.
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Unfortunately I don't have 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Ubuntu installed and we don't have a
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> distribution for
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> it, but it's 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> probably a good time to start doing
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> something
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> about it.
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> I've started a download over night, so
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> hopefully
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> I'll have a CD tomorow. 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> So here are the questions
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> - graphic card (ATi, nVidia),  driver, X
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> versions
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> etc. ?
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> You can get 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> this from &quot;glxinfo&quot; and
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> &quot;xdpyinfo&quot;.
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> $ glxinfo
+</I>&gt;&gt;&gt;&gt;&gt;<i> name of display: :0.0
+</I>&gt;&gt;&gt;&gt;&gt;<i> display: :0  screen: 0
+</I>&gt;&gt;&gt;&gt;&gt;<i> direct rendering: Yes
+</I>&gt;&gt;&gt;&gt;&gt;<i> server glx vendor string: SGI
+</I>&gt;&gt;&gt;&gt;&gt;<i> server glx version string: 1.2
+</I>&gt;&gt;&gt;&gt;&gt;<i> server glx extensions:
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_ARB_multisample,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_EXT_import_context,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_EXT_texture_from_pixmap, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_EXT_visual_info,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_EXT_visual_rating,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_OML_swap_method, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_SGIS_multisample, GLX_SGIX_fbconfig,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_SGIX_visual_select_group
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> client glx vendor string: SGI
+</I>&gt;&gt;&gt;&gt;&gt;<i> client glx version string: 1.4
+</I>&gt;&gt;&gt;&gt;&gt;<i> client glx extensions:
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_ARB_get_proc_address,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_ARB_multisample,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_EXT_import_context, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_EXT_visual_info,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_EXT_visual_rating,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_MESA_allocate_memory, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_MESA_swap_control,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_MESA_swap_frame_usage,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_OML_swap_method, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_OML_sync_control,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_SGI_make_current_read,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_SGI_swap_control, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_SGI_video_sync, GLX_SGIS_multisample,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_SGIX_fbconfig, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_SGIX_pbuffer,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_SGIX_visual_select_group, 
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_EXT_texture_from_pixmap
+</I>&gt;&gt;&gt;&gt;&gt;<i> GLX version: 1.2
+</I>&gt;&gt;&gt;&gt;&gt;<i> GLX extensions:
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_ARB_get_proc_address,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_ARB_multisample,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_EXT_import_context, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_EXT_visual_info,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GLX_EXT_visual_rating,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_OML_swap_method, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX_SGIS_multisample, GLX_SGIX_fbconfig,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GLX_SGIX_visual_select_group
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> OpenGL vendor string: ATI Technologies Inc.
+</I>&gt;&gt;&gt;&gt;&gt;<i> OpenGL renderer string: ATI Mobility Radeon
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> X1600
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i> OpenGL version string: 2.1.7412 Release
+</I>&gt;&gt;&gt;&gt;&gt;<i> OpenGL extensions:
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_AMD_performance_monitor,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_depth_texture,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_draw_buffers, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_fragment_program,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_fragment_shader,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_multisample, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_multitexture,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_occlusion_query,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_pixel_buffer_object, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_point_parameters,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_point_sprite,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_shader_objects, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_shading_language_100,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_shadow,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_shadow_ambient, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_texture_border_clamp,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_texture_compression, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_texture_cube_map,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_texture_env_add, 
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_texture_env_combine,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_texture_env_crossbar, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_texture_env_dot3,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_texture_float, 
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_texture_mirrored_repeat,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_texture_rectangle, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_transpose_matrix,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_vertex_buffer_object, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ARB_vertex_program,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ARB_vertex_shader,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ARB_window_pos, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ATI_draw_buffers,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ATI_envmap_bumpmap,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ATI_fragment_shader, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ATI_meminfo, GL_ATI_separate_stencil,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_ATI_texture_compression_3dc, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_ATI_texture_env_combine3,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_ATI_texture_float,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_abgr, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_bgra, GL_EXT_blend_color,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_blend_func_separate, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_blend_minmax,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_EXT_blend_subtract,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_compiled_vertex_array, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_copy_texture,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_EXT_draw_range_elements,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_fog_coord, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_framebuffer_object,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_gpu_program_parameters, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_multi_draw_arrays,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_packed_depth_stencil, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_packed_pixels,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_EXT_point_parameters,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_rescale_normal, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_secondary_color,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_separate_specular_color, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_shadow_funcs, GL_EXT_stencil_wrap,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_subtexture, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_texgen_reflection,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_EXT_texture3D, 
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_texture_compression_s3tc,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_texture_cube_map, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_texture_edge_clamp,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_EXT_texture_env_add,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_texture_env_combine,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_texture_env_dot3, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_texture_filter_anisotropic,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_texture_lod_bias, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_texture_mirror_clamp,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_texture_object, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_EXT_texture_rectangle,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> GL_EXT_texture_sRGB,
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_EXT_vertex_array, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_KTX_buffer_region, GL_NV_blend_square,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_NV_texgen_reflection, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_SGIS_generate_mipmap,
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> GL_SGIS_texture_edge_clamp, GL_SGIS_texture_lod, 
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GL_WIN_swap_hint, WGL_EXT_swap_control
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> $ xdpyinfo
+</I>&gt;&gt;&gt;&gt;&gt;<i> name of display:    :0.0
+</I>&gt;&gt;&gt;&gt;&gt;<i> version number:    11.0
+</I>&gt;&gt;&gt;&gt;&gt;<i> vendor string:    The X.Org Foundation
+</I>&gt;&gt;&gt;&gt;&gt;<i> vendor release number:    10400090
+</I>&gt;&gt;&gt;&gt;&gt;<i> X.Org version: 1.4.0.90
+</I>&gt;&gt;&gt;&gt;&gt;<i> maximum request size:  16777212 bytes
+</I>&gt;&gt;&gt;&gt;&gt;<i> motion buffer size:  256
+</I>&gt;&gt;&gt;&gt;&gt;<i> bitmap unit, bit order, padding:    32,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> LSBFirst, 32
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i> image byte order:    LSBFirst
+</I>&gt;&gt;&gt;&gt;&gt;<i> number of supported pixmap formats:    7
+</I>&gt;&gt;&gt;&gt;&gt;<i> supported pixmap formats:
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth 1, bits_per_pixel 1, scanline_pad 32
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth 4, bits_per_pixel 8, scanline_pad 32
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth 8, bits_per_pixel 8, scanline_pad 32
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth 15, bits_per_pixel 16, scanline_pad
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> 32
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth 16, bits_per_pixel 16, scanline_pad
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> 32
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth 24, bits_per_pixel 32, scanline_pad
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> 32
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth 32, bits_per_pixel 32, scanline_pad
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> 32
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i> keycode range:    minimum 8, maximum 255
+</I>&gt;&gt;&gt;&gt;&gt;<i> focus:  window 0x3a00219, revert to Parent
+</I>&gt;&gt;&gt;&gt;&gt;<i> number of extensions:    36
+</I>&gt;&gt;&gt;&gt;&gt;<i>     ATIFGLEXTENSION
+</I>&gt;&gt;&gt;&gt;&gt;<i>     ATIFGLRXDRI
+</I>&gt;&gt;&gt;&gt;&gt;<i>     ATITVOUT
+</I>&gt;&gt;&gt;&gt;&gt;<i>     BIG-REQUESTS
+</I>&gt;&gt;&gt;&gt;&gt;<i>     Composite
+</I>&gt;&gt;&gt;&gt;&gt;<i>     DAMAGE
+</I>&gt;&gt;&gt;&gt;&gt;<i>     DOUBLE-BUFFER
+</I>&gt;&gt;&gt;&gt;&gt;<i>     DPMS
+</I>&gt;&gt;&gt;&gt;&gt;<i>     Extended-Visual-Information
+</I>&gt;&gt;&gt;&gt;&gt;<i>     GLX
+</I>&gt;&gt;&gt;&gt;&gt;<i>     MIT-SCREEN-SAVER
+</I>&gt;&gt;&gt;&gt;&gt;<i>     MIT-SHM
+</I>&gt;&gt;&gt;&gt;&gt;<i>     MIT-SUNDRY-NONSTANDARD
+</I>&gt;&gt;&gt;&gt;&gt;<i>     RANDR
+</I>&gt;&gt;&gt;&gt;&gt;<i>     RECORD
+</I>&gt;&gt;&gt;&gt;&gt;<i>     RENDER
+</I>&gt;&gt;&gt;&gt;&gt;<i>     SECURITY
+</I>&gt;&gt;&gt;&gt;&gt;<i>     SGI-GLX
+</I>&gt;&gt;&gt;&gt;&gt;<i>     SHAPE
+</I>&gt;&gt;&gt;&gt;&gt;<i>     SYNC
+</I>&gt;&gt;&gt;&gt;&gt;<i>     TOG-CUP
+</I>&gt;&gt;&gt;&gt;&gt;<i>     X-Resource
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XAccessControlExtension
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XC-APPGROUP
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XC-MISC
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XFIXES
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XFree86-Bigfont
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XFree86-DGA
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XFree86-DRI
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XFree86-Misc
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XFree86-VidModeExtension
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XINERAMA
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XInputExtension
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XKEYBOARD
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XTEST
+</I>&gt;&gt;&gt;&gt;&gt;<i>     XVideo
+</I>&gt;&gt;&gt;&gt;&gt;<i> default screen number:    0
+</I>&gt;&gt;&gt;&gt;&gt;<i> number of screens:    1
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> screen #0:
+</I>&gt;&gt;&gt;&gt;&gt;<i>   dimensions:    1440x900 pixels (342x222
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> millimeters)
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>   resolution:    107x103 dots per inch
+</I>&gt;&gt;&gt;&gt;&gt;<i>   depths (7):    24, 1, 4, 8, 15, 16, 32
+</I>&gt;&gt;&gt;&gt;&gt;<i>   root window id:    0x87
+</I>&gt;&gt;&gt;&gt;&gt;<i>   depth of root window:    24 planes
+</I>&gt;&gt;&gt;&gt;&gt;<i>   number of colormaps:    minimum 1, maximum 1
+</I>&gt;&gt;&gt;&gt;&gt;<i>   default colormap:    0x20
+</I>&gt;&gt;&gt;&gt;&gt;<i>   default number of colormap cells:    256
+</I>&gt;&gt;&gt;&gt;&gt;<i>   preallocated pixels:    black 0, white
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> 16777215
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>   options:    backing-store NO, save-unders NO
+</I>&gt;&gt;&gt;&gt;&gt;<i>   largest cursor:    64x64
+</I>&gt;&gt;&gt;&gt;&gt;<i>   current input event mask:    0x7ac03f
+</I>&gt;&gt;&gt;&gt;&gt;<i>     KeyPressMask             KeyReleaseMask   
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i>       
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> ButtonPressMask          
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     ButtonReleaseMask        EnterWindowMask  
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i>       
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> LeaveWindowMask          
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     KeymapStateMask          ExposureMask     
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i>       
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> StructureNotifyMask      
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     SubstructureNotifyMask  
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> SubstructureRedirectMask
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> FocusChangeMask          
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>     PropertyChangeMask       
+</I>&gt;&gt;&gt;&gt;&gt;<i>   number of visuals:    81
+</I>&gt;&gt;&gt;&gt;&gt;<i>   default visual id:  0x23
+</I>&gt;&gt;&gt;&gt;&gt;<i>   visual:
+</I>&gt;&gt;&gt;&gt;&gt;<i>     visual id:    0x23
+</I>&gt;&gt;&gt;&gt;&gt;<i>     class:    TrueColor
+</I>&gt;&gt;&gt;&gt;&gt;<i>     depth:    24 planes
+</I>&gt;&gt;&gt;&gt;&gt;<i>     available colormap entries:    256 per
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> subfield
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     red, green, blue masks:    0xff0000,
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> 0xff00, 0xff
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>     significant bits in color specification:  
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i>  8 bits
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i>  --more like this--
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Your toped window certainly doesn't
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> look
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> great :) We
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> need to resolve 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> this in order to discuss the other
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> effects.
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> During an
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> interactive 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> drawing the screen is redrawn at each
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> mouse move
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> -
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> that's probably the 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> reason how you can &quot;see&quot;
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> something, but
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> normally
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> the background should 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> be black. If it isn't - toped
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> can't even
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> clear the
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> canvas which 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> indicates that there is something wrong
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> with the
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> connection
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> to the 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> underlying graphic libraries.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> - About the texts if you imported a layout
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> - if I
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> remember
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> well from 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> CIF,  texts are comming unusually big. Try
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> zoom in
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> (mouse scroll 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> wheel is the easiest way) and see whether
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> you can
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> see
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> something more 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> sensible. I seem to remember having
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> similar
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> effect with
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> your libraries - 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> CIF format doesn't have a text size
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> parameter
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;<i> and the
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> default is 
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> probably unadequate.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Regards
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Svilen
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> wrote:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I have compiled Toped 0.9.2 on Ubuntu
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> Hardy
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> Heron. I
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> don't see
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> any layout graphics and the font on
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> the
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> second toolbar
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> is wrong.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> I've attached a screen snapshot
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> toped_screen.gif.
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> If I draw say a wire, then moving the
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> cursor
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> around
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> allows me to
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> see intermittently the black
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> background.
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> I've
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> managed to capture
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> this in toped_screen2.gif.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Any ideas on what is going on?
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> The toped_screen2.gif graphic shows an
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> unusual text
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> arrangement.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Something is wrong, but I don't
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> know
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> what as I
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> can't see any
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> layout. The exported GDS from this
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> cell is
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> fine.
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> best regards, Graham Petley
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>               
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000110.html">[Toped-development] Difficulties visualising Toped graphics
+</A></li>
+	<LI>Next message: <A HREF="000116.html">[Toped-development] Difficulties visualising Toped graphics
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#111">[ date ]</a>
+              <a href="thread.html#111">[ thread ]</a>
+              <a href="subject.html#111">[ subject ]</a>
+              <a href="author.html#111">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

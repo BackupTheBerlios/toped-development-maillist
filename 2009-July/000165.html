@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Incomming release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Incomming%20release&In-Reply-To=%3C4A68ED41.2050003%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000164.html">
+   <LINK REL="Next"  HREF="000166.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Incomming release</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Incomming%20release&In-Reply-To=%3C4A68ED41.2050003%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] Incomming release">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Fri Jul 24 01:07:45 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000164.html">[Toped-development] [Bug #16039] new filllayer() tell function
+</A></li>
+        <LI>Next message: <A HREF="000166.html">[Toped-development] [Bug #16077] GDS can't be imported is target DB	doesn't exists
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+As communicated on the site the next release is due at the end of this 
+month. We're already quite late with it, yet not everything that we've 
+spend our time on during the last 9 months is completely ready.
+- There is a certain amount of code which is not yet  merged to the main 
+development trunk - calibre error report parser. The suggestion is to do 
+that after the release. I prefer to postpone some features instead of 
+sacrificing stability at this stage.
+- There is also a code that is already in, but not quite finished and 
+tested yet. The suggestion here is simply not to advertise those 
+features and where they can be hit by chance - stub the entry points.
+- All hands now should be on the bug and feature list logged in Berlios. 
+Here also we won't be able to finish everything, so here is the priority 
+list
+
+016031:    undo of removecell()    (Crash)
+015937:    part select/unselect behave differently (Bug)
+016039:    new filllayer() tell function    (feature request)
+016038:    Update the layer panel    (feature request)
+014684:    Missing cells during import (feature request)
+015040:    Toped properties    TELL script  (feature request)
+014688:    Separate line properties (feature request)
+014663:    convert wire to polygon/box   (feature request)
+
+The rest of the entries shall remain open at this stage. Meanwhile all 
+crashes and critical issues should be logged in Berlios. The plan is to 
+make a release branch at the end of next week. This implies that we'll 
+be able to make the release at the first days of August the earliest.
+
+Another points of concern:
+- Fedora 11. I haven't had a chance to switch yet (form Fedora 10) and 
+obviously shall do that before the release. A points of particular 
+interest are the graphic drivers and especially the one from Mesa. How 
+they work with the old and the new renderer. Here I would be able to 
+test then only on nVidia card.
+- glew - it's a new external library dependency which may cause troubles 
+with the packaging
+- PLT Scheme (<A HREF="http://download.plt-scheme.org/">http://download.plt-scheme.org/</A>) - another dependency, 
+this time required by our first utility - virtuoso2tll. The concern here 
+is :
+-- are there already packages which will fit into FEL
+-- how we'll distribute the utility for the windows package
+
+Probably there is more, but it's more than enough for now.
+
+Regards
+Svilen
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000164.html">[Toped-development] [Bug #16039] new filllayer() tell function
+</A></li>
+	<LI>Next message: <A HREF="000166.html">[Toped-development] [Bug #16077] GDS can't be imported is target DB	doesn't exists
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

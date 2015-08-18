@@ -1,0 +1,616 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] toped failing to build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20toped%20failing%20to%20build&In-Reply-To=%3C2f712e030906062255ka95cf1fxfbc3a4067e29fe4c%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000152.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] toped failing to build</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20toped%20failing%20to%20build&In-Reply-To=%3C2f712e030906062255ka95cf1fxfbc3a4067e29fe4c%40mail.gmail.com%3E"
+       TITLE="[Toped-development] toped failing to build">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sun Jun  7 07:55:15 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000152.html">[Toped-development] toped failing to build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#151">[ date ]</a>
+              <a href="thread.html#151">[ thread ]</a>
+              <a href="subject.html#151">[ subject ]</a>
+              <a href="author.html#151">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm trying to compile toped under FreeBSD, but the configure script is
+failing to configure my system. I'm running configure with
+--with-wx-config=wxgtk2-2.8-config \
+                       --with-gtk \
+                       --with-opengl \
+                       --with-regex \
+                       --enable-threads --enable-unicode \
+                       --with-g77 F77=/usr/local/bin/gfortran43
+
+but when I run make I get:
+
+Buildfile: /usr/home/ota/workspace/toped/build.xml
+make:
+    [exec] checking for a BSD-compatible install... /usr/bin/install -c
+    [exec] checking whether build environment is sane... yes
+    [exec] checking for a thread-safe mkdir -p... ./install-sh -c -d
+    [exec] checking for gawk... no
+    [exec] checking for mawk... no
+    [exec] checking for nawk... nawk
+    [exec] checking whether gmake sets $(MAKE)... yes
+    [exec] checking for a BSD-compatible install... /usr/bin/install -c
+    [exec] checking build system type... i386-unknown-freebsd7.1
+    [exec] checking host system type... i386-unknown-freebsd7.1
+    [exec] checking for style of include used by gmake... GNU
+    [exec] checking for gcc... cc
+    [exec] checking for C compiler default output file name... a.out
+    [exec] checking whether the C compiler works... yes
+    [exec] checking whether we are cross compiling... no
+    [exec] checking for suffix of executables...
+    [exec] checking for suffix of object files... o
+    [exec] checking whether we are using the GNU C compiler... yes
+    [exec] checking whether cc accepts -g... yes
+    [exec] checking for cc option to accept ISO C89... none needed
+    [exec] checking dependency style of cc... gcc3
+    [exec] checking for a sed that does not truncate output...
+/usr/local/bin/gsed
+    [exec] checking for grep that handles long lines and -e... /usr/bin/grep
+    [exec] checking for egrep... /usr/bin/grep -E
+    [exec] checking for ld used by cc... /usr/bin/ld
+    [exec] checking if the linker (/usr/bin/ld) is GNU ld... yes
+    [exec] checking for /usr/bin/ld option to reload object files... -r
+    [exec] checking for BSD-compatible nm... /usr/bin/nm -B
+    [exec] checking whether ln -s works... yes
+    [exec] checking how to recognize dependent libraries... pass_all
+    [exec] checking how to run the C preprocessor... cc -E
+    [exec] checking for ANSI C header files... yes
+    [exec] checking for sys/types.h... yes
+    [exec] checking for sys/stat.h... yes
+    [exec] checking for stdlib.h... yes
+    [exec] checking for string.h... yes
+    [exec] checking for memory.h... yes
+    [exec] checking for strings.h... yes
+    [exec] checking for inttypes.h... yes
+    [exec] checking for stdint.h... yes
+    [exec] checking for unistd.h... yes
+    [exec] checking dlfcn.h usability... yes
+    [exec] checking dlfcn.h presence... yes
+    [exec] checking for dlfcn.h... yes
+    [exec] checking whether we are using the GNU C++ compiler... yes
+    [exec] checking whether c++ accepts -g... yes
+    [exec] checking dependency style of c++... gcc3
+    [exec] checking how to run the C++ preprocessor... c++ -E
+    [exec] checking whether we are using the GNU Fortran 77 compiler... yes
+    [exec] checking whether /usr/local/bin/gfortran43 accepts -g... yes
+    [exec] checking the maximum length of command line arguments... 196608
+    [exec] checking command to parse /usr/bin/nm -B output from cc object... ok
+    [exec] checking for objdir... .libs
+    [exec] checking for ar... ar
+    [exec] checking for ranlib... ranlib
+    [exec] checking for strip... strip
+    [exec] checking if cc supports -fno-rtti -fno-exceptions... no
+    [exec] checking for cc option to produce PIC... -fPIC
+    [exec] checking if cc PIC flag -fPIC works... yes
+    [exec] checking if cc static flag -static works... yes
+    [exec] checking if cc supports -c -o file.o... yes
+    [exec] checking whether the cc linker (/usr/bin/ld) supports
+shared libraries... yes
+    [exec] checking whether -lc should be explicitly linked in... no
+    [exec] checking dynamic linker characteristics... freebsd7.1 ld.so
+    [exec] checking how to hardcode library paths into programs... immediate
+    [exec] checking whether stripping libraries is possible... yes
+    [exec] checking for shl_load... no
+    [exec] checking for shl_load in -ldld... no
+    [exec] checking for dlopen... yes
+    [exec] checking whether a program can dlopen itself... yes
+    [exec] checking whether a statically linked program can dlopen itself... no
+    [exec] checking if libtool supports shared libraries... yes
+    [exec] checking whether to build shared libraries... yes
+    [exec] checking whether to build static libraries... yes
+    [exec] configure: creating libtool
+    [exec] appending configuration tag &quot;CXX&quot; to libtool
+    [exec] checking for ld used by c++... /usr/bin/ld
+    [exec] checking if the linker (/usr/bin/ld) is GNU ld... yes
+    [exec] checking whether the c++ linker (/usr/bin/ld) supports
+shared libraries... yes
+    [exec] checking for c++ option to produce PIC... -fPIC
+    [exec] checking if c++ PIC flag -fPIC works... yes
+    [exec] checking if c++ static flag -static works... yes
+    [exec] checking if c++ supports -c -o file.o... yes
+    [exec] checking whether the c++ linker (/usr/bin/ld) supports
+shared libraries... yes
+    [exec] checking dynamic linker characteristics... freebsd7.1 ld.so
+    [exec] checking how to hardcode library paths into programs... immediate
+    [exec] appending configuration tag &quot;F77&quot; to libtool
+    [exec] checking if libtool supports shared libraries... yes
+    [exec] checking whether to build shared libraries... yes
+    [exec] checking whether to build static libraries... yes
+    [exec] checking for /usr/local/bin/gfortran43 option to produce
+PIC... -fPIC
+    [exec] checking if /usr/local/bin/gfortran43 PIC flag -fPIC works... yes
+    [exec] checking if /usr/local/bin/gfortran43 static flag -static
+works... yes
+    [exec] checking if /usr/local/bin/gfortran43 supports -c -o file.o... yes
+    [exec] checking whether the /usr/local/bin/gfortran43 linker
+(/usr/bin/ld) supports shared libraries... yes
+    [exec] checking dynamic linker characteristics... freebsd7.1 ld.so
+    [exec] checking how to hardcode library paths into programs... immediate
+    [exec] checking for bison... bison -y
+    [exec] checking whether we are using the GNU C++ compiler... (cached) yes
+    [exec] checking whether c++ accepts -g... (cached) yes
+    [exec] checking dependency style of c++... (cached) gcc3
+    [exec] checking for gcc... (cached) cc
+    [exec] checking whether we are using the GNU C compiler... (cached) yes
+    [exec] checking whether cc accepts -g... (cached) yes
+    [exec] checking for cc option to accept ISO C89... (cached) none needed
+    [exec] checking dependency style of cc... (cached) gcc3
+    [exec] checking for flex... flex
+    [exec] checking lex output file root... lex.yy
+    [exec] checking lex library... -lfl
+    [exec] checking whether yytext is a pointer... yes
+    [exec] checking for ANSI C header files... (cached) yes
+    [exec] checking stddef.h usability... yes
+    [exec] checking stddef.h presence... yes
+    [exec] checking for stddef.h... yes
+    [exec] checking for stdlib.h... (cached) yes
+    [exec] checking for string.h... (cached) yes
+    [exec] checking for unistd.h... (cached) yes
+    [exec] checking for stdbool.h that conforms to C99... yes
+    [exec] checking for _Bool... yes
+    [exec] checking for an ANSI C-conforming const... yes
+    [exec] checking for inline... inline
+    [exec] checking for size_t... yes
+    [exec] checking for error_at_line... no
+    [exec] checking for stdlib.h... (cached) yes
+    [exec] checking for GNU libc compatible malloc... yes
+    [exec] checking for stdlib.h... (cached) yes
+    [exec] checking for GNU libc compatible realloc... yes
+    [exec] checking for pow... no
+    [exec] checking for rint... no
+    [exec] checking for sqrt... no
+    [exec] checking for strtoul... yes
+    [exec] checking for X... libraries /usr/local/lib, headers
+/usr/local/include
+    [exec] checking for the pthreads library -lpthreads... no
+    [exec] checking whether pthreads work without any flags... no
+    [exec] checking whether pthreads work with -Kthread... no
+    [exec] checking whether pthreads work with -kthread... no
+    [exec] checking for the pthreads library -llthread... no
+    [exec] checking whether pthreads work with -pthread... yes
+    [exec] checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+    [exec] checking if more special flags are required for
+pthreads... -D_THREAD_SAFE
+    [exec] checking for cc_r... cc
+    [exec] checking whether we are using the Microsoft C compiler... no
+    [exec] checking windows.h usability... no
+    [exec] checking windows.h presence... no
+    [exec] checking for windows.h... no
+    [exec] checking for OpenGL library... -lGL
+    [exec] checking for OpenGL Utility library... -lGLU
+    [exec] checking for wxgtk2-2.8-config... /usr/local/bin/wxgtk2-2.8-config
+    [exec] checking for wxWidgets version &gt;= 2.8.9... yes (version 2.8.10)
+    [exec] checking for wxWidgets static library... no
+    [exec] configure: creating ./config.status
+    [exec] config.status: creating Makefile
+    [exec] config.status: creating tpd_common/Makefile
+    [exec] config.status: creating tpd_parser/Makefile
+    [exec] config.status: creating tpd_bidfunc/Makefile
+    [exec] config.status: creating tpd_DB/Makefile
+    [exec] config.status: creating tpd_ifaces/Makefile
+    [exec] config.status: creating src/Makefile
+    [exec] config.status: creating tll/Makefile
+    [exec] config.status: creating fonts/Makefile
+    [exec] config.status: creating ui/Makefile
+    [exec] config.status: creating icons/Makefile
+    [exec] config.status: creating config.h
+    [exec] config.status: executing depfiles commands
+    [exec] ===&gt;  Building for toped-0.9.2
+    [exec] gmake  all-recursive
+    [exec] gmake[1]: Entrando no diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2'
+    [exec] Making all in tll
+    [exec] gmake[2]: Entrando no diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/tll'
+    [exec] gmake[2]: Nada a ser feito para `all'.
+    [exec] gmake[2]: Saindo do diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/tll'
+    [exec] Making all in ui
+    [exec] gmake[2]: Entrando no diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/ui'
+    [exec] gmake[2]: Nada a ser feito para `all'.
+    [exec] gmake[2]: Saindo do diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/ui'
+    [exec] Making all in icons
+    [exec] gmake[2]: Entrando no diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/icons'
+    [exec] gmake[2]: Nada a ser feito para `all'.
+    [exec] gmake[2]: Saindo do diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/icons'
+    [exec] Making all in fonts
+    [exec] gmake[2]: Entrando no diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/fonts'
+    [exec] gmake[2]: Nada a ser feito para `all'.
+    [exec] gmake[2]: Saindo do diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/fonts'
+    [exec] Making all in tpd_common
+    [exec] gmake[2]: Entrando no diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/tpd_common'
+    [exec] /bin/sh ../libtool --tag=CXX   --mode=compile c++
+-DHAVE_CONFIG_H -I. -I..   -Wall -g -fexceptions
+-I/usr/local/lib/wx/include/gtk2-ansi-release-2.8
+-I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES
+-D__WXGTK__  -O2 -fno-strict-aliasing -pipe -MT avl.lo -MD -MP -MF
+.deps/avl.Tpo -c -o avl.lo avl.cpp
+    [exec] mkdir .libs
+    [exec]  c++ -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+-I/usr/local/lib/wx/include/gtk2-ansi-release-2.8
+-I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES
+-D__WXGTK__ -O2 -fno-strict-aliasing -pipe -MT avl.lo -MD -MP -MF
+.deps/avl.Tpo -c avl.cpp  -fPIC -DPIC -o .libs/avl.o
+    [exec]  c++ -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+-I/usr/local/lib/wx/include/gtk2-ansi-release-2.8
+-I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES
+-D__WXGTK__ -O2 -fno-strict-aliasing -pipe -MT avl.lo -MD -MP -MF
+.deps/avl.Tpo -c avl.cpp -o avl.o &gt;/dev/null 2&gt;&amp;1
+    [exec] mv -f .deps/avl.Tpo .deps/avl.Plo
+    [exec] /bin/sh ../libtool --tag=CXX   --mode=compile c++
+-DHAVE_CONFIG_H -I. -I..   -Wall -g -fexceptions
+-I/usr/local/lib/wx/include/gtk2-ansi-release-2.8
+-I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES
+-D__WXGTK__  -O2 -fno-strict-aliasing -pipe -MT glf.lo -MD -MP -MF
+.deps/glf.Tpo -c -o glf.lo glf.cpp
+    [exec]  c++ -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+-I/usr/local/lib/wx/include/gtk2-ansi-release-2.8
+-I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES
+-D__WXGTK__ -O2 -fno-strict-aliasing -pipe -MT glf.lo -MD -MP -MF
+.deps/glf.Tpo -c glf.cpp  -fPIC -DPIC -o .libs/glf.o
+    [exec] glf.cpp:29:19: error: GL/gl.h: No such file or directory
+    [exec] glf.cpp:30:20: error: GL/glu.h: No such file or directory
+    [exec] In file included from glf.cpp:31:
+    [exec] glf.h:140: error: variable or field 'glfStringCentering'
+declared void
+    [exec] glf.h:140: error: 'GLboolean' was not declared in this scope
+    [exec] glf.h:141: error: 'GLboolean' does not name a type
+    [exec] glf.h:143: error: variable or field
+'glfBitmapStringCentering' declared void
+    [exec] glf.h:143: error: 'GLboolean' was not declared in this scope
+    [exec] glf.h:144: error: 'GLboolean' does not name a type
+    [exec] glf.h:148: error: variable or field 'glfStringDirection'
+declared void
+    [exec] glf.h:148: error: 'GLuint' was not declared in this scope
+    [exec] glf.h:149: error: 'GLuint' does not name a type
+    [exec] glf.cpp:82: error: 'GLboolean' does not name a type
+    [exec] glf.cpp:83: error: 'GLboolean' does not name a type
+    [exec] glf.cpp:85: error: 'GLuint' does not name a type
+    [exec] glf.cpp:121: error: 'GLboolean' does not name a type
+    [exec] glf.cpp:123: error: 'GLuint' does not name a type
+    [exec] glf.cpp:124: error: 'GLuint' does not name a type
+    [exec] glf.cpp:127: error: 'GLfloat' does not name a type
+    [exec] glf.cpp: In function 'void glfInit()':
+    [exec] glf.cpp:140: error: 'm_max_height' was not declared in this scope
+    [exec] glf.cpp:156: error: 'GL_FALSE' was not declared in this scope
+    [exec] glf.cpp:156: error: 'glfStringCentering' was not declared
+in this scope
+    [exec] glf.cpp:157: error: 'glfBitmapStringCentering' was not
+declared in this scope
+    [exec] glf.cpp:158: error: 'glfStringDirection' was not declared
+in this scope
+    [exec] glf.cpp: In function 'void glfDrawWiredSymbol(char)':
+    [exec] glf.cpp:384: warning: array subscript has type 'char'
+    [exec] glf.cpp:386: error: 'GL_LINE_LOOP' was not declared in this scope
+    [exec] glf.cpp:386: error: 'glBegin' was not declared in this scope
+    [exec] glf.cpp:387: warning: array subscript has type 'char'
+    [exec] glf.cpp:389: warning: array subscript has type 'char'
+    [exec] glf.cpp:393: error: 'glVertex2f' was not declared in this scope
+    [exec] glf.cpp:394: warning: array subscript has type 'char'
+    [exec] glf.cpp:396: error: 'glEnd' was not declared in this scope
+    [exec] glf.cpp:398: warning: array subscript has type 'char'
+    [exec] glf.cpp: In function 'void DrawString(const char*, void (*)(char))':
+    [exec] glf.cpp:457: error: 'm_string_center' was not declared in this scope
+    [exec] glf.cpp:462: warning: array subscript has type 'char'
+    [exec] glf.cpp:464: error: 'm_direction' was not declared in this scope
+    [exec] glf.cpp:471: error: 'm_direction' was not declared in this scope
+    [exec] glf.cpp:476: warning: array subscript has type 'char'
+    [exec] glf.cpp:478: error: 'm_direction' was not declared in this scope
+    [exec] glf.cpp:480: warning: array subscript has type 'char'
+    [exec] glf.cpp:481: warning: array subscript has type 'char'
+    [exec] glf.cpp:487: warning: array subscript has type 'char'
+    [exec] glf.cpp:488: warning: array subscript has type 'char'
+    [exec] glf.cpp:496: error: 'glPushMatrix' was not declared in this scope
+    [exec] glf.cpp:499: error: 'glRotatef' was not declared in this scope
+    [exec] glf.cpp:527: warning: array subscript has type 'char'
+    [exec] glf.cpp:529: error: 'm_direction' was not declared in this scope
+    [exec] glf.cpp:531: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:541: error: 'm_direction' was not declared in this scope
+    [exec] glf.cpp:543: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:551: warning: array subscript has type 'char'
+    [exec] glf.cpp:553: error: 'm_direction' was not declared in this scope
+    [exec] glf.cpp:557: warning: array subscript has type 'char'
+    [exec] glf.cpp:558: warning: array subscript has type 'char'
+    [exec] glf.cpp:562: warning: array subscript has type 'char'
+    [exec] glf.cpp:563: warning: array subscript has type 'char'
+    [exec] glf.cpp:566: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:567: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:573: warning: array subscript has type 'char'
+    [exec] glf.cpp:574: warning: array subscript has type 'char'
+    [exec] glf.cpp:578: warning: array subscript has type 'char'
+    [exec] glf.cpp:579: warning: array subscript has type 'char'
+    [exec] glf.cpp:582: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:583: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:588: error: 'glPopMatrix' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDrawTopedString(const char*,
+unsigned char)':
+    [exec] glf.cpp:608: error: 'glPushMatrix' was not declared in this scope
+    [exec] glf.cpp:614: warning: array subscript has type 'char'
+    [exec] glf.cpp:615: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:619: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:622: warning: array subscript has type 'char'
+    [exec] glf.cpp:623: warning: array subscript has type 'char'
+    [exec] glf.cpp:624: warning: array subscript has type 'char'
+    [exec] glf.cpp:625: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:629: error: 'glPopMatrix' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDrawSolidSymbol(char)':
+    [exec] glf.cpp:653: warning: array subscript has type 'char'
+    [exec] glf.cpp:655: warning: array subscript has type 'char'
+    [exec] glf.cpp:656: warning: array subscript has type 'char'
+    [exec] glf.cpp:658: error: 'GL_TRIANGLES' was not declared in this scope
+    [exec] glf.cpp:658: error: 'glBegin' was not declared in this scope
+    [exec] glf.cpp:659: warning: array subscript has type 'char'
+    [exec] glf.cpp:665: error: 'glTexCoord2f' was not declared in this scope
+    [exec] glf.cpp:666: error: 'glVertex2f' was not declared in this scope
+    [exec] glf.cpp:670: error: 'glEnd' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDraw3DWiredSymbol(char)':
+    [exec] glf.cpp:722: error: 'GL_LINE_LOOP' was not declared in this scope
+    [exec] glf.cpp:722: error: 'glBegin' was not declared in this scope
+    [exec] glf.cpp:723: warning: array subscript has type 'char'
+    [exec] glf.cpp:725: warning: array subscript has type 'char'
+    [exec] glf.cpp:731: error: 'glVertex3f' was not declared in this scope
+    [exec] glf.cpp:732: warning: array subscript has type 'char'
+    [exec] glf.cpp:734: error: 'glEnd' was not declared in this scope
+    [exec] glf.cpp:736: warning: array subscript has type 'char'
+    [exec] glf.cpp:743: warning: array subscript has type 'char'
+    [exec] glf.cpp:745: warning: array subscript has type 'char'
+    [exec] glf.cpp:751: error: 'glVertex3f' was not declared in this scope
+    [exec] glf.cpp:752: warning: array subscript has type 'char'
+    [exec] glf.cpp:754: error: 'glEnd' was not declared in this scope
+    [exec] glf.cpp:756: warning: array subscript has type 'char'
+    [exec] glf.cpp:762: error: 'GL_LINES' was not declared in this scope
+    [exec] glf.cpp:763: warning: array subscript has type 'char'
+    [exec] glf.cpp:764: warning: array subscript has type 'char'
+    [exec] glf.cpp:770: error: 'glVertex3f' was not declared in this scope
+    [exec] glf.cpp:773: error: 'glEnd' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDraw3DSolidSymbol(char)':
+    [exec] glf.cpp:813: error: 'GLboolean' was not declared in this scope
+    [exec] glf.cpp:813: error: expected `;' before 'light_temp'
+    [exec] glf.cpp:818: warning: array subscript has type 'char'
+    [exec] glf.cpp:819: warning: array subscript has type 'char'
+    [exec] glf.cpp:821: error: 'GL_TRIANGLES' was not declared in this scope
+    [exec] glf.cpp:821: error: 'glBegin' was not declared in this scope
+    [exec] glf.cpp:822: error: 'glNormal3f' was not declared in this scope
+    [exec] glf.cpp:823: warning: array subscript has type 'char'
+    [exec] glf.cpp:830: error: 'glVertex3f' was not declared in this scope
+    [exec] glf.cpp:835: error: 'glEnd' was not declared in this scope
+    [exec] glf.cpp:837: warning: array subscript has type 'char'
+    [exec] glf.cpp:838: warning: array subscript has type 'char'
+    [exec] glf.cpp:842: warning: array subscript has type 'char'
+    [exec] glf.cpp:848: error: 'glVertex3f' was not declared in this scope
+    [exec] glf.cpp:855: error: 'GL_QUAD_STRIP' was not declared in this scope
+    [exec] glf.cpp:856: warning: array subscript has type 'char'
+    [exec] glf.cpp:858: warning: array subscript has type 'char'
+    [exec] glf.cpp:871: error: 'glVertex3f' was not declared in this scope
+    [exec] glf.cpp:873: warning: array subscript has type 'char'
+    [exec] glf.cpp:880: warning: array subscript has type 'char'
+    [exec] glf.cpp:888: error: 'GL_LIGHTING' was not declared in this scope
+    [exec] glf.cpp:888: error: 'light_temp' was not declared in this scope
+    [exec] glf.cpp:888: error: 'glGetBooleanv' was not declared in this scope
+    [exec] glf.cpp:889: error: 'glDisable' was not declared in this scope
+    [exec] glf.cpp:890: error: 'GL_CURRENT_COLOR' was not declared in
+this scope
+    [exec] glf.cpp:890: error: 'glGetFloatv' was not declared in this scope
+    [exec] glf.cpp:891: error: 'glColor4f' was not declared in this scope
+    [exec] glf.cpp:893: error: 'glColor4fv' was not declared in this scope
+    [exec] glf.cpp:894: error: 'glEnable' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfGetStringBoundsF(int, const
+char*, float*, float*, float*, float*)':
+    [exec] glf.cpp:938: warning: array subscript has type 'char'
+    [exec] glf.cpp:939: warning: array subscript has type 'char'
+    [exec] glf.cpp:945: warning: array subscript has type 'char'
+    [exec] glf.cpp: In function 'void glfConsoleDraw()':
+    [exec] glf.cpp:1160: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp: At global scope:
+    [exec] glf.cpp:1175: error: variable or field
+'glfStringCentering' declared void
+    [exec] glf.cpp:1175: error: 'GLboolean' was not declared in this scope
+    [exec] glf.cpp:1182: error: variable or field
+'glfStringDirection' declared void
+    [exec] glf.cpp:1182: error: 'GLuint' was not declared in this scope
+    [exec] glf.cpp:1189: error: 'GLuint' does not name a type
+    [exec] glf.cpp:1196: error: 'GLboolean' does not name a type
+    [exec] glf.cpp: In function 'int glfLoadBMFFont(char*)':
+    [exec] glf.cpp:1586: error: 'bmf_texture' was not declared in this scope
+    [exec] glf.cpp:1586: error: 'glGenTextures' was not declared in this scope
+    [exec] glf.cpp:1587: error: 'bmf_mask' was not declared in this scope
+    [exec] glf.cpp:1590: error: 'GL_UNPACK_ALIGNMENT' was not
+declared in this scope
+    [exec] glf.cpp:1590: error: 'glPixelStorei' was not declared in this scope
+    [exec] glf.cpp:1593: error: 'GL_TEXTURE_2D' was not declared in this scope
+    [exec] glf.cpp:1593: error: 'glBindTexture' was not declared in this scope
+    [exec] glf.cpp:1594: error: 'GL_RGBA' was not declared in this scope
+    [exec] glf.cpp:1594: error: 'GL_UNSIGNED_BYTE' was not declared
+in this scope
+    [exec] glf.cpp:1594: error: 'glTexImage2D' was not declared in this scope
+    [exec] glf.cpp:1597: error: 'GL_TEXTURE_MIN_FILTER' was not
+declared in this scope
+    [exec] glf.cpp:1597: error: 'GL_LINEAR' was not declared in this scope
+    [exec] glf.cpp:1597: error: 'glTexParameterf' was not declared in
+this scope
+    [exec] glf.cpp:1598: error: 'GL_TEXTURE_MAG_FILTER' was not
+declared in this scope
+    [exec] glf.cpp:1611: error: 'glGenLists' was not declared in this scope
+    [exec] glf.cpp:1614: error: 'GL_COMPILE' was not declared in this scope
+    [exec] glf.cpp:1614: error: 'glNewList' was not declared in this scope
+    [exec] glf.cpp:1616: error: 'GL_QUADS' was not declared in this scope
+    [exec] glf.cpp:1616: error: 'glBegin' was not declared in this scope
+    [exec] glf.cpp:1617: error: 'glTexCoord2f' was not declared in this scope
+    [exec] glf.cpp:1617: error: 'glVertex2f' was not declared in this scope
+    [exec] glf.cpp:1621: error: 'glEnd' was not declared in this scope
+    [exec] glf.cpp:1622: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:1624: error: 'glEndList' was not declared in this scope
+    [exec] glf.cpp:1625: error: 'm_max_height' was not declared in this scope
+    [exec] glf.cpp: In function 'int glfUnloadBMFFontD(int)':
+    [exec] glf.cpp:1637: error: 'bmf_texture' was not declared in this scope
+    [exec] glf.cpp:1637: error: 'glDeleteTextures' was not declared
+in this scope
+    [exec] glf.cpp:1638: error: 'bmf_mask' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfStartBitmapDrawing()':
+    [exec] glf.cpp:1655: error: 'GL_TEXTURE_2D' was not declared in this scope
+    [exec] glf.cpp:1655: error: 'bmf_texturing' was not declared in this scope
+    [exec] glf.cpp:1655: error: 'glGetBooleanv' was not declared in this scope
+    [exec] glf.cpp:1656: error: 'glEnable' was not declared in this scope
+    [exec] glf.cpp:1658: error: 'bmf_texture' was not declared in this scope
+    [exec] glf.cpp:1658: error: 'glBindTexture' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfStopBitmapDrawing()':
+    [exec] glf.cpp:1665: error: 'bmf_texturing' was not declared in this scope
+    [exec] glf.cpp:1665: error: 'GL_TEXTURE_2D' was not declared in this scope
+    [exec] glf.cpp:1665: error: 'glEnable' was not declared in this scope
+    [exec] glf.cpp:1666: error: 'GL_TEXTURE_2D' was not declared in this scope
+    [exec] glf.cpp:1666: error: 'glDisable' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDrawBSymbol(char)':
+    [exec] glf.cpp:1689: error: 'glCallList' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDrawBString(char*)':
+    [exec] glf.cpp:1695: error: 'GLfloat' was not declared in this scope
+    [exec] glf.cpp:1695: error: expected `;' before 'temp_trans'
+    [exec] glf.cpp:1698: error: 'temp_trans' was not declared in this scope
+    [exec] glf.cpp:1706: error: 'glListBase' was not declared in this scope
+    [exec] glf.cpp:1707: error: 'm_bitmap_string_center' was not
+declared in this scope
+    [exec] glf.cpp:1707: error: 'GL_TRUE' was not declared in this scope
+    [exec] glf.cpp:1709: error: 'glPushMatrix' was not declared in this scope
+    [exec] glf.cpp:1710: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:1712: error: 'GL_UNSIGNED_BYTE' was not declared
+in this scope
+    [exec] glf.cpp:1712: error: 'glCallLists' was not declared in this scope
+    [exec] glf.cpp:1713: error: 'm_bitmap_string_center' was not
+declared in this scope
+    [exec] glf.cpp:1713: error: 'GL_TRUE' was not declared in this scope
+    [exec] glf.cpp:1713: error: 'glPopMatrix' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDrawBMaskSymbol(char)':
+    [exec] glf.cpp:1720: error: 'glPushMatrix' was not declared in this scope
+    [exec] glf.cpp:1721: error: 'GL_CURRENT_BIT' was not declared in this scope
+    [exec] glf.cpp:1721: error: 'glPushAttrib' was not declared in this scope
+    [exec] glf.cpp:1724: error: 'glColor3ub' was not declared in this scope
+    [exec] glf.cpp:1725: error: 'GL_DST_COLOR' was not declared in this scope
+    [exec] glf.cpp:1725: error: 'GL_ZERO' was not declared in this scope
+    [exec] glf.cpp:1725: error: 'glBlendFunc' was not declared in this scope
+    [exec] glf.cpp:1726: error: 'GL_TEXTURE_2D' was not declared in this scope
+    [exec] glf.cpp:1726: error: 'bmf_mask' was not declared in this scope
+    [exec] glf.cpp:1726: error: 'glBindTexture' was not declared in this scope
+    [exec] glf.cpp:1728: error: 'glCallList' was not declared in this scope
+    [exec] glf.cpp:1730: error: 'glPopAttrib' was not declared in this scope
+    [exec] glf.cpp:1731: error: 'glPopMatrix' was not declared in this scope
+    [exec] glf.cpp:1733: error: 'bmf_texture' was not declared in this scope
+    [exec] glf.cpp:1736: error: 'GL_ONE' was not declared in this scope
+    [exec] glf.cpp: In function 'void glfDrawBMaskString(char*)':
+    [exec] glf.cpp:1743: error: 'GLfloat' was not declared in this scope
+    [exec] glf.cpp:1743: error: expected `;' before 'temp_trans'
+    [exec] glf.cpp:1746: error: 'temp_trans' was not declared in this scope
+    [exec] glf.cpp:1754: error: 'glPushMatrix' was not declared in this scope
+    [exec] glf.cpp:1755: error: 'GL_CURRENT_BIT' was not declared in this scope
+    [exec] glf.cpp:1755: error: 'glPushAttrib' was not declared in this scope
+    [exec] glf.cpp:1758: error: 'glColor3ub' was not declared in this scope
+    [exec] glf.cpp:1759: error: 'GL_DST_COLOR' was not declared in this scope
+    [exec] glf.cpp:1759: error: 'GL_ZERO' was not declared in this scope
+    [exec] glf.cpp:1759: error: 'glBlendFunc' was not declared in this scope
+    [exec] gmake[2]: Saindo do diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2/tpd_common'
+    [exec] glf.cpp:1760: error: 'GL_TEXTURE_2D' was not declared in this scope
+    [exec] gmake[1]: Saindo do diret&#243;rio
+`/usr/home/ota/workspace/toped/work/toped-0.9.2'
+    [exec] glf.cpp:1760: error: 'bmf_mask' was not declared in this scope
+    [exec] *** Error code 1
+    [exec] glf.cpp:1760: error: 'glBindTexture' was not declared in this scope
+    [exec] glf.cpp:1762: error: 'glListBase' was not declared in this scope
+    [exec] Stop in /usr/home/ota/workspace/toped.
+    [exec] glf.cpp:1763: error: 'm_bitmap_string_center' was not
+declared in this scope
+    [exec] glf.cpp:1763: error: 'GL_TRUE' was not declared in this scope
+    [exec] glf.cpp:1766: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:1768: error: 'GL_UNSIGNED_BYTE' was not declared
+in this scope
+    [exec] glf.cpp:1768: error: 'glCallLists' was not declared in this scope
+    [exec] glf.cpp:1769: error: 'm_bitmap_string_center' was not
+declared in this scope
+    [exec] glf.cpp:1769: error: 'GL_TRUE' was not declared in this scope
+    [exec] glf.cpp:1769: error: 'glPopMatrix' was not declared in this scope
+    [exec] glf.cpp:1771: error: 'glPopAttrib' was not declared in this scope
+    [exec] glf.cpp:1772: error: 'glPopMatrix' was not declared in this scope
+    [exec] glf.cpp:1774: error: 'bmf_texture' was not declared in this scope
+    [exec] glf.cpp:1777: error: 'GL_ONE' was not declared in this scope
+    [exec] glf.cpp:1779: error: 'm_bitmap_string_center' was not
+declared in this scope
+    [exec] glf.cpp:1779: error: 'GL_TRUE' was not declared in this scope
+    [exec] glf.cpp:1782: error: 'glTranslatef' was not declared in this scope
+    [exec] glf.cpp:1785: error: 'm_bitmap_string_center' was not
+declared in this scope
+    [exec] glf.cpp:1785: error: 'GL_TRUE' was not declared in this scope
+    [exec] glf.cpp: At global scope:
+    [exec] glf.cpp:1789: error: variable or field
+'glfBitmapStringCentering' declared void
+    [exec] glf.cpp:1789: error: 'GLboolean' was not declared in this scope
+    [exec] glf.cpp:1795: error: 'GLboolean' does not name a type
+    [exec] gmake[2]: ** [glf.lo] Erro 1
+    [exec] gmake[1]: ** [all-recursive] Erro 1
+    [exec] gmake: ** [all] Erro 2
+    [exec] Result: 1
+
+
+My gl.h is:
+[<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">ota at squitch</A> /usr/home/ota/workspace/toped/work/toped-0.9.2]$ ls
+/usr/local/include/GL/
+gl.h        glext.h     glutf90.h   glxext.h    glxproto.h  wglew.h
+gle.h       glu.h       glx.h       glxint.h    glxtokens.h
+glew.h      glut.h      glxew.h     glxmd.h     internal
+
+
+Why is it failing?
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000152.html">[Toped-development] toped failing to build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#151">[ date ]</a>
+              <a href="thread.html#151">[ thread ]</a>
+              <a href="subject.html#151">[ subject ]</a>
+              <a href="author.html#151">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

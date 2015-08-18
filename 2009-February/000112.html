@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] CIF texts and sizes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20texts%20and%20sizes&In-Reply-To=%3C4990CF9E.50803%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000109.html">
+   <LINK REL="Next"  HREF="000113.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] CIF texts and sizes</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20texts%20and%20sizes&In-Reply-To=%3C4990CF9E.50803%40googlemail.com%3E"
+       TITLE="[Toped-development] CIF texts and sizes">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Tue Feb 10 01:51:42 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000109.html">[Toped-development] Difficulties visualising Toped graphics
+</A></li>
+        <LI>Next message: <A HREF="000113.html">[Toped-development] CIF texts and sizes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Graham,
+
+Sorry - I allowed myself to change the subject.
+
+About CIF coordinates - you're right. I can see the difference after 
+importing GDS and CIF. I've missed the coefficient when transferring CIF 
+coordinates to TDT. My problem however is that I can't get to a factor 
+of 500.
+Currently the TDT DB is using the GDSII convention:
+DBU - Size of database units in meters (1e-9 by default)
+UU - Size of user unit in DBU (1e-3 by default)
+Then all coordinates are represented internally in database units as 
+32-bit integers. UU is used in the user interfaces for convenience. 
+Import/Export to GDSII is trivial in this matter, because it is 
+virtually the same.
+
+CIF is using also integers to represent the coordinates and they are 
+talking about the precision 1/100 microns (i.e. 1e-8) which is a 
+constant. If I understand this properly my coefficient on CIF import 
+should be 10. Where the other 50 are coming from?
+
+Regards
+Svilen
+
+P.S. Because CIF definition is quite fuzzy and there are a lot of 
+interpretations - I did a wiki page. You can find a reference to the 
+paper I was using there
+<A HREF="http://toped.wikispaces.com/Toped+CIF+parser">http://toped.wikispaces.com/Toped+CIF+parser</A>
+&gt;<i> Hi Svilen,
+</I>&gt;<i> I've just noticed that the gds file exported from the cif2tdt
+</I>&gt;<i> TELL script has its geometries scaled 500X too small. A cell
+</I>&gt;<i> which should be 32um wide is actually 0.064um.
+</I>&gt;<i> The gds2tdt script exports correctly sized gds files.
+</I>&gt;<i> I think this is where the text size discrepancy comes from.
+</I>&gt;<i>
+</I>&gt;<i> best regards, Graham Petley
+</I>&gt;<i> --- On Sun, 2/8/09, <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000109.html">[Toped-development] Difficulties visualising Toped graphics
+</A></li>
+	<LI>Next message: <A HREF="000113.html">[Toped-development] CIF texts and sizes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

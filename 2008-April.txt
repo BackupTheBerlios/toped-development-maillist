@@ -1,0 +1,72 @@
+From krustev.svilen at googlemail.com  Fri Apr  4 01:56:23 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Fri, 04 Apr 2008 00:56:23 +0100
+Subject: [Toped-development] 0.9 release branch
+Message-ID: <47F56EA7.4020100@googlemail.com>
+
+
+I've created a branch for release 0.9.
+As usual - it shall be used for critical bug fixes before& after the 
+release.
+
+We are a month behind the schedule, but everything planned is 
+implemented. New features will be listed in the release message.
+
+The idea is to release the tarball in the beginning of the next week. 
+Web site will be updated in parallel.
+
+There are no dependency changes.
+There are resource updates ( icons ) which will have to be installed 
+properly. RPM build configuration file require update.
+
+Regards
+Svilen
+
+
+From krustev.svilen at googlemail.com  Sat Apr 26 22:34:17 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sat, 26 Apr 2008 21:34:17 +0100
+Subject: [Toped-development] 0.9 released
+Message-ID: <481391C9.1020502@googlemail.com>
+
+
+We're happy to announce that Toped 0.9 has been released and is now 
+available for download at Berlios.
+https://developer.berlios.de/projects/toped/
+
+Fedora package will be available shortly.
+
+The release highlights:
+    * Major updates in the user interface including toolbars and new 
+panels for the layers and cell hierarchy.
+    * Layout libraries with dynamic linking are introduced. Now toped 
+can handle multiply layout databases simultaneously.
+    * Logic operations are updated with a powerfull resize function 
+which works on all layout objects.
+
+Windows package contains also a design example which will be available 
+for download from the site shortly.
+
+For further information - visit www/toped.org.uk
+
+Toped developers
+
+
+
+
+
+From krustev.svilen at googlemail.com  Sun Apr 27 17:57:10 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sun, 27 Apr 2008 16:57:10 +0100
+Subject: [Toped-development] svn trunk
+Message-ID: <4814A256.4000408@tiscali.co.uk>
+
+
+I patched the trunk with the updates & fixes submitted in 
+branches/RELEASE_0.9_CAND.
+The development continues as usual there
+
+Regards
+Svilen
+
+

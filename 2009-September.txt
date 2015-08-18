@@ -1,0 +1,112 @@
+From toped-development at lists.berlios.de  Tue Sep 22 00:05:26 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 21 Sep 2009 23:05:26 +0100
+Subject: [Toped-development] Bugfix release (multi gigabyte stream files)
+Message-ID: <4AB7F8A6.9020604@googlemail.com>
+
+Hi,
+It has been some time since our 0.94 release. It looks to me that it's a 
+time to make a bugfix release. Number of fixes are already submitted in 
+the trunk. They are related to:
+
+- Linux packaging
+- Stability with various graphic drivers
+- Multithread related locks
+- GDS conversion
+
+The latter is probably the main reason to produce the release. I spent 
+last four weeks chasing the troubles with the conversion of multi 
+gigabyte stream files. The conversion bottleneck was found and resolved. 
+It's a relief to say that the problem was not principal - it was rather 
+stupid. Toped converts such kind of files within minutes now.
+
+Profiling the code with such amount of data prove to be quite a fun, but 
+this is a different subject.
+
+I'll appreciate your opinion about a quick release, so we can summarise 
+the remaining tasks and nail down the schedule.
+
+Regards
+Svilen
+
+
+
+From toped-development at lists.berlios.de  Wed Sep 23 00:15:55 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 23 Sep 2009 00:15:55 +0200
+Subject: [Toped-development] Bugfix release (multi gigabyte stream files)
+In-Reply-To: <4AB7F8A6.9020604@googlemail.com>
+References: <4AB7F8A6.9020604@googlemail.com>
+Message-ID: <13dbfe4f0909221515n2c2990e2u244f1ef58c5fd85f@mail.gmail.com>
+
+On Tue, Sep 22, 2009 at 12:05 AM,   wrote:
+> I'll appreciate your opinion about a quick release, so we can summarise
+> the remaining tasks and nail down the schedule.
+>
+> Regards
+> Svilen
+
+Hello Svilen,
+
+I'll appreciate if you could release it before 20 October at latest so
+that I can add it into the FEL 12 Livedvd. We are reaching final
+Freeze pretty soon.
+
+I've written FEL release notes and added a page about Toped. If you
+fill I've missed something please do comment :)
+
+http://chitlesh.fedorapeople.org/papers/FEL12ReleaseNotes.pdf
+
+Chitlesh
+
+-- 
+Chitlesh GOORAH
+Fedora Electronic Lab
+http://chitlesh.fedorapeople.org/FEL
+
+
+From toped-development at lists.berlios.de  Wed Sep 23 01:49:23 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 23 Sep 2009 00:49:23 +0100
+Subject: [Toped-development] Bugfix release (multi gigabyte stream files)
+In-Reply-To: <13dbfe4f0909221515n2c2990e2u244f1ef58c5fd85f@mail.gmail.com>
+References: <4AB7F8A6.9020604@googlemail.com>
+	<13dbfe4f0909221515n2c2990e2u244f1ef58c5fd85f@mail.gmail.com>
+Message-ID: <4AB96283.8070808@googlemail.com>
+
+Hi Chitlesh,
+
+That was my "secret" though.  I hope the release will happen in two 
+weeks time max.
+I read the release notes and I was thinking about some comments. Will do 
+soon.
+
+Thanks
+Svilen
+
+On 09/22/2009 11:15 PM, toped-development at lists.berlios.de wrote:
+> On Tue, Sep 22, 2009 at 12:05 AM,   wrote:
+>    
+>> I'll appreciate your opinion about a quick release, so we can summarise
+>> the remaining tasks and nail down the schedule.
+>>
+>> Regards
+>> Svilen
+>>      
+> Hello Svilen,
+>
+> I'll appreciate if you could release it before 20 October at latest so
+> that I can add it into the FEL 12 Livedvd. We are reaching final
+> Freeze pretty soon.
+>
+> I've written FEL release notes and added a page about Toped. If you
+> fill I've missed something please do comment :)
+>
+> http://chitlesh.fedorapeople.org/papers/FEL12ReleaseNotes.pdf
+>
+> Chitlesh
+>
+>    
+
+
+

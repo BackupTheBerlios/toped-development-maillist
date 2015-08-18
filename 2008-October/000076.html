@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Fwd%3A%20%5BFwd%3A%20Re%3A%20%5B%20Bug%20%2314666%20%5D%20Slow%20graphics%5D&In-Reply-To=%3C4904659E.1080403%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000075.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Fwd%3A%20%5BFwd%3A%20Re%3A%20%5B%20Bug%20%2314666%20%5D%20Slow%20graphics%5D&In-Reply-To=%3C4904659E.1080403%40googlemail.com%3E"
+       TITLE="[Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sun Oct 26 13:42:06 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000075.html">[Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+OK, 4-5 seconds is still too much, but is it's much closer.
+Not sure what do you call layer strips - I guess it is the layer fill 
+patterns. They certainly depend on the graphic hardware and without them 
+the graphics will be certainly faster although the difference in time 
+should be almost unnoticeable.
+
+Concerning the QT/wxWidget differences - I don't think both of them have 
+anything to do with openGL implementation. They are rather wrapping an 
+openGL window, but all real graphic operations are actually bypassing 
+them and going directly to openGL library (unless QT changed this recent 
+couple of years?)
+
+If there is a difference on this subject - it might be the openGL 
+implementation itself used by both tools. It might be different for XP 
+(which we use) and Vista. I don't know whether they are different and if 
+they are what the differences are.
+
+The rest should be differences between the way toped and layout editor 
+are handling data to the graphic system. We do have some options which 
+are not yet on the surface, but really for the project of  this size 
+they shouldn't matter. 4-5 seconds for the optimised version of toped is 
+still in times slower that the performance I'm having.
+
+Ercan, I really do appreciate your effort on this subject.
+
+Thanks!
+
+Svilen
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> wrote:
+&gt;<i>
+</I>&gt;<i> Using the example layout in toped installation.
+</I>&gt;<i> TOPED: After zooming to a place in FOLL layout, it takes 4-5 seconds 
+</I>&gt;<i> to zoom all.
+</I>&gt;<i> LAYOUTEDITOR: After zooming to a place in AMODUL layout (4xFOLL), it 
+</I>&gt;<i> takes less than 1 second, to zoom all.
+</I>&gt;<i> As I said, if layer strips are removed, toped is much faster. Almost 
+</I>&gt;<i> comparable to layouteditor.
+</I>&gt;<i>
+</I>&gt;<i> I'll configure both tools  to use same strips for same layers and 
+</I>&gt;<i> compare the results. The difference may also come from the opengl 
+</I>&gt;<i> libraries
+</I>&gt;<i> the programs use. You are using wxWidgets implementation but 
+</I>&gt;<i> layouteditor is using QT's implementation.
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> *From:* &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&quot; 
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i> *To:* <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;<i> *Sent:* Saturday, October 25, 2008 7:36:58 PM
+</I>&gt;<i> *Subject:* Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow 
+</I>&gt;<i> graphics]
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Do you still have a drawing times in the range of tens of seconds?
+</I>&gt;<i> Is there any improvement ? I'll appreciate some rough figures to get a
+</I>&gt;<i> better picture
+</I>&gt;<i>
+</I>&gt;<i> Svilen
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I installed the following driver.
+</I>&gt;<i> &gt; Still layouteditor is faster.
+</I>&gt;<i> &gt; One difference between the programs are the layer strips definitions.
+</I>&gt;<i> &gt; The performance of the drawing
+</I>&gt;<i> &gt; is very sensitive to the strips in both tools.
+</I>&gt;<i> &gt; In layouteditor the strips are pre-defined but in toped they are
+</I>&gt;<i> &gt; customizable.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I should check with the same strips definitions but I could not find
+</I>&gt;<i> &gt; enough time for this.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt; *From:* &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;&quot;
+</I>&gt;<i> &gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;&gt;
+</I>&gt;<i> &gt; *To:* <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt; *Sent:* Wednesday, October 22, 2008 8:29:21 AM
+</I>&gt;<i> &gt; *Subject:* Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow
+</I>&gt;<i> &gt; graphics]
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi
+</I>&gt;<i> &gt; I dug internet and found interesting link
+</I>&gt;<i> &gt; <A HREF="http://www.intel.com/support/graphics/intel945gm/sb/CS-021517.htm">http://www.intel.com/support/graphics/intel945gm/sb/CS-021517.htm</A>
+</I>&gt;<i> &gt; According this document to get hardware acceleretion on Mobile Intel&#174;
+</I>&gt;<i> &gt; 945GM Express Chipset Family
+</I>&gt;<i> &gt; for OpenGl you must install separate video driver from Intel.
+</I>&gt;<i> &gt; Beside it next version Toped will check harware support for OpenGL.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards
+</I>&gt;<i> &gt; Sergey
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt; Yahoo! T&#252;rkiye a&#231;&#305;ld&#305;!
+</I>&gt;<i> &gt; &#304;nternet &#252;zerindeki en iyi i&#231;eri&#287;i Yahoo! T&#252;rkiye sizlere sunuyor!
+</I>&gt;<i> &gt; <A HREF="http://yahoo.com.tr">http://yahoo.com.tr</A> &lt;<A HREF="http://tr.yahoo.com/">http://tr.yahoo.com/</A>&gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Toped-development mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> Yahoo! T&#252;rkiye a&#231;&#305;ld&#305;!
+</I>&gt;<i> &#304;nternet &#252;zerindeki en iyi i&#231;eri&#287;i Yahoo! T&#252;rkiye sizlere sunuyor!
+</I>&gt;<i> <A HREF="http://yahoo.com.tr">http://yahoo.com.tr</A> &lt;<A HREF="http://tr.yahoo.com/">http://tr.yahoo.com/</A>&gt;
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000075.html">[Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

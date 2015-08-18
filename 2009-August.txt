@@ -1,0 +1,737 @@
+From toped-development at lists.berlios.de  Sat Aug  1 00:26:40 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Fri, 31 Jul 2009 23:26:40 +0100
+Subject: [Toped-development] release candidate 0.94
+Message-ID: <4A736FA0.1050109@tiscali.co.uk>
+
+
+All planned updates & fixes were done and I've just created a branch for 
+the forthcoming release
+http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.94_CAND
+Version numbers were updated.
+
+As usual - this is not a place for development. Only critical bug fixes 
+and package related updates should be submitted there.
+
+The release package is planned for Sunday, 2nd of August if no nasty 
+surprises.
+
+Regards
+Svilen
+
+
+From toped-development at lists.berlios.de  Sat Aug  1 11:39:39 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 1 Aug 2009 11:39:39 +0200
+Subject: [Toped-development] Incomming release
+In-Reply-To: <4A68ED41.2050003@tiscali.co.uk>
+References: <4A68ED41.2050003@tiscali.co.uk>
+Message-ID: <13dbfe4f0908010239i6798d92p8e42d374c9e27628@mail.gmail.com>
+
+On Fri, Jul 24, 2009 at 1:07 AM,  wrote:
+> Here I would be able to
+> test then only on nVidia card.
+> - glew - it's a new external library dependency which may cause troubles
+> with the packaging
+> - PLT Scheme (http://download.plt-scheme.org/) - another dependency,
+> this time required by our first utility - virtuoso2tll. The concern here
+> is :
+> -- are there already packages which will fit into FEL
+
+Hello
+
+Yes, Fedora has both glew and plt-scheme
+
+Chitlesh
+
+
+-- 
+Chitlesh GOORAH
+Fedora Electronic Lab Architect
+http://chitlesh.fedorapeople.org/FEL
+
+
+From toped-development at lists.berlios.de  Sat Aug  1 11:41:27 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 1 Aug 2009 11:41:27 +0200
+Subject: [Toped-development] release candidate 0.94
+In-Reply-To: <4A736FA0.1050109@tiscali.co.uk>
+References: <4A736FA0.1050109@tiscali.co.uk>
+Message-ID: <13dbfe4f0908010241k6887e6f2q5deae1fda6b94a96@mail.gmail.com>
+
+On Sat, Aug 1, 2009 at 12:26 AM, <toped-development at lists.berlios.de> wrote:
+>
+> All planned updates & fixes were done and I've just created a branch for
+> the forthcoming release
+> http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.94_CAND
+> Version numbers were updated.
+>
+> As usual - this is not a place for development. Only critical bug fixes
+> and package related updates should be submitted there.
+>
+> The release package is planned for Sunday, 2nd of August if no nasty
+> surprises.
+
+
+Hello
+ I have the following errors while compiling RELEASE_0.94_CAND
+
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+-I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8
+-D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall
+-Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector
+--param=ssp-buffer-size=4 -m32 -march=i586 -mtune=generic
+-fasynchronous-unwind-tables -Wall -g -fexceptions -pthread -pthread
+-pthread -MT avl.lo -MD -MP -MF .deps/avl.Tpo -c avl.c -o avl.o
+>/dev/null 2>&1
+In file included from tedop.h:32,
+                 from tedop.cpp:30:
+ttt.h:171: error: 'std::ostringstream' has not been declared
+ttt.h:231: error: 'string' is not a member of 'std'
+ttt.h:231: error: 'string' is not a member of 'std'
+ttt.h:231: error: template argument 1 is invalid
+ttt.h:231: error: template argument 2 is invalid
+ttt.h:231: error: invalid type in declaration before ';' token
+ttt.h:431: error: 'string' is not a member of 'std'
+ttt.h:431: error: 'string' is not a member of 'std'
+ttt.h:431: error: template argument 1 is invalid
+ttt.h:431: error: template argument 2 is invalid
+ttt.h:431: error: expected unqualified-id before '&' token
+ttt.h:431: error: expected ')' before '&' token
+ttt.h:431: error: expected initializer before '&' token
+tedop.cpp: In member function 'bool
+tedop::SweepLine::coincideOK(tedop::plysegment*, tedop::plysegment*,
+float, float)':
+tedop.cpp:266: warning: suggest explicit braces to avoid ambiguous 'else'
+tedop.cpp:269: warning: suggest explicit braces to avoid ambiguous 'else'
+make[2]: *** [tedop.lo] Error 1
+make[2]: *** Waiting for unfinished jobs....
+mv -f .deps/avl.Tpo .deps/avl.Plo
+ttt.cpp: In member function 'DBbox DBbox::getcorner(byte)':
+ttt.cpp:236: warning: control reaches end of non-void function
+libtool: compile:  g++ -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+-I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8
+-D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall
+-Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector
+--param=ssp-buffer-size=4 -m32 -march=i586 -mtune=generic
+-fasynchronous-unwind-tables -MT ttt.lo -MD -MP -MF .deps/ttt.Tpo -c
+ttt.cpp -o ttt.o >/dev/null 2>&1
+mv -f .deps/ttt.Tpo .deps/ttt.Plo
+make[2]: Leaving directory `/home/chitlesh/rpmbuild/BUILD/toped/tpd_common'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/chitlesh/rpmbuild/BUILD/toped'
+make: *** [all] Error 2
+
+
+
+
+I currently don't have enough time to look at it. I would appreciate
+if you could look whether there are some missing headers somewhere.
+
+Chitlesh
+
+-- 
+Chitlesh GOORAH
+Fedora Electronic Lab Architect
+http://chitlesh.fedorapeople.org/FEL
+
+
+From toped-development at lists.berlios.de  Sat Aug  1 14:14:03 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 01 Aug 2009 13:14:03 +0100
+Subject: [Toped-development] release candidate 0.94
+In-Reply-To: <13dbfe4f0908010241k6887e6f2q5deae1fda6b94a96@mail.gmail.com>
+References: <4A736FA0.1050109@tiscali.co.uk>
+	<13dbfe4f0908010241k6887e6f2q5deae1fda6b94a96@mail.gmail.com>
+Message-ID: <4A74318B.4010902@googlemail.com>
+
+Hi Chitlesh,
+There must be some kind of mistake here. Are you sure that you've 
+checked-out  RELEASE_0.94_CAND?
+The thing is that the files tedop.cpp and tedop.h were removed from the 
+repository somewhere between 0.86 and 0.9 release. This is a couple of 
+years ago.
+
+I do sit still on Fedora 10, nevertheless... Would you double check?
+
+Regards
+Svilen
+
+toped-development at lists.berlios.de wrote:
+> On Sat, Aug 1, 2009 at 12:26 AM, <toped-development at lists.berlios.de> wrote:
+>   
+>> All planned updates & fixes were done and I've just created a branch for
+>> the forthcoming release
+>> http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.94_CAND
+>> Version numbers were updated.
+>>
+>> As usual - this is not a place for development. Only critical bug fixes
+>> and package related updates should be submitted there.
+>>
+>> The release package is planned for Sunday, 2nd of August if no nasty
+>> surprises.
+>>     
+>
+>
+> Hello
+>  I have the following errors while compiling RELEASE_0.94_CAND
+>
+> libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+> -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8
+> -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall
+> -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector
+> --param=ssp-buffer-size=4 -m32 -march=i586 -mtune=generic
+> -fasynchronous-unwind-tables -Wall -g -fexceptions -pthread -pthread
+> -pthread -MT avl.lo -MD -MP -MF .deps/avl.Tpo -c avl.c -o avl.o
+>   
+>> /dev/null 2>&1
+>>     
+> In file included from tedop.h:32,
+>                  from tedop.cpp:30:
+> ttt.h:171: error: 'std::ostringstream' has not been declared
+> ttt.h:231: error: 'string' is not a member of 'std'
+> ttt.h:231: error: 'string' is not a member of 'std'
+> ttt.h:231: error: template argument 1 is invalid
+> ttt.h:231: error: template argument 2 is invalid
+> ttt.h:231: error: invalid type in declaration before ';' token
+> ttt.h:431: error: 'string' is not a member of 'std'
+> ttt.h:431: error: 'string' is not a member of 'std'
+> ttt.h:431: error: template argument 1 is invalid
+> ttt.h:431: error: template argument 2 is invalid
+> ttt.h:431: error: expected unqualified-id before '&' token
+> ttt.h:431: error: expected ')' before '&' token
+> ttt.h:431: error: expected initializer before '&' token
+> tedop.cpp: In member function 'bool
+> tedop::SweepLine::coincideOK(tedop::plysegment*, tedop::plysegment*,
+> float, float)':
+> tedop.cpp:266: warning: suggest explicit braces to avoid ambiguous 'else'
+> tedop.cpp:269: warning: suggest explicit braces to avoid ambiguous 'else'
+> make[2]: *** [tedop.lo] Error 1
+> make[2]: *** Waiting for unfinished jobs....
+> mv -f .deps/avl.Tpo .deps/avl.Plo
+> ttt.cpp: In member function 'DBbox DBbox::getcorner(byte)':
+> ttt.cpp:236: warning: control reaches end of non-void function
+> libtool: compile:  g++ -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+> -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8
+> -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall
+> -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector
+> --param=ssp-buffer-size=4 -m32 -march=i586 -mtune=generic
+> -fasynchronous-unwind-tables -MT ttt.lo -MD -MP -MF .deps/ttt.Tpo -c
+> ttt.cpp -o ttt.o >/dev/null 2>&1
+> mv -f .deps/ttt.Tpo .deps/ttt.Plo
+> make[2]: Leaving directory `/home/chitlesh/rpmbuild/BUILD/toped/tpd_common'
+> make[1]: *** [all-recursive] Error 1
+> make[1]: Leaving directory `/home/chitlesh/rpmbuild/BUILD/toped'
+> make: *** [all] Error 2
+>
+>
+>
+>
+> I currently don't have enough time to look at it. I would appreciate
+> if you could look whether there are some missing headers somewhere.
+>
+> Chitlesh
+>
+>   
+
+
+
+From toped-development at lists.berlios.de  Sat Aug  1 15:08:21 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 1 Aug 2009 15:08:21 +0200
+Subject: [Toped-development] release candidate 0.94
+In-Reply-To: <4A74318B.4010902@googlemail.com>
+References: <4A736FA0.1050109@tiscali.co.uk>
+	<13dbfe4f0908010241k6887e6f2q5deae1fda6b94a96@mail.gmail.com> 
+	<4A74318B.4010902@googlemail.com>
+Message-ID: <13dbfe4f0908010608g7c020920r8d6cb1bb94bf7393@mail.gmail.com>
+
+On Sat, Aug 1, 2009 at 2:14 PM, <toped-development at lists.berlios.de> wrote:
+> Hi Chitlesh,
+> There must be some kind of mistake here. Are you sure that you've
+> checked-out ?RELEASE_0.94_CAND?
+> The thing is that the files tedop.cpp and tedop.h were removed from the
+> repository somewhere between 0.86 and 0.9 release. This is a couple of
+> years ago.
+>
+> I do sit still on Fedora 10, nevertheless... Would you double check?
+>
+
+You are right svilen, It's my fault
+
+However on launching this RC, I get a dialog box stating
+"openGL version 1.4 is not supported"
+
+Report video from toped :
+<= Vendor:Tungsten Graphics, Inc.
+<= Renderer:Mesa DRI R100 (RV200 4C57) 20090101 x86/MMX/SSE2 TCL DRI2
+<= Version:1.3 Mesa 7.6-devel
+<= GLX version 12
+<= Using GLEW 1.5.1
+
+attached is the RPM spec file
+
+
+Also, I would recommend you to add the following into the "make
+install" process, hence other distributions can also benefit from the
+icons on the menus:
+
+%{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
+%{__cp} -p ui/%{name}_16x16.png
+%{buildroot}%{_datadir}/icons/hicolor/16x16/apps/toped.png
+%{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/
+%{__cp} -p ui/%{name}_32x32.png
+%{buildroot}%{_datadir}/icons/hicolor/32x32/apps/toped.png
+%{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/
+%{__cp} -p ui/%{name}_64x64.png
+%{buildroot}%{_datadir}/icons/hicolor/64x64/apps/toped.png
+
+Typo: remove the "a"
+<= Please report a bugs to toped-development at lists.berlios.de or
+bugs at toped.org.uk
+
+
+
+
+Chitlesh
+-- 
+Chitlesh GOORAH
+Fedora Electronic Lab Architect
+http://chitlesh.fedorapeople.org/FEL
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: toped.spec
+Type: application/octet-stream
+Size: 5060 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20090801/2fc356ac/attachment.obj>
+
+From toped-development at lists.berlios.de  Sat Aug  1 16:15:14 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 01 Aug 2009 15:15:14 +0100
+Subject: [Toped-development] release candidate 0.94
+In-Reply-To: <13dbfe4f0908010608g7c020920r8d6cb1bb94bf7393@mail.gmail.com>
+References: <4A736FA0.1050109@tiscali.co.uk>	<13dbfe4f0908010241k6887e6f2q5deae1fda6b94a96@mail.gmail.com>
+	<4A74318B.4010902@googlemail.com>
+	<13dbfe4f0908010608g7c020920r8d6cb1bb94bf7393@mail.gmail.com>
+Message-ID: <4A744DF2.6030704@googlemail.com>
+
+Hi Chitlesh,
+
+See the comments below
+
+Regards
+Svilen
+> However on launching this RC, I get a dialog box stating
+> "openGL version 1.4 is not supported"
+>
+> Report video from toped :
+> <= Vendor:Tungsten Graphics, Inc.
+> <= Renderer:Mesa DRI R100 (RV200 4C57) 20090101 x86/MMX/SSE2 TCL DRI2
+> <= Version:1.3 Mesa 7.6-devel
+> <= GLX version 12
+> <= Using GLEW 1.5.1
+>   
+That's OK. This is to say that the "old" renderer will be used, which is 
+slower (faster than it was before, but still slower than the "new" one). 
+I believe with a vendor driver this will not be the case. You can see in 
+the video report, that openGL version is 1.3. New renderer is using 
+virtual buffer objects which were introduced in 1.4 (current openGL 
+version is 3.0 :) )
+This should not affect stability so - Toped should work as normal. Note, 
+this has nothing to do with the problems we had previously with the 
+accumulation buffer. It should not require any changes in the X 
+configuration.
+> attached is the RPM spec file
+>   
+Thanks !
+>
+> Also, I would recommend you to add the following into the "make
+> install" process, hence other distributions can also benefit from the
+> icons on the menus:
+>
+> %{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
+> %{__cp} -p ui/%{name}_16x16.png
+> %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/toped.png
+> %{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/
+> %{__cp} -p ui/%{name}_32x32.png
+> %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/toped.png
+> %{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/
+> %{__cp} -p ui/%{name}_64x64.png
+> %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/toped.png
+>
+>   
+I accept this. We've approached the point where a proper icon theme 
+management is essential. Actually I need help here all along. Starting 
+with the icons themselves ( current icons are considered temporary) and 
+finishing with their proper installation. I google the problem and found 
+a couple of links
+http://live.gnome.org/ThemableAppSpecificIcons
+http://live.gnome.org/GnomeGoals/AppIcon
+Will appreciate more if you have something in mind. The impression is 
+that we need to take the problem seriously and my intention is to to 
+look for help. At the moment though - the suggestion is to keep the 
+current status for this release.
+> Typo: remove the "a"
+> <= Please report a bugs to toped-development at lists.berlios.de or
+> bugs at toped.org.uk
+>   
+OK, I've changed the text
+>
+>
+>
+> Chitlesh
+>   
+> On Sat, Aug 1, 2009 at 2:14 PM, <toped-development at lists.berlios.de> wrote:
+>
+>   
+>> Hi Chitlesh,
+>> There must be some kind of mistake here. Are you sure that you've
+>> checked-out  RELEASE_0.94_CAND?
+>> The thing is that the files tedop.cpp and tedop.h were removed from the
+>> repository somewhere between 0.86 and 0.9 release. This is a couple of
+>> years ago.
+>>
+>> I do sit still on Fedora 10, nevertheless... Would you double check?
+>>
+>>     
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From toped-development at lists.berlios.de  Sun Aug  2 00:04:31 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 01 Aug 2009 23:04:31 +0100
+Subject: [Toped-development] rpmlint/ldd errors & warnings
+Message-ID: <4A74BBEF.5030805@tiscali.co.uk>
+
+Hi,
+
+After the previous release Chitlesh reported some rpmlint/ldd warnings. 
+I know it has been some time, but better late than never :)
+
+shared-lib-calls-exit: (https://lists.berlios.de/pipermail/toped-development/2008-November/000083.html)
+
+- libtpd_common - they were comming from the font library glf.cpp. Located in functions which have never been in use. There is no intention to use them - so I simply commented the offending code out.
+- libtpd_parser - coming from the flex generated code for the tell scanner. exit() was called due to a critical runtime error. This was replaced using the macros YY_FATAL_ERROR and is not throwing an exception which is caught at the appropriate thread where the tell parser is invoked.
+- libtpd_ifaces - same as above, but for the CIF scanner.
+
+
+unused-direct-shlib-dependency: (https://lists.berlios.de/pipermail/toped-development/2008-November/000084.html)
+
+- I've followed the gentoo recommendations (thanks fo the link) and added a line in the configure.ac. I believe that the two lines below in the spec line are redundant and can be removed now
+
+> # clean unused-direct-shlib-dependencies sed -i -e 's! -shared ! 
+> -Wl,--as-needed\0!g' libtool 
+
+
+Bottom line - RPM's should be clean from this kind of warnings now.
+More clean-up's are comming
+
+Regards
+Svilen
+
+P.S. Berilos is down for an hour now. Can't commit, can't do anything...
+
+
+From toped-development at lists.berlios.de  Mon Aug  3 22:42:47 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 3 Aug 2009 22:42:47 +0200
+Subject: [Toped-development] rpmlint/ldd errors & warnings
+In-Reply-To: <4A74BBEF.5030805@tiscali.co.uk>
+References: <4A74BBEF.5030805@tiscali.co.uk>
+Message-ID: <13dbfe4f0908031342o8c7755an19e7c184c9356acc@mail.gmail.com>
+
+On Sun, Aug 2, 2009 at 12:04 AM, <toped-development at lists.berlios.de> wrote:
+> Hi,
+>
+> After the previous release Chitlesh reported some rpmlint/ldd warnings.
+> I know it has been some time, but better late than never :)
+>
+> shared-lib-calls-exit: (https://lists.berlios.de/pipermail/toped-development/2008-November/000083.html)
+>
+> - libtpd_common - they were comming from the font library glf.cpp. Located in functions which have never been in use. There is no intention to use them - so I simply commented the offending code out.
+> - libtpd_parser - coming from the flex generated code for the tell scanner. exit() was called due to a critical runtime error. This was replaced using the macros YY_FATAL_ERROR and is not throwing an exception which is caught at the appropriate thread where the tell parser is invoked.
+> - libtpd_ifaces - same as above, but for the CIF scanner.
+>
+>
+> unused-direct-shlib-dependency: (https://lists.berlios.de/pipermail/toped-development/2008-November/000084.html)
+>
+> - I've followed the gentoo recommendations (thanks fo the link) and added a line in the configure.ac. I believe that the two lines below in the spec line are redundant and can be removed now
+>
+>> # clean unused-direct-shlib-dependencies sed -i -e 's! -shared !
+>> -Wl,--as-needed\0!g' libtool
+>
+>
+> Bottom line - RPM's should be clean from this kind of warnings now.
+> More clean-up's are comming
+>
+> Regards
+> Svilen
+>
+> P.S. Berilos is down for an hour now. Can't commit, can't do anything...
+
+
+Cool, Looking forward for this new release.
+
+Chitlesh
+
+-- 
+Chitlesh GOORAH
+Fedora Electronic Lab Architect
+http://chitlesh.fedorapeople.org/FEL
+
+
+From toped-development at lists.berlios.de  Tue Aug  4 02:03:29 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Tue, 04 Aug 2009 01:03:29 +0100
+Subject: [Toped-development] Toped 0.9.4 tarball released
+Message-ID: <4A777AD1.6090701@googlemail.com>
+
+After 3 months delay from the usual schedule and some unpleasant experience with our host site over the weekend, we're finally happy to announce that Toped 0.9.4 has been released and is now available for download at Berlios.
+http://developer.berlios.de/project/showfiles.php?group_id=5037&release_id=16562 <http://developer.berlios.de/projects/toped>
+
+The Windows installation package will be available within 24 hours.
+
+This release was planned as a consolidation release. Despite this there are significant updates and changes
+
+The release highlights:
+    * New graphic renderer which speeds-up the drawing up-to 3.5 times. Requires openGL version 1.4 and Virtual Buffer Objects. Will be used as a base for future graphical effects.
+    * The old renderer remains to cover graphic drivers implementing older openGL versions and particularly virtual desktops. The speed here is also improved significantly.
+    * Updates and fixes in the external interfaces. GDSII in particular.
+    * New utility for conversion of Virtuoso(C) technology files to TELL.
+    * TDT format updated with new records. Version updated to 0.7. Old Toped releases will not be able to read TDT files produced by this release. This release should handle silently both versions.
+    * Significant provisions on improving the GDSII conversion speed. This task together with the reducing of the memory footprint is not finished though.
+    * Further updates on the user interface customization - toolbars
+    * Updates in the internal handling of the cell references. In result layer 0 is handled as a normal layer now.
+    * Number of bug fixes
+
+The site will be updated in the following days.
+
+Toped developers
+
+
+
+
+
+From toped-development at lists.berlios.de  Wed Aug  5 00:29:10 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Tue, 04 Aug 2009 23:29:10 +0100
+Subject: [Toped-development] Toped 0.9.4 windows package released
+Message-ID: <4A78B636.2050105@tiscali.co.uk>
+
+
+As promised yesterday windows installation package of Toped 0.9.4 is now 
+released and available for download.
+
+http://toped.org.uk/download/release-0.9.4/toped_install-0.94r1163.exe
+
+Unfortunately, the troubles with our host berlios.de are not behind. It 
+appears that their ftp service is silent today. We were forced to put 
+the entire release directly on the web site (which is not hosted by 
+berlios.de). To download the packages of this release - please use the 
+new links provided on the web site www.toped.org.uk. If and when 
+berlios.de finally starts functioning reliably our web site will be 
+updated accordingly. Sorry for the inconvenience.
+
+Toped developers
+
+
+
+
+From toped-development at lists.berlios.de  Wed Aug  5 02:15:26 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 05 Aug 2009 01:15:26 +0100
+Subject: [Toped-development] How about host changing ?
+Message-ID: <4A78CF1E.3070709@tiscali.co.uk>
+
+Hi,
+
+After the latest troubles with berlios.de which are not over yet, I've 
+started thinking about changing the source hosting site. To be honest - 
+that's not a new idea, but recently it's getting more and more clear. 
+Here are the obvious alternatives as I can see them:
+
+1. sourceforge (http://sourceforge.net/)
+2. google code (http://code.google.com/projecthosting/)
+
+Now, after the release - it seems to be the best time for doing such a 
+thing. A week or two from now we'll be deeply into something new and 
+just waiting for the next trouble to happen. As usual - there is no 
+explanation whatsoever on their site. I've raised a bug 
+(http://developer.berlios.de/bugs/?func=detailbug&bug_id=16088&group_id=1). 
+Hopefully the reply will come soon. Curiously enough - there is no bugs 
+submitted there for more than a week.
+
+What an eventual move will involve.
+- Stop the development for several days
+- Transfer the SVN database to the new host (that's the part I'm a bit 
+afraid of)
+- Transfer the bug tracking DB. Most likely we'll loose the closed 
+issues, the open ones will have to be transferred manually.
+- Updating the toped.org.uk with the new links.
+- closing the project on berlios
+
+For the developers:
+- switch the local copies to the new repository
+- the above will involve inevitably troubles with ssh certificates, 
+passwords
+- switch to a new mailing list
+
+For users:
+- The trouble is that the active contributors will have to re-subscribe 
+to a new mailing list. In this process unfortunately we might loose some 
+of them.
+
+Having a quick look my sympathies seem to be with google. Their services 
+are under development yet it looks like they have everything we need.
+
+I'll appreciate your feedback
+Regards
+Svilen
+
+
+From toped-development at lists.berlios.de  Sat Aug  8 02:25:47 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 08 Aug 2009 01:25:47 +0100
+Subject: [Toped-development] How about host changing ?
+In-Reply-To: <4A78CF1E.3070709@tiscali.co.uk>
+References: <4A78CF1E.3070709@tiscali.co.uk>
+Message-ID: <4A7CC60B.1040500@googlemail.com>
+
+Hi,
+Over the last couple of days the project was effectively transferred to 
+a new host:
+
+http://toped.googlecode.com
+
+The subversion data base took ~12 hours to move, nevertheless without 
+troubles.
+The open bugs were transferred manually to the new bug tracking system 
+offered by googlecode
+The wiki pages were also transferred from http://toped.wikispaces.com/
+
+I've already committed a couple of code updates - everything seems to be 
+fine.
+
+Sergey, Sandesh - you're already added to the project members. Please 
+check-out a fresh local svn copies using the instructions here:
+http://code.google.com/p/toped/source/checkout
+Don't try svn switch - it won't work because the svn DBs on berlios and 
+google have different IDs
+Please no more commits to berlios. All code updates shall be submitted 
+from now on to the new host. Let me know if you have troubles.
+
+Web site will be updated over the weekend. I'll try to request a project 
+close on berlios, but not quite sure how and when this might happen.
+
+Please feel free to browse trough our new home. There are some 
+interesting opportunities which are new for us (Code review, wiki etc.). 
+I'll be happy to hear your comments and feedback.
+
+Remaining activity : new public mailing list - I'll drop a follow-up as 
+soon as we have one. Until then - please use the current mailing list.
+
+Regards
+Svilen
+
+Svilen wrote:
+> Hi,
+>
+> After the latest troubles with berlios.de which are not over yet, I've 
+> started thinking about changing the source hosting site. To be honest 
+> - that's not a new idea, but recently it's getting more and more 
+> clear. Here are the obvious alternatives as I can see them:
+>
+> 1. sourceforge (http://sourceforge.net/)
+> 2. google code (http://code.google.com/projecthosting/)
+>
+> Now, after the release - it seems to be the best time for doing such a 
+> thing. A week or two from now we'll be deeply into something new and 
+> just waiting for the next trouble to happen. As usual - there is no 
+> explanation whatsoever on their site. I've raised a bug 
+> (http://developer.berlios.de/bugs/?func=detailbug&bug_id=16088&group_id=1). 
+> Hopefully the reply will come soon. Curiously enough - there is no 
+> bugs submitted there for more than a week.
+>
+> What an eventual move will involve.
+> - Stop the development for several days
+> - Transfer the SVN database to the new host (that's the part I'm a bit 
+> afraid of)
+> - Transfer the bug tracking DB. Most likely we'll loose the closed 
+> issues, the open ones will have to be transferred manually.
+> - Updating the toped.org.uk with the new links.
+> - closing the project on berlios
+>
+> For the developers:
+> - switch the local copies to the new repository
+> - the above will involve inevitably troubles with ssh certificates, 
+> passwords
+> - switch to a new mailing list
+>
+> For users:
+> - The trouble is that the active contributors will have to 
+> re-subscribe to a new mailing list. In this process unfortunately we 
+> might loose some of them.
+>
+> Having a quick look my sympathies seem to be with google. Their 
+> services are under development yet it looks like they have everything 
+> we need.
+>
+> I'll appreciate your feedback
+> Regards
+> Svilen
+
+
+
+From toped-development at lists.berlios.de  Sat Aug  8 15:53:47 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 08 Aug 2009 14:53:47 +0100
+Subject: [Toped-development] Toped transferred to google.code
+Message-ID: <4A7D836B.8020607@googlemail.com>
+
+
+It is all done now. The project is completely moved to its new home and 
+www.toped.org.uk is updated with the new links.
+New mailing list is created, developers are subscribed. The rest of the 
+subscribers of the old mailing list I believe received an invitation to 
+re-subscribe. If that's not the case - please use the links provided on 
+the web site.
+
+Sorry for the noise & inconvenience everybody!
+
+Regards
+Svilen
+
+
+
+
+From toped-development at lists.berlios.de  Sat Aug  8 16:40:04 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 8 Aug 2009 22:40:04 +0800
+Subject: [Toped-development] How about host changing ?
+In-Reply-To: <4A7CC60B.1040500@googlemail.com>
+References: <4A78CF1E.3070709@tiscali.co.uk> <4A7CC60B.1040500@googlemail.com>
+Message-ID: <fda822f80908080740q36c82acg24e1791102c06b7f@mail.gmail.com>
+
+Hi
+
+I checked SVN. It works fine.
+Only one thing. I didn't find the way to change generated password to my
+own.
+
+Ready to continue.
+
+Any feedback from users about new release?
+
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20090808/f298236b/attachment.html>
+

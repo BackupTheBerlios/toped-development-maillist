@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] questions about the new renderer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20questions%20about%20the%20new%20renderer&In-Reply-To=%3C20090528231344.288380%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000147.html">
+   <LINK REL="Next"  HREF="000149.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] questions about the new renderer</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20questions%20about%20the%20new%20renderer&In-Reply-To=%3C20090528231344.288380%40gmx.net%3E"
+       TITLE="[Toped-development] questions about the new renderer">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Fri May 29 01:13:44 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000147.html">[Toped-development] [Bug #15732] Crash on selectall() function
+</A></li>
+        <LI>Next message: <A HREF="000149.html">[Toped-development] [Bug #15775] GDS containing objects on layer 0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Svlien,
+
+I read your post on the new renderer from April with much interest.
+
+Do you have an update on how your &quot;pre-tesselate polygon&quot; datastructure turned out ?
+I'm assuming you're breaking down the polygons into trapezoids, right ?
+What algorithm to you use ?
+
+I'm working with GB sized gds'es, so a compact representation is really important.
+Any thoughts on the &quot;most compact&quot; datastructure ?
+
+1) This might be of interest to you. Keyword bindless graphics
+
+<A HREF="http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&amp;Number=256729">http://www.opengl.org/discussion_boards/ubbthreads.php?ubb=showflat&amp;Number=256729</A>
+
+2) opengl and server farms
+
+My biggest problem with OpenGL is that I run programs on a server farm and use X to display on a windows machine. 
+Either there is no fast OpenGL on the server or even worse it must be shared between several applications.
+
+Any thoughts on this ?
+
+3) chipmap
+ 
+With regard to display speed and quality have a look at the work from Jeff Solomon <A HREF="http://velox.stanford.edu/~jsolomon/chipmap/">http://velox.stanford.edu/~jsolomon/chipmap/</A>
+
+4) how does toped's memory footprint/render speed compare against the &quot;other tools out there&quot; ?
+
+www.klayout.de, <A HREF="http://www.peardrop.co.uk/glade,">http://www.peardrop.co.uk/glade,</A> <A HREF="http://www.layouteditor.net">http://www.layouteditor.net</A>
+
+
+Stefan
+
+There are two things I'm currently struggling to find a good reference for
+a) an algorithm to grow/shring arbitrary polygons (the simpler the better, I don't need performance)
+b) a description of the algorithm for rendering subpixel accurate aliased trapezoids
+
+-- 
+Nur bis 31.05.: GMX FreeDSL Komplettanschluss mit DSL 6.000 Flatrate und
+Telefonanschluss nur 17,95 Euro/mtl.!* <A HREF="http://portal.gmx.net/de/go/dsl02">http://portal.gmx.net/de/go/dsl02</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000147.html">[Toped-development] [Bug #15732] Crash on selectall() function
+</A></li>
+	<LI>Next message: <A HREF="000149.html">[Toped-development] [Bug #15775] GDS containing objects on layer 0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

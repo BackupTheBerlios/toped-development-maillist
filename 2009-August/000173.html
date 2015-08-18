@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] rpmlint/ldd errors &amp; warnings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20rpmlint/ldd%20errors%20%26%20warnings&In-Reply-To=%3C4A74BBEF.5030805%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000168.html">
+   <LINK REL="Next"  HREF="000174.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] rpmlint/ldd errors &amp; warnings</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20rpmlint/ldd%20errors%20%26%20warnings&In-Reply-To=%3C4A74BBEF.5030805%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] rpmlint/ldd errors &amp; warnings">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sun Aug  2 00:04:31 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000168.html">[Toped-development] Incomming release
+</A></li>
+        <LI>Next message: <A HREF="000174.html">[Toped-development] rpmlint/ldd errors &amp; warnings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+After the previous release Chitlesh reported some rpmlint/ldd warnings. 
+I know it has been some time, but better late than never :)
+
+shared-lib-calls-exit: (<A HREF="https://lists.berlios.de/pipermail/toped-development/2008-November/000083.html">https://lists.berlios.de/pipermail/toped-development/2008-November/000083.html</A>)
+
+- libtpd_common - they were comming from the font library glf.cpp. Located in functions which have never been in use. There is no intention to use them - so I simply commented the offending code out.
+- libtpd_parser - coming from the flex generated code for the tell scanner. exit() was called due to a critical runtime error. This was replaced using the macros YY_FATAL_ERROR and is not throwing an exception which is caught at the appropriate thread where the tell parser is invoked.
+- libtpd_ifaces - same as above, but for the CIF scanner.
+
+
+unused-direct-shlib-dependency: (<A HREF="https://lists.berlios.de/pipermail/toped-development/2008-November/000084.html">https://lists.berlios.de/pipermail/toped-development/2008-November/000084.html</A>)
+
+- I've followed the gentoo recommendations (thanks fo the link) and added a line in the configure.ac. I believe that the two lines below in the spec line are redundant and can be removed now
+
+&gt;<i> # clean unused-direct-shlib-dependencies sed -i -e 's! -shared ! 
+</I>&gt;<i> -Wl,--as-needed\0!g' libtool 
+</I>
+
+Bottom line - RPM's should be clean from this kind of warnings now.
+More clean-up's are comming
+
+Regards
+Svilen
+
+P.S. Berilos is down for an hour now. Can't commit, can't do anything...
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000168.html">[Toped-development] Incomming release
+</A></li>
+	<LI>Next message: <A HREF="000174.html">[Toped-development] rpmlint/ldd errors &amp; warnings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

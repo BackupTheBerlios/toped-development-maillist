@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] New Toped renderer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20New%20Toped%20renderer&In-Reply-To=%3C49D2A7B2.6060102%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000146.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] New Toped renderer</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20New%20Toped%20renderer&In-Reply-To=%3C49D2A7B2.6060102%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] New Toped renderer">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Wed Apr  1 01:30:58 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000146.html">[Toped-development] [Bug #15591] Double poly after addpoly() comand
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#145">[ date ]</a>
+              <a href="thread.html#145">[ thread ]</a>
+              <a href="subject.html#145">[ subject ]</a>
+              <a href="author.html#145">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+After spending more than two months attempting to optimize and primarily 
+to speed-up the existing openGL rendering it seems that it might be a 
+good idea to share the experience. Hopefully it will save some time and 
+confusion in the future (long e-mail ahead!).
+
+The idea behind the optimisation was that current drawing is using:
+ - data copy during rendering.
+ - data translations i.e. calculations during rendering
+ - only the most basic OpenGL functions (glBegin {glVertex} glEnd).
+ - data is transferred &quot;per point&quot; basis to the graphic card. No bursts.
+On the positive side - this type of rendering
+ - doesn't need any additional sorting
+ - doesn't need additional memory (to store the sorted data)
+ - very simple implementation
+
+The new renderer was supposed to address the issues above thus achieving 
+better rendering speeds.
+ - no data copying.
+ - all coordinate translations are done by openGL.
+ - using of theoretically more effective vertex arrays and corresponding 
+drawing functions (glMultiDrawArrays, glMultiDrawElements)
+ - data is transferred and drawn &quot;per cell layer&quot; basis i.e. the entire 
+cell layer is drawn with a couple of openGL function calls.
+On the negative side - we're having
+ - data sorting and storing during the rendering (to generate vertex arrays)
+ - requires additional memory resources
+ - more complex implementation
+
+In both cases :
+- the rendering is based on the same data base structure and the same 
+data traversing.
+- the main optimisation of the drawing time comes from the &quot;quadtree&quot; 
+objects and the dynamic filtering that they implement.
+- polygons and wires are tessellated during the rendering.
+
+In addition the profiling of the old renderer was not trivial, because 
+the drawing, data copying, processing and drawing was done effectively 
+together. With the new renderer the profiling is more feasible. One more 
+important point - it appeared impossible to completely avoid the data 
+copying. Vertex arrays had to be filled-up with real data from the DB, 
+nevertheless I did my best to optimize this process (possible further 
+optimisation is to use vertex buffers).
+Having both renderers up&amp;running the first thing was to compare their 
+speed. I tested the optimised version with two databases - one pretty 
+small (~2MB GDSII) and the other one - a bit larger (~65MB GDSII)
+The result was not very encouraging - the difference of the rendering 
+time is less than 10% and (what was really disappointing) not always in 
+favour of the new render. This of course made me more curious and I 
+spent some time trying to profile the new renderer... just to get 
+another surprise:
+
+                   Process                                :  time
+-------------------------------------------------------------
+DB Traversing                                        :  29%
+Tessellation, sorting&amp; temporary storage:  59%
+Data copying&amp; Drawing                         :  12%
+
+Having in mind that the traversing is generally the same in both 
+renderers and it is not the subject of the optimisation the first 
+obvious conclusion was that the drawing time is pretty insignificant and 
+further work there (shaders were planned) could be unnecessary at least 
+from the point of view of drawing speed. The problem obviously comes 
+from the time consumed by the tessellation, sorting and temporary storage.
+
+OK - I did a quick step back and bypassed the vertex arrays and all of 
+the corresponding sorting and temporary storage (this version is in 
+OPENGL_DRAW3 branch). Now I had pretty much the same processing as in 
+the original renderer, but without the data copying. Also the coordinate 
+transformations were done strictly in the GPU unlike the old parser 
+where most of them are calculated in the CPU. Theoretically this 
+should've made some difference. Comparing the total rendering times 
+however brought-up another surprise - there was practically no 
+difference. It appears that the time consumed for the CPU calculations 
+and copying of relatively small amounts of data is insignificant 
+compared with the overall processing time. The reason here could be in 
+the memory access (cache hits). With the data bases of this size we'll 
+have inevitably cache misses and the data access time will dominate the 
+overall processing time. If that's so, if data processing takes so 
+insignificant time in the old renderer then why it takes so much time in 
+the original implementation of the new renderer?
+
+At this point it started to get interesting. I mentioned that if the 
+fill is skipped, the drawing time is reduced more than twice in both 
+renderers and they don't really have very much in common. Then I started 
+to bypass the rendering of each data class (box, poly, wire) one by one 
+and to look how it contributes to the overall drawing time. To cut the 
+long story short it appeared that the tesselation of the polygons alone 
+is totally dominating the &quot;Tessellation, sorting &amp; temporary storage&quot; 
+time taking ~90% of it. In other words polygon tessellation alone was 
+taking 50% of the total rendering time. Note that tessellation is 
+bypassed in both renderers if the object (layer) is not filled.
+
+It came as a real surprise for me, having in mind that statistically 
+polygons are probably less than 25% of the total amount of the layout 
+objects. Yet the way ahead seem to be clear now. I would happily bargain 
+a couple of megabytes of RAM to cut the rendering time in half. Here are 
+more details.
+- polygon tessellation will be executed when a polygon is added to the 
+DB or modified. The tessellation results will be stored in memory ready 
+for rendering.
+- convex polygons which do not require tessellation shall be stored in a 
+separate new class of the data base. This will save some memory back and 
+also could contribute to the rendering speed.
+- having done the above, a new profiling has to be done, because the 
+existing analysis appears now pretty much imprecise because of the 
+dominance of a single factor.
+
+Simples...
+
+Cheers
+Svilen
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000146.html">[Toped-development] [Bug #15591] Double poly after addpoly() comand
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#145">[ date ]</a>
+              <a href="thread.html#145">[ thread ]</a>
+              <a href="subject.html#145">[ subject ]</a>
+              <a href="author.html#145">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

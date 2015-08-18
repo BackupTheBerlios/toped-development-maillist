@@ -1,0 +1,210 @@
+From krustev.svilen at googlemail.com  Fri Mar  2 01:22:45 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Fri, 02 Mar 2007 00:22:45 +0000
+Subject: [Toped-development] RELEASE 0.85 branch
+Message-ID: <45E76E55.7020605@tiscali.co.uk>
+
+I've created a new branch in repository RELEASE_0.85_CAND
+It is supposed to be used for critical bug fixes before and after the 
+release.
+All tarball/packet/install related updates are also welcome
+
+The main question at the moment is how to setup an environment variable 
+after the installation. In Linux and in Windows.
+One of the variables ($TPD_GLOBAL) is used as a path to the font files. 
+Without them Toped will be unstable.
+
+Regards
+Svilen
+
+
+
+From krustev.svilen at googlemail.com  Sat Mar  3 15:24:31 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Sat, 03 Mar 2007 14:24:31 +0000
+Subject: [Toped-development] RELEASE 0.85 branch
+In-Reply-To: <fda822f80703020801v2b258d83if100402f49778fc1@mail.gmail.com>
+References: <45E76E55.7020605@tiscali.co.uk>
+	<fda822f80703020801v2b258d83if100402f49778fc1@mail.gmail.com>
+Message-ID: <45E9851F.2040703@googlemail.com>
+
+Gaitukevich Sergey wrote:
+> 2007/3/2, Svilen Krustev <krustev.svilen at googlemail.com 
+> <mailto:krustev.svilen at googlemail.com>>:
+>
+>     I've created a new branch in repository RELEASE_0.85_CAND
+>     It is supposed to be used for critical bug fixes before and after the
+>     release.
+>     All tarball/packet/install related updates are also welcome
+>
+>
+> I've added icon for windows, but i can't understand  how  you  change 
+> icon under Linux?
+I'm not sure I understand the question. The rpm package comes with a 
+toped.desktop file (thanks to Chitlesh) which contains also the name of 
+the icon. You can see it in the ../ui directory of the project.
+It's a good point actually... I have to make sure that it is installed 
+properly from the tarball also.
+>
+>     The main question at the moment is how to setup an environment
+>     variable
+>     after the installation. In Linux and in Windows.
+>     One of the variables ($TPD_GLOBAL) is used as a path to the font
+>     files.
+>     Without them Toped will be unstable. 
+>
+>
+> I think that its problem in Linux unresolved. All EDA tools that I 
+> used demand manually changes in .bashrc
+> Other problem is different shells (bash, korn and so on)
+I'm not sure about this... The commercial EDA tools are designed 
+primarily for commercial UNIX platforms (Sun, HP etc.) and only recently 
+for linux. Thiose platforms could (and do) have more differences. Our 
+task is easier, because we're talking about linux only (at least for the 
+time being)
+If there is a common solution in the GNU world - we have to use it. 
+There should be something...
+> I have a question. I have NSIS (installer) script for making toped 
+> installation under windows. Do we need this script in SVN?
+It is up to you actually. Generally - if this is used to make a 
+distribution - yes it should be in the repository. I presume it's not a 
+binary file...
+
+Cheers
+
+
+
+From krustev.svilen at googlemail.com  Fri Mar  9 01:28:29 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Fri, 09 Mar 2007 00:28:29 +0000
+Subject: [Toped-development] toped 0.8.5 released
+Message-ID: <45F0AA2D.3010104@tiscali.co.uk>
+
+
+I uploaded 0.8.5 release to Berlios. Both Linux and Windows. A tag 
+release_0.8.5 is created in the repository.
+Unofficial Fedora RPM package is included in the release as well. Over 
+the weekend I'll add 64 bit RPM.
+
+Call for packagers.
+Fedora Extras repository (at least) has to be updated.
+
+The web site will be updated early next week.
+
+Thanks & Regards
+
+
+
+P.S.The "official" message follows
+
+Toped release 0.85 changes and updates
+=======================================
+* PS output
+* change layer
+* change cell reference
+* Rulers
+* Property save from the editor
+
+Graphics and database handling
+--------------------------------
+* glut library is not used anymore
+* new fonts introduced with much better look (glf library (c)Roman 
+Podobedov)
+* drawing procedures optimized further to minimize color/pattern changes
+* All edit operations have now interactive versions and proper visualization
+* Line style definitions. Selected objects and edges now appear in a user
+  defined line style
+
+Updates in the TELL script
+---------------------------
+* Shift operators
+* bind type introduced
+
+User interface & dialog boxes
+-------------------------------
+* Fill pattern definition
+* Color definition
+* Layer definition
+* Status line with thread status indication
+--------------------------------------------------------------------------------
+
+
+
+From chitlesh at waeckerlin.de  Sat Mar 10 15:16:02 2007
+From: chitlesh at waeckerlin.de (Chitlesh GOORAH)
+Date: Sat, 10 Mar 2007 15:16:02 +0100
+Subject: [Toped-development] toped 0.8.5 released
+Message-ID: <200703101516.09889.chitlesh@waeckerlin.de>
+
+Svilen Krustev wrote:
+> I uploaded 0.8.5 release to Berlios. Both Linux and Windows. A tag 
+> release_0.8.5 is created in the repository.
+> Unofficial Fedora RPM package is included in the release as well. Over 
+> the weekend I'll add 64 bit RPM.
+> 
+> Call for packagers.
+> Fedora Extras repository (at least) has to be updated.
+
+Hello there,
+
+I'll be pushing this new version to fedora repositories this upcoming friday, 
+leaving one week on testing on my part and some community members.
+
+Meanwhile extensive testing will be done via mock to see whether there are any 
+breakage or not.
+
+FC6 has wxGTK-2.6 and F-devel has wxGTK-2.8.
+Is this new code compatible with the wxGTK-2.8 or should I have to build it 
+against a compat-wxGTK-2.6 for F-devel?
+
+regards and good job Svilen
+Chitlesh
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20070310/b098133e/attachment.pgp>
+
+From krustev.svilen at googlemail.com  Sun Mar 11 12:10:57 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Sun, 11 Mar 2007 11:10:57 +0000
+Subject: [Toped-development] toped 0.8.5 released
+In-Reply-To: <200703101516.09889.chitlesh@waeckerlin.de>
+References: <200703101516.09889.chitlesh@waeckerlin.de>
+Message-ID: <45F3E3C1.1000602@toped.org.uk>
+
+Hi
+Important thing I forgot to mention. The place to commit the bugfixes 
+for 0.85 release is
+branches/RELEASE_0.85_CAND.
+
+Some more comments below
+
+Chitlesh GOORAH wrote:
+> Svilen Krustev wrote:
+>   
+>> Call for packagers.
+>> Fedora Extras repository (at least) has to be updated.
+>>     
+>
+> Hello there,
+>
+> I'll be pushing this new version to fedora repositories this upcoming friday, 
+> leaving one week on testing on my part and some community members.
+>
+> Meanwhile extensive testing will be done via mock to see whether there are any 
+> breakage or not.
+>
+> FC6 has wxGTK-2.6 and F-devel has wxGTK-2.8.
+> Is this new code compatible with the wxGTK-2.8 or should I have to build it 
+> against a compat-wxGTK-2.6 for F-devel?
+>   
+Current release is supposed to be compatible with both 2.6 and 2.8 
+versions of wxWidgets
+
+Regards
+Svilen
+
+

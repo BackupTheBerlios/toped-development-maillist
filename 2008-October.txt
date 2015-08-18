@@ -1,0 +1,869 @@
+From krustev.svilen at googlemail.com  Sun Oct 12 01:10:55 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sun, 12 Oct 2008 00:10:55 +0100
+Subject: [Toped-development] [ Bug #14666 ] Slow graphics
+Message-ID: <48F1327F.6010601@googlemail.com>
+
+Hi,
+
+You right. It looks too slow to me. I've been loading some bigger 
+designs and optimized version is almost swift - both @ linix and windows.
+This is important question. Toped is focused on graphic speed. Can we do 
+the following:
+
+1. Let's transfer this discussion to the mailing list - you'll find 
+links on the web site. It will be much easier for everybody.
+2. I will appreciate to have more information about your platform.
+3. It would be great if you can send the GDS to test it myself. It's 
+quite possible that it is a bug in the drawing algo. You can use the 
+alternative address on the web site
+
+As I mention we're preparing a release right now, so bug reports like 
+that are really welcome.
+
+Regards
+Svilen
+
+
+> I am currently comparing layouteditor (www.layouteditor.net) and toped.
+>
+> Graphics (zoom in/out, scroll ) is at least 10x slower than 
+> layouteditor on a big full chip layout (2mmx2mm) for a 0.35u process. 
+> A zoom all process takes 25 seconds in toped but in layouteditor, it 
+> takes almost 2.5 seconds.
+> Is this have anything to with OpenGL versus Qmatrix from QT? 
+
+
+From ercanal at yahoo.com  Sat Oct 18 20:07:42 2008
+From: ercanal at yahoo.com (Ercan Altuntas)
+Date: Sat, 18 Oct 2008 11:07:42 -0700 (PDT)
+Subject: [Toped-development] 45 degree drawing bug on example layout
+Message-ID: <680195.62531.qm@web53011.mail.re2.yahoo.com>
+
+Hi,
+
+If you zoom to Right upper corner to the example layout 45 degrees lines are drawn wrongly.
+The snapshot view is attached.
+
+__________________________________________________
+Yahoo! kullan?yor musunuz?
+?stenmeyen postadan b?kt?n?z m??  Yahoo! Posta'da piyasan?n en iyi istenmeyen posta korunmas? var 
+http://tr.mail.yahoo.com 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081018/139cd3ef/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: 45degree_bug.png
+Type: image/png
+Size: 21637 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081018/139cd3ef/attachment.png>
+
+From krustev.svilen at googlemail.com  Sun Oct 19 00:18:31 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sat, 18 Oct 2008 23:18:31 +0100
+Subject: [Toped-development] [Fwd: Re:  [ Bug #14666 ] Slow graphics]
+Message-ID: <48FA60B7.8020208@googlemail.com>
+
+Ercan,
+
+Thanks for the feedback. It appears that you're in uncharted teritory. I 
+never tried Toped on Vista (I don't have one) and as far as I'm aware 
+Sergey is siting on XP as well.
+Sergey?
+What I know for sure is that the install package was compiled on XP. The 
+good news from you is that it works on Vista. The drawing times of tens 
+of seconds however are certainly not what we're working for.
+There is no much point explaining to you that on other platforms Toped 
+is much faster than that. It's much better if you see it yourself. 
+Obviously we need somebody to spend some time on Vista and to 
+investigate the problem. Could be anything even something as simple as 
+recompilation on Vista.
+
+OK, I'll make a bug out of your report. As I said though I don't have 
+Vista unfortunately. Anybody willing to spend some time compiling Toped 
+on Vista?
+
+Regards
+Svilen
+
+P.S. Please hit "reply to all" button when you're mailing back to the 
+mailing list. Otherwise only I'm getting the answer.
+
+
+-------------- next part --------------
+An embedded message was scrubbed...
+From: Ercan Altuntas <ercanal at yahoo.com>
+Subject: Re: [Toped-development] [ Bug #14666 ] Slow graphics
+Date: Sat, 18 Oct 2008 09:32:23 -0700 (PDT)
+Size: 8155
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081018/2571b527/attachment.eml>
+
+From krustev.svilen at googlemail.com  Sun Oct 19 00:54:23 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sat, 18 Oct 2008 23:54:23 +0100
+Subject: [Toped-development] 45 degree drawing bug on example layout
+In-Reply-To: <680195.62531.qm@web53011.mail.re2.yahoo.com>
+References: <680195.62531.qm@web53011.mail.re2.yahoo.com>
+Message-ID: <48FA691F.8020200@googlemail.com>
+
+Hi,
+
+I don't see the effect on XP and Linux.
+I believe the picture is from Vista. I'll create another bug in Berlios.
+
+Thanks!
+
+Svilen
+
+Ercan Altuntas wrote:
+> Hi,
+>
+> If you zoom to Right upper corner to the example layout 45 degrees 
+> lines are drawn wrongly.
+> The snapshot view is attached.
+>
+>
+>
+> __________________________________________________
+> Yahoo! kullan?yor musunuz?
+> ?stenmeyen postadan b?kt?n?z m?? Yahoo! Posta'da piyasan?n en iyi 
+> istenmeyen posta korunmas? var
+> http://tr.mail.yahoo.com
+> ------------------------------------------------------------------------
+>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From ercanal at yahoo.com  Sun Oct 19 10:59:03 2008
+From: ercanal at yahoo.com (Ercan Altuntas)
+Date: Sun, 19 Oct 2008 01:59:03 -0700 (PDT)
+Subject: [Toped-development] 45 degree drawing bug on example layout
+Message-ID: <666798.23076.qm@web53011.mail.re2.yahoo.com>
+
+One more clue. 
+This case is shows up when the upper points of the polygon is out of drawing field.
+
+
+
+----- Original Message ----
+From: Svilen <krustev.svilen at googlemail.com>
+To: Ercan Altuntas <ercanal at yahoo.com>
+Cc: Toped-development <toped-development at lists.berlios.de>
+Sent: Sunday, October 19, 2008 1:54:23 AM
+Subject: Re: [Toped-development] 45 degree drawing bug on example layout
+
+Hi,
+
+I don't see the effect on XP and Linux.
+I believe the picture is from Vista. I'll create another bug in Berlios.
+
+Thanks!
+
+Svilen
+
+Ercan Altuntas wrote:
+> Hi,
+>
+> If you zoom to Right upper corner to the example layout 45 degrees 
+> lines are drawn wrongly.
+> The snapshot view is attached.
+>
+>
+>
+> __________________________________________________
+> Yahoo! kullan?yor musunuz?
+> ?stenmeyen postadan b?kt?n?z m?? Yahoo! Posta'da piyasan?n en iyi 
+> istenmeyen posta korunmas? var
+> http://tr.mail.yahoo.com
+> ------------------------------------------------------------------------
+>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>  
+
+__________________________________________________
+Yahoo! kullan?yor musunuz?
+?stenmeyen postadan b?kt?n?z m??  Yahoo! Posta'da piyasan?n en iyi istenmeyen posta korunmas? var 
+http://tr.mail.yahoo.com 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081019/791a3bc8/attachment.html>
+
+From gaitukevich.s at gmail.com  Sun Oct 19 13:40:38 2008
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Sun, 19 Oct 2008 19:40:38 +0800
+Subject: [Toped-development] Fwd:  [Fwd: Re: [ Bug #14666 ] Slow graphics]
+In-Reply-To: <48FA60B7.8020208@googlemail.com>
+References: <48FA60B7.8020208@googlemail.com>
+Message-ID: <fda822f80810190440p3eda1de8jcd319a6167323c07@mail.gmail.com>
+
+Hi all
+
+Unfortunately I also don't have Vista. I tried it with Toped once and it was
+also confused for me.
+See
+https://developer.berlios.de/bugs/?func=detailbug&group_id=5037&bug_id=14220
+
+Ercan, can you try to draw some elements (box, poly, wire) in Toped?
+If you can't see anything until screen been refreshed (zoom, scroll etc) ,
+so this is the same bug.
+
+BTW do you use any drivers for your video or use only default  settings from
+Vista?
+
+
+Regards,
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081019/e0b14540/attachment.html>
+
+From gaitukevich.s at gmail.com  Sun Oct 19 14:37:02 2008
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Sun, 19 Oct 2008 20:37:02 +0800
+Subject: [Toped-development] Layer order in the layer panel
+Message-ID: <fda822f80810190537h78e513b8kb1bd038d4ce747ce@mail.gmail.com>
+
+Hi all.
+I want to discuss feature request #14698
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=14698&group_id=5037
+
+Do we really need such behavior?  What is a use case?
+
+From toped-development at lists.berlios.de  Sun Oct 19 17:47:41 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 19 Oct 2008 16:47:41 +0100 (BST)
+Subject: [Toped-development] [Bug #14701] add<*>(layer_number) functions not
+	working as expected
+Message-ID: <200810191547.m9JFlfBx029532@unicorn.berlios.de>
+
+Bug #14701, was updated on 2008-Oct-19 16:47
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: TELL script
+Status: Open
+Resolution: None
+Bug Group: bug
+Priority: 9
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: add<*>(layer_number) functions not working as expected
+
+Details: Functions are: addbox(<lay_number>); addpoly(<lay_number>); addwire(<lay_number>)
+
+The <lay_number> parameters are ignored. Instead the current layer is used.
+This is not the intended behavior of the functions.
+
+For detailed info, follow this link:
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=14701&group_id=5037
+
+
+From toped-development at lists.berlios.de  Sun Oct 19 18:14:27 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 19 Oct 2008 17:14:27 +0100
+Subject: [Toped-development] Updates to Berlios setups
+Message-ID: <48FB5CE3.9010505@tiscali.co.uk>
+
+Hi,
+
+I spent some time with the setup of the Toped mailing list and bug data 
+base in Berlios. The result form that should be:
+
+     1. The address of the sender will not be in the e-mail anymore. 
+Just the address of the mailing list.  This is suppose to prevent making 
+unintentional "private" e-mail exchanges and to think which "reply" 
+button to hit in your e-mail client or web page. Also I guess it is 
+better to keep our addresses away from the spammers when possible.
+
+    2. Bug database is suppose to send a notification to the mailing 
+list always when a fresh bug is submitted. Until now this was not the 
+case and some reports were left without attention for weeks. This seem 
+to work but not quite as expected yet. I've raised a bug to Berlios 
+admin and I hope they will take care. Here is the link:
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=14678&group_id=1
+
+Please let me know if the setups can be improved further
+
+Regards
+Svilen
+
+
+From toped-development at lists.berlios.de  Sun Oct 19 18:18:43 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 19 Oct 2008 17:18:43 +0100 (BST)
+Subject: [Toped-development] [Bug #14701] add<*>(layer_number) functions not
+	working as expected
+Message-ID: <200810191618.m9JGIh6J014587@unicorn.berlios.de>
+
+Bug #14701, was updated on 2008-Oct-19 16:47
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: TELL script
+Status: Closed
+Resolution: Fixed
+Bug Group: bug
+Priority: 9
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: add<*>(layer_number) functions not working as expected
+
+Details: Functions are: addbox(<lay_number>); addpoly(<lay_number>); addwire(<lay_number>)
+
+The <lay_number> parameters are ignored. Instead the current layer is used.
+This is not the intended behavior of the functions.
+
+Follow-Ups:
+
+Date: 2008-Oct-19 17:18
+By: s_krustev
+
+Comment:
+Fixed in rev 819.
+Nothing really to note - a simple copy/paste problem. It wasn't found 'till now because none of the acceleration (menu/toolbox etc.) stuff is using those functions.
+-------------------------------------------------------
+
+For detailed info, follow this link:
+http://developer.berlios.de/bugs/?func=detailbug&bug_id=14701&group_id=5037
+
+
+From toped-development at lists.berlios.de  Mon Oct 20 00:15:08 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 19 Oct 2008 23:15:08 +0100
+Subject: [Toped-development] Layer order in the layer panel
+In-Reply-To: <fda822f80810190537h78e513b8kb1bd038d4ce747ce@mail.gmail.com>
+References: <fda822f80810190537h78e513b8kb1bd038d4ce747ce@mail.gmail.com>
+Message-ID: <48FBB16C.8040408@tiscali.co.uk>
+
+Hi,
+
+> I want to discuss feature request #14698
+> http://developer.berlios.de/bugs/?func=detailbug&bug_id=14698&group_id=5037 
+> <http://developer.berlios.de/bugs/?func=detailbug&bug_id=14698&group_id=5037>
+>
+> Do we really need such behavior?  What is a use case?
+I think there might be some misunderstanding - sorry! That was suppose 
+to be a bug, not a feature request.
+I didn't mean to ask for addition of new buttons on the panel. I wanted 
+simply to keep the items in some kind of order - by layer numbers is 
+fine by me. As far as I can see you did fix that in rev. 817.
+The bug is fixed and can be closed now.
+>
+> From my layout experience more useful feature is groups of layers.
+> For example hide some inessential layers (N+, P+ etc) and concentrate 
+> only a few important layers (active, poly, contact) for rapid layout 
+> development. Then show all layers and add missing data.
+> It can be easily realized by adding add/show functions for layer tab 
+> and by using TELL.
+This sounds like a good idea - especially these days with  hundreds of 
+layers. Are we talking groups here or a hierarchy of groups? If I 
+understand it properly this organization will concern predominantly the 
+visualization in the layer panel. With one click/ command you want to 
+lock/hide/ etc. a predefined group of layers?
+
+Cheers
+Svilen
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From toped-development at lists.berlios.de  Mon Oct 20 00:33:12 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 19 Oct 2008 23:33:12 +0100
+Subject: [Toped-development] Branch "0.92 Release Candidate"
+Message-ID: <48FBB5A8.9050706@tiscali.co.uk>
+
+
+I just created a branch 
+http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.92_CAND/
+
+It should be used for critical or annoying bug fixes before and after 
+the release 0.92. If everything goes according to the plan (fingers 
+crossed!) the release should happen before the end of this week.
+
+The web site is also updated - mainly GDS and CIF interfaces - but not 
+finished yet. Wiki page also needs further updates. All kind of feedback 
+is really appreciated.
+
+Cheers!
+Svilen
+
+
+From toped-development at lists.berlios.de  Mon Oct 20 16:35:15 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 20 Oct 2008 07:35:15 -0700 (PDT)
+Subject: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+Message-ID: <252071.56694.qm@web53006.mail.re2.yahoo.com>
+
+
+I do not have any problems while drawing box,poly or wires.
+I am using the default video driver comes from the Windows Update.
+As you may know, OpenGL performance and other issues heavily depends on the graphics driver. 
+My video card is basic card and I think it does not have any accelerator for OpenGL or other enhancements.
+And this may be case for the slow graphics. 
+
+
+
+
+
+----- Original Message ----
+From: Sergey Gaitukevich <gaitukevich.s at gmail.com>
+To: Toped-development <toped-development at lists.berlios.de>
+Sent: Sunday, October 19, 2008 2:40:38 PM
+Subject: [Toped-development] Fwd:  [Fwd: Re: [ Bug #14666 ] Slow graphics]
+
+
+Hi all
+
+Unfortunately I also don't have Vista. I tried it with Toped once and it was also confused for me. 
+See 
+https://developer.berlios.de/bugs/?func=detailbug&group_id=5037&bug_id=14220
+
+Ercan, can you try to draw some elements (box, poly, wire) in Toped?
+If you can't see anything until screen been refreshed (zoom, scroll etc) , so this is the same bug.
+
+BTW do you use any drivers for your video or use only default  settings from Vista?
+
+
+Regards,
+Sergey
+
+
+__________________________________________________
+Yahoo! kullan?yor musunuz?
+?stenmeyen postadan b?kt?n?z m??  Yahoo! Posta'da piyasan?n en iyi istenmeyen posta korunmas? var 
+http://tr.mail.yahoo.com 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081020/20c488e7/attachment.html>
+
+From toped-development at lists.berlios.de  Mon Oct 20 16:36:42 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 20 Oct 2008 22:36:42 +0800
+Subject: [Toped-development] Layer order in the layer panel
+In-Reply-To: <48FBB16C.8040408@tiscali.co.uk>
+References: <fda822f80810190537h78e513b8kb1bd038d4ce747ce@mail.gmail.com>
+	<48FBB16C.8040408@tiscali.co.uk>
+Message-ID: <fda822f80810200736v5c4438dds4491fb08898a3903@mail.gmail.com>
+
+Hi
+
+I didn't mean to ask for addition of new buttons on the panel. I wanted
+> simply to keep the items in some kind of order - by layer numbers is
+> fine by me. As far as I can see you did fix that in rev. 817.
+> The bug is fixed and can be closed now.
+> >
+>
+Yes, it fixed.
+
+>
+> > From my layout experience more useful feature is groups of layers.
+> > For example hide some inessential layers (N+, P+ etc) and concentrate
+> > only a few important layers (active, poly, contact) for rapid layout
+> > development. Then show all layers and add missing data.
+> > It can be easily realized by adding add/show functions for layer tab
+> > and by using TELL.
+> This sounds like a good idea - especially these days with  hundreds of
+> layers. Are we talking groups here or a hierarchy of groups? If I
+> understand it properly this organization will concern predominantly the
+> visualization in the layer panel. With one click/ command you want to
+> lock/hide/ etc. a predefined group of layers?
+
+
+Hierarchy of layers too complicated for me ?
+I think it must be user choice what to do. With hidelayerbutton function and
+customable toolbar (in next version of Toped) user can easily realize groups
+of layers.
+
+Regards,
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081020/09d5f2be/attachment.html>
+
+From toped-development at lists.berlios.de  Wed Oct 22 07:29:21 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 22 Oct 2008 13:29:21 +0800
+Subject: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+In-Reply-To: <252071.56694.qm@web53006.mail.re2.yahoo.com>
+References: <252071.56694.qm@web53006.mail.re2.yahoo.com>
+Message-ID: <fda822f80810212229m5f28172esd510682aec4a36ca@mail.gmail.com>
+
+Hi
+I dug internet and found interesting link
+http://www.intel.com/support/graphics/intel945gm/sb/CS-021517.htm
+According this document to get hardware acceleretion on Mobile Intel(R) 945GM
+Express Chipset Family
+for OpenGl you must install separate video driver from Intel.
+Beside it next version Toped will check harware support for OpenGL.
+
+Regards
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081022/bfa28e4b/attachment.html>
+
+From toped-development at lists.berlios.de  Sat Oct 25 18:32:46 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 25 Oct 2008 09:32:46 -0700 (PDT)
+Subject: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+Message-ID: <957439.3509.qm@web53004.mail.re2.yahoo.com>
+
+
+
+I installed the following driver. 
+Still layouteditor is faster. 
+One difference between the programs are the layer strips definitions. The performance of the drawing 
+is very sensitive to the strips in both tools. 
+In layouteditor the strips are pre-defined but in toped they are customizable. 
+
+I should check with the same strips definitions but I could not find enough time for this.
+
+
+
+
+
+
+________________________________
+From: "toped-development at lists.berlios.de" <toped-development at lists.berlios.de>
+To: toped-development at lists.berlios.de
+Sent: Wednesday, October 22, 2008 8:29:21 AM
+Subject: Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+
+Hi
+I dug internet and found interesting link
+http://www.intel.com/support/graphics/intel945gm/sb/CS-021517.htm
+According this document to get hardware acceleretion on Mobile Intel? 945GM Express Chipset Family
+for OpenGl you must install separate video driver from Intel.
+Beside it next version Toped will check harware support for OpenGL.
+
+Regards
+Sergey
+
+
+
+      ___________________________________________________________________
+Yahoo! T?rkiye a??ld?!  http://yahoo.com.tr
+?nternet ?zerindeki en iyi i?eri?i Yahoo! T?rkiye sizlere sunuyor!
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081025/8ee3bfe8/attachment.html>
+
+From toped-development at lists.berlios.de  Sat Oct 25 18:36:58 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 25 Oct 2008 17:36:58 +0100
+Subject: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+In-Reply-To: <957439.3509.qm@web53004.mail.re2.yahoo.com>
+References: <957439.3509.qm@web53004.mail.re2.yahoo.com>
+Message-ID: <49034B2A.5040109@googlemail.com>
+
+
+Do you still have a drawing times in the range of tens of seconds?
+Is there any improvement ? I'll appreciate some rough figures to get a 
+better picture
+
+Svilen
+
+
+toped-development at lists.berlios.de wrote:
+>
+> I installed the following driver.
+> Still layouteditor is faster.
+> One difference between the programs are the layer strips definitions. 
+> The performance of the drawing
+> is very sensitive to the strips in both tools.
+> In layouteditor the strips are pre-defined but in toped they are 
+> customizable.
+>
+> I should check with the same strips definitions but I could not find 
+> enough time for this.
+>
+>
+>
+>
+> ------------------------------------------------------------------------
+> *From:* "toped-development at lists.berlios.de" 
+> <toped-development at lists.berlios.de>
+> *To:* toped-development at lists.berlios.de
+> *Sent:* Wednesday, October 22, 2008 8:29:21 AM
+> *Subject:* Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow 
+> graphics]
+>
+> Hi
+> I dug internet and found interesting link
+> http://www.intel.com/support/graphics/intel945gm/sb/CS-021517.htm
+> According this document to get hardware acceleretion on Mobile Intel? 
+> 945GM Express Chipset Family
+> for OpenGl you must install separate video driver from Intel.
+> Beside it next version Toped will check harware support for OpenGL.
+>
+> Regards
+> Sergey
+>
+> ------------------------------------------------------------------------
+> Yahoo! T?rkiye a??ld?!
+> ?nternet ?zerindeki en iyi i?eri?i Yahoo! T?rkiye sizlere sunuyor!
+> http://yahoo.com.tr <http://tr.yahoo.com/>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From toped-development at lists.berlios.de  Sun Oct 26 12:16:03 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 26 Oct 2008 04:16:03 -0700 (PDT)
+Subject: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+Message-ID: <854849.12659.qm@web53012.mail.re2.yahoo.com>
+
+
+Using the example layout in toped installation.
+TOPED: After zooming to a place in FOLL layout, it takes 4-5 seconds to zoom all.
+LAYOUTEDITOR: After zooming to a place in AMODUL layout (4xFOLL), it takes less than 1 second, to zoom all.
+As I said, if layer strips are removed, toped is much faster. Almost comparable to layouteditor.
+
+
+I'll configure both tools  to use same strips for same layers and compare the results. The difference may also come from the opengl libraries
+the programs use. You are using wxWidgets implementation but layouteditor is using QT's implementation.
+
+
+________________________________
+From: "toped-development at lists.berlios.de" <toped-development at lists.berlios.de>
+To: toped-development at lists.berlios.de
+Sent: Saturday, October 25, 2008 7:36:58 PM
+Subject: Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+
+
+Do you still have a drawing times in the range of tens of seconds?
+Is there any improvement ? I'll appreciate some rough figures to get a 
+better picture
+
+Svilen
+
+
+toped-development at lists.berlios.de wrote:
+>
+> I installed the following driver.
+> Still layouteditor is faster.
+> One difference between the programs are the layer strips definitions. 
+> The performance of the drawing
+> is very sensitive to the strips in both tools.
+> In layouteditor the strips are pre-defined but in toped they are 
+> customizable.
+>
+> I should check with the same strips definitions but I could not find 
+> enough time for this.
+>
+>
+>
+>
+> ------------------------------------------------------------------------
+> *From:* "toped-development at lists.berlios.de" 
+> <toped-development at lists.berlios.de>
+> *To:* toped-development at lists.berlios.de
+> *Sent:* Wednesday, October 22, 2008 8:29:21 AM
+> *Subject:* Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow 
+> graphics]
+>
+> Hi
+> I dug internet and found interesting link
+> http://www.intel.com/support/graphics/intel945gm/sb/CS-021517.htm
+> According this document to get hardware acceleretion on Mobile Intel? 
+> 945GM Express Chipset Family
+> for OpenGl you must install separate video driver from Intel.
+> Beside it next version Toped will check harware support for OpenGL.
+>
+> Regards
+> Sergey
+>
+> ------------------------------------------------------------------------
+> Yahoo! T?rkiye a??ld?!
+> ?nternet ?zerindeki en iyi i?eri?i Yahoo! T?rkiye sizlere sunuyor!
+> http://yahoo.com.tr <http://tr.yahoo.com/>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>  
+
+_______________________________________________
+Toped-development mailing list
+Toped-development at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/toped-development
+
+
+
+      ___________________________________________________________________
+Yahoo! T?rkiye a??ld?!  http://yahoo.com.tr
+?nternet ?zerindeki en iyi i?eri?i Yahoo! T?rkiye sizlere sunuyor!
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20081026/816f5a60/attachment.html>
+
+From toped-development at lists.berlios.de  Sun Oct 26 13:42:06 2008
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sun, 26 Oct 2008 12:42:06 +0000
+Subject: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow graphics]
+In-Reply-To: <854849.12659.qm@web53012.mail.re2.yahoo.com>
+References: <854849.12659.qm@web53012.mail.re2.yahoo.com>
+Message-ID: <4904659E.1080403@googlemail.com>
+
+
+OK, 4-5 seconds is still too much, but is it's much closer.
+Not sure what do you call layer strips - I guess it is the layer fill 
+patterns. They certainly depend on the graphic hardware and without them 
+the graphics will be certainly faster although the difference in time 
+should be almost unnoticeable.
+
+Concerning the QT/wxWidget differences - I don't think both of them have 
+anything to do with openGL implementation. They are rather wrapping an 
+openGL window, but all real graphic operations are actually bypassing 
+them and going directly to openGL library (unless QT changed this recent 
+couple of years?)
+
+If there is a difference on this subject - it might be the openGL 
+implementation itself used by both tools. It might be different for XP 
+(which we use) and Vista. I don't know whether they are different and if 
+they are what the differences are.
+
+The rest should be differences between the way toped and layout editor 
+are handling data to the graphic system. We do have some options which 
+are not yet on the surface, but really for the project of  this size 
+they shouldn't matter. 4-5 seconds for the optimised version of toped is 
+still in times slower that the performance I'm having.
+
+Ercan, I really do appreciate your effort on this subject.
+
+Thanks!
+
+Svilen
+
+toped-development at lists.berlios.de wrote:
+>
+> Using the example layout in toped installation.
+> TOPED: After zooming to a place in FOLL layout, it takes 4-5 seconds 
+> to zoom all.
+> LAYOUTEDITOR: After zooming to a place in AMODUL layout (4xFOLL), it 
+> takes less than 1 second, to zoom all.
+> As I said, if layer strips are removed, toped is much faster. Almost 
+> comparable to layouteditor.
+>
+> I'll configure both tools  to use same strips for same layers and 
+> compare the results. The difference may also come from the opengl 
+> libraries
+> the programs use. You are using wxWidgets implementation but 
+> layouteditor is using QT's implementation.
+> ------------------------------------------------------------------------
+> *From:* "toped-development at lists.berlios.de" 
+> <toped-development at lists.berlios.de>
+> *To:* toped-development at lists.berlios.de
+> *Sent:* Saturday, October 25, 2008 7:36:58 PM
+> *Subject:* Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow 
+> graphics]
+>
+>
+> Do you still have a drawing times in the range of tens of seconds?
+> Is there any improvement ? I'll appreciate some rough figures to get a
+> better picture
+>
+> Svilen
+>
+>
+> toped-development at lists.berlios.de 
+> <mailto:toped-development at lists.berlios.de> wrote:
+> >
+> > I installed the following driver.
+> > Still layouteditor is faster.
+> > One difference between the programs are the layer strips definitions.
+> > The performance of the drawing
+> > is very sensitive to the strips in both tools.
+> > In layouteditor the strips are pre-defined but in toped they are
+> > customizable.
+> >
+> > I should check with the same strips definitions but I could not find
+> > enough time for this.
+> >
+> >
+> >
+> >
+> > ------------------------------------------------------------------------
+> > *From:* "toped-development at lists.berlios.de 
+> <mailto:toped-development at lists.berlios.de>"
+> > <toped-development at lists.berlios.de 
+> <mailto:toped-development at lists.berlios.de>>
+> > *To:* toped-development at lists.berlios.de 
+> <mailto:toped-development at lists.berlios.de>
+> > *Sent:* Wednesday, October 22, 2008 8:29:21 AM
+> > *Subject:* Re: [Toped-development] Fwd: [Fwd: Re: [ Bug #14666 ] Slow
+> > graphics]
+> >
+> > Hi
+> > I dug internet and found interesting link
+> > http://www.intel.com/support/graphics/intel945gm/sb/CS-021517.htm
+> > According this document to get hardware acceleretion on Mobile Intel?
+> > 945GM Express Chipset Family
+> > for OpenGl you must install separate video driver from Intel.
+> > Beside it next version Toped will check harware support for OpenGL.
+> >
+> > Regards
+> > Sergey
+> >
+> > ------------------------------------------------------------------------
+> > Yahoo! T?rkiye a??ld?!
+> > ?nternet ?zerindeki en iyi i?eri?i Yahoo! T?rkiye sizlere sunuyor!
+> > http://yahoo.com.tr <http://tr.yahoo.com/>
+> > ------------------------------------------------------------------------
+> >
+> > _______________________________________________
+> > Toped-development mailing list
+> > Toped-development at lists.berlios.de 
+> <mailto:Toped-development at lists.berlios.de>
+> > https://lists.berlios.de/mailman/listinfo/toped-development
+> > 
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de 
+> <mailto:Toped-development at lists.berlios.de>
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>
+> ------------------------------------------------------------------------
+> Yahoo! T?rkiye a??ld?!
+> ?nternet ?zerindeki en iyi i?eri?i Yahoo! T?rkiye sizlere sunuyor!
+> http://yahoo.com.tr <http://tr.yahoo.com/>
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+

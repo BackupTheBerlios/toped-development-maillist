@@ -1,0 +1,691 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] toped and rawhide
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20toped%20and%20rawhide&In-Reply-To=%3C4591229A.7070605%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] toped and rawhide</H1>
+    <B>Svilen Krustev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20toped%20and%20rawhide&In-Reply-To=%3C4591229A.7070605%40googlemail.com%3E"
+       TITLE="[Toped-development] toped and rawhide">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Tue Dec 26 14:24:42 CET 2006</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Chitlesh,
+First of all - best wishes for the upcomming  New Year!
+Thanks for you feedback. I've check the updates of fc 5 and wxGTK2.8 is  
+there. I'm updating my machine now and will get back to you as soon as I 
+have more info. The trouble with wx is that with every major update, it 
+seems that there are troubles with compatibility. Never mind - it's a 
+good challenge for my Christmas holidays ;)
+By the way I'm strugling with the installation of fc6 on another machine 
+(seems I'm not alone there) , but hopefully will get it done soon.
+
+Regards
+Svilen
+
+Chitlesh GOORAH wrote:
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> Toped has some issues with wxgtk-2.8 (on Fedora development repositories)
+</I>&gt;<i> Can you have a look at it ?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Here is my build.log, I hope it might be useful to you.
+</I>&gt;<i>
+</I>&gt;<i> thanks
+</I>&gt;<i> Chitlesh
+</I>&gt;<i>   
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Installing /builddir/build/SRPMS/toped-0.8.2-2.fc7.src.rpm
+</I>&gt;<i> Building target platforms: i386
+</I>&gt;<i> Building for target i386
+</I>&gt;<i> Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.1646
+</I>&gt;<i> + umask 022
+</I>&gt;<i> + cd /builddir/build/BUILD
+</I>&gt;<i> + LANG=C
+</I>&gt;<i> + export LANG
+</I>&gt;<i> + unset DISPLAY
+</I>&gt;<i> + cd /builddir/build/BUILD
+</I>&gt;<i> + rm -rf toped-0.8.2
+</I>&gt;<i> + /usr/bin/bzip2 -dc /builddir/build/SOURCES/toped-0.8.2.tar.bz2
+</I>&gt;<i> + tar -xf -
+</I>&gt;<i> + STATUS=0
+</I>&gt;<i> + '[' 0 -ne 0 ']'
+</I>&gt;<i> + cd toped-0.8.2
+</I>&gt;<i> ++ /usr/bin/id -u
+</I>&gt;<i> + '[' 502 = 0 ']'
+</I>&gt;<i> ++ /usr/bin/id -u
+</I>&gt;<i> + '[' 502 = 0 ']'
+</I>&gt;<i> + /bin/chmod -Rf a+rX,u+w,g-w,o-w .
+</I>&gt;<i> + exit 0
+</I>&gt;<i> Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.1646
+</I>&gt;<i> + umask 022
+</I>&gt;<i> + cd /builddir/build/BUILD
+</I>&gt;<i> + cd toped-0.8.2
+</I>&gt;<i> + LANG=C
+</I>&gt;<i> + export LANG
+</I>&gt;<i> + unset DISPLAY
+</I>&gt;<i> + CFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables'
+</I>&gt;<i> + export CFLAGS
+</I>&gt;<i> + CXXFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables'
+</I>&gt;<i> + export CXXFLAGS
+</I>&gt;<i> + FFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables'
+</I>&gt;<i> + export FFLAGS
+</I>&gt;<i> ++ find . -name config.guess -o -name config.sub
+</I>&gt;<i> + for i in '$(find . -name config.guess -o -name config.sub)'
+</I>&gt;<i> ++ basename ./config.guess
+</I>&gt;<i> + '[' -f /usr/lib/rpm/redhat/config.guess ']'
+</I>&gt;<i> + /bin/rm -f ./config.guess
+</I>&gt;<i> ++ basename ./config.guess
+</I>&gt;<i> + /bin/cp -fv /usr/lib/rpm/redhat/config.guess ./config.guess
+</I>&gt;<i> `/usr/lib/rpm/redhat/config.guess' -&gt; `./config.guess'
+</I>&gt;<i> + for i in '$(find . -name config.guess -o -name config.sub)'
+</I>&gt;<i> ++ basename ./config.sub
+</I>&gt;<i> + '[' -f /usr/lib/rpm/redhat/config.sub ']'
+</I>&gt;<i> + /bin/rm -f ./config.sub
+</I>&gt;<i> ++ basename ./config.sub
+</I>&gt;<i> + /bin/cp -fv /usr/lib/rpm/redhat/config.sub ./config.sub
+</I>&gt;<i> `/usr/lib/rpm/redhat/config.sub' -&gt; `./config.sub'
+</I>&gt;<i> + ./configure --build=i686-redhat-linux-gnu --host=i686-redhat-linux-gnu --target=i386-redhat-linux-gnu --program-prefix= --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc --datadir=/usr/share --includedir=/usr/include --libdir=/usr/lib --libexecdir=/usr/libexec --localstatedir=/var --sharedstatedir=/usr/com --mandir=/usr/share/man --infodir=/usr/share/info --with-gtk --with-opengl --with-regex --enable-threads
+</I>&gt;<i> checking for a BSD-compatible install... /usr/bin/install -c
+</I>&gt;<i> checking whether build environment is sane... yes
+</I>&gt;<i> checking for gawk... gawk
+</I>&gt;<i> checking whether make sets $(MAKE)... yes
+</I>&gt;<i> checking for a BSD-compatible install... /usr/bin/install -c
+</I>&gt;<i> checking build system type... i686-redhat-linux-gnu
+</I>&gt;<i> checking host system type... i686-redhat-linux-gnu
+</I>&gt;<i> checking for style of include used by make... GNU
+</I>&gt;<i> checking for i686-redhat-linux-gnu-gcc... no
+</I>&gt;<i> checking for gcc... gcc
+</I>&gt;<i> checking for C compiler default output file name... a.out
+</I>&gt;<i> checking whether the C compiler works... yes
+</I>&gt;<i> checking whether we are cross compiling... no
+</I>&gt;<i> checking for suffix of executables... 
+</I>&gt;<i> checking for suffix of object files... o
+</I>&gt;<i> checking whether we are using the GNU C compiler... yes
+</I>&gt;<i> checking whether gcc accepts -g... yes
+</I>&gt;<i> checking for gcc option to accept ANSI C... none needed
+</I>&gt;<i> checking dependency style of gcc... gcc3
+</I>&gt;<i> checking for a sed that does not truncate output... /bin/sed
+</I>&gt;<i> checking for egrep... grep -E
+</I>&gt;<i> checking for ld used by gcc... /usr/bin/ld
+</I>&gt;<i> checking if the linker (/usr/bin/ld) is GNU ld... yes
+</I>&gt;<i> checking for /usr/bin/ld option to reload object files... -r
+</I>&gt;<i> checking for BSD-compatible nm... /usr/bin/nm -B
+</I>&gt;<i> checking whether ln -s works... yes
+</I>&gt;<i> checking how to recognise dependent libraries... pass_all
+</I>&gt;<i> checking how to run the C preprocessor... gcc -E
+</I>&gt;<i> checking for ANSI C header files... yes
+</I>&gt;<i> checking for sys/types.h... yes
+</I>&gt;<i> checking for sys/stat.h... yes
+</I>&gt;<i> checking for stdlib.h... yes
+</I>&gt;<i> checking for string.h... yes
+</I>&gt;<i> checking for memory.h... yes
+</I>&gt;<i> checking for strings.h... yes
+</I>&gt;<i> checking for inttypes.h... yes
+</I>&gt;<i> checking for stdint.h... yes
+</I>&gt;<i> checking for unistd.h... yes
+</I>&gt;<i> checking dlfcn.h usability... yes
+</I>&gt;<i> checking dlfcn.h presence... yes
+</I>&gt;<i> checking for dlfcn.h... yes
+</I>&gt;<i> checking for i686-redhat-linux-gnu-g++... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-c++... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-gpp... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-aCC... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-CC... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-cxx... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-cc++... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-cl... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-FCC... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-KCC... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-RCC... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-xlC_r... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-xlC... no
+</I>&gt;<i> checking for g++... g++
+</I>&gt;<i> checking whether we are using the GNU C++ compiler... yes
+</I>&gt;<i> checking whether g++ accepts -g... yes
+</I>&gt;<i> checking dependency style of g++... gcc3
+</I>&gt;<i> checking how to run the C++ preprocessor... g++ -E
+</I>&gt;<i> checking for i686-redhat-linux-gnu-g77... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-f77... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-xlf... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-frt... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-pgf77... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-fort77... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-fl32... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-af77... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-f90... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-xlf90... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-pgf90... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-epcf90... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-f95... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-fort... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-xlf95... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-ifc... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-efc... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-pgf95... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-lf95... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-gfortran... no
+</I>&gt;<i> checking for g77... no
+</I>&gt;<i> checking for f77... no
+</I>&gt;<i> checking for xlf... no
+</I>&gt;<i> checking for frt... no
+</I>&gt;<i> checking for pgf77... no
+</I>&gt;<i> checking for fort77... no
+</I>&gt;<i> checking for fl32... no
+</I>&gt;<i> checking for af77... no
+</I>&gt;<i> checking for f90... no
+</I>&gt;<i> checking for xlf90... no
+</I>&gt;<i> checking for pgf90... no
+</I>&gt;<i> checking for epcf90... no
+</I>&gt;<i> checking for f95... no
+</I>&gt;<i> checking for fort... no
+</I>&gt;<i> checking for xlf95... no
+</I>&gt;<i> checking for ifc... no
+</I>&gt;<i> checking for efc... no
+</I>&gt;<i> checking for pgf95... no
+</I>&gt;<i> checking for lf95... no
+</I>&gt;<i> checking for gfortran... no
+</I>&gt;<i> checking whether we are using the GNU Fortran 77 compiler... no
+</I>&gt;<i> checking whether  accepts -g... no
+</I>&gt;<i> checking the maximum length of command line arguments... 32768
+</I>&gt;<i> checking command to parse /usr/bin/nm -B output from gcc object... ok
+</I>&gt;<i> checking for objdir... .libs
+</I>&gt;<i> checking for i686-redhat-linux-gnu-ar... no
+</I>&gt;<i> checking for ar... ar
+</I>&gt;<i> checking for i686-redhat-linux-gnu-ranlib... no
+</I>&gt;<i> checking for ranlib... ranlib
+</I>&gt;<i> checking for i686-redhat-linux-gnu-strip... no
+</I>&gt;<i> checking for strip... strip
+</I>&gt;<i> checking if gcc supports -fno-rtti -fno-exceptions... no
+</I>&gt;<i> checking for gcc option to produce PIC... -fPIC
+</I>&gt;<i> checking if gcc PIC flag -fPIC works... yes
+</I>&gt;<i> checking if gcc static flag -static works... yes
+</I>&gt;<i> checking if gcc supports -c -o file.o... yes
+</I>&gt;<i> checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+</I>&gt;<i> checking whether -lc should be explicitly linked in... no
+</I>&gt;<i> checking dynamic linker characteristics... cat: ld.so.conf.d/*.conf: No such file or directory
+</I>&gt;<i> GNU/Linux ld.so
+</I>&gt;<i> checking how to hardcode library paths into programs... immediate
+</I>&gt;<i> checking whether stripping libraries is possible... yes
+</I>&gt;<i> checking for shl_load... no
+</I>&gt;<i> checking for shl_load in -ldld... no
+</I>&gt;<i> checking for dlopen... no
+</I>&gt;<i> checking for dlopen in -ldl... yes
+</I>&gt;<i> checking whether a program can dlopen itself... yes
+</I>&gt;<i> checking whether a statically linked program can dlopen itself... no
+</I>&gt;<i> checking if libtool supports shared libraries... yes
+</I>&gt;<i> checking whether to build shared libraries... yes
+</I>&gt;<i> checking whether to build static libraries... yes
+</I>&gt;<i> configure: creating libtool
+</I>&gt;<i> appending configuration tag &quot;CXX&quot; to libtool
+</I>&gt;<i> checking for ld used by g++... /usr/bin/ld
+</I>&gt;<i> checking if the linker (/usr/bin/ld) is GNU ld... yes
+</I>&gt;<i> checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+</I>&gt;<i> checking for g++ option to produce PIC... -fPIC
+</I>&gt;<i> checking if g++ PIC flag -fPIC works... yes
+</I>&gt;<i> checking if g++ static flag -static works... yes
+</I>&gt;<i> checking if g++ supports -c -o file.o... yes
+</I>&gt;<i> checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+</I>&gt;<i> checking dynamic linker characteristics... cat: ld.so.conf.d/*.conf: No such file or directory
+</I>&gt;<i> GNU/Linux ld.so
+</I>&gt;<i> checking how to hardcode library paths into programs... immediate
+</I>&gt;<i> appending configuration tag &quot;F77&quot; to libtool
+</I>&gt;<i> checking for bison... no
+</I>&gt;<i> checking for byacc... no
+</I>&gt;<i> checking for i686-redhat-linux-gnu-g++... g++
+</I>&gt;<i> checking whether we are using the GNU C++ compiler... (cached) yes
+</I>&gt;<i> checking whether g++ accepts -g... (cached) yes
+</I>&gt;<i> checking dependency style of g++... (cached) gcc3
+</I>&gt;<i> checking for i686-redhat-linux-gnu-gcc... gcc
+</I>&gt;<i> checking whether we are using the GNU C compiler... (cached) yes
+</I>&gt;<i> checking whether gcc accepts -g... (cached) yes
+</I>&gt;<i> checking for gcc option to accept ANSI C... (cached) none needed
+</I>&gt;<i> checking dependency style of gcc... (cached) gcc3
+</I>&gt;<i> checking for flex... no
+</I>&gt;<i> checking for lex... no
+</I>&gt;<i> checking for yywrap in -lfl... no
+</I>&gt;<i> checking for yywrap in -ll... no
+</I>&gt;<i> checking for ANSI C header files... (cached) yes
+</I>&gt;<i> checking stddef.h usability... yes
+</I>&gt;<i> checking stddef.h presence... yes
+</I>&gt;<i> checking for stddef.h... yes
+</I>&gt;<i> checking for stdlib.h... (cached) yes
+</I>&gt;<i> checking for string.h... (cached) yes
+</I>&gt;<i> checking for unistd.h... (cached) yes
+</I>&gt;<i> checking for stdbool.h that conforms to C99... yes
+</I>&gt;<i> checking for _Bool... yes
+</I>&gt;<i> checking for an ANSI C-conforming const... yes
+</I>&gt;<i> checking for inline... inline
+</I>&gt;<i> checking for size_t... yes
+</I>&gt;<i> checking for error_at_line... yes
+</I>&gt;<i> checking for stdlib.h... (cached) yes
+</I>&gt;<i> checking for GNU libc compatible malloc... yes
+</I>&gt;<i> checking for stdlib.h... (cached) yes
+</I>&gt;<i> checking for GNU libc compatible realloc... yes
+</I>&gt;<i> checking for pow... no
+</I>&gt;<i> checking for rint... no
+</I>&gt;<i> checking for sqrt... no
+</I>&gt;<i> checking for strtoul... yes
+</I>&gt;<i> checking for int... yes
+</I>&gt;<i> checking size of int... 4
+</I>&gt;<i> checking for time_t... yes
+</I>&gt;<i> checking size of time_t... 4
+</I>&gt;<i> checking for char... yes
+</I>&gt;<i> checking size of char... 1
+</I>&gt;<i> checking for short... yes
+</I>&gt;<i> checking size of short... 2
+</I>&gt;<i> checking for long... yes
+</I>&gt;<i> checking size of long... 4
+</I>&gt;<i> checking for X... no
+</I>&gt;<i> checking for the pthreads library -lpthreads... no
+</I>&gt;<i> checking whether pthreads work without any flags... no
+</I>&gt;<i> checking whether pthreads work with -Kthread... no
+</I>&gt;<i> checking whether pthreads work with -kthread... no
+</I>&gt;<i> checking for the pthreads library -llthread... no
+</I>&gt;<i> checking whether pthreads work with -pthread... yes
+</I>&gt;<i> checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+</I>&gt;<i> checking if more special flags are required for pthreads... no
+</I>&gt;<i> checking for cc_r... gcc
+</I>&gt;<i> checking whether we are using the Microsoft C compiler... no
+</I>&gt;<i> checking windows.h usability... no
+</I>&gt;<i> checking windows.h presence... no
+</I>&gt;<i> checking for windows.h... no
+</I>&gt;<i> checking for OpenGL library... -lGL
+</I>&gt;<i> checking for OpenGL Utility library... -lGLU
+</I>&gt;<i> checking for GLUT library... -lglut
+</I>&gt;<i> checking for wx-config... /usr/bin/wx-config
+</I>&gt;<i> checking for wxWidgets version &gt;= 2.6.2... yes (version 2.8.0)
+</I>&gt;<i> checking for wxWidgets static library... no
+</I>&gt;<i> configure: creating ./config.status
+</I>&gt;<i> config.status: creating Makefile
+</I>&gt;<i> config.status: creating tpd_common/Makefile
+</I>&gt;<i> config.status: creating tpd_parser/Makefile
+</I>&gt;<i> config.status: creating tpd_DB/Makefile
+</I>&gt;<i> config.status: creating src/Makefile
+</I>&gt;<i> config.status: creating tll/Makefile
+</I>&gt;<i> config.status: creating config.h
+</I>&gt;<i> config.status: executing depfiles commands
+</I>&gt;<i> + /usr/bin/make
+</I>&gt;<i> /usr/bin/make  all-recursive
+</I>&gt;<i> make[1]: Entering directory `/builddir/build/BUILD/toped-0.8.2'
+</I>&gt;<i> Making all in tpd_common
+</I>&gt;<i> make[2]: Entering directory `/builddir/build/BUILD/toped-0.8.2/tpd_common'
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I..   -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT ttt.lo -MD -MP -MF &quot;.deps/ttt.Tpo&quot; -c -o ttt.lo ttt.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/ttt.Tpo&quot; &quot;.deps/ttt.Plo&quot;; else rm -f &quot;.deps/ttt.Tpo&quot;; exit 1; fi
+</I>&gt;<i> mkdir .libs
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT ttt.lo -MD -MP -MF .deps/ttt.Tpo -c ttt.cpp  -fPIC -DPIC -o .libs/ttt.o
+</I>&gt;<i> ttt.cpp: In member function 'DBbox DBbox::getcorner(byte)':
+</I>&gt;<i> ttt.cpp:235: warning: control reaches end of non-void function
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT ttt.lo -MD -MP -MF .deps/ttt.Tpo -c ttt.cpp -o ttt.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I..   -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -Wall -g -fexceptions -pthread -pthread -pthread -pthread -MT avl.lo -MD -MP -MF &quot;.deps/avl.Tpo&quot; -c -o avl.lo avl.c; \
+</I>&gt;<i> 	then mv -f &quot;.deps/avl.Tpo&quot; &quot;.deps/avl.Plo&quot;; else rm -f &quot;.deps/avl.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  gcc -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -Wall -g -fexceptions -pthread -pthread -pthread -pthread -MT avl.lo -MD -MP -MF .deps/avl.Tpo -c avl.c  -fPIC -DPIC -o .libs/avl.o
+</I>&gt;<i>  gcc -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -Wall -g -fexceptions -pthread -pthread -pthread -pthread -MT avl.lo -MD -MP -MF .deps/avl.Tpo -c avl.c -o avl.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I..   -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedop.lo -MD -MP -MF &quot;.deps/tedop.Tpo&quot; -c -o tedop.lo tedop.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tedop.Tpo&quot; &quot;.deps/tedop.Plo&quot;; else rm -f &quot;.deps/tedop.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedop.lo -MD -MP -MF .deps/tedop.Tpo -c tedop.cpp  -fPIC -DPIC -o .libs/tedop.o
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedop.lo -MD -MP -MF .deps/tedop.Tpo -c tedop.cpp -o tedop.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I..   -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT outbox.lo -MD -MP -MF &quot;.deps/outbox.Tpo&quot; -c -o outbox.lo outbox.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/outbox.Tpo&quot; &quot;.deps/outbox.Plo&quot;; else rm -f &quot;.deps/outbox.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT outbox.lo -MD -MP -MF .deps/outbox.Tpo -c outbox.cpp  -fPIC -DPIC -o .libs/outbox.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT outbox.lo -MD -MP -MF .deps/outbox.Tpo -c outbox.cpp -o outbox.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I..   -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT polycross.lo -MD -MP -MF &quot;.deps/polycross.Tpo&quot; -c -o polycross.lo polycross.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/polycross.Tpo&quot; &quot;.deps/polycross.Plo&quot;; else rm -f &quot;.deps/polycross.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT polycross.lo -MD -MP -MF .deps/polycross.Tpo -c polycross.cpp  -fPIC -DPIC -o .libs/polycross.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT polycross.lo -MD -MP -MF .deps/polycross.Tpo -c polycross.cpp -o polycross.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> /bin/sh ../libtool --tag=CXX --mode=link g++  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables  -lGL  -lm -lGLU -lGL  -lm -lglut -lGLU -lGL  -lm -pthread   -lwx_gtk2u_gl-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_baseu_net-2.8 -lwx_baseu-2.8  -o libtpd_common.la -rpath /usr/lib -no-undefined ttt.lo avl.lo tedop.lo outbox.lo polycross.lo  
+</I>&gt;<i> g++ -shared -nostdlib /usr/lib/gcc/i386-redhat-linux/4.1.1/../../../crti.o /usr/lib/gcc/i386-redhat-linux/4.1.1/crtbeginS.o  .libs/ttt.o .libs/avl.o .libs/tedop.o .libs/outbox.o .libs/polycross.o  -lglut -lGLU -lGL -lwx_gtk2u_gl-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_baseu_net-2.8 -lwx_baseu-2.8 -L/usr/lib/gcc/i386-redhat-linux/4.1.1 -L/usr/lib/gcc/i386-redhat-linux/4.1.1/../../.. -lstdc++ -lm -lc -lgcc_s /usr/lib/gcc/i386-redhat-linux/4.1.1/crtendS.o /usr/lib/gcc/i386-redhat-linux/4.1.1/../../../crtn.o  -m32 -march=i386 -mtune=generic -pthread -Wl,-soname -Wl,libtpd_common.so.0 -o .libs/libtpd_common.so.0.0.0
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_common.so.0 &amp;&amp; ln -s libtpd_common.so.0.0.0 libtpd_common.so.0)
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_common.so &amp;&amp; ln -s libtpd_common.so.0.0.0 libtpd_common.so)
+</I>&gt;<i> ar cru .libs/libtpd_common.a  ttt.o avl.o tedop.o outbox.o polycross.o
+</I>&gt;<i> ranlib .libs/libtpd_common.a
+</I>&gt;<i> creating libtpd_common.la
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_common.la &amp;&amp; ln -s ../libtpd_common.la libtpd_common.la)
+</I>&gt;<i> make[2]: Leaving directory `/builddir/build/BUILD/toped-0.8.2/tpd_common'
+</I>&gt;<i> Making all in tpd_parser
+</I>&gt;<i> make[2]: Entering directory `/builddir/build/BUILD/toped-0.8.2/tpd_parser'
+</I>&gt;<i> /usr/bin/make  all-am
+</I>&gt;<i> make[3]: Entering directory `/builddir/build/BUILD/toped-0.8.2/tpd_parser'
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT ted_prompt.lo -MD -MP -MF &quot;.deps/ted_prompt.Tpo&quot; -c -o ted_prompt.lo ted_prompt.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/ted_prompt.Tpo&quot; &quot;.deps/ted_prompt.Plo&quot;; else rm -f &quot;.deps/ted_prompt.Tpo&quot;; exit 1; fi
+</I>&gt;<i> mkdir .libs
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT ted_prompt.lo -MD -MP -MF .deps/ted_prompt.Tpo -c ted_prompt.cpp  -fPIC -DPIC -o .libs/ted_prompt.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT ted_prompt.lo -MD -MP -MF .deps/ted_prompt.Tpo -c ted_prompt.cpp -o ted_prompt.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tellyzer.lo -MD -MP -MF &quot;.deps/tellyzer.Tpo&quot; -c -o tellyzer.lo tellyzer.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tellyzer.Tpo&quot; &quot;.deps/tellyzer.Plo&quot;; else rm -f &quot;.deps/tellyzer.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tellyzer.lo -MD -MP -MF .deps/tellyzer.Tpo -c tellyzer.cpp  -fPIC -DPIC -o .libs/tellyzer.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tellyzer.lo -MD -MP -MF .deps/tellyzer.Tpo -c tellyzer.cpp -o tellyzer.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tell_lex.lo -MD -MP -MF &quot;.deps/tell_lex.Tpo&quot; -c -o tell_lex.lo tell_lex.cc; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tell_lex.Tpo&quot; &quot;.deps/tell_lex.Plo&quot;; else rm -f &quot;.deps/tell_lex.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tell_lex.lo -MD -MP -MF .deps/tell_lex.Tpo -c tell_lex.cc  -fPIC -DPIC -o .libs/tell_lex.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /mercury_home/skr_local/release_0.8.0/tpd_parser/tell_lex.ll: In function 'int telllex()':
+</I>&gt;<i> /mercury_home/skr_local/release_0.8.0/tpd_parser/tell_lex.ll:129: warning: ignoring return value of 'size_t fwrite(const void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result
+</I>&gt;<i> tell_lex.cc: At global scope:
+</I>&gt;<i> tell_lex.cc:1395: warning: 'void yyunput(int, char*)' defined but not used
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tell_lex.lo -MD -MP -MF .deps/tell_lex.Tpo -c tell_lex.cc -o tell_lex.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tell_yacc.lo -MD -MP -MF &quot;.deps/tell_yacc.Tpo&quot; -c -o tell_yacc.lo tell_yacc.cc; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tell_yacc.Tpo&quot; &quot;.deps/tell_yacc.Plo&quot;; else rm -f &quot;.deps/tell_yacc.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tell_yacc.lo -MD -MP -MF .deps/tell_yacc.Tpo -c tell_yacc.cc  -fPIC -DPIC -o .libs/tell_yacc.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> ../../tpd_parser/tell_yacc.yy: In function 'int tellparse()':
+</I>&gt;<i> ../../tpd_parser/tell_yacc.yy:222: warning: 'yyloc.parsercmd::yyltype::filename' is used uninitialized in this function
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tell_yacc.lo -MD -MP -MF .deps/tell_yacc.Tpo -c tell_yacc.cc -o tell_yacc.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tldat.lo -MD -MP -MF &quot;.deps/tldat.Tpo&quot; -c -o tldat.lo tldat.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tldat.Tpo&quot; &quot;.deps/tldat.Plo&quot;; else rm -f &quot;.deps/tldat.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tldat.lo -MD -MP -MF .deps/tldat.Tpo -c tldat.cpp  -fPIC -DPIC -o .libs/tldat.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> tldat.cpp: In member function 'virtual void telldata::ttint::assign(telldata::tell_var*)':
+</I>&gt;<i> tldat.cpp:112: warning: converting to 'int4b' from 'real'
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_DB -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tldat.lo -MD -MP -MF .deps/tldat.Tpo -c tldat.cpp -o tldat.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> /bin/sh ../libtool --tag=CXX --mode=link g++  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables  -lGL  -lm -lGLU -lGL  -lm -lglut -lGLU -lGL  -lm -pthread   -lwx_gtk2u_gl-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_baseu_net-2.8 -lwx_baseu-2.8  -o libtpd_parser.la -rpath /usr/lib  ted_prompt.lo tellyzer.lo tell_lex.lo tell_yacc.lo tldat.lo ../tpd_common/libtpd_common.la 
+</I>&gt;<i> g++ -shared -nostdlib /usr/lib/gcc/i386-redhat-linux/4.1.1/../../../crti.o /usr/lib/gcc/i386-redhat-linux/4.1.1/crtbeginS.o  .libs/ted_prompt.o .libs/tellyzer.o .libs/tell_lex.o .libs/tell_yacc.o .libs/tldat.o  -Wl,--rpath -Wl,/builddir/build/BUILD/toped-0.8.2/tpd_common/.libs -lglut -lGLU -lGL -lwx_gtk2u_gl-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_baseu_net-2.8 -lwx_baseu-2.8 ../tpd_common/.libs/libtpd_common.so -L/usr/lib/gcc/i386-redhat-linux/4.1.1 -L/usr/lib/gcc/i386-redhat-linux/4.1.1/../../.. -lstdc++ -lm -lc -lgcc_s /usr/lib/gcc/i386-redhat-linux/4.1.1/crtendS.o /usr/lib/gcc/i386-redhat-linux/4.1.1/../../../crtn.o  -m32 -march=i386 -mtune=generic -pthread -Wl,-soname -Wl,libtpd_parser.so.0 -o .libs/libtpd_parser.so.0.0.0
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_parser.so.0 &amp;&amp; ln -s libtpd_parser.so.0.0.0 libtpd_parser.so.0)
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_parser.so &amp;&amp; ln -s libtpd_parser.so.0.0.0 libtpd_parser.so)
+</I>&gt;<i> ar cru .libs/libtpd_parser.a  ted_prompt.o tellyzer.o tell_lex.o tell_yacc.o tldat.o
+</I>&gt;<i> ranlib .libs/libtpd_parser.a
+</I>&gt;<i> creating libtpd_parser.la
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_parser.la &amp;&amp; ln -s ../libtpd_parser.la libtpd_parser.la)
+</I>&gt;<i> make[3]: Leaving directory `/builddir/build/BUILD/toped-0.8.2/tpd_parser'
+</I>&gt;<i> make[2]: Leaving directory `/builddir/build/BUILD/toped-0.8.2/tpd_parser'
+</I>&gt;<i> Making all in tpd_DB
+</I>&gt;<i> make[2]: Entering directory `/builddir/build/BUILD/toped-0.8.2/tpd_DB'
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT quadtree.lo -MD -MP -MF &quot;.deps/quadtree.Tpo&quot; -c -o quadtree.lo quadtree.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/quadtree.Tpo&quot; &quot;.deps/quadtree.Plo&quot;; else rm -f &quot;.deps/quadtree.Tpo&quot;; exit 1; fi
+</I>&gt;<i> mkdir .libs
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT quadtree.lo -MD -MP -MF .deps/quadtree.Tpo -c quadtree.cpp  -fPIC -DPIC -o .libs/quadtree.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT quadtree.lo -MD -MP -MF .deps/quadtree.Tpo -c quadtree.cpp -o quadtree.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedat.lo -MD -MP -MF &quot;.deps/tedat.Tpo&quot; -c -o tedat.lo tedat.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tedat.Tpo&quot; &quot;.deps/tedat.Plo&quot;; else rm -f &quot;.deps/tedat.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedat.lo -MD -MP -MF .deps/tedat.Tpo -c tedat.cpp  -fPIC -DPIC -o .libs/tedat.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> tedat.cpp: In member function 'void laydata::valid_wire::angles()':
+</I>&gt;<i> tedat.cpp:1884: warning: 'pAngle' may be used uninitialized in this function
+</I>&gt;<i> tedat.cpp: In member function 'void laydata::valid_poly::angles()':
+</I>&gt;<i> tedat.cpp:1775: warning: 'cAngle' may be used uninitialized in this function
+</I>&gt;<i> tedat.cpp:1775: warning: 'pAngle' may be used uninitialized in this function
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedat.lo -MD -MP -MF .deps/tedat.Tpo -c tedat.cpp -o tedat.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedcell.lo -MD -MP -MF &quot;.deps/tedcell.Tpo&quot; -c -o tedcell.lo tedcell.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tedcell.Tpo&quot; &quot;.deps/tedcell.Plo&quot;; else rm -f &quot;.deps/tedcell.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedcell.lo -MD -MP -MF .deps/tedcell.Tpo -c tedcell.cpp  -fPIC -DPIC -o .libs/tedcell.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedcell.lo -MD -MP -MF .deps/tedcell.Tpo -c tedcell.cpp -o tedcell.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedesign.lo -MD -MP -MF &quot;.deps/tedesign.Tpo&quot; -c -o tedesign.lo tedesign.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tedesign.Tpo&quot; &quot;.deps/tedesign.Plo&quot;; else rm -f &quot;.deps/tedesign.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedesign.lo -MD -MP -MF .deps/tedesign.Tpo -c tedesign.cpp  -fPIC -DPIC -o .libs/tedesign.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedesign.lo -MD -MP -MF .deps/tedesign.Tpo -c tedesign.cpp -o tedesign.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedstd.lo -MD -MP -MF &quot;.deps/tedstd.Tpo&quot; -c -o tedstd.lo tedstd.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/tedstd.Tpo&quot; &quot;.deps/tedstd.Plo&quot;; else rm -f &quot;.deps/tedstd.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedstd.lo -MD -MP -MF .deps/tedstd.Tpo -c tedstd.cpp  -fPIC -DPIC -o .libs/tedstd.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> tedstd.cpp: In member function 'void laydata::TEDfile::putWord(word)':
+</I>&gt;<i> tedstd.cpp:243: warning: ignoring return value of 'size_t fwrite(const void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result
+</I>&gt;<i> tedstd.cpp: In member function 'void laydata::TEDfile::put4b(int4b)':
+</I>&gt;<i> tedstd.cpp:247: warning: ignoring return value of 'size_t fwrite(const void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result
+</I>&gt;<i> tedstd.cpp: In member function 'void laydata::TEDfile::putReal(real)':
+</I>&gt;<i> tedstd.cpp:251: warning: ignoring return value of 'size_t fwrite(const void*, size_t, size_t, FILE*)', declared with attribute warn_unused_result
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT tedstd.lo -MD -MP -MF .deps/tedstd.Tpo -c tedstd.cpp -o tedstd.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT viewprop.lo -MD -MP -MF &quot;.deps/viewprop.Tpo&quot; -c -o viewprop.lo viewprop.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/viewprop.Tpo&quot; &quot;.deps/viewprop.Plo&quot;; else rm -f &quot;.deps/viewprop.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT viewprop.lo -MD -MP -MF .deps/viewprop.Tpo -c viewprop.cpp  -fPIC -DPIC -o .libs/viewprop.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT viewprop.lo -MD -MP -MF .deps/viewprop.Tpo -c viewprop.cpp -o viewprop.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT logicop.lo -MD -MP -MF &quot;.deps/logicop.Tpo&quot; -c -o logicop.lo logicop.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/logicop.Tpo&quot; &quot;.deps/logicop.Plo&quot;; else rm -f &quot;.deps/logicop.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT logicop.lo -MD -MP -MF .deps/logicop.Tpo -c logicop.cpp  -fPIC -DPIC -o .libs/logicop.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT logicop.lo -MD -MP -MF .deps/logicop.Tpo -c logicop.cpp -o logicop.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> if /bin/sh ../libtool --tag=CXX --mode=compile g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT gds_io.lo -MD -MP -MF &quot;.deps/gds_io.Tpo&quot; -c -o gds_io.lo gds_io.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/gds_io.Tpo&quot; &quot;.deps/gds_io.Plo&quot;; else rm -f &quot;.deps/gds_io.Tpo&quot;; exit 1; fi
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT gds_io.lo -MD -MP -MF .deps/gds_io.Tpo -c gds_io.cpp  -fPIC -DPIC -o .libs/gds_io.o
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i>  g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_common -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT gds_io.lo -MD -MP -MF .deps/gds_io.Tpo -c gds_io.cpp -o gds_io.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> /bin/sh ../libtool --tag=CXX --mode=link g++  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables  -lGL  -lm -lGLU -lGL  -lm -lglut -lGLU -lGL  -lm -pthread   -lwx_gtk2u_gl-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_baseu_net-2.8 -lwx_baseu-2.8  -o libtpd_DB.la -rpath /usr/lib  quadtree.lo tedat.lo tedcell.lo tedesign.lo tedstd.lo viewprop.lo logicop.lo gds_io.lo ../tpd_parser/libtpd_parser.la ../tpd_common/libtpd_common.la 
+</I>&gt;<i> g++ -shared -nostdlib /usr/lib/gcc/i386-redhat-linux/4.1.1/../../../crti.o /usr/lib/gcc/i386-redhat-linux/4.1.1/crtbeginS.o  .libs/quadtree.o .libs/tedat.o .libs/tedcell.o .libs/tedesign.o .libs/tedstd.o .libs/viewprop.o .libs/logicop.o .libs/gds_io.o  -Wl,--rpath -Wl,/builddir/build/BUILD/toped-0.8.2/tpd_parser/.libs -Wl,--rpath -Wl,/builddir/build/BUILD/toped-0.8.2/tpd_common/.libs -L/builddir/build/BUILD/toped-0.8.2/tpd_common/.libs -lglut -lGLU -lGL -lwx_gtk2u_gl-2.8 -lwx_gtk2u_aui-2.8 -lwx_gtk2u_xrc-2.8 -lwx_gtk2u_qa-2.8 -lwx_gtk2u_html-2.8 -lwx_gtk2u_adv-2.8 -lwx_gtk2u_core-2.8 -lwx_baseu_xml-2.8 -lwx_baseu_net-2.8 -lwx_baseu-2.8 ../tpd_parser/.libs/libtpd_parser.so ../tpd_common/.libs/libtpd_common.so -L/usr/lib/gcc/i386-redhat-linux/4.1.1 -L/usr/lib/gcc/i386-redhat-linux/4.1.1/../../.. -lstdc++ -lm -lc -lgcc_s /usr/lib/gcc/i386-redhat-linux/4.1.1/crtendS.o /usr/lib/gcc/i386-redhat-linux/4.1.1/../../../crtn.o  -m32 -march=i386 -mtune=generic -pthread -Wl,-soname -Wl,libtpd_DB.so.0 -o .libs/libtpd_DB.so.0.0.0
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_DB.so.0 &amp;&amp; ln -s libtpd_DB.so.0.0.0 libtpd_DB.so.0)
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_DB.so &amp;&amp; ln -s libtpd_DB.so.0.0.0 libtpd_DB.so)
+</I>&gt;<i> ar cru .libs/libtpd_DB.a  quadtree.o tedat.o tedcell.o tedesign.o tedstd.o viewprop.o logicop.o gds_io.o
+</I>&gt;<i> ranlib .libs/libtpd_DB.a
+</I>&gt;<i> creating libtpd_DB.la
+</I>&gt;<i> (cd .libs &amp;&amp; rm -f libtpd_DB.la &amp;&amp; ln -s ../libtpd_DB.la libtpd_DB.la)
+</I>&gt;<i> make[2]: Leaving directory `/builddir/build/BUILD/toped-0.8.2/tpd_DB'
+</I>&gt;<i> Making all in src
+</I>&gt;<i> make[2]: Entering directory `/builddir/build/BUILD/toped-0.8.2/src'
+</I>&gt;<i> if g++ -DHAVE_CONFIG_H -I. -I. -I.. -I../tpd_parser -I../tpd_DB -I../tpd_common  -Wall -g -fexceptions -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__  -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -MT browsers.o -MD -MP -MF &quot;.deps/browsers.Tpo&quot; -c -o browsers.o browsers.cpp; \
+</I>&gt;<i> 	then mv -f &quot;.deps/browsers.Tpo&quot; &quot;.deps/browsers.Po&quot;; else rm -f &quot;.deps/browsers.Tpo&quot;; exit 1; fi
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h: In member function 'wxLongToLongHashMap_wxImplementation_HashTable::Node** wxLongToLongHashMap_wxImplementation_HashTable::GetNodePtr(const long int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/hashmap.h:714: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectMethods_wxImplementation_HashTable::Node** wxShadowObjectMethods_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:20: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h: In member function 'wxShadowObjectFields_wxImplementation_HashTable::Node** wxShadowObjectFields_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/clntdata.h:25: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h: In member function 'wxStringToColourHashMap_wxImplementation_HashTable::Node** wxStringToColourHashMap_wxImplementation_HashTable::GetNodePtr(const wxString&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/gdicmn.h:540: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h: In member function 'wxImageHistogramBase_wxImplementation_HashTable::Node** wxImageHistogramBase_wxImplementation_HashTable::GetNodePtr(const long unsigned int&amp;) const':
+</I>&gt;<i> /usr/include/wx-2.8/wx/image.h:136: warning: dereferencing type-punned pointer will break strict-aliasing rules
+</I>&gt;<i> browsers.cpp: In constructor 'browsers::topedlay_list::topedlay_list(wxWindow*, wxWindowID, const wxPoint&amp;, const wxSize&amp;, long int)':
+</I>&gt;<i> browsers.cpp:60: error: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: error: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp:71: error: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: error: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp:72: error: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: error: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp:75: error: 'wxIMAGE_LIST_SMALL' was not declared in this scope
+</I>&gt;<i> browsers.cpp: In destructor 'virtual browsers::topedlay_list::~topedlay_list()':
+</I>&gt;<i> browsers.cpp:82: warning: possible problem detected in invocation of delete operator:
+</I>&gt;<i> browsers.cpp:82: warning: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: warning: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp:82: note: neither the destructor nor the class-specific operator delete will be called, even if they are declared when the class is defined.
+</I>&gt;<i> browsers.cpp: In constructor 'browsers::TDTbrowser::TDTbrowser(wxWindow*, wxWindowID, const wxPoint&amp;, const wxSize&amp;, long int)':
+</I>&gt;<i> browsers.cpp:239: error: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: error: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp:245: error: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: error: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp:246: error: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: error: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp: In destructor 'virtual browsers::TDTbrowser::~TDTbrowser()':
+</I>&gt;<i> browsers.cpp:489: warning: possible problem detected in invocation of delete operator:
+</I>&gt;<i> browsers.cpp:489: warning: invalid use of undefined type 'struct wxImageList'
+</I>&gt;<i> /usr/include/wx-2.8/wx/bookctrl.h:28: warning: forward declaration of 'struct wxImageList'
+</I>&gt;<i> browsers.cpp:489: note: neither the destructor nor the class-specific operator delete will be called, even if they are declared when the class is defined.
+</I>&gt;<i> make[2]: *** [browsers.o] Error 1
+</I>&gt;<i> make[2]: Leaving directory `/builddir/build/BUILD/toped-0.8.2/src'
+</I>&gt;<i> make[1]: *** [all-recursive] Error 1
+</I>&gt;<i> make[1]: Leaving directory `/builddir/build/BUILD/toped-0.8.2'
+</I>&gt;<i> make: *** [all] Error 2
+</I>&gt;<i> error: Bad exit status from /var/tmp/rpm-tmp.1646 (%build)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> RPM build errors:
+</I>&gt;<i>     Bad exit status from /var/tmp/rpm-tmp.1646 (%build)
+</I>&gt;<i>   
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

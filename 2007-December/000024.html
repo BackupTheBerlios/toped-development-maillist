@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] circles &amp; arcs in Toped
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20circles%20%26%20arcs%20in%20Toped&In-Reply-To=%3C4755EF5F.1030107%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] circles &amp; arcs in Toped</H1>
+    <B>Svilen Krastev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20circles%20%26%20arcs%20in%20Toped&In-Reply-To=%3C4755EF5F.1030107%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] circles &amp; arcs in Toped">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Wed Dec  5 01:22:55 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000025.html">[Toped-development] Fwd:  circles &amp; arcs in Toped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Currently Toped and respectively TELL doesn't have a dedicated functions 
+for circles, arcs and similar curves. This is an attempt to discuss the 
+matter and to try to get better idea what shall be implemented and how.
+
+WHAT: - It seems obvious that we need to implement some kind of curve 
+primitive here - one or more. Circle alone doesn't seem to be that 
+commonly used. Arc or segment of a circle are more often needed. Ideas?
+
+HOW: - there are generally two possibilities:
+- to keep toped clean from curves and to use tell functions producing 
+appropriate polygons.
+- to add one or more new data type in toped, and to update the tdt format.
+First one will be easier and quicker to implement. It might result in a 
+simpler view of the final rounded shapes and is likely will be more 
+flexible.
+The second one will produce more compact databases and most likely will 
+be quicker to run.
+
+In both cases we need a clear idea how to build the equivalent polygons. 
+There use to be (I believe there still are) a lot of troubles with the 
+back-end tools - DRC, fractioning etc.
+
+It could be a good idea to combine both approaches. For more often used 
+shapes - to introduce new toped data type(s). In the same time - we can 
+add some math functions in tell which combined with lists will bring us 
+all the flexibility we need. I mean sin/cos and it can be done really quick.
+
+Regards
+Svilen
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000025.html">[Toped-development] Fwd:  circles &amp; arcs in Toped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

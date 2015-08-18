@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] toped on Fedora 9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20toped%20on%20Fedora%209&In-Reply-To=%3C489B6024.5050405%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000055.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] toped on Fedora 9</H1>
+    <B>Svilen</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20toped%20on%20Fedora%209&In-Reply-To=%3C489B6024.5050405%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] toped on Fedora 9">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Thu Aug  7 22:50:44 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000055.html">[Toped-development] HELP! gdsii data_type example
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+As you know it was impossible to run toped on Fedora 9 with the original 
+video drivers. Vendor drivers are still not officially available.
+That is the reason why we still don't have an RPM in FC9 repositories. 
+It was clear from the beginning that the problem was that toped can't 
+obtain a GLX visual with accumulation buffers. They are used for the 
+interactive graphics. A long investigation but finally something popped-up.
+
+Your /etc/X11/xorg.conf file has to be updated as shown below
+
+Section &quot;ServerLayout&quot;
+        ...
+        Option         &quot;GlxVisuals&quot; &quot;all&quot;
+EndSection
+
+This is proved working on a platform with the ATI graphic card. I have 
+no information about nVidia platforms and whether the problem there was 
+existing on the first place.
+
+The bad news is that the graphics still doesn't seem to be at its best, 
+so this is not the end of the road.
+
+In case you need further info:
+
+<A HREF="http://www.mail-archive.com/dri-devel@lists.sourceforge.net/msg35869.html">http://www.mail-archive.com/dri-devel@lists.sourceforge.net/msg35869.html</A>
+
+
+Regards
+Svilen
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000055.html">[Toped-development] HELP! gdsii data_type example
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

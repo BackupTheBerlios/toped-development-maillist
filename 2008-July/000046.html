@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] GDS conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20GDS%20conversion&In-Reply-To=%3C613debac0807032103hd6d7d52o2d1b98d1b773ad73%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000043.html">
+   <LINK REL="Next"  HREF="000047.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] GDS conversion</H1>
+    <B>Lu Lu</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20GDS%20conversion&In-Reply-To=%3C613debac0807032103hd6d7d52o2d1b98d1b773ad73%40mail.gmail.com%3E"
+       TITLE="[Toped-development] GDS conversion">williamloolulu at gmail.com
+       </A><BR>
+    <I>Fri Jul  4 06:03:25 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000043.html">[Toped-development] GDS conversion
+</A></li>
+        <LI>Next message: <A HREF="000047.html">[Toped-development] GDS conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>As far as my experience ( Toped 0.8.6 ), there is only datatype &quot;0&quot; exported
+to GDSII file. My wolkaround solution is to change it manully.
+First open that GDSII file in a hex editor and find the layer datetype tag,
+of course in hex format of four digits. For example, &quot;0E02&quot; reprsents
+structure datatype, and &quot;1602&quot; is for texttype ( Toped will exporting tag
+&quot;1602&quot; if that layer is created using  text command , a good manner ! ).
+Four digits following these tags are datetype number in hex format. As i
+mentioned before, it should be &quot;0000&quot; or zero in decimal number before any
+changes.  The next step is relatively simple, just change whatever number
+you want your datetype to be and save it afterwards. Remember using hex
+format. I have changed my layout files this way and all passed DRC and LVS
+with no error on layer representation.
+
+
+On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">gaitukevich.s at gmail.com</A>&gt;
+wrote:
+
+&gt;<i>
+</I>&gt;&gt;<i> &gt; By the way, we need to have the similar function for gds
+</I>&gt;&gt;<i> &gt;  definegdslay(&lt;gds name&gt;, &lt;gdsdatatype&gt; , &lt;tdt number&gt;);
+</I>&gt;&gt;<i> I guess you mean &lt;gds number&gt;, because GDS doesn't define layer names.
+</I>&gt;&gt;<i> You know that &lt;tdt number&gt; and &lt;gds number&gt; in Toped are the same thing.
+</I>&gt;&gt;<i> We've simply adopted layer number approach.
+</I>&gt;<i>
+</I>&gt;<i> Yes,  it must be  &lt;gds number&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> The interesting point above
+</I>&gt;&gt;<i> is &lt;gdsdatatype&gt;.  Do you mean here GDSII DATATYPE record or data type
+</I>&gt;&gt;<i> in a sense of box, polygon, text, pattern etc. ?
+</I>&gt;&gt;<i> In all cases I would suggest to open a separate thread about this - it
+</I>&gt;&gt;<i> has nothing to do with CIF
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I mean GDSII DATATYPE record.
+</I>&gt;<i> I saw few foundries that provide their lists of layers like
+</I>&gt;<i> &lt;layer name&gt; &lt;layer gds number&gt; &lt;layer GDS datatype&gt;.
+</I>&gt;<i>
+</I>&gt;<i> For example
+</I>&gt;<i> NWELL        1    10
+</I>&gt;<i>
+</I>&gt;<i> It can be trouble to use current version of toped with such foundries.
+</I>&gt;<i>
+</I>&gt;<i> I never seen it before but potentially it can be happened that different
+</I>&gt;<i> layers can use same layer number but different datatypes. For instance, for
+</I>&gt;<i> lvs purposes.
+</I>&gt;<i>
+</I>&gt;<i> Regards
+</I>&gt;<i> Sergey
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/toped-development/attachments/20080704/1463bd76/attachment.html">https://lists.berlios.de/pipermail/toped-development/attachments/20080704/1463bd76/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000043.html">[Toped-development] GDS conversion
+</A></li>
+	<LI>Next message: <A HREF="000047.html">[Toped-development] GDS conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

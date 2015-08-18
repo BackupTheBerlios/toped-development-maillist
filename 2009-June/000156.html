@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] [Bug #15894] GDS DBU units are parsed improperly
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2315894%5D%20GDS%20DBU%20units%20are%20parsed%20improperly&In-Reply-To=%3C200906211239.n5LCdQH6006386%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000155.html">
+   <LINK REL="Next"  HREF="000157.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] [Bug #15894] GDS DBU units are parsed improperly</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2315894%5D%20GDS%20DBU%20units%20are%20parsed%20improperly&In-Reply-To=%3C200906211239.n5LCdQH6006386%40unicorn.berlios.de%3E"
+       TITLE="[Toped-development] [Bug #15894] GDS DBU units are parsed improperly">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sun Jun 21 14:39:26 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000155.html">[Toped-development] toped failing to build
+</A></li>
+        <LI>Next message: <A HREF="000157.html">[Toped-development] [Bug #15921] DBU and UU are ignored during	conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15894, was updated on 2009-Jun-21 13:39
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: other
+Status: Open
+Resolution: None
+Bug Group: bug
+Priority: 9
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: GDS DBU units are parsed improperly
+
+Details: DBU is a central parameter in the GDS conversion and it is not quite clear why it was not spotted earlier.
+The problem is not in the conversion of the reals (gds &lt;--&gt; ieee), but rather (stupidly) in the fact the curnum input parameter to GDSin::GdsRecord::retData(...) function was ignored when data type was gdsDT_REAL8B.
+
+It's still quite astonishing how the conversion was working ?!?
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15894&amp;group_id=5037">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15894&amp;group_id=5037</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000155.html">[Toped-development] toped failing to build
+</A></li>
+	<LI>Next message: <A HREF="000157.html">[Toped-development] [Bug #15921] DBU and UU are ignored during	conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

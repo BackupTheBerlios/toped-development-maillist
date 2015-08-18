@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] shared-lib-calls-exit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20shared-lib-calls-exit&In-Reply-To=%3C13dbfe4f0811100906g7577471ek7294dae69362fcde%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000082.html">
+   <LINK REL="Next"  HREF="000084.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] shared-lib-calls-exit</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20shared-lib-calls-exit&In-Reply-To=%3C13dbfe4f0811100906g7577471ek7294dae69362fcde%40mail.gmail.com%3E"
+       TITLE="[Toped-development] shared-lib-calls-exit">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Mon Nov 10 18:06:08 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000082.html">[Toped-development] Roadmap to the next release
+</A></li>
+        <LI>Next message: <A HREF="000084.html">[Toped-development] shared-lib-calls-exit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello there,
+
+I have the following rpmlint warnings on 0.9.2. Can anyone have a look
+at these have them fixed for the next release, please?
+
+chitlesh(devel)[0]$ rpmlint -i
+/home/chitlesh/rpmbuild/RPMS/i386/toped-0.9.2-1.fc9.i386.rpm
+
+toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_ifaces.so.0.0.0
+<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">exit at GLIBC_2.0</A>
+
+toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_common.so.0.0.0
+<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">exit at GLIBC_2.0</A>
+
+toped.i386: W: shared-lib-calls-exit /usr/lib/libtpd_parser.so.0.0.0
+<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">exit at GLIBC_2.0</A>
+
+This library package calls exit() or _exit(), probably in a non-fork()
+context. Doing so from a library is strongly discouraged - when a library
+function calls exit(), it prevents the calling program from handling the
+error, reporting it to the user, closing files properly, and cleaning up any
+state that the program has. It is preferred for the library to return an
+actual error code and let the calling program decide how to handle the
+situation
+
+Kind regards,
+Chitlesh
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000082.html">[Toped-development] Roadmap to the next release
+</A></li>
+	<LI>Next message: <A HREF="000084.html">[Toped-development] shared-lib-calls-exit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

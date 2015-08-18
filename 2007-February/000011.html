@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] missing edit operations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20missing%20edit%20operations&In-Reply-To=%3C45C7ADDD.50407%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000010.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] missing edit operations</H1>
+    <B>Svilen Krustev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20missing%20edit%20operations&In-Reply-To=%3C45C7ADDD.50407%40googlemail.com%3E"
+       TITLE="[Toped-development] missing edit operations">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Mon Feb  5 23:21:17 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000010.html">[Toped-development]  missing edit operations
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+One thing I missed in my initial post was the size and step of the array 
+references. It seems that one function here replacing all four 
+parameters at once should be enough.
+&gt;<i> &gt;--&gt; Changing the object layer of selected objects:
+</I>&gt;<i> &gt;    changelayer(&lt;target_layer&gt;)
+</I>&gt;<i> &gt;    The question is whether we need a source layer in this function or
+</I>&gt;<i> &gt;not. If we don't have a source layer parameter, then it's possible to
+</I>&gt;<i> &gt;select objects from different layers and to move them to the target
+</I>&gt;<i> &gt;layer. This seems to be more flexible but more dangerous functionality.
+</I>&gt;<i>
+</I>&gt;<i> We can warn user when he use this function for multiple layers.
+</I>OK
+There will be undo available, so a warning in the log window should be 
+enough. No source_layer parameter.
+&gt;<i>
+</I>&gt;<i> More useful function what we need (at least i need):
+</I>&gt;<i>     resizelayer(&lt;target_layer&gt;, step)   
+</I>This is a logic operation.  I know they are missing, but it is a subject 
+of another discussion. Actually there is nothing to discuss - we need 
+this. The only trouble is that it will require more time.
+&gt;<i> &gt;--&gt; Layer transfer:
+</I>&gt;<i> &gt;    trasferlayer(&lt;source_layer&gt;, &lt;target_layer&gt;, &lt;hierarchical&gt;)
+</I>&gt;<i> &gt;    This is supposed to work over the entire layer, not on the selected
+</I>&gt;<i> &gt;objects. That's why source_layer parameter is required. The hierarchical
+</I>&gt;<i> &gt;option will make possible to change the layers in the entire design or
+</I>&gt;<i> &gt;just on a branch of the hierarchy. If there were objects selected in the
+</I>&gt;<i> &gt;source_layer they should remain selected in the target one.
+</I>&gt;<i> &gt;    copylayer(&lt;source_layer&gt;, &lt;target_layer&gt;, &lt;hierarchical&gt;)
+</I>&gt;<i> &gt;    Not sure we need this...at last not for editor purposes
+</I>&gt;<i>
+</I>&gt;<i> I think this functionality must be placed into import/export gds.
+</I>&gt;<i> Too dangerous for regular operation.
+</I>I though that it's a good idea, and meanwhile I start implementing it. 
+The forward operation is not a problem. The problem comes with undo. It 
+breaks literally the basics of the undo operation, because it should 
+work on a hierarchy of cells i.e. the undo related data should contain 
+information about the cell, while all other undo operations work 
+strictly on the current cell. To cut the long story short - undo is not 
+feasible if the operation is hierarchical. Then the whole function is 
+redundant, because it is not any different from changelayer(&lt;target_layer&gt;)
+Putting it in the gds import/export is a known idea - we already have 
+two pass gds conversion. Nevertheless the initial idea was that the 
+function can be used as a regular operation and if undo was available - 
+then it wasn't that dangerous.
+So the way forward seem to be TELL with something similar to what you 
+are proposing below about texts.
+&gt;<i>
+</I>&gt;<i> &gt;--&gt; Text manipulation - all functions work on the selected text objects.
+</I>&gt;<i> &gt;    changetextsize(&lt;new_size&gt;)
+</I>&gt;<i> &gt;    The idea here seems to be trivial. More interesting will be if we
+</I>&gt;<i> &gt;have to increase/decrease the text size by X...
+</I>&gt;<i>
+</I>&gt;<i> I agree
+</I>&gt;<i>
+</I>&gt;<i> &gt;    changetext(&lt;new_text&gt;, &lt;old_text&gt;)
+</I>&gt;<i> &gt;.........
+</I>&gt;<i> Too many cases we must take account(replace sizes, fonts and so on).
+</I>&gt;<i> I think much better provide syntax sugar for such operation in TELL. 
+</I>&gt;<i> Like this
+</I>&gt;<i>
+</I>&gt;<i> all_texts = selectobject(text, regexp(&quot;path*&quot;));
+</I>&gt;<i> for_each(all_texts, lambda(x)
+</I>&gt;<i> {
+</I>&gt;<i>     string str = getproperty(x, text);
+</I>&gt;<i>     string str1 = replacesubstring(str, &quot;path&quot;, &quot;bus&quot;);
+</I>&gt;<i>     replaceproperty(x, text, str1))
+</I>&gt;<i> }
+</I>I already kind of agreed with this. Of course the syntax above is just 
+an example I guess. It requires two , actually 3 major updates in TELL 
+and one in toped.
+- work with lists - we have lists at the moment, but we can't use them 
+really, except for some build-in toped functions. Lists are waiting for 
+some basic functionality like adding/removing first/last etc.
+- another type of loop - foreach. This I would agree is the syntactic 
+sugar for traversing the lists, because it can be done using more 
+&quot;traditional&quot; loop operators.
+- recursion. Simple thing that we don't have in TELL. Like all simple 
+things it might be a source of troubles. We going to need it in order to 
+implement layer transfer across the hierarchy, cell reference changes 
+and similar things. Maybe I forgot to mention that it's relatively 
+simple to introduce a function that will return all the child cells of 
+the current cell, then using recursive calls it will be possible to do 
+stuff across the hierarchy. And having undo as well.
+- in toped we'll need to introduce select filters - not only shape 
+types(text,ref,wire etc) , but also property values
+&gt;<i> The same for
+</I>&gt;<i>     changereference(&lt;old_cell
+</I>&gt;<i> _name&gt;,&lt;new_cell_name&gt;,&lt;hierarchical&gt;)
+</I>&gt;<i> It's useful function, but
+</I>&gt;<i>     changereference(&lt;new_cell_name&gt;)
+</I>&gt;<i> only on script level.
+</I>We'll have to drop the &lt;hierarchical&gt; parameter here. Reasons are the 
+same as for transferlayer. Then it appears that only one function - the 
+second one will be enough. And undo will be there. Hierarchical 
+operations will be possible via TELL as discussed above - and that's a 
+script level.
+Well any user function can be added to the toped menu by the user, so 
+I'm not sure what do you mean to keep it on script level.
+
+
+Regards
+Svilen
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000010.html">[Toped-development]  missing edit operations
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

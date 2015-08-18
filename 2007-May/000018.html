@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] TELL list operations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20TELL%20list%20operations&In-Reply-To=%3C4654C2DF.30408%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] TELL list operations</H1>
+    <B>Svilen Krustev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20TELL%20list%20operations&In-Reply-To=%3C4654C2DF.30408%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] TELL list operations">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Thu May 24 00:40:31 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The usual second though... now when the list operations are almost 
+implemented - some preliminary documentation
+
+  - Almost all operations are implemented using tell operators. The only 
+exception is the function length()
+  - Almost all operations are based on indexing or index-like operators, 
+thus making tell lists look and fill like dynamic arrays. Maybe we have 
+to change the name here.
+  - No pointers
+  - The interpreter throws a runtime error if an invalid index is 
+encountered
+
+-- Indexing - works as expected. Indexed variable can be also lvalue.
+    listvar[i] = listvar[j]
+
+-- Add/insert a component.
+    listvar[&lt;index&gt;:+] = &lt;var&gt;;
+       will insert a component after indext-th component and will 
+initialize it to &lt;var&gt;. If &lt;index&gt; is omitted - will simply add to the 
+end of the list.
+    listvar[+:&lt;index&gt;] = &lt;var&gt;;
+       will insert a component before indext-th component and will 
+initialize it to &lt;var&gt;. If &lt;index&gt; is omitted - will simply insert in 
+the beginning of the list.
+
+-- List union
+  The operators above will take also a list as an rvalue. This produces 
+not only a simple list union, but also inserting a list anywhere into 
+another list
+    listvar[&lt;index&gt;:+] = &lt;var_list&gt;;
+    listvar[+:&lt;index&gt;] = &lt;var_list&gt;;
+
+-- Remove a component.
+    &lt;var&gt; = listvar[&lt;index&gt;:-] ;
+    &lt;var&gt; = listvar[-:&lt;index&gt;];
+       The operators above are equivalent. They will remove the 
+indext-th component from the listvar and will return its value in the 
+operand stack.
+       If &lt;index&gt; is omitted - the operators are not equivalent anymore
+    &lt;var&gt; = listvar[:-];
+         will remove the last component from the list
+    &lt;var&gt; = listvar[-:];
+         will remove the first component from the list
+
+-- List slices (under development)
+    &lt;var_list&gt; = listvar[&lt;index&gt;:-&lt;num&gt;];
+       will remove &lt;num&gt; sequential components from listvar starting 
+from &lt;index&gt;. The slice will be pushed in the operand stack. &lt;num&gt; must 
+be &gt; 0.
+    &lt;var_list&gt; = listvar[&lt;num&gt;-:&lt;index&gt;];
+       will remove &lt;num&gt; components from listvar ending with &lt;index&gt;. 
+The slice will be pushed in the operand stack. &lt;num&gt; must be &gt; 0.
+Obviously remove operation is a special case of the slice operation, 
+when &lt;num&gt; == 1. The difference between them is that the former returns 
+&lt;var&gt; while the latter returns &lt;var_list&gt;
+
+-- List length. Implemented with a function.
+    &lt;int&gt; = length(&lt;listvar&gt;);
+
+-- Traversing - foreach operator as described below
+
+(Sorry for the strange notation...  The tell definitions below might 
+help a little
+     &lt;tell_type&gt; list listvar, var_list;
+     &lt;tell_type&gt; var;
+)
+
+The idea about implementing list operations using functions proved to be 
+wrong. A lot of reasons - just one of them: tell maintains strict type 
+checking, and in the same time - user defined types. There is no clear 
+way to define a function that will return unknown type, and all user 
+defined types are unknown.
+
+Some samples &amp; examples can be found in the repository - 
+trunk/tll/checklists.tll
+Anything missing?
+
+Svilen
+
+&gt;<i>
+</I>&gt;<i> As discussed earlier, TELL lacks any list operations. In the same time 
+</I>&gt;<i> lists and structures are already integral part of the script types. It 
+</I>&gt;<i> seems we need 2 groups of additions. (not discussing list definition 
+</I>&gt;<i> and initialization because it is already implemented)
+</I>&gt;<i>
+</I>&gt;<i> - list modification - add/remove components to/from the list.
+</I>&gt;<i> - access to the member components and traversing
+</I>&gt;<i>
+</I>&gt;<i> When it comes to the implementation of those additions, two general 
+</I>&gt;<i> questions need to be answered
+</I>&gt;<i> - what happens in case of an attempt to access nonexistent list 
+</I>&gt;<i> component. This actually brings the bigger question - what about 
+</I>&gt;<i> pointers?
+</I>&gt;<i> - whether the basic list operations should be implemented as operators 
+</I>&gt;<i> or as a build-in TELL functions.
+</I>&gt;<i>
+</I>&gt;<i> Here is a quick list of the possible implementation using build-in 
+</I>&gt;<i> TELL functions. No pointers.
+</I>&gt;<i>
+</I>&gt;<i> &lt;type&gt;        = first(&lt;type_list&gt;)                   - first in the list
+</I>&gt;<i> &lt;type_list&gt;   = first(&lt;type_list&gt;,integer)           - first N in the 
+</I>&gt;<i> list, slice
+</I>&gt;<i> &lt;type&gt;        = last(&lt;type_list&gt;)                    - last in the list
+</I>&gt;<i> &lt;type_list&gt;   = last(&lt;type_list&gt;, integer)           - last N in the 
+</I>&gt;<i> list, slice
+</I>&gt;<i>  Question is still open what shall happen if an empty list is accessed 
+</I>&gt;<i> from the functions above
+</I>&gt;<i>
+</I>&gt;<i> &lt;type_list&gt;   = pushfront(&lt;type_list&gt;, &lt;type&gt;)       - add one 
+</I>&gt;<i> component in the front of the list
+</I>&gt;<i> &lt;type_list&gt;   = pushback(&lt;type_list&gt;, &lt;type&gt;)        - add one 
+</I>&gt;<i> component in the back of the list
+</I>&gt;<i> &lt;type&gt;        = popfront(&lt;type_list&gt;)                - remove one 
+</I>&gt;<i> component from the beginning of the list
+</I>&gt;<i> &lt;type_list&gt;   = popfront(&lt;type_list&gt;, integer)       - remove N 
+</I>&gt;<i> components from the beginning of the list
+</I>&gt;<i> &lt;type&gt;        = popback(&lt;type_list&gt;)                 - remove one 
+</I>&gt;<i> component from the end of the list
+</I>&gt;<i> &lt;type_list&gt;   = popback(&lt;type_list&gt;, integer)        - remove N 
+</I>&gt;<i> components from the end of the list
+</I>&gt;<i>
+</I>&gt;<i> &lt;unsigned&gt;    = length(&lt;type_list&gt;)
+</I>&gt;<i>
+</I>&gt;<i> In addition for traversing of lists - operator
+</I>&gt;<i> foreach(&lt;type&gt; ; &lt;type_list&gt;) {}
+</I>&gt;<i> (already implemented)
+</I>&gt;<i>
+</I>&gt;<i> What about indexing? It seems more appropriate for arrays, but it can 
+</I>&gt;<i> be nice to have this for TELL lists?
+</I>&gt;<i>
+</I>&gt;<i> Svilen
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

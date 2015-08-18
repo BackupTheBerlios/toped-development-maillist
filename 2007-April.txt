@@ -1,0 +1,60 @@
+From krustev.svilen at googlemail.com  Sat Apr 14 16:31:08 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Sat, 14 Apr 2007 15:31:08 +0100
+Subject: [Toped-development] TELL list operations
+Message-ID: <4620E5AC.1070609@tiscali.co.uk>
+
+
+As discussed earlier, TELL lacks any list operations. In the same time 
+lists and structures are already integral part of the script types. It 
+seems we need 2 groups of additions. (not discussing list definition and 
+initialization because it is already implemented)
+
+- list modification - add/remove components to/from the list.
+- access to the member components and traversing
+
+When it comes to the implementation of those additions, two general 
+questions need to be answered
+- what happens in case of an attempt to access nonexistent list 
+component. This actually brings the bigger question - what about pointers?
+- whether the basic list operations should be implemented as operators 
+or as a build-in TELL functions.
+
+Here is a quick list of the possible implementation using build-in TELL 
+functions. No pointers.
+
+<type>        = first(<type_list>)                   - first in the list
+<type_list>   = first(<type_list>,integer)           - first N in the 
+list, slice
+<type>        = last(<type_list>)                    - last in the list
+<type_list>   = last(<type_list>, integer)           - last N in the 
+list, slice
+  Question is still open what shall happen if an empty list is accessed 
+from the functions above
+
+<type_list>   = pushfront(<type_list>, <type>)       - add one component 
+in the front of the list
+<type_list>   = pushback(<type_list>, <type>)        - add one component 
+in the back of the list
+<type>        = popfront(<type_list>)                - remove one 
+component from the beginning of the list
+<type_list>   = popfront(<type_list>, integer)       - remove N 
+components from the beginning of the list
+<type>        = popback(<type_list>)                 - remove one 
+component from the end of the list
+<type_list>   = popback(<type_list>, integer)        - remove N 
+components from the end of the list
+
+<unsigned>    = length(<type_list>)
+
+In addition for traversing of lists - operator
+foreach(<type> ; <type_list>) {}
+(already implemented)
+
+What about indexing? It seems more appropriate for arrays, but it can be 
+nice to have this for TELL lists?
+
+Svilen
+
+
+

@@ -1,0 +1,16 @@
+From krustev.svilen at googlemail.com  Tue Sep 12 22:45:48 2006
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Tue, 12 Sep 2006 21:45:48 +0100
+Subject: [Toped-development] Bugfix release 0.81
+Message-ID: <45071C7C.1000709@tiscali.co.uk>
+
+Hi,
+I'm planning to freeze the source code of /branches/RELEASE_0.8_BUGFIX 
+and to make a release 0.81 at the end of this week. What remains there 
+is to update the NEWS and README files and the version number of the build.
+Please let me know if you're planning more bug fixes or if something 
+critical poped-up recently
+
+Svilen
+
+

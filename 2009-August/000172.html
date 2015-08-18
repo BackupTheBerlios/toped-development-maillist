@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] release candidate 0.94
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20release%20candidate%200.94&In-Reply-To=%3C4A744DF2.6030704%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000171.html">
+   <LINK REL="Next"  HREF="000168.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] release candidate 0.94</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20release%20candidate%200.94&In-Reply-To=%3C4A744DF2.6030704%40googlemail.com%3E"
+       TITLE="[Toped-development] release candidate 0.94">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sat Aug  1 16:15:14 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000171.html">[Toped-development] release candidate 0.94
+</A></li>
+        <LI>Next message: <A HREF="000168.html">[Toped-development] Incomming release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Chitlesh,
+
+See the comments below
+
+Regards
+Svilen
+&gt;<i> However on launching this RC, I get a dialog box stating
+</I>&gt;<i> &quot;openGL version 1.4 is not supported&quot;
+</I>&gt;<i>
+</I>&gt;<i> Report video from toped :
+</I>&gt;<i> &lt;= Vendor:Tungsten Graphics, Inc.
+</I>&gt;<i> &lt;= Renderer:Mesa DRI R100 (RV200 4C57) 20090101 x86/MMX/SSE2 TCL DRI2
+</I>&gt;<i> &lt;= Version:1.3 Mesa 7.6-devel
+</I>&gt;<i> &lt;= GLX version 12
+</I>&gt;<i> &lt;= Using GLEW 1.5.1
+</I>&gt;<i>   
+</I>That's OK. This is to say that the &quot;old&quot; renderer will be used, which is 
+slower (faster than it was before, but still slower than the &quot;new&quot; one). 
+I believe with a vendor driver this will not be the case. You can see in 
+the video report, that openGL version is 1.3. New renderer is using 
+virtual buffer objects which were introduced in 1.4 (current openGL 
+version is 3.0 :) )
+This should not affect stability so - Toped should work as normal. Note, 
+this has nothing to do with the problems we had previously with the 
+accumulation buffer. It should not require any changes in the X 
+configuration.
+&gt;<i> attached is the RPM spec file
+</I>&gt;<i>   
+</I>Thanks !
+&gt;<i>
+</I>&gt;<i> Also, I would recommend you to add the following into the &quot;make
+</I>&gt;<i> install&quot; process, hence other distributions can also benefit from the
+</I>&gt;<i> icons on the menus:
+</I>&gt;<i>
+</I>&gt;<i> %{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
+</I>&gt;<i> %{__cp} -p ui/%{name}_16x16.png
+</I>&gt;<i> %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/toped.png
+</I>&gt;<i> %{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/
+</I>&gt;<i> %{__cp} -p ui/%{name}_32x32.png
+</I>&gt;<i> %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/toped.png
+</I>&gt;<i> %{__mkdir} -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/
+</I>&gt;<i> %{__cp} -p ui/%{name}_64x64.png
+</I>&gt;<i> %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/toped.png
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I accept this. We've approached the point where a proper icon theme 
+management is essential. Actually I need help here all along. Starting 
+with the icons themselves ( current icons are considered temporary) and 
+finishing with their proper installation. I google the problem and found 
+a couple of links
+<A HREF="http://live.gnome.org/ThemableAppSpecificIcons">http://live.gnome.org/ThemableAppSpecificIcons</A>
+<A HREF="http://live.gnome.org/GnomeGoals/AppIcon">http://live.gnome.org/GnomeGoals/AppIcon</A>
+Will appreciate more if you have something in mind. The impression is 
+that we need to take the problem seriously and my intention is to to 
+look for help. At the moment though - the suggestion is to keep the 
+current status for this release.
+&gt;<i> Typo: remove the &quot;a&quot;
+</I>&gt;<i> &lt;= Please report a bugs to <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> or
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">bugs at toped.org.uk</A>
+</I>&gt;<i>   
+</I>OK, I've changed the text
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Chitlesh
+</I>&gt;<i>   
+</I>&gt;<i> On Sat, Aug 1, 2009 at 2:14 PM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi Chitlesh,
+</I>&gt;&gt;<i> There must be some kind of mistake here. Are you sure that you've
+</I>&gt;&gt;<i> checked-out  RELEASE_0.94_CAND?
+</I>&gt;&gt;<i> The thing is that the files tedop.cpp and tedop.h were removed from the
+</I>&gt;&gt;<i> repository somewhere between 0.86 and 0.9 release. This is a couple of
+</I>&gt;&gt;<i> years ago.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I do sit still on Fedora 10, nevertheless... Would you double check?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000171.html">[Toped-development] release candidate 0.94
+</A></li>
+	<LI>Next message: <A HREF="000168.html">[Toped-development] Incomming release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

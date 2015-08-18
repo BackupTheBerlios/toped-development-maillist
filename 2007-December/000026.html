@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Fwd:  circles &amp; arcs in Toped
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Fwd%3A%20%20circles%20%26%20arcs%20in%20Toped&In-Reply-To=%3C47587DD2.7060808%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000025.html">
+   <LINK REL="Next"  HREF="000027.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Fwd:  circles &amp; arcs in Toped</H1>
+    <B>Svilen Krastev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Fwd%3A%20%20circles%20%26%20arcs%20in%20Toped&In-Reply-To=%3C47587DD2.7060808%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] Fwd:  circles &amp; arcs in Toped">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Thu Dec  6 23:55:14 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000025.html">[Toped-development] Fwd:  circles &amp; arcs in Toped
+</A></li>
+        <LI>Next message: <A HREF="000027.html">[Toped-development] Fwd:  Fwd: circles &amp; arcs in Toped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#26">[ date ]</a>
+              <a href="thread.html#26">[ thread ]</a>
+              <a href="subject.html#26">[ subject ]</a>
+              <a href="author.html#26">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+If we decide to have a new data types we will need converttopoly() or 
+maybe even implicit conversion, hidden from the user. It must be done 
+also for the wires, although it virtually exists already - that's the 
+way we draw them.
+
+1. Vertex accuracy will be determined by the user units of the database. 
+(see the definition of the tdtdesign class  in tedesign.h DBU &amp; UU) The 
+default and only possible at the moment is 1e-3. Good point - I have to 
+update newdesign() function with an overloaded member with DBU and UU 
+arguments.
+You know of course that improving the accuracy will reduce the maximum 
+possible size of the chip. At the end of the day it all comes down to 32 
+bit integers which must be used in GDSII. Of course this won't remove 
+the troubles with the DRC.
+
+Concerning the off-grid points. As long as we have a dedicated type and 
+store the arcs/circles using that type - everything should be on grid. 
+When we convert that to a polygon, or create similar polygon from tell - 
+everything will be off-grid potentially. Not sure we can do something 
+about that anyway, because GDSII doesn't have similar types. Don't know 
+about oasis - we have to check this!
+
+2. If I understand the question properly - the short answer is no. The 
+only way I see is conversion to a polygon and then applying the logic 
+operations. Same for the logic operations with wires(which is not done 
+yet) , although I'm quite tempted to try to preserve the type there  
+when possible.
+Anyway - polygons are the most common shape and logic operations are 
+supposed to work for them.
+
+On the second thought.
+Correct me if I'm wrong, but you're thinking here about the high voltage 
+devices and possibly bipolar? Then what about a box with rounded 
+corners? And polygon and wire with rounded corners? Possibly with 
+different radius for every corner... or that's too much? Circle and 
+ellipse are then naturally produced from a box with rounded corners? HV 
+gates can be drawn as a wire with rounded corners? Then we can think 
+about preservation of the type after a logic operation.
+What about this?
+
+Regards
+Svilen
+
+Sergey Gaitukevich wrote:
+&gt;<i>
+</I>&gt;<i> I agree with you. We can combine to approaches if provide function 
+</I>&gt;<i> converttopoly();
+</I>&gt;<i> But there are two questions what we need to decide before start work:
+</I>&gt;<i> 1. What about accuracy of positions of vertex? Most of them will be 
+</I>&gt;<i> off-grid.
+</I>&gt;<i> 2. Is it easily to add support of arcs to logical operations?
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Sergey
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000025.html">[Toped-development] Fwd:  circles &amp; arcs in Toped
+</A></li>
+	<LI>Next message: <A HREF="000027.html">[Toped-development] Fwd:  Fwd: circles &amp; arcs in Toped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#26">[ date ]</a>
+              <a href="thread.html#26">[ thread ]</a>
+              <a href="subject.html#26">[ subject ]</a>
+              <a href="author.html#26">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

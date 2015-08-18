@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] TELL list operations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20TELL%20list%20operations&In-Reply-To=%3C4620E5AC.1070609%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] TELL list operations</H1>
+    <B>Svilen Krustev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20TELL%20list%20operations&In-Reply-To=%3C4620E5AC.1070609%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] TELL list operations">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Sat Apr 14 16:31:08 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+As discussed earlier, TELL lacks any list operations. In the same time 
+lists and structures are already integral part of the script types. It 
+seems we need 2 groups of additions. (not discussing list definition and 
+initialization because it is already implemented)
+
+- list modification - add/remove components to/from the list.
+- access to the member components and traversing
+
+When it comes to the implementation of those additions, two general 
+questions need to be answered
+- what happens in case of an attempt to access nonexistent list 
+component. This actually brings the bigger question - what about pointers?
+- whether the basic list operations should be implemented as operators 
+or as a build-in TELL functions.
+
+Here is a quick list of the possible implementation using build-in TELL 
+functions. No pointers.
+
+&lt;type&gt;        = first(&lt;type_list&gt;)                   - first in the list
+&lt;type_list&gt;   = first(&lt;type_list&gt;,integer)           - first N in the 
+list, slice
+&lt;type&gt;        = last(&lt;type_list&gt;)                    - last in the list
+&lt;type_list&gt;   = last(&lt;type_list&gt;, integer)           - last N in the 
+list, slice
+  Question is still open what shall happen if an empty list is accessed 
+from the functions above
+
+&lt;type_list&gt;   = pushfront(&lt;type_list&gt;, &lt;type&gt;)       - add one component 
+in the front of the list
+&lt;type_list&gt;   = pushback(&lt;type_list&gt;, &lt;type&gt;)        - add one component 
+in the back of the list
+&lt;type&gt;        = popfront(&lt;type_list&gt;)                - remove one 
+component from the beginning of the list
+&lt;type_list&gt;   = popfront(&lt;type_list&gt;, integer)       - remove N 
+components from the beginning of the list
+&lt;type&gt;        = popback(&lt;type_list&gt;)                 - remove one 
+component from the end of the list
+&lt;type_list&gt;   = popback(&lt;type_list&gt;, integer)        - remove N 
+components from the end of the list
+
+&lt;unsigned&gt;    = length(&lt;type_list&gt;)
+
+In addition for traversing of lists - operator
+foreach(&lt;type&gt; ; &lt;type_list&gt;) {}
+(already implemented)
+
+What about indexing? It seems more appropriate for arrays, but it can be 
+nice to have this for TELL lists?
+
+Svilen
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

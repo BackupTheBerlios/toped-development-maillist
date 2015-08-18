@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] missing edit operations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20missing%20edit%20operations&In-Reply-To=%3C45C48C5F.9040406%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000010.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] missing edit operations</H1>
+    <B>Svilen Krustev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20missing%20edit%20operations&In-Reply-To=%3C45C48C5F.9040406%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] missing edit operations">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Sat Feb  3 14:21:35 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000010.html">[Toped-development]  missing edit operations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+At the moment there are at least two areas of edit operations where 
+Toped lacks functionality.
+
+Property changes in layout objects.
+    - Contents and size of the text objects (not mentioning fonts yet)
+    - Referenced cells in cellref and cellaref objects
+    - Layer change - for all objects
+
+Layer and cross-layer transfers
+    - move/copy a layer (as a whole) to another layer
+    - move/copy selected objects to another layer
+
+Here is the initial idea for the new TELL functions, that should fill-up 
+this gap.
+
+--&gt; Changing the object layer of selected objects:
+    changelayer(&lt;target_layer&gt;)
+    The question is whether we need a source layer in this function or 
+not. If we don't have a source layer parameter, then it's possible to 
+select objects from different layers and to move them to the target 
+layer. This seems to be more flexible but more dangerous functionality.
+
+--&gt; Layer transfer:
+    trasferlayer(&lt;source_layer&gt;, &lt;target_layer&gt;, &lt;hierarchical&gt;)
+    This is supposed to work over the entire layer, not on the selected 
+objects. That's why source_layer parameter is required. The hierarchical 
+option will make possible to change the layers in the entire design or 
+just on a branch of the hierarchy. If there were objects selected in the 
+source_layer they should remain selected in the target one.
+    copylayer(&lt;source_layer&gt;, &lt;target_layer&gt;, &lt;hierarchical&gt;)
+    Not sure we need this...at last not for editor purposes
+
+--&gt; Text manipulation - all functions work on the selected text objects.
+    changetextsize(&lt;new_size&gt;)
+    The idea here seems to be trivial. More interesting will be if we 
+have to increase/decrease the text size by X...
+    changetext(&lt;new_text&gt;, &lt;old_text&gt;)
+    It's interesting here. Not very often you'll need to change the 
+contents of a bunch of text object to a new common one. In the same time 
+- quite often the one will have to change part of the string. For 
+example changing the bus name, or more general - replacing a substring 
+on a list of strings. The idea is that parameters here can contain 
+global characters or even better - to keep the door open for some 
+limited regular expression syntax embedded in both parameters. Although 
+the implementation seems to be quite a lot of work, that's what will be 
+useful. In the same time we still can have:
+    changetext(&lt;new_text&gt;)
+    Which can be the trivial version
+
+--&gt; Reference cell manipulation
+    changereference(&lt;old_cell_name&gt;,&lt;new_cell_name&gt;,&lt;hierarchical&gt;)
+    This function should work with entire database - not the selected 
+objects only. The functionality should be similar to the trasferlayer, 
+but targeting cells. This should allow to change a reference over the 
+entire design.
+    changereference(&lt;new_cell_name&gt;)
+    Should work on selected references only. Again the question is - do 
+we need an old_cell_name parameter here. Without it, the function is 
+more powerful, but I can't think of a case when the user will want to 
+modify reference objects pointing to different cells, and to make them 
+referencing another common cell. And to do it in one shot. Means it 
+might be a source of troubles.
+
+On top of the above it seems that some parametrization of the select 
+functions have to be added as well.
+There is no way to select text objects only. Neither wires only. Same is 
+for cells, although it should be quite easy to implement the latter. 
+Some selection parameters might be useful also, like cell names or text 
+strings. They can be a good addition to the functions described above.
+
+Ideas, comments?
+
+Regards
+Svilen
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000010.html">[Toped-development]  missing edit operations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

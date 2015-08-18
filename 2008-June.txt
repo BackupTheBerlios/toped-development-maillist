@@ -1,0 +1,122 @@
+From krustev.svilen at googlemail.com  Fri Jun  6 01:49:14 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Fri, 06 Jun 2008 00:49:14 +0100
+Subject: [Toped-development] Issues on Fedora 9
+Message-ID: <48487B7A.8090605@googlemail.com>
+
+
+Hi
+
+We have a number of issues with the latest Fedora 9 release.
+
+It was reported by the packagers first (thanks Chitlesh) that Toped is
+crashing at startup. The root problem there appears to be the lack of
+error handling if we can't initialize GL with required attributes - see
+MBug 78. Curiously enough the GL initialization is working with a number
+of fedora releases, but not with fc9.
+
+On top of this there is also an issue with the visualization of the
+interactive commands. This has to be still investigated - usually the
+reason for this kind of troubles is the double buffering
+
+It seems that both issues are coming down to the state of the mesa
+library(7.1 pre-release) used in FC9 release. I didn't try ATI or nVidia
+drivers to confirm this.
+
+Independently of the above there are also a couple of more known bugs
+(see  MBug 76) in 0.9 release. It appears that a bugfix release is
+pending as soon as we get those fixed.
+
+Regards
+Svilen
+
+
+
+From krustev.svilen at googlemail.com  Mon Jun  9 00:33:32 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Sun, 08 Jun 2008 23:33:32 +0100
+Subject: [Toped-development] Issues on Fedora 9
+In-Reply-To: <48487B7A.8090605@googlemail.com>
+References: <48487B7A.8090605@googlemail.com>
+Message-ID: <484C5E3C.6050409@tiscali.co.uk>
+
+
+Hi Chitlesh,
+
+It seems that I fixed the immediate problem that causes the crashes, 
+nevertheless I wanted to double check a couple of more things and I'll 
+appreciate your help.
+
+I was wondering whether you(or somebody else)  tried to run Toped 0.9 on 
+Fedora 9 with nVidia or ATI . I saw on the web that nVidia released 
+their dirvers - didn't see anything about ATI (my card is ATI). This is 
+just to double-check that it starts-up properly even without the fix.
+
+By the way - I was wondering whether mesa was used when you're doing the 
+packages for previous Fedora releases. The problem seems to be there for 
+quite some time.
+
+Regards
+Svilen
+
+
+
+
+Svilen wrote:
+> Hi
+>
+> We have a number of issues with the latest Fedora 9 release.
+>
+> It was reported by the packagers first (thanks Chitlesh) that Toped is
+> crashing at startup. The root problem there appears to be the lack of
+> error handling if we can't initialize GL with required attributes - see
+> MBug 78. Curiously enough the GL initialization is working with a number
+> of fedora releases, but not with fc9.
+>
+> On top of this there is also an issue with the visualization of the
+> interactive commands. This has to be still investigated - usually the
+> reason for this kind of troubles is the double buffering
+>
+> It seems that both issues are coming down to the state of the mesa
+> library(7.1 pre-release) used in FC9 release. I didn't try ATI or nVidia
+> drivers to confirm this.
+>
+> Independently of the above there are also a couple of more known bugs
+> (see  MBug 76) in 0.9 release. It appears that a bugfix release is
+> pending as soon as we get those fixed.
+>
+> Regards
+> Svilen
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From krustev.svilen at googlemail.com  Mon Jun 16 02:02:05 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Mon, 16 Jun 2008 01:02:05 +0100
+Subject: [Toped-development] 0.9 patch
+Message-ID: <4855AD7D.7010701@tiscali.co.uk>
+
+
+Chitlesh,
+
+I've created a patch containing some fixes. It is supposed to help for 
+FC9 package.
+The patch can be downloaded here
+http://download.berlios.de/toped/release_0.9_patch_652_678.patch
+
+As I mentioned - I'm away for a week starting from Tuesday, so you have 
+a day left to come back with your questions :)
+OK, seriously speaking -  Sergey can help, so feel free to post your 
+questions here.
+
+Regards
+Svilen
+
+
+

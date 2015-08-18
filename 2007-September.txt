@@ -1,0 +1,36 @@
+From krustev.svilen at googlemail.com  Tue Sep  4 23:32:13 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Tue, 04 Sep 2007 22:32:13 +0100
+Subject: [Toped-development] 0.86 release branch
+Message-ID: <46DDCEDD.8010709@googlemail.com>
+
+I've created a new branch in repository RELEASE_0.86_CAND
+As usual it shall be used for critical bug fixes before and after the 
+release.
+
+Updating the web with the TELL additions is a major remaining activity. 
+The plan is to release the tarball in the beginning of the next week. 
+There are no configuration or dependency changes this time - so the packaging shall be trivial.
+
+
+
+Regards
+Svilen
+
+
+
+From gaitukevich.s at gmail.com  Sat Sep 22 09:35:08 2007
+From: gaitukevich.s at gmail.com (Gaitukevich Sergey)
+Date: Sat, 22 Sep 2007 15:35:08 +0800
+Subject: [Toped-development] 0.86 release branch
+Message-ID: <fda822f80709220035k5ed50a7ek8f4518b867eb2535@mail.gmail.com>
+
+I have some troubles with windows installation of toped.
+I need a few days to solve this problem.
+
+Regards
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20070922/6a5a7fba/attachment.html>
+

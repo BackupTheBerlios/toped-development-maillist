@@ -1,0 +1,64 @@
+From krustev.svilen at googlemail.com  Thu Aug  7 22:50:44 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Thu, 07 Aug 2008 21:50:44 +0100
+Subject: [Toped-development] toped on Fedora 9
+Message-ID: <489B6024.5050405@tiscali.co.uk>
+
+
+As you know it was impossible to run toped on Fedora 9 with the original 
+video drivers. Vendor drivers are still not officially available.
+That is the reason why we still don't have an RPM in FC9 repositories. 
+It was clear from the beginning that the problem was that toped can't 
+obtain a GLX visual with accumulation buffers. They are used for the 
+interactive graphics. A long investigation but finally something popped-up.
+
+Your /etc/X11/xorg.conf file has to be updated as shown below
+
+Section "ServerLayout"
+        ...
+        Option         "GlxVisuals" "all"
+EndSection
+
+This is proved working on a platform with the ATI graphic card. I have 
+no information about nVidia platforms and whether the problem there was 
+existing on the first place.
+
+The bad news is that the graphics still doesn't seem to be at its best, 
+so this is not the end of the road.
+
+In case you need further info:
+
+http://www.mail-archive.com/dri-devel at lists.sourceforge.net/msg35869.html
+
+
+Regards
+Svilen
+
+
+From krustev.svilen at googlemail.com  Wed Aug 27 21:19:30 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Wed, 27 Aug 2008 20:19:30 +0100
+Subject: [Toped-development] HELP! gdsii data_type example
+Message-ID: <48B5A8C2.2070600@tiscali.co.uk>
+
+Hi,
+
+I started working on the  GDSII conversion update (data types). It 
+appears though that I don't have a stream file which utilises DATA_TYPE 
+property. All DATA_TYPE properties in the stream files that I have are 
+assigned to 0.
+This is not a terribly bad problem, but having a real example might help 
+anyway.
+
+It would be really appreciated if somebody can drop an example. It could 
+be anything, not necessarily meaningful layout. The important point is 
+to contain more than one data type per layer.
+
+Thanks in advance!
+Svilen
+
+P.S. If you don't want to send the file publicly (or if the file is too 
+big) please use the e-mail address on the web site.
+
+
+

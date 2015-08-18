@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] [Bug #15775] GDS containing objects on layer 0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2315775%5D%20GDS%20containing%20objects%20on%20layer%200&In-Reply-To=%3C200905292100.n4TL0oiL003762%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000148.html">
+   <LINK REL="Next"  HREF="000150.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] [Bug #15775] GDS containing objects on layer 0</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2315775%5D%20GDS%20containing%20objects%20on%20layer%200&In-Reply-To=%3C200905292100.n4TL0oiL003762%40unicorn.berlios.de%3E"
+       TITLE="[Toped-development] [Bug #15775] GDS containing objects on layer 0">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Fri May 29 23:00:50 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000148.html">[Toped-development] questions about the new renderer
+</A></li>
+        <LI>Next message: <A HREF="000150.html">[Toped-development] [Bug #15776] Library context menu in the cell	browser panel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #15775, was updated on 2009-May-29 22:00
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: Crash
+Status: Open
+Resolution: None
+Bug Group: bug
+Priority: 5
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: GDS containing objects on layer 0
+
+Details: Layer 0 is used internally for reference representation. There is an assert in datacenter.cpp which is the immediate cause for the crash. GDS import seems to parse layer 0 properly without complaints.
+
+&gt;<i> 158         switch( wd-&gt;gdsDataType() )
+</I>&gt;<i> 159        {
+</I>&gt;<i> 160            case gds_SREF: ref (static_cast&lt;GDSin::GdsRef*&gt;(wd)   , 
+</I>&gt;<i> dst);  break;
+</I>&gt;<i> 161            case gds_AREF: aref(static_cast&lt;GDSin::GdsARef*&gt;(wd)  , 
+</I>&gt;<i> dst);  break;
+</I>&gt;<i> 162                  default: assert(false); /*Error - unexpected type*/
+</I>&gt;<i> 163         }
+</I>&gt;<i> 164         wd = wd-&gt;last();
+</I>
+Having a look at gds documentation - it appears that 0 layer is legal. Curiously enough this problem was never seen before. Even more interesting is why I decided that layer 0 should not be used for ordinary layout objects.
+
+The fix will require deeper changes in the DB organisation. The good news is that it will fulfil Sergey's requiest related to the SKILL convertor
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15775&amp;group_id=5037">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15775&amp;group_id=5037</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000148.html">[Toped-development] questions about the new renderer
+</A></li>
+	<LI>Next message: <A HREF="000150.html">[Toped-development] [Bug #15776] Library context menu in the cell	browser panel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Fwd:  CIF conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Fwd%3A%20%20CIF%20conversion&In-Reply-To=%3Cfda822f80807020837p73b42f0dv2a54e5c777583330%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000040.html">
+   <LINK REL="Next"  HREF="000042.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Fwd:  CIF conversion</H1>
+    <B>Sergey Gaitukevich</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Fwd%3A%20%20CIF%20conversion&In-Reply-To=%3Cfda822f80807020837p73b42f0dv2a54e5c777583330%40mail.gmail.com%3E"
+       TITLE="[Toped-development] Fwd:  CIF conversion">gaitukevich.s at gmail.com
+       </A><BR>
+    <I>Wed Jul  2 17:37:08 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000040.html">[Toped-development] CIF conversion
+</A></li>
+        <LI>Next message: <A HREF="000042.html">[Toped-development] CIF conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2008/7/1 Svilen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">krustev.svilen at googlemail.com</A>&gt;:
+
+&gt;<i>
+</I>&gt;<i> Now when the CIF parser is functional, I'm facing a couple of questions
+</I>&gt;<i> concerning CIF to TDT conversion
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+&gt;<i> Layer numbers.
+</I>&gt;<i> CIF defines layers only by name (up to 4 letter string). I found nothing
+</I>&gt;<i> neither in the format nor in the user extensions that would make the
+</I>&gt;<i> correspondence between a layer name and the GDSII (or TDT) layer number.
+</I>&gt;<i> This means that the layer correspondence have to be defined before the
+</I>&gt;<i> conversion or at least after the first pass. It can be done in the
+</I>&gt;<i> following ways:
+</I>&gt;<i> 1. Separate TELL command - for example :
+</I>&gt;<i>    defineciflay(&quot;&lt;cif name&gt;&quot;, &lt;tdt number&gt;);
+</I>&gt;<i> 2. To add a parameter to layprop function:
+</I>&gt;<i>    layprop(&quot;&lt;tdt name&gt;&quot; , &lt;tdt layer number&gt;  ,&quot;&lt;colour&gt;&quot; ,&quot;&lt;fill&gt;&quot; ,
+</I>&gt;<i> &quot;&lt;sel. line style&gt;&quot;, &lt;cif name&gt; );
+</I>&gt;<i> 3. To have a parameter in the conversion function defining layer
+</I>&gt;<i> correspondence. The layer correspondence then can be defined using TELL:
+</I>&gt;<i>   struct CIFlays {string cifname; int tdtlayno};
+</I>&gt;<i>  CIFlays list cif_layer_definition = {{&quot;L01&quot;, 1},{&quot;L04&quot;, 4},{&quot;L08&quot;,
+</I>&gt;<i> 8},{&quot;L07&quot;, 7}};
+</I>&gt;<i>   cifimport(&lt;top_structure&gt;, cif_layer_definition);
+</I>&gt;<i>
+</I>
+We can combine approaches 1 and 3.
+
+defineciflay(&quot;&lt;cif name&gt;&quot;, &lt;tdt number&gt;);
+put in separate file and use
+
+cifimport(&lt;top_structure&gt;, cif_layer_map_file);
+This is a  more convenient way to reuse layer map.
+
+By the way, we need to have the similar function for gds
+ definegdslay(&lt;gds name&gt;, &lt;gdsdatatype&gt; , &lt;tdt number&gt;);
+
+
+&gt;<i> Cell names.
+</I>&gt;<i> Unlike layers the cells in CIF have an associated number, not a name.
+</I>&gt;<i> Besides it is possible to undefine a cell which implies that technically
+</I>&gt;<i> cells with the same number can be redefined and coexist within a certain
+</I>&gt;<i> CIF file. There is an user extension of the format which binds a name to
+</I>&gt;<i> the cell definition, but this is not mandatory - it is rather a good
+</I>&gt;<i> will. The question here is do we need a &quot;dictionary&quot; for the cell names?
+</I>&gt;<i> 1. cifread returns the &quot;dictionary&quot; extracted from the CIF file. Toped
+</I>&gt;<i> suggest cell names (based on cell numbers) in case there are no cell
+</I>&gt;<i> names defined. The dictionary can be edited and then handled as a
+</I>&gt;<i> parameter of cifimport function.
+</I>&gt;<i> 2. No dictionary, Toped generate cell names according to an internal
+</I>&gt;<i> algorithm based on cell numbers. Cell names parsed from the CIF file are
+</I>&gt;<i> preserved in all cases.
+</I>
+
+I think we don't need a dictionary. There is more interesting question: what
+about cif export?
+Do we need to have such dictionary for export?
+
+&gt;<i>
+</I>&gt;<i> Cell hierarchy and Layout data outside a cell.
+</I>&gt;<i> Is is perfectly legal ( mandatory ? ) in CIF to have layout data outside
+</I>&gt;<i> a cell. This data must be converted to some kind of a cell. The only
+</I>&gt;<i> suggestion here is to create a cell with the name of the file. He good
+</I>&gt;<i> news is that this resolves automatically the question about the top
+</I>&gt;<i> level structure.
+</I>
+
+
+&gt;<i>
+</I>&gt;<i> 1. Do we need top level cell name (number) as an input parameter to
+</I>&gt;<i> cifimport ?
+</I>
+ IMHO cell with name of file is enough.
+
+&gt;<i>
+</I>&gt;<i> 2. Do we have to visualize the CIF cell hierarchy after the first pass?
+</I>&gt;<i>
+</I>Anyway we are going to have visualization without translating at least for
+gds in future, aren't we? So it can be useful.
+
+
+&gt;<i>
+</I>&gt;<i> The last two points require a robust algorithm to avoid cell name clashes.
+</I>&gt;<i>
+</I>&gt;<i> Comments? Preferences? Ideas?
+</I>
+
+
+Sergey Gaitukevich
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/toped-development/attachments/20080702/849ad7ea/attachment.html">https://lists.berlios.de/pipermail/toped-development/attachments/20080702/849ad7ea/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000040.html">[Toped-development] CIF conversion
+</A></li>
+	<LI>Next message: <A HREF="000042.html">[Toped-development] CIF conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

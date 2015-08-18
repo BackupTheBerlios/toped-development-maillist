@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Reading CIF file crashes Toped
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Reading%20CIF%20file%20crashes%20Toped&In-Reply-To=%3C499A00EC.8060803%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000128.html">
+   <LINK REL="Next"  HREF="000132.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Reading CIF file crashes Toped</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Reading%20CIF%20file%20crashes%20Toped&In-Reply-To=%3C499A00EC.8060803%40googlemail.com%3E"
+       TITLE="[Toped-development] Reading CIF file crashes Toped">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Tue Feb 17 01:12:28 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000128.html">[Toped-development] Reading CIF file crashes Toped
+</A></li>
+        <LI>Next message: <A HREF="000132.html">[Toped-development] [Bug #15280] String operations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Graham,
+
+I had a look. The CIF file is fine. There is a problem with the 
+conversion here. I don't want to get into details, but the bottom line 
+is that I'm loosing precision during the CIF import and in the general 
+case it might result in imprecise or even loss of data which would be a 
+very serious flaw. It's fixable of course, but I'll need a couple of 
+days on this. The assert will disappear and the crash with it, but it 
+was placed there to catch this kind of problems.
+
+One can argue of course that 15nm is out of the CIF precision, but 
+that's certainly not the point. The point is the precision of the target 
+DB (TDT) and it certainly takes this kind of sizes.
+
+Thanks for the report. I'll keep you posted ...
+
+Regards
+Svilen
+
+P.S. As I mentioned before, for a number of reasons the GDS conversion 
+is more &quot;natural&quot; for Toped besides the code there is validated on a 
+number of occasions and much more mature.
+P.P.S. By the way you still have troubles getting the graphics running. 
+A question - is your Ubuntu updated? I mean did you update your system 
+recently?
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> wrote:
+&gt;<i> When I import the attached cif file aoi21v0x05.cif (0.13um
+</I>&gt;<i> techno), I get an error 
+</I>&gt;<i>
+</I>&gt;<i> toped: datacenter.cpp:441: void CIFin::Cif2Ted::box(CIFin::CifBox*, laydata::tdtlayer*, std::string): Assertion `check.valid()' failed.
+</I>&gt;<i>                    Aborted
+</I>&gt;<i>
+</I>&gt;<i> I tracked this down to the geometry on line 85.
+</I>&gt;<i>
+</I>&gt;<i> B 88 6 88 1119;
+</I>&gt;<i>
+</I>&gt;<i> This is a rectangle with height of only 0.015um. I have attached
+</I>&gt;<i> a graphic toped1.gif which shows this rectangle of layer CM1.
+</I>&gt;<i>
+</I>&gt;<i> I think the CIF file is OK. The gdsimport of the cell works OK.
+</I>&gt;<i> I've attached aoi21v0x05.gds which I think is the same as the
+</I>&gt;<i> CIF file on the CM1 layer.
+</I>&gt;<i>
+</I>&gt;<i> best regards, Graham Petley
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000128.html">[Toped-development] Reading CIF file crashes Toped
+</A></li>
+	<LI>Next message: <A HREF="000132.html">[Toped-development] [Bug #15280] String operations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

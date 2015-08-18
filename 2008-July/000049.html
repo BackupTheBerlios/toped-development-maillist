@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] GDS conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20GDS%20conversion&In-Reply-To=%3C486FA8D3.90609%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000048.html">
+   <LINK REL="Next"  HREF="000050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] GDS conversion</H1>
+    <B>Svilen</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20GDS%20conversion&In-Reply-To=%3C486FA8D3.90609%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] GDS conversion">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Sat Jul  5 19:01:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000048.html">[Toped-development] GDS conversion
+</A></li>
+        <LI>Next message: <A HREF="000050.html">[Toped-development] GDS conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+If I understand this properly - it is all driven from the GDS limitation 
+for the number of defined layers.
+
+OK, I'll come back to this as soon as I finish with the CIF.
+
+Thanks!
+
+Lu Lu wrote:
+&gt;<i> Hi,
+</I>&gt;<i>  
+</I>&gt;<i> Datatype is used mostly when performing layers generation or 
+</I>&gt;<i> combination in DRC , and structures recognition in LVS, to distinguish 
+</I>&gt;<i> different &quot;layer purpose&quot; .  
+</I>&gt;<i>  
+</I>&gt;<i> Frankly speaking, there is no restriction on what those 
+</I>&gt;<i> datatypes should be. What is important is that every fab may have its 
+</I>&gt;<i> own layer definition, that is, every layer purpose and its datatype 
+</I>&gt;<i> _as a pair_, to favor its own use. For example, a fab may define a 
+</I>&gt;<i> layer along with its purpose  &quot;POLY Drawn&quot; to have &quot;number 30 datatype 
+</I>&gt;<i> 0&quot; ; &quot;POLY Dummy&quot; to have &quot;number 30 datatype 4&quot;, and &quot;POLY Label&quot; to 
+</I>&gt;<i> have &quot;number 30 datatype 10&quot;. These different purposes may  trigger 
+</I>&gt;<i> differnet DRC or LVS commands. For example, when excluding text label 
+</I>&gt;<i> from DRC, the tool may collect those layers with datatype 10 and 
+</I>&gt;<i> attach them to appropriate layers but not treat them as part of 
+</I>&gt;<i> structures to be checked . If some datatype is missing or were another 
+</I>&gt;<i> number, the tool may find wrongly text labels to be device structures. 
+</I>&gt;<i> That is nightmare since tools can not read as human do :( .
+</I>&gt;<i>  
+</I>&gt;<i> However, if fab had defined all those text layers to be different 
+</I>&gt;<i> layer numbers that have not been used before, then there would be 
+</I>&gt;<i> no need to consider datatype since all layers' datatypes are zero. 
+</I>&gt;<i>  But in today's manufacture technology, there are so many layers to be 
+</I>&gt;<i> used that all 255 layers may exhausted too early before every layer is 
+</I>&gt;<i> defined porperly. On the other hand, datatypes could be as many as 64 
+</I>&gt;<i> different numbers, from 0 through 63. So, in my opinion, the method 
+</I>&gt;<i> datatype is a good walkaround to extend layer definition ability.
+</I>&gt;<i>  
+</I>&gt;<i> Hope this may help!
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i> On Sat, Jul 5, 2008 at 12:40 AM, Svilen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">krustev.svilen at googlemail.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">krustev.svilen at googlemail.com</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     Hi,
+</I>&gt;<i>
+</I>&gt;<i>     For me the question is what we want the data type to be.
+</I>&gt;<i>     We can have anything there, but my problem is that I don't know
+</I>&gt;<i>     what is
+</I>&gt;<i>     the use of those DATATYPE fields? What the other tools expect to
+</I>&gt;<i>     find there?
+</I>&gt;<i>
+</I>&gt;<i>     I haven't found an official description how DATATYPE field shall be
+</I>&gt;<i>     used. Can somebody help here?
+</I>&gt;<i>     I would appreciate to see also the layer definitions form those fabs -
+</I>&gt;<i>     if of course they are not covered by NDA (Non Disclosure Agreement)
+</I>&gt;<i>
+</I>&gt;<i>     In all cases it appears that we need to get back to the GDS
+</I>&gt;<i>     import/export and to update what we have there.
+</I>&gt;<i>
+</I>&gt;<i>     Regards
+</I>&gt;<i>     Svilen
+</I>&gt;<i>
+</I>&gt;<i>     Lu Lu wrote:
+</I>&gt;<i>     &gt; As far as my experience ( Toped 0.8.6 ), there is only datatype &quot;0&quot;
+</I>&gt;<i>     &gt; exported to GDSII file. My wolkaround solution is to change it
+</I>&gt;<i>     manully.
+</I>&gt;<i>     &gt; First open that GDSII file in a hex editor and find the layer
+</I>&gt;<i>     datetype
+</I>&gt;<i>     &gt; tag, of course in hex format of four digits. For example, &quot;0E02&quot;
+</I>&gt;<i>     &gt; reprsents structure datatype, and &quot;1602&quot; is for texttype ( Toped
+</I>&gt;<i>     &gt; will exporting tag &quot;1602&quot; if that layer is created using  text
+</I>&gt;<i>     command
+</I>&gt;<i>     &gt; , a good manner ! ). Four digits following these tags are datetype
+</I>&gt;<i>     &gt; number in hex format. As i mentioned before, it should be &quot;0000&quot; or
+</I>&gt;<i>     &gt; zero in decimal number before any changes.  The next step is
+</I>&gt;<i>     &gt; relatively simple, just change whatever number you want your
+</I>&gt;<i>     datetype
+</I>&gt;<i>     &gt; to be and save it afterwards. Remember using hex format. I have
+</I>&gt;<i>     &gt; changed my layout files this way and all passed DRC and LVS with no
+</I>&gt;<i>     &gt; error on layer representation.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; On Thu, Jul 3, 2008 at 8:37 PM, Sergey Gaitukevich
+</I>&gt;<i>     &gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">gaitukevich.s at gmail.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">gaitukevich.s at gmail.com</A>&gt;
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">gaitukevich.s at gmail.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">gaitukevich.s at gmail.com</A>&gt;&gt;&gt;
+</I>&gt;<i>     wrote:
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;         &gt; By the way, we need to have the similar function for gds
+</I>&gt;<i>     &gt;         &gt;  definegdslay(&lt;gds name&gt;, &lt;gdsdatatype&gt; , &lt;tdt number&gt;);
+</I>&gt;<i>     &gt;         I guess you mean &lt;gds number&gt;, because GDS doesn't define
+</I>&gt;<i>     &gt;         layer names.
+</I>&gt;<i>     &gt;         You know that &lt;tdt number&gt; and &lt;gds number&gt; in Toped are the
+</I>&gt;<i>     &gt;         same thing.
+</I>&gt;<i>     &gt;         We've simply adopted layer number approach.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     Yes,  it must be  &lt;gds number&gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;         The interesting point above
+</I>&gt;<i>     &gt;         is &lt;gdsdatatype&gt;.  Do you mean here GDSII DATATYPE record or
+</I>&gt;<i>     &gt;         data type
+</I>&gt;<i>     &gt;         in a sense of box, polygon, text, pattern etc. ?
+</I>&gt;<i>     &gt;         In all cases I would suggest to open a separate thread about
+</I>&gt;<i>     &gt;         this - it
+</I>&gt;<i>     &gt;         has nothing to do with CIF
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     I mean GDSII DATATYPE record.
+</I>&gt;<i>     &gt;     I saw few foundries that provide their lists of layers like
+</I>&gt;<i>     &gt;     &lt;layer name&gt; &lt;layer gds number&gt; &lt;layer GDS datatype&gt;.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     For example
+</I>&gt;<i>     &gt;     NWELL        1    10
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     It can be trouble to use current version of toped with such
+</I>&gt;<i>     foundries.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     I never seen it before but potentially it can be happened that
+</I>&gt;<i>     &gt;     different layers can use same layer number but different
+</I>&gt;<i>     &gt;     datatypes. For instance, for lvs purposes.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     Regards
+</I>&gt;<i>     &gt;     Sergey
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     _______________________________________________
+</I>&gt;<i>     &gt;     Toped-development mailing list
+</I>&gt;<i>     &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>&gt;&gt;
+</I>&gt;<i>     &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     ------------------------------------------------------------------------
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; _______________________________________________
+</I>&gt;<i>     &gt; Toped-development mailing list
+</I>&gt;<i>     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>     &gt;
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Toped-development mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000048.html">[Toped-development] GDS conversion
+</A></li>
+	<LI>Next message: <A HREF="000050.html">[Toped-development] GDS conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

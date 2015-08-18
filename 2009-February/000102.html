@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Problems importing CIF and writing Toped database
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Problems%20importing%20CIF%20and%20writing%20Toped%0A%20database&In-Reply-To=%3C498E3F18.7090102%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000100.html">
+   <LINK REL="Next"  HREF="000107.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Problems importing CIF and writing Toped database</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Problems%20importing%20CIF%20and%20writing%20Toped%0A%20database&In-Reply-To=%3C498E3F18.7090102%40googlemail.com%3E"
+       TITLE="[Toped-development] Problems importing CIF and writing Toped database">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sun Feb  8 03:10:32 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000100.html">[Toped-development] Problems importing CIF and writing Toped database
+</A></li>
+        <LI>Next message: <A HREF="000107.html">[Toped-development] [Bug #15225] Troubles with CIF mutex
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#102">[ date ]</a>
+              <a href="thread.html#102">[ thread ]</a>
+              <a href="subject.html#102">[ subject ]</a>
+              <a href="author.html#102">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Graham,
+
+I found the problem, thanks for your feedback. See further comments in 
+the text below.
+
+I will generate a patch for version 0.9.2 which should remove the 
+troubles you're describing in this e-mail.  I'll try to do it tomorrow.
+
+Fixing the troubles with the graphics on Ubuntu might take longer - 
+simply because none of us has it installed.
+
+Regards
+Svilen
+
+Svilen wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> wrote:
+</I>&gt;&gt;<i> I want to read my standard cell library into Toped, write out
+</I>&gt;&gt;<i> a GDS file and create a Toped database.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have attached my TELL script. Some comments at the bottom
+</I>&gt;&gt;<i> describe the problems. I think some of these come from Toped
+</I>&gt;&gt;<i> not always completing the read of the TELL script, so that
+</I>&gt;&gt;<i> one has to repeatedly try opening Toped and reading the script
+</I>&gt;&gt;<i> until all the cells are read.
+</I>I can see the problem here. Toped is a multi thread application. There 
+is a thread related bug specific to the CIF conversion which I just 
+found thanks to your script example. I fixed it locally and the 
+application doesn't lock itself any more. The script is executed until 
+the end every time. 
+Just as a confirmation - in the bottom right corner Toped has an 
+indication of a running(active) thread. If it's red - means that 
+something is going on or (as in this case) the threads are mutually locked.
+
+There is no facilities in 0.9.2 to unlock the application - so it is 
+virtually dead. Also in that revision Toped will queue the commands even 
+if a thread is locked (the main thread is still alive) and it's not easy 
+for the user to find out what's going on. This has been addressed and 
+some changes are already in place, so the log window will indicate that 
+a command can't be executed because there is another process which is 
+using the database at the moment.
+This of course is not helping in your situation - all I'm trying to say 
+is that some of the commands listed below doesn't work because the 
+applications was (most likely) already locked and dead because of the bug.
+&gt;&gt;<i>
+</I>&gt;&gt;<i> Other problems are
+</I>&gt;&gt;<i> - tdtsave and gdsexport not accepted from within the script
+</I>&gt;&gt;<i> - tdtsave only accepted from menu File&gt;Save
+</I>&gt;&gt;<i> - tdtsave not accepted after a gdsexport
+</I>&gt;&gt;<i> - gdsexport not accepted after a tdtsave
+</I>&gt;&gt;<i> - tdtsave causes Toped to use all CPU cycles of both processors
+</I>See my comment above about locking. All menu commands do generate tell 
+commands. There is no different execution patterns - whether you type a 
+command or click it with the mouse from the menu. The difference with 
+the script is only coming form the fact that when a script is executed 
+the commands are coming with the speed which is impossible to be 
+achieved interactively (that's the whole idea isn't it? :) )  and some 
+troubles can be highlighted very quickly.
+
+About tdtsave - you are right - tdtsave() won't work as it is on your 
+script. This is an unnecessary extra check (for active cell) in the save 
+operations that should be removed. This can be easily avoided if you 
+open any of the cells that you've already converted. for example:
+
+opencell(&quot;xor3v1x2&quot;);
+
+will then allow subsequent
+tdtsave();
+gdsexport(pharosc_gdsmap,&quot;pharosc200.gds&quot;,false);
+
+&gt;&gt;<i>
+</I>&gt;&gt;<i> I think these are all inter-related and it isn't clear what is the
+</I>&gt;&gt;<i> cause and effect here.
+</I>I agree - they are related and I think I found the problem - as 
+explained above
+&gt;&gt;<i>
+</I>&gt;&gt;<i> The CIF files referenced in the TELL script are in the standard cell
+</I>&gt;&gt;<i> download at www.vlsitechnology.org.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> At the end, after repeated attempts, I am able to make the Toped
+</I>&gt;&gt;<i> database and export the GDS file. It would be nice to do it in
+</I>&gt;&gt;<i> one simple script.
+</I>I agree. That's the whole idea.
+
+&gt;&gt;<i>
+</I>&gt;&gt;<i> best regards, Graham Petley
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Toped-development mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000100.html">[Toped-development] Problems importing CIF and writing Toped database
+</A></li>
+	<LI>Next message: <A HREF="000107.html">[Toped-development] [Bug #15225] Troubles with CIF mutex
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#102">[ date ]</a>
+              <a href="thread.html#102">[ thread ]</a>
+              <a href="subject.html#102">[ subject ]</a>
+              <a href="author.html#102">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

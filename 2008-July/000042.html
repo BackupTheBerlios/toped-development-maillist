@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] CIF conversion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20conversion&In-Reply-To=%3C486C09B8.90503%40tiscali.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000041.html">
+   <LINK REL="Next"  HREF="000044.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] CIF conversion</H1>
+    <B>Svilen</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20conversion&In-Reply-To=%3C486C09B8.90503%40tiscali.co.uk%3E"
+       TITLE="[Toped-development] CIF conversion">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Thu Jul  3 01:05:28 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000041.html">[Toped-development] Fwd:  CIF conversion
+</A></li>
+        <LI>Next message: <A HREF="000044.html">[Toped-development] CIF conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Something else comes up. Usually CIF is used for libraries. In this case 
+there are a lot of relatively short CIF files - each of them containing 
+a single cell. Maybe we have to think about more general CIF conversion 
+- possibly a TELL function which will take a whole directory and will 
+import it in Toped.
+TELL doesn't have a OS or file operations yet, but apart from this it 
+seems perfectly feasible
+
+Comments follow:
+
+Sergey Gaitukevich wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2008/7/1 Svilen &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">krustev.svilen at googlemail.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">krustev.svilen at googlemail.com</A>&gt;&gt;:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Layer numbers.
+</I>&gt;<i>     CIF defines layers only by name (up to 4 letter string). I found
+</I>&gt;<i>     nothing
+</I>&gt;<i>     neither in the format nor in the user extensions that would make the
+</I>&gt;<i>     correspondence between a layer name and the GDSII (or TDT) layer
+</I>&gt;<i>     number.
+</I>&gt;<i>     This means that the layer correspondence have to be defined before the
+</I>&gt;<i>     conversion or at least after the first pass. It can be done in the
+</I>&gt;<i>     following ways:
+</I>&gt;<i>     1. Separate TELL command - for example :
+</I>&gt;<i>        defineciflay(&quot;&lt;cif name&gt;&quot;, &lt;tdt number&gt;);
+</I>&gt;<i>     2. To add a parameter to layprop function:
+</I>&gt;<i>        layprop(&quot;&lt;tdt name&gt;&quot; , &lt;tdt layer number&gt;  ,&quot;&lt;colour&gt;&quot; ,&quot;&lt;fill&gt;&quot; ,
+</I>&gt;<i>     &quot;&lt;sel. line style&gt;&quot;, &lt;cif name&gt; );
+</I>&gt;<i>     3. To have a parameter in the conversion function defining layer
+</I>&gt;<i>     correspondence. The layer correspondence then can be defined using
+</I>&gt;<i>     TELL:
+</I>&gt;<i>       struct CIFlays {string cifname; int tdtlayno};
+</I>&gt;<i>      CIFlays list cif_layer_definition = {{&quot;L01&quot;, 1},{&quot;L04&quot;, 4},{&quot;L08&quot;,
+</I>&gt;<i>     8},{&quot;L07&quot;, 7}};
+</I>&gt;<i>       cifimport(&lt;top_structure&gt;, cif_layer_definition);
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> We can combine approaches 1 and 3.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> defineciflay(&quot;&lt;cif name&gt;&quot;, &lt;tdt number&gt;);
+</I>&gt;<i> put in separate file and use
+</I>&gt;<i>
+</I>&gt;<i> cifimport(&lt;top_structure&gt;, cif_layer_map_file);
+</I>&gt;<i> This is a  more convenient way to reuse layer map.
+</I>I agree that the last suggestion looks the best. Maybe I'm missing 
+something here, but why then we would need a defineciflay function? The 
+point is to have the CIF layer correspondence defined somewhere - it's 
+either internally in the toped engine (1,2) or in a TELL variable (3). 
+Either way this information will be used by the cifimport function.
+OK, I'm working on (3) .It can be updated if we decide that we certainly 
+need (1)
+&gt;<i> By the way, we need to have the similar function for gds
+</I>&gt;<i>  definegdslay(&lt;gds name&gt;, &lt;gdsdatatype&gt; , &lt;tdt number&gt;);
+</I>I guess you mean &lt;gds number&gt;, because GDS doesn't define layer names. 
+You know that &lt;tdt number&gt; and &lt;gds number&gt; in Toped are the same thing. 
+We've simply adopted layer number approach. The interesting point above 
+is &lt;gdsdatatype&gt;.  Do you mean here GDSII DATATYPE record or data type 
+in a sense of box, polygon, text, pattern etc. ?
+In all cases I would suggest to open a separate thread about this - it 
+has nothing to do with CIF
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Cell names.
+</I>&gt;<i>     Unlike layers the cells in CIF have an associated number, not a name.
+</I>&gt;<i>     Besides it is possible to undefine a cell which implies that
+</I>&gt;<i>     technically
+</I>&gt;<i>     cells with the same number can be redefined and coexist within a
+</I>&gt;<i>     certain
+</I>&gt;<i>     CIF file. There is an user extension of the format which binds a
+</I>&gt;<i>     name to
+</I>&gt;<i>     the cell definition, but this is not mandatory - it is rather a good
+</I>&gt;<i>     will. The question here is do we need a &quot;dictionary&quot; for the cell
+</I>&gt;<i>     names?
+</I>&gt;<i>     1. cifread returns the &quot;dictionary&quot; extracted from the CIF file. Toped
+</I>&gt;<i>     suggest cell names (based on cell numbers) in case there are no cell
+</I>&gt;<i>     names defined. The dictionary can be edited and then handled as a
+</I>&gt;<i>     parameter of cifimport function.
+</I>&gt;<i>     2. No dictionary, Toped generate cell names according to an internal
+</I>&gt;<i>     algorithm based on cell numbers. Cell names parsed from the CIF
+</I>&gt;<i>     file are
+</I>&gt;<i>     preserved in all cases.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i> I think we don't need a dictionary. There is more interesting 
+</I>&gt;<i> question: what about cif export?
+</I>&gt;<i> Do we need to have such dictionary for export?
+</I>I don't think that the export is a problem -  it should be trivial to 
+replace cell names with numbers during the export. The CIF user doesn't 
+care what exactly is the cell number as long as the numbers are 
+different for the different cells.
+OK, there will not be an user dictionary. Cell names defined in the CIF 
+will be preserved(except in the case of name clash). Unnamed cells will 
+be named automatically using the scheme below:
+&lt;filename&gt;_unnamed_&lt;cif_cell_no&gt;[_&lt;variant&gt;]
+We need a tell function for automatic cell renaming. I'll raise a 
+feature bug in Berlios
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Cell hierarchy and Layout data outside a cell.
+</I>&gt;<i>     Is is perfectly legal ( mandatory ? ) in CIF to have layout data
+</I>&gt;<i>     outside
+</I>&gt;<i>     a cell. This data must be converted to some kind of a cell. The only
+</I>&gt;<i>     suggestion here is to create a cell with the name of the file. He good
+</I>&gt;<i>     news is that this resolves automatically the question about the top
+</I>&gt;<i>     level structure.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     1. Do we need top level cell name (number) as an input parameter to
+</I>&gt;<i>     cifimport ?
+</I>&gt;<i>
+</I>&gt;<i>  IMHO cell with name of file is enough.
+</I>See below
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     2. Do we have to visualize the CIF cell hierarchy after the first
+</I>&gt;<i>     pass?
+</I>&gt;<i>
+</I>&gt;<i> Anyway we are going to have visualization without translating at least 
+</I>&gt;<i> for gds in future, aren't we? So it can be useful.
+</I>I agree - we have this already for GDS we'll need to have it most likely 
+for OASIS, then obviously we'll need it have it for CIF. In this case 
+though - we're going to need a cell name (number) as an input parameter 
+to cifimport. The point is that if we visualize the hierarchy then 
+inevitably the user will want to be able to convert only a part of it.
+Actually we'll do both. cifimport will be overloaded - so if it is 
+called without a parameter it will convert the entire CIF file. 
+Otherwise - the conversion will start from the cell stated as an input 
+parameter.
+
+
+Regards
+Svilen
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000041.html">[Toped-development] Fwd:  CIF conversion
+</A></li>
+	<LI>Next message: <A HREF="000044.html">[Toped-development] CIF conversion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

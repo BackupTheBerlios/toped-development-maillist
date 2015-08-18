@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] CIF texts and sizes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20texts%20and%20sizes&In-Reply-To=%3C239486.18986.qm%40web202.biz.mail.re2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000119.html">
+   <LINK REL="Next"  HREF="000130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] CIF texts and sizes</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20CIF%20texts%20and%20sizes&In-Reply-To=%3C239486.18986.qm%40web202.biz.mail.re2.yahoo.com%3E"
+       TITLE="[Toped-development] CIF texts and sizes">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Mon Feb 16 10:48:42 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000119.html">[Toped-development] CIF texts and sizes
+</A></li>
+        <LI>Next message: <A HREF="000130.html">[Toped-development] CIF texts and sizes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#122">[ date ]</a>
+              <a href="thread.html#122">[ thread ]</a>
+              <a href="subject.html#122">[ subject ]</a>
+              <a href="author.html#122">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Svilen,
+   For the text size, I think this doesn't need to be in
+the CIF file. If text is rendered on the screen at about
+2.5mm tall, this should be OK.
+best regards, Graham Petley
+PS. All emails from the Toped development list have as
+their sender <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>, whoever
+they are from. Is there any way to have the real sender
+listed in the from field?
+
+--- On Sun, 2/15/09, <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+
+&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i> Subject: Re: [Toped-development] CIF texts and sizes
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;<i> Date: Sunday, February 15, 2009, 9:33 AM
+</I>&gt;<i> Hi Graham,
+</I>&gt;<i> I've submitted the fixes for CIF import and will very
+</I>&gt;<i> much appreciate if
+</I>&gt;<i> you help me to validate them.
+</I>&gt;<i> 
+</I>&gt;<i> There is one remaining question though and this not
+</I>&gt;<i> surprisingly is the
+</I>&gt;<i> text size. There is no text size in CIF (as far as I'm
+</I>&gt;<i> aware). What I've
+</I>&gt;<i> done for the moment - all texts will have the size of the
+</I>&gt;<i> cell
+</I>&gt;<i> coefficient they are instantiated in.
+</I>&gt;<i> 
+</I>&gt;<i> Looking at your examples below - for 2um techno - all the
+</I>&gt;<i> texts will
+</I>&gt;<i> have a size of 0.5 um - (100 / 2) * 1e-8. 
+</I>&gt;<i> For 0.13um techno they will have a size of 2.5nm (1 / 4) *
+</I>&gt;<i> 1e-8.
+</I>&gt;<i> 
+</I>&gt;<i> This is temporary. I'll appreciate your opinion. If the
+</I>&gt;<i> solution can't
+</I>&gt;<i> be found in the CIF - I'm planning to introduce a new
+</I>&gt;<i> parameter in the
+</I>&gt;<i> TELL functions with will give the size of all text related
+</I>&gt;<i> objects.
+</I>&gt;<i> 
+</I>&gt;<i> Regards
+</I>&gt;<i> Svilen
+</I>&gt;<i> 
+</I>&gt;<i> P.S. In order to get the updates - you need to execute
+</I>&gt;<i> svn update
+</I>&gt;<i> from the directory you're checked out
+</I>&gt;<i> .../branches/RELEASE_0.92_CAND and
+</I>&gt;<i> then execute 
+</I>&gt;<i> make
+</I>&gt;<i> sudo make install
+</I>&gt;<i> Please don't hesitate to ask questions. If it is easier
+</I>&gt;<i> for you - I can
+</I>&gt;<i> submit a tarball.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On Wed, 2009-02-11 at 00:27 +0000, Svilen wrote:
+</I>&gt;<i> &gt; Hi Graham,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; You're absolutely right. Last night when I
+</I>&gt;<i> switched off my computer I 
+</I>&gt;<i> &gt; realise that I forgot about the parameters of DS
+</I>&gt;<i> command. I'm parsing 
+</I>&gt;<i> &gt; them, but then they remain unused. That's where my
+</I>&gt;<i> factor is hidden.
+</I>&gt;<i> &gt; I've raised two bugs about this. I'll keep you
+</I>&gt;<i> updated about the 
+</I>&gt;<i> &gt; progress on them.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Thanks for your help!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Regards
+</I>&gt;<i> &gt; Svilen
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> wrote:
+</I>&gt;<i> &gt; &gt; Hi Svilen,
+</I>&gt;<i> &gt; &gt;    I checked my CIF files for the correct usage
+</I>&gt;<i> of the scaling
+</I>&gt;<i> &gt; &gt; factor on the Definition Start (DS) line.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;    With a 2um techno I have
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; DS 1 100 2;
+</I>&gt;<i> &gt; &gt; L CCC;
+</I>&gt;<i> &gt; &gt; B 4 4 10 126;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; The scaling is 100/2=50 which transforms the Box
+</I>&gt;<i> (B) to
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; B 200 200 500 6300;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; These co-ordinates are in centimicrons, so in
+</I>&gt;<i> microns we
+</I>&gt;<i> &gt; &gt; have a box 2x2um centred at (x,y)=(5,63).
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;    With a 0.13um techno I have
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; DS 1 1 4;
+</I>&gt;<i> &gt; &gt; L CCC;
+</I>&gt;<i> &gt; &gt; B 64 64 110 1386;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; The scaling is 1/4 which transforms the Box (B)
+</I>&gt;<i> to
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; B 16 16 27.5 346.5;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; These co-ordinates are in centimicrons, so in
+</I>&gt;<i> microns we
+</I>&gt;<i> &gt; &gt; have a box 0.16x0.16um centred at
+</I>&gt;<i> (x,y)=(0.275,3.465).
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; In the case of the 2um techno, I think the CIF
+</I>&gt;<i> writer has used the
+</I>&gt;<i> &gt; &gt; scaling factor as a way to reduce the CIF file
+</I>&gt;<i> size. All
+</I>&gt;<i> &gt; &gt; co-ordinates are on an integer multiple and one
+</I>&gt;<i> could use
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; DS 1 1 1;
+</I>&gt;<i> &gt; &gt; B 200 200 500 6300;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; In the case of the 0.13um techno, the resolution
+</I>&gt;<i> is 5nm which is
+</I>&gt;<i> &gt; &gt; less than 1 centimetre. So a scaling factor must
+</I>&gt;<i> be used to force
+</I>&gt;<i> &gt; &gt; all geometry turnpoints in the CIF file to an
+</I>&gt;<i> integer multiple.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; In both cases, the CIF writer (these examples
+</I>&gt;<i> come from Magic)
+</I>&gt;<i> &gt; &gt; has chosen the scaling factor which gives the
+</I>&gt;<i> smallest set of
+</I>&gt;<i> &gt; &gt; integer numbers (should be min file size)
+</I>&gt;<i> compatible with the
+</I>&gt;<i> &gt; &gt; turnpoints all being an even multiple.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I think this is because the centre point of a box
+</I>&gt;<i> can be off
+</I>&gt;<i> &gt; &gt; grid.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; For the 2um techno, the 2x2 contact above goes
+</I>&gt;<i> from
+</I>&gt;<i> &gt; &gt; (4,62) to (6,64). If we have a 3x3 contact
+</I>&gt;<i> extending from
+</I>&gt;<i> &gt; &gt; (4,62) to (7,65), then this is a box
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; DS 1 100 2;
+</I>&gt;<i> &gt; &gt; L CCC;
+</I>&gt;<i> &gt; &gt; B 6 6 11 127;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; with centre point at (5.5,63.5). So even if the
+</I>&gt;<i> turnpoints in this
+</I>&gt;<i> &gt; &gt; techno are all on a 1um multiple, the centre
+</I>&gt;<i> point of boxes will
+</I>&gt;<i> &gt; &gt; be on a 0.5um multiple. This has to remain an
+</I>&gt;<i> integer in the
+</I>&gt;<i> &gt; &gt; CIF file.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Same with the 0.13um techno and a 0.165x0.165um
+</I>&gt;<i> contact
+</I>&gt;<i> &gt; &gt; extending from (0.195,3.385) to (0.36,3.55). This
+</I>&gt;<i> is a box
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; DS 1 1 4;
+</I>&gt;<i> &gt; &gt; L CCC;
+</I>&gt;<i> &gt; &gt; B 66 66 111 1387;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; with centre point at (0.2775,3.4675). Again the
+</I>&gt;<i> turnpoints are
+</I>&gt;<i> &gt; &gt; on a 5nm (0.005um) multiple, but the box centre
+</I>&gt;<i> points are on
+</I>&gt;<i> &gt; &gt; a 2.5nm one.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; The CIF writer has to analyse the geometry
+</I>&gt;<i> turnpoints to find
+</I>&gt;<i> &gt; &gt; the correct choice of scaling factor.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; hope this helps, Graham Petley
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; --- On Mon, 2/9/09,
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;   
+</I>&gt;<i> &gt; &gt;&gt; From: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt; &gt;&gt; Subject: Re: [Toped-development] CIF texts
+</I>&gt;<i> and sizes
+</I>&gt;<i> &gt; &gt;&gt; To: <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt;&gt; Date: Monday, February 9, 2009, 4:51 PM
+</I>&gt;<i> &gt; &gt;&gt; Hi Graham,
+</I>&gt;<i> &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt;&gt; Sorry - I allowed myself to change the
+</I>&gt;<i> subject.
+</I>&gt;<i> &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt;&gt; About CIF coordinates - you're right. I
+</I>&gt;<i> can see the difference after 
+</I>&gt;<i> &gt; &gt;&gt; importing GDS and CIF. I've missed the
+</I>&gt;<i> coefficient when transferring CIF 
+</I>&gt;<i> &gt; &gt;&gt; coordinates to TDT. My problem however is
+</I>&gt;<i> that I can't get to a factor 
+</I>&gt;<i> &gt; &gt;&gt; of 500.
+</I>&gt;<i> &gt; &gt;&gt; Currently the TDT DB is using the GDSII
+</I>&gt;<i> convention:
+</I>&gt;<i> &gt; &gt;&gt; DBU - Size of database units in meters (1e-9
+</I>&gt;<i> by default)
+</I>&gt;<i> &gt; &gt;&gt; UU - Size of user unit in DBU (1e-3 by
+</I>&gt;<i> default)
+</I>&gt;<i> &gt; &gt;&gt; Then all coordinates are represented
+</I>&gt;<i> internally in database units as 
+</I>&gt;<i> &gt; &gt;&gt; 32-bit integers. UU is used in the user
+</I>&gt;<i> interfaces for convenience. 
+</I>&gt;<i> &gt; &gt;&gt; Import/Export to GDSII is trivial in this
+</I>&gt;<i> matter, because it is 
+</I>&gt;<i> &gt; &gt;&gt; virtually the same.
+</I>&gt;<i> &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt;&gt; CIF is using also integers to represent the
+</I>&gt;<i> coordinates and they are 
+</I>&gt;<i> &gt; &gt;&gt; talking about the precision 1/100 microns
+</I>&gt;<i> (i.e. 1e-8) which is a 
+</I>&gt;<i> &gt; &gt;&gt; constant. If I understand this properly my
+</I>&gt;<i> coefficient on CIF import 
+</I>&gt;<i> &gt; &gt;&gt; should be 10. Where the other 50 are coming
+</I>&gt;<i> from?
+</I>&gt;<i> &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt;&gt; Regards
+</I>&gt;<i> &gt; &gt;&gt; Svilen
+</I>&gt;<i> &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt;&gt; P.S. Because CIF definition is quite fuzzy
+</I>&gt;<i> and there are a lot of 
+</I>&gt;<i> &gt; &gt;&gt; interpretations - I did a wiki page. You can
+</I>&gt;<i> find a reference to the 
+</I>&gt;<i> &gt; &gt;&gt; paper I was using there
+</I>&gt;<i> &gt; &gt;&gt; <A HREF="http://toped.wikispaces.com/Toped+CIF+parser">http://toped.wikispaces.com/Toped+CIF+parser</A>
+</I>&gt;<i> &gt; &gt;&gt;     
+</I>&gt;<i> &gt; &gt;&gt;&gt; Hi Svilen,
+</I>&gt;<i> &gt; &gt;&gt;&gt; I've just noticed that the gds file
+</I>&gt;<i> exported from the cif2tdt
+</I>&gt;<i> &gt; &gt;&gt;&gt; TELL script has its geometries scaled
+</I>&gt;<i> 500X too small. A cell
+</I>&gt;<i> &gt; &gt;&gt;&gt; which should be 32um wide is actually
+</I>&gt;<i> 0.064um.
+</I>&gt;<i> &gt; &gt;&gt;&gt; The gds2tdt script exports correctly
+</I>&gt;<i> sized gds files.
+</I>&gt;<i> &gt; &gt;&gt;&gt; I think this is where the text size
+</I>&gt;<i> discrepancy comes from.
+</I>&gt;<i> &gt; &gt;&gt;&gt;
+</I>&gt;<i> &gt; &gt;&gt;&gt; best regards, Graham Petley
+</I>&gt;<i> &gt; &gt;&gt;&gt;       
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Toped-development mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i> &gt; &gt;   
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000119.html">[Toped-development] CIF texts and sizes
+</A></li>
+	<LI>Next message: <A HREF="000130.html">[Toped-development] CIF texts and sizes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#122">[ date ]</a>
+              <a href="thread.html#122">[ thread ]</a>
+              <a href="subject.html#122">[ subject ]</a>
+              <a href="author.html#122">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

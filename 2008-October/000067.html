@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] [Bug #14701] add&lt;*&gt;(layer_number) functions not	working as expected
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2314701%5D%20add%3C%2A%3E%28layer_number%29%20functions%20not%0A%09working%20as%20expected&In-Reply-To=%3C200810191618.m9JGIh6J014587%40unicorn.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000066.html">
+   <LINK REL="Next"  HREF="000069.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] [Bug #14701] add&lt;*&gt;(layer_number) functions not	working as expected</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%5BBug%20%2314701%5D%20add%3C%2A%3E%28layer_number%29%20functions%20not%0A%09working%20as%20expected&In-Reply-To=%3C200810191618.m9JGIh6J014587%40unicorn.berlios.de%3E"
+       TITLE="[Toped-development] [Bug #14701] add&lt;*&gt;(layer_number) functions not	working as expected">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sun Oct 19 18:18:43 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000066.html">[Toped-development] Updates to Berlios setups
+</A></li>
+        <LI>Next message: <A HREF="000069.html">[Toped-development] Branch &quot;0.92 Release Candidate&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bug #14701, was updated on 2008-Oct-19 16:47
+Here is a current snapshot of the bug.
+
+Project: toped
+Category: TELL script
+Status: Closed
+Resolution: Fixed
+Bug Group: bug
+Priority: 9
+Submitted by: s_krustev
+Assigned to : s_krustev
+Summary: add&lt;*&gt;(layer_number) functions not working as expected
+
+Details: Functions are: addbox(&lt;lay_number&gt;); addpoly(&lt;lay_number&gt;); addwire(&lt;lay_number&gt;)
+
+The &lt;lay_number&gt; parameters are ignored. Instead the current layer is used.
+This is not the intended behavior of the functions.
+
+Follow-Ups:
+
+Date: 2008-Oct-19 17:18
+By: s_krustev
+
+Comment:
+Fixed in rev 819.
+Nothing really to note - a simple copy/paste problem. It wasn't found 'till now because none of the acceleration (menu/toolbox etc.) stuff is using those functions.
+-------------------------------------------------------
+
+For detailed info, follow this link:
+<A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14701&amp;group_id=5037">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=14701&amp;group_id=5037</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000066.html">[Toped-development] Updates to Berlios setups
+</A></li>
+	<LI>Next message: <A HREF="000069.html">[Toped-development] Branch &quot;0.92 Release Candidate&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

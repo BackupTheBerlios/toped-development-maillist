@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] RELEASE 0.85 branch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20RELEASE%200.85%20branch&In-Reply-To=%3C45E9851F.2040703%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] RELEASE 0.85 branch</H1>
+    <B>Svilen Krustev</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20RELEASE%200.85%20branch&In-Reply-To=%3C45E9851F.2040703%40googlemail.com%3E"
+       TITLE="[Toped-development] RELEASE 0.85 branch">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Sat Mar  3 15:24:31 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[Toped-development] RELEASE 0.85 branch
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[Toped-development] toped 0.8.5 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Gaitukevich Sergey wrote:
+&gt;<i> 2007/3/2, Svilen Krustev &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">krustev.svilen at googlemail.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">krustev.svilen at googlemail.com</A>&gt;&gt;:
+</I>&gt;<i>
+</I>&gt;<i>     I've created a new branch in repository RELEASE_0.85_CAND
+</I>&gt;<i>     It is supposed to be used for critical bug fixes before and after the
+</I>&gt;<i>     release.
+</I>&gt;<i>     All tarball/packet/install related updates are also welcome
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I've added icon for windows, but i can't understand  how  you  change 
+</I>&gt;<i> icon under Linux?
+</I>I'm not sure I understand the question. The rpm package comes with a 
+toped.desktop file (thanks to Chitlesh) which contains also the name of 
+the icon. You can see it in the ../ui directory of the project.
+It's a good point actually... I have to make sure that it is installed 
+properly from the tarball also.
+&gt;<i>
+</I>&gt;<i>     The main question at the moment is how to setup an environment
+</I>&gt;<i>     variable
+</I>&gt;<i>     after the installation. In Linux and in Windows.
+</I>&gt;<i>     One of the variables ($TPD_GLOBAL) is used as a path to the font
+</I>&gt;<i>     files.
+</I>&gt;<i>     Without them Toped will be unstable. 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I think that its problem in Linux unresolved. All EDA tools that I 
+</I>&gt;<i> used demand manually changes in .bashrc
+</I>&gt;<i> Other problem is different shells (bash, korn and so on)
+</I>I'm not sure about this... The commercial EDA tools are designed 
+primarily for commercial UNIX platforms (Sun, HP etc.) and only recently 
+for linux. Thiose platforms could (and do) have more differences. Our 
+task is easier, because we're talking about linux only (at least for the 
+time being)
+If there is a common solution in the GNU world - we have to use it. 
+There should be something...
+&gt;<i> I have a question. I have NSIS (installer) script for making toped 
+</I>&gt;<i> installation under windows. Do we need this script in SVN?
+</I>It is up to you actually. Generally - if this is used to make a 
+distribution - yes it should be in the repository. I presume it's not a 
+binary file...
+
+Cheers
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[Toped-development] RELEASE 0.85 branch
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[Toped-development] toped 0.8.5 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

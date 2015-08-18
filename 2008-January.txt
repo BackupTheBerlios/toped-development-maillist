@@ -1,0 +1,291 @@
+From krustev.svilen at googlemail.com  Wed Jan  2 18:40:44 2008
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Wed, 02 Jan 2008 17:40:44 +0000
+Subject: [Toped-development] [Fwd: runtime error on windows when starting
+	toped_0.8.6]
+Message-ID: <477BCC9C.3090408@googlemail.com>
+
+Happy New Year!
+
+Lulu,
+I hope you don't mind that I'm forwarding your e-mail to the mailing list.
+On your question directly - windows is not my primary environment, but I 
+hope Sergey will have better idea what the problem can be.
+Meanwhile - just to double-check - a couple of questions
+
+I have myself very similar windows configuration, but with VC 2005 
+Express edition. It looks like you're the first trying toped with VC 2008.
+This could be the root of the problem. It could be that the packet has 
+to be recompiled using the new compiler and more importantly - the new 
+version of Microsoft libraries
+
+Another question - do you have previous toped version installed ? - it 
+might need to be removed manually
+
+It's not a suggestion, just a question - have you tried the package 
+before installing VC 2008? Have you tried it with the library proposed 
+in the release notes  here ? 
+<https://developer.berlios.de/project/shownotes.php?release_id=13554>
+
+
+Sorry for the delay... on the mailing list you should get quicker answer 
+now after the holidays
+
+Regards
+Svilen
+
+
+
+
+-------------- next part --------------
+An embedded message was scrubbed...
+From: "Lu Lu" <williamloolulu at gmail.com>
+Subject: runtime error on windows when starting toped_0.8.6
+Date: Mon, 31 Dec 2007 00:24:15 +0800
+Size: 8769
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080102/2e0d4f4a/attachment.eml>
+
+From krustev.svilen at googlemail.com  Wed Jan  2 18:59:55 2008
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Wed, 02 Jan 2008 17:59:55 +0000
+Subject: [Toped-development] [Fwd: runtime error on windows when
+ starting toped_0.8.6]
+In-Reply-To: <477BCC9C.3090408@googlemail.com>
+References: <477BCC9C.3090408@googlemail.com>
+Message-ID: <477BD11B.3040704@googlemail.com>
+
+Sorry Lulu,
+I wasn't very careful, ignore the rubbish about VC 2008. I doesn't 
+concern you...
+ 
+My configuration is effectively the same as yours except that I have 
+2005 express edition... I don't want to confuse you further :)
+
+Sergey - help!
+
+Regards
+Svilen
+
+
+Svilen Krustev wrote:
+> Happy New Year!
+>
+> Lulu,
+> I hope you don't mind that I'm forwarding your e-mail to the mailing 
+> list.
+> On your question directly - windows is not my primary environment, but 
+> I hope Sergey will have better idea what the problem can be.
+> Meanwhile - just to double-check - a couple of questions
+>
+> I have myself very similar windows configuration, but with VC 2005 
+> Express edition. It looks like you're the first trying toped with VC 
+> 2008.
+> This could be the root of the problem. It could be that the packet has 
+> to be recompiled using the new compiler and more importantly - the new 
+> version of Microsoft libraries
+>
+> Another question - do you have previous toped version installed ? - it 
+> might need to be removed manually
+>
+> It's not a suggestion, just a question - have you tried the package 
+> before installing VC 2008? Have you tried it with the library proposed 
+> in the release notes  here ? 
+> <https://developer.berlios.de/project/shownotes.php?release_id=13554>
+>
+>
+> Sorry for the delay... on the mailing list you should get quicker 
+> answer now after the holidays
+>
+> Regards
+> Svilen
+>
+>
+>
+>
+>
+> ------------------------------------------------------------------------
+>
+> Subject:
+> runtime error on windows when starting toped_0.8.6
+> From:
+> "Lu Lu" <williamloolulu at gmail.com>
+> Date:
+> Mon, 31 Dec 2007 00:24:15 +0800
+> To:
+> s_krustev at toped.org.uk
+>
+> To:
+> s_krustev at toped.org.uk
+>
+>
+> Dear  Svilen Krustev,
+>  
+> Happy New Year !
+>  
+> I am really sorry to bother you on new year eve !
+>  
+> I am trying out this "toped 0.8.6 windows version" 
+> (toped_install_086RC2) on my PC running windows XP SP2 with MS Visual 
+> Studio 2005 currently installed.
+>  
+> Once i tried to start toped.exe, there pops up an error message saying 
+> " the application cannot start due to incorrenctly configuration. 
+> re-install may solve this problem".
+> Meanwhile, there were *three error events as a whole* logged 
+> to windows event viewer which read as follows:
+>  
+> 1  EventID 32 SideBySide Dependent Assembly Microsoft.VC80.CRT could 
+> not be found and Last Error was: The referenced assembly is not 
+> installed on your system.
+> 2  EventID 59 SideBySide Resolve Partial Assembly failed for 
+> Microsoft.VC80.CRT. Reference error message: The referenced assembly 
+> is not installed on your system.
+> 3  EventID 59 SideBySide Generate Activation Context failed for 
+> toped.exe. Reference error message: The operation completed successfully.
+>  
+> I have been searching google for solutions for several days and the 
+> "silver bullet" that google tells me seems to be installing MS Visual 
+> Studio 2005 or its redistribution packages.  
+> I tried both but it seems no help.
+>  
+> Further, I tried to copy all directories along with their manifest 
+> files named like " Microsoft.VC80.*** "  from c:\WINDOWS\WinSxS\ to 
+> the directory where toped.exe installed.
+> This time, the first two error events have gone but the last one 
+> remains there in my event viewer, and the application still can not 
+> start up, and the error popup still shows.
+>  
+> Please, please help me!!  'cause now i don't konw what to do next to 
+> fix it.
+> I am looking forward to your reply !
+>  
+>                                                                                                                                                           
+> Sincerely,
+>                                                                                                                                                                           
+> lulu
+>  
+> BTW, I have been on toped mail list using this email address.
+> ------------------------------------------------------------------------
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
+From gaitukevich.s at gmail.com  Thu Jan  3 14:36:51 2008
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Thu, 3 Jan 2008 21:36:51 +0800
+Subject: [Toped-development] Fwd: [Fwd: runtime error on windows when
+	starting toped_0.8.6]
+In-Reply-To: <477BD11B.3040704@googlemail.com>
+References: <477BCC9C.3090408@googlemail.com> <477BD11B.3040704@googlemail.com>
+Message-ID: <fda822f80801030536v5bcc58d1u70554e7139dcadae@mail.gmail.com>
+
+Hello Lulu.
+
+Microsoft successfully replaced "dll hell" to "manifest hell" :)
+Before, I checked Toped on clean Russian and Chinese versions of Windows XP
+SP2.
+But today I found that  Toped can not start on English Windows XP with the
+same error messages.
+I going to investigate this problem as soon as possible.
+
+Can you answer my questions:
+1. What is your Windows version? English?
+2. Did you install service pack for Visual Studio 2005?
+
+Thanks a lot for your feedback.
+
+Sergey
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080103/bab1629b/attachment.html>
+
+From gaitukevich.s at gmail.com  Fri Jan  4 04:32:56 2008
+From: gaitukevich.s at gmail.com (Sergey Gaitukevich)
+Date: Fri, 4 Jan 2008 11:32:56 +0800
+Subject: [Toped-development] [Fwd: runtime error on windows when
+	starting toped_0.8.6]
+In-Reply-To: <fda822f80801030536v5bcc58d1u70554e7139dcadae@mail.gmail.com>
+References: <477BCC9C.3090408@googlemail.com> <477BD11B.3040704@googlemail.com>
+	<fda822f80801030536v5bcc58d1u70554e7139dcadae@mail.gmail.com>
+Message-ID: <fda822f80801031932k4cc3c6d4i56cb13c58405e421@mail.gmail.com>
+
+Hello all
+
+I found solution! We used Microsoft Visual C++ 2005 Redistributable Package
+instead of Microsoft Visual C++ 2005 SP1 Redistributable Package.
+Correct link is
+http://www.microsoft.com/downloads/details.aspx?familyid=200B2FD9-AE1A-4A14-984D-389C36F85647&displaylang=en
+We have to update our download page.
+
+Lulu, can you check it?
+
+
+Sergey
+
+P.S. BTW Now Toped can be run on Vista with  this SP1 Redistributable
+Package.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080104/01b7ffb1/attachment.html>
+
+From williamloolulu at gmail.com  Sat Jan  5 12:22:22 2008
+From: williamloolulu at gmail.com (Lu Lu)
+Date: Sat, 5 Jan 2008 19:22:22 +0800
+Subject: [Toped-development] [Fwd: runtime error on windows when
+	starting toped_0.8.6]
+In-Reply-To: <613debac0801050249g25a8a585p261d14767e15753f@mail.gmail.com>
+References: <477BCC9C.3090408@googlemail.com> <477BD11B.3040704@googlemail.com>
+	<fda822f80801030536v5bcc58d1u70554e7139dcadae@mail.gmail.com>
+	<fda822f80801031932k4cc3c6d4i56cb13c58405e421@mail.gmail.com>
+	<613debac0801050249g25a8a585p261d14767e15753f@mail.gmail.com>
+Message-ID: <613debac0801050322j9f12186k2c384115d61ed457@mail.gmail.com>
+
+ Hi all,
+
+Thank you all for your attention !
+
+Here i will have my special thanks to  Sergey Gaitukevich for his patients
+adn replies .  :)
+
+I will share my thoughts of this problem after successfully solved this
+problem under help of Sergey Gaitukevich and Svilen Krustev.
+
+I find the problem is totally due to *build version* of C++ Runtime library.
+(sorry i can not tell exactly what type this version number is though i
+think it is as i will explain later in this email). and the formal way of
+solving this C++ Runtime Library problem is to install *Microsoft Visual C++
+2005 SP1 Redistributable Package . *
+
+The toped program which triggers error when opening is asking for Microsoft
+CRT version  8.0. 50727.726. however, due to some problem of my Visual
+Studio 2005,  there is no *.726 version of CRT installed in WinSxS directory
+on my computer. (i do not know exactly why there is some files missing
+though it still told me that installation is completed and success.
+Unrelaible Microsoft!!)
+
+So, the solution here is simply to check which version of Microsoft CRT your
+toped program asks for and which version(s) you have in your Windows WinSxS
+directory. Then, re-compiling toped using your existing CRT library OR
+installing MS Visual C++ Redistributable Package to bring in newer version
+of CRT library. I fixed it manully though i think is not encouraged to do
+so.
+
+Finally, it is a great lesson for me and hope it would help !
+
+bset regards,
+
+
+sincerely,
+
+lulu
+BTW,  Now the toped works well in my windows XP and i further tried toped
+linux version during my new year vacation. Both are excellent !
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20080105/269509be/attachment.html>
+

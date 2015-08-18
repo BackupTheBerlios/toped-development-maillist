@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] : circles &amp; arcs in Toped
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%3A%20circles%20%26%20arcs%20in%20Toped&In-Reply-To=%3C4765A654.7050802%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000027.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] : circles &amp; arcs in Toped</H1>
+    <B>Svilen</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%3A%20circles%20%26%20arcs%20in%20Toped&In-Reply-To=%3C4765A654.7050802%40googlemail.com%3E"
+       TITLE="[Toped-development] : circles &amp; arcs in Toped">krustev.svilen at googlemail.com
+       </A><BR>
+    <I>Sun Dec 16 23:27:32 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000027.html">[Toped-development] Fwd:  Fwd: circles &amp; arcs in Toped
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+As I mention - the tell implementation should be quick and easy. I added 
+two functions - sin and cos.
+A basic demo is available at tll/arccheck.tll.
+Have a look. The suggested arc function generates all arcs/circles 
+counterclockwise. It seems that we'll need one for clockwise cases 
+either. Then I can't see a problem generating any polygon with any 
+combination of rounded or normal vertexes.
+Maybe we have to create a small tell library with some functions 
+generating rounded shapes.
+
+The only potential trouble is precision and how the backend tools are 
+handling this kind of polygons. This however would be there with any 
+implementation.
+
+By the way with this kind of polygons the remaining troubles in the 
+cut/merge operations are much easier to spot.
+
+Regards
+Svilen
+
+Sergey Gaitukevich wrote:
+&gt;<i> Hello
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt;On the second thought.
+</I>&gt;<i> &gt;Correct me if I'm wrong, but you're thinking here about the high voltage
+</I>&gt;<i> &gt;devices and possibly bipolar?
+</I>&gt;<i>
+</I>&gt;<i> Yes, my main interest now is high voltage devices.
+</I>&gt;<i>
+</I>&gt;<i> &gt;Then what about a box with rounded
+</I>&gt;<i> &gt;corners? And polygon and wire with rounded corners? Possibly with
+</I>&gt;<i> &gt;different radius for every corner... or that's too much? Circle and
+</I>&gt;<i> &gt;ellipse are then naturally produced from a box with rounded corners? HV
+</I>&gt;<i> &gt;gates can be drawn as a wire with rounded corners? Then we can think
+</I>&gt;<i> &gt;about preservation of the type after a logic operation.
+</I>&gt;<i> &gt;What about this?
+</I>&gt;<i>
+</I>&gt;<i> pro:
+</I>&gt;<i> 1. I evaluated few tools for such features, but didn't find any 
+</I>&gt;<i> convenient approach. Finally I returned to simple polygons, arcs and
+</I>&gt;<i> logical operations between them. Such tool can be useful.
+</I>&gt;<i> 2. High voltage and bipolar IC layout design can be a good niche for 
+</I>&gt;<i> Toped.
+</I>&gt;<i>
+</I>&gt;<i> con:
+</I>&gt;<i> 1. I am not sure that we can create easy to use tool for such 
+</I>&gt;<i> purposes.  Main challenge is keep non-arc operations without any changes.
+</I>&gt;<i> 2. Not so many persons create high voltage devices.
+</I>&gt;<i> 3. We can spend many efforts meanwhile Toped needs more essential 
+</I>&gt;<i> features.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Sergey
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000027.html">[Toped-development] Fwd:  Fwd: circles &amp; arcs in Toped
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

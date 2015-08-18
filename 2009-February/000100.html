@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Problems importing CIF and writing Toped database
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Problems%20importing%20CIF%20and%20writing%20Toped%0A%20database&In-Reply-To=%3C498E19B3.4040405%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000099.html">
+   <LINK REL="Next"  HREF="000102.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Problems importing CIF and writing Toped database</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Problems%20importing%20CIF%20and%20writing%20Toped%0A%20database&In-Reply-To=%3C498E19B3.4040405%40googlemail.com%3E"
+       TITLE="[Toped-development] Problems importing CIF and writing Toped database">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sun Feb  8 00:30:59 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000099.html">[Toped-development] Problems importing CIF and writing Toped	database
+</A></li>
+        <LI>Next message: <A HREF="000102.html">[Toped-development] Problems importing CIF and writing Toped database
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Graham,
+
+I'll have a look at your script and will get back to you ASAP. Porting 
+of your libraries into TDT was staying in my TODO list, but right now we 
+both with Sergey are kind of busy at work, besides I've sinked into 
+developing a new rederer. I really do appreciate your effort and will do 
+my best to help.
+
+Regards
+Svilen
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> wrote:
+&gt;<i> I want to read my standard cell library into Toped, write out
+</I>&gt;<i> a GDS file and create a Toped database.
+</I>&gt;<i>
+</I>&gt;<i> I have attached my TELL script. Some comments at the bottom
+</I>&gt;<i> describe the problems. I think some of these come from Toped
+</I>&gt;<i> not always completing the read of the TELL script, so that
+</I>&gt;<i> one has to repeatedly try opening Toped and reading the script
+</I>&gt;<i> until all the cells are read.
+</I>&gt;<i>
+</I>&gt;<i> Other problems are
+</I>&gt;<i> - tdtsave and gdsexport not accepted from within the script
+</I>&gt;<i> - tdtsave only accepted from menu File&gt;Save
+</I>&gt;<i> - tdtsave not accepted after a gdsexport
+</I>&gt;<i> - gdsexport not accepted after a tdtsave
+</I>&gt;<i> - tdtsave causes Toped to use all CPU cycles of both processors
+</I>&gt;<i>
+</I>&gt;<i> I think these are all inter-related and it isn't clear what is the
+</I>&gt;<i> cause and effect here.
+</I>&gt;<i>
+</I>&gt;<i> The CIF files referenced in the TELL script are in the standard cell
+</I>&gt;<i> download at www.vlsitechnology.org.
+</I>&gt;<i>
+</I>&gt;<i> At the end, after repeated attempts, I am able to make the Toped
+</I>&gt;<i> database and export the GDS file. It would be nice to do it in
+</I>&gt;<i> one simple script.
+</I>&gt;<i>
+</I>&gt;<i> best regards, Graham Petley
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Toped-development mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">Toped-development at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">https://lists.berlios.de/mailman/listinfo/toped-development</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000099.html">[Toped-development] Problems importing CIF and writing Toped	database
+</A></li>
+	<LI>Next message: <A HREF="000102.html">[Toped-development] Problems importing CIF and writing Toped database
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,139 @@
+From krustev.svilen at googlemail.com  Wed Oct 10 02:18:22 2007
+From: krustev.svilen at googlemail.com (Svilen)
+Date: Wed, 10 Oct 2007 01:18:22 +0100
+Subject: [Toped-development] toped 0.8.6 released
+Message-ID: <470C1A4E.2000605@googlemail.com>
+
+I just uploaded 0.8.6 release to Berlios.
+Sorry for the 3 weeks delay!
+Binary RPM's will not be available this time. For Fedora they will be in the repository - Chitlesh?
+
+For windows we have an optimized executable this time (thanks to Sergey) which is significantly smaller in size and hopefully much more stable.
+
+A tag release_0.8.6 is created in the repository. 
+All the updates done in the release_0.8.6 branch are pached back to main - means the development can continue in the repository trunk.
+
+Web site still has to be updated. An announcement shall be posted also in some forums.
+
+Thanks & Regards
+
+
+
+From chitlesh at waeckerlin.de  Wed Oct 10 10:12:07 2007
+From: chitlesh at waeckerlin.de (Chitlesh GOORAH)
+Date: Wed, 10 Oct 2007 10:12:07 +0200
+Subject: [Toped-development] toped 0.8.6 released
+In-Reply-To: <470C1A4E.2000605@googlemail.com>
+References: <470C1A4E.2000605@googlemail.com>
+Message-ID: <200710101012.10927.chitlesh@waeckerlin.de>
+
+On Wednesday 10 October 2007 02:18:22 Svilen wrote:
+> I just uploaded 0.8.6 release to Berlios.
+> Sorry for the 3 weeks delay!
+> Binary RPM's will not be available this time. For Fedora they will be in
+> the repository - Chitlesh?
+
+Yes, there will be. This weekend I'll build the rpm and push it to fedora.
+
+However, I don't remember if I mentioned before,
+"toped" is listed in my Fedora Electronic Lab.
+http://chitlesh.fedorapeople.org/
+http://fedoraproject.org/wiki/Features/FedoraElectronicLab
+
+There will be a special livecd for Fedora Electronic Lab, and toped will be on 
+it: http://chitlesh.fedorapeople.org/FEL/livecd-fedora-electronic-lab.ks
+
+Fedora 8 test 2 and test3 can be downloaded here 
+http://torrent.fedoraproject.org/
+under the name :
+Fedora-8-Test-3-Live-FEL-i686.torrent
+FEL for Fedora Electronic Lab
+
+The final release will be on 8th november 2007.
+
+congratulations svilen.
+Chitlesh
+-- 
+http://clunixchit.blogspot.com
+
+-- 
+http://clunixchit.blogspot.com
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: This is a digitally signed message part.
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20071010/43bd8efb/attachment.pgp>
+
+From krustev.svilen at googlemail.com  Wed Oct 10 15:17:44 2007
+From: krustev.svilen at googlemail.com (Svilen Krustev)
+Date: Wed, 10 Oct 2007 14:17:44 +0100
+Subject: [Toped-development] toped 0.8.6 released
+In-Reply-To: <200710101012.10927.chitlesh@waeckerlin.de>
+References: <470C1A4E.2000605@googlemail.com>
+	<200710101012.10927.chitlesh@waeckerlin.de>
+Message-ID: <3c381cc60710100617q260c12efv1cdb675f15e9fe12@mail.gmail.com>
+
+Chitlesh,
+
+Thanks for your fast reply and thanks again for the good news.
+
+Concerning Fedora Electroninc Lab  - it seems that we can do some additional
+work to integrate Tobed better in that packet. I spot that you're talking
+about 0.13 process, libraries etc.
+I can produce at least setup files for this particular library, not
+mentioning that it would be nice to have the library converted in tdt format
+
+What do you say about this?
+
+Svilen
+
+
+
+On 10/10/07, Chitlesh GOORAH <chitlesh at waeckerlin.de> wrote:
+>
+> On Wednesday 10 October 2007 02:18:22 Svilen wrote:
+> > I just uploaded 0.8.6 release to Berlios.
+> > Sorry for the 3 weeks delay!
+> > Binary RPM's will not be available this time. For Fedora they will be in
+> > the repository - Chitlesh?
+>
+> Yes, there will be. This weekend I'll build the rpm and push it to fedora.
+>
+> However, I don't remember if I mentioned before,
+> "toped" is listed in my Fedora Electronic Lab.
+> http://chitlesh.fedorapeople.org/
+> http://fedoraproject.org/wiki/Features/FedoraElectronicLab
+>
+> There will be a special livecd for Fedora Electronic Lab, and toped will
+> be on
+> it: http://chitlesh.fedorapeople.org/FEL/livecd-fedora-electronic-lab.ks
+>
+> Fedora 8 test 2 and test3 can be downloaded here
+> http://torrent.fedoraproject.org/
+> under the name :
+> Fedora-8-Test-3-Live-FEL-i686.torrent
+> FEL for Fedora Electronic Lab
+>
+> The final release will be on 8th november 2007.
+>
+> congratulations svilen.
+> Chitlesh
+> --
+> http://clunixchit.blogspot.com
+>
+> --
+> http://clunixchit.blogspot.com
+>
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>
+>
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/toped-development/attachments/20071010/d3ef2aaa/attachment.html>
+

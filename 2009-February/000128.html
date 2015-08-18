@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] Reading CIF file crashes Toped
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Reading%20CIF%20file%20crashes%20Toped&In-Reply-To=%3C305217.86623.qm%40web205.biz.mail.re2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000135.html">
+   <LINK REL="Next"  HREF="000133.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] Reading CIF file crashes Toped</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20Reading%20CIF%20file%20crashes%20Toped&In-Reply-To=%3C305217.86623.qm%40web205.biz.mail.re2.yahoo.com%3E"
+       TITLE="[Toped-development] Reading CIF file crashes Toped">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Mon Feb 16 17:14:06 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000135.html">[Toped-development] Echo command causes Toped to crash
+</A></li>
+        <LI>Next message: <A HREF="000133.html">[Toped-development] Reading CIF file crashes Toped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>When I import the attached cif file aoi21v0x05.cif (0.13um
+techno), I get an error 
+
+toped: datacenter.cpp:441: void CIFin::Cif2Ted::box(CIFin::CifBox*, laydata::tdtlayer*, std::string): Assertion `check.valid()' failed.
+                   Aborted
+
+I tracked this down to the geometry on line 85.
+
+B 88 6 88 1119;
+
+This is a rectangle with height of only 0.015um. I have attached
+a graphic toped1.gif which shows this rectangle of layer CM1.
+
+I think the CIF file is OK. The gdsimport of the cell works OK.
+I've attached aoi21v0x05.gds which I think is the same as the
+CIF file on the CM1 layer.
+
+best regards, Graham Petley
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: aoi21v0x05.cif
+Type: application/octet-stream
+Size: 3213 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/toped-development/attachments/20090216/2af7355f/attachment.obj">https://lists.berlios.de/pipermail/toped-development/attachments/20090216/2af7355f/attachment.obj</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: aoi21v0x05.gds
+Type: application/octet-stream
+Size: 7630 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/toped-development/attachments/20090216/2af7355f/attachment-0001.obj">https://lists.berlios.de/pipermail/toped-development/attachments/20090216/2af7355f/attachment-0001.obj</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: toped1.gif
+Type: image/gif
+Size: 2865 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/toped-development/attachments/20090216/2af7355f/attachment.gif">https://lists.berlios.de/pipermail/toped-development/attachments/20090216/2af7355f/attachment.gif</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000135.html">[Toped-development] Echo command causes Toped to crash
+</A></li>
+	<LI>Next message: <A HREF="000133.html">[Toped-development] Reading CIF file crashes Toped
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

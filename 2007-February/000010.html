@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development]  missing edit operations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%20missing%20edit%20operations&In-Reply-To=%3Cfda822f80702050848k6d43669bt2bb9bf11c1ffcd4d%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000009.html">
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development]  missing edit operations</H1>
+    <B>Gaitukevich Sergey</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20%20missing%20edit%20operations&In-Reply-To=%3Cfda822f80702050848k6d43669bt2bb9bf11c1ffcd4d%40mail.gmail.com%3E"
+       TITLE="[Toped-development]  missing edit operations">gaitukevich.s at gmail.com
+       </A><BR>
+    <I>Mon Feb  5 17:48:36 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000009.html">[Toped-development] missing edit operations
+</A></li>
+        <LI>Next message: <A HREF="000011.html">[Toped-development] missing edit operations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi.
+&gt;<i>--&gt; Changing the object layer of selected objects:
+</I>&gt;<i>    changelayer(&lt;target_layer&gt;)
+</I>&gt;<i>    The question is whether we need a source layer in this function or
+</I>&gt;<i>not. If we don't have a source layer parameter, then it's possible to
+</I>&gt;<i>select objects from different layers and to move them to the target
+</I>&gt;<i>layer. This seems to be more flexible but more dangerous functionality.
+</I>
+We can warn user when he use this function for multiple layers.
+
+More useful function what we need (at least i need):
+    resizelayer(&lt;target_layer&gt;, step)
+
+&gt;<i>--&gt; Layer transfer:
+</I>&gt;<i>    trasferlayer(&lt;source_layer&gt;, &lt;target_layer&gt;, &lt;hierarchical&gt;)
+</I>&gt;<i>    This is supposed to work over the entire layer, not on the selected
+</I>&gt;<i>objects. That's why source_layer parameter is required. The hierarchical
+</I>&gt;<i>option will make possible to change the layers in the entire design or
+</I>&gt;<i>just on a branch of the hierarchy. If there were objects selected in the
+</I>&gt;<i>source_layer they should remain selected in the target one.
+</I>&gt;<i>    copylayer(&lt;source_layer&gt;, &lt;target_layer&gt;, &lt;hierarchical&gt;)
+</I>&gt;<i>    Not sure we need this...at last not for editor purposes
+</I>
+I think this functionality must be placed into import/export gds.
+Too dangerous for regular operation.
+
+&gt;<i>--&gt; Text manipulation - all functions work on the selected text objects.
+</I>&gt;<i>    changetextsize(&lt;new_size&gt;)
+</I>&gt;<i>    The idea here seems to be trivial. More interesting will be if we
+</I>&gt;<i>have to increase/decrease the text size by X...
+</I>
+I agree
+
+&gt;<i>    changetext(&lt;new_text&gt;, &lt;old_text&gt;)
+</I>&gt;<i>.........
+</I>Too many cases we must take account(replace sizes, fonts and so on).
+I think much better provide syntax sugar for such operation in TELL. Like
+this
+
+all_texts = selectobject(text, regexp(&quot;path*&quot;));
+for_each(all_texts, lambda(x)
+{
+    string str = getproperty(x, text);
+    string str1 = replacesubstring(str, &quot;path&quot;, &quot;bus&quot;);
+    replaceproperty(x, text, str1))
+}
+
+The same for
+    changereference(&lt;old_cell_name&gt;,&lt;new_cell_name&gt;,&lt;hierarchical&gt;)
+It's useful function, but
+    changereference(&lt;new_cell_name&gt;)
+only on script level.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/toped-development/attachments/20070206/7e7935c9/attachment.html">https://lists.berlios.de/pipermail/toped-development/attachments/20070206/7e7935c9/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000009.html">[Toped-development] missing edit operations
+</A></li>
+	<LI>Next message: <A HREF="000011.html">[Toped-development] missing edit operations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

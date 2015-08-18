@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Toped-development] release candidate 0.94
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/toped-development/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20release%20candidate%200.94&In-Reply-To=%3C4A74318B.4010902%40googlemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000169.html">
+   <LINK REL="Next"  HREF="000171.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Toped-development] release candidate 0.94</H1>
+    <B>toped-development at lists.berlios.de</B> 
+    <A HREF="mailto:toped-development%40lists.berlios.de?Subject=Re%3A%20%5BToped-development%5D%20release%20candidate%200.94&In-Reply-To=%3C4A74318B.4010902%40googlemail.com%3E"
+       TITLE="[Toped-development] release candidate 0.94">toped-development at lists.berlios.de
+       </A><BR>
+    <I>Sat Aug  1 14:14:03 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000169.html">[Toped-development] release candidate 0.94
+</A></li>
+        <LI>Next message: <A HREF="000171.html">[Toped-development] release candidate 0.94
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Chitlesh,
+There must be some kind of mistake here. Are you sure that you've 
+checked-out  RELEASE_0.94_CAND?
+The thing is that the files tedop.cpp and tedop.h were removed from the 
+repository somewhere between 0.86 and 0.9 release. This is a couple of 
+years ago.
+
+I do sit still on Fedora 10, nevertheless... Would you double check?
+
+Regards
+Svilen
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A> wrote:
+&gt;<i> On Sat, Aug 1, 2009 at 12:26 AM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/toped-development">toped-development at lists.berlios.de</A>&gt; wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> All planned updates &amp; fixes were done and I've just created a branch for
+</I>&gt;&gt;<i> the forthcoming release
+</I>&gt;&gt;<i> <A HREF="http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.94_CAND">http://svn.berlios.de/svnroot/repos/toped/branches/RELEASE_0.94_CAND</A>
+</I>&gt;&gt;<i> Version numbers were updated.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> As usual - this is not a place for development. Only critical bug fixes
+</I>&gt;&gt;<i> and package related updates should be submitted there.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The release package is planned for Sunday, 2nd of August if no nasty
+</I>&gt;&gt;<i> surprises.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hello
+</I>&gt;<i>  I have the following errors while compiling RELEASE_0.94_CAND
+</I>&gt;<i>
+</I>&gt;<i> libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+</I>&gt;<i> -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8
+</I>&gt;<i> -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall
+</I>&gt;<i> -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector
+</I>&gt;<i> --param=ssp-buffer-size=4 -m32 -march=i586 -mtune=generic
+</I>&gt;<i> -fasynchronous-unwind-tables -Wall -g -fexceptions -pthread -pthread
+</I>&gt;<i> -pthread -MT avl.lo -MD -MP -MF .deps/avl.Tpo -c avl.c -o avl.o
+</I>&gt;<i>   
+</I>&gt;&gt;<i> /dev/null 2&gt;&amp;1
+</I>&gt;&gt;<i>     
+</I>&gt;<i> In file included from tedop.h:32,
+</I>&gt;<i>                  from tedop.cpp:30:
+</I>&gt;<i> ttt.h:171: error: 'std::ostringstream' has not been declared
+</I>&gt;<i> ttt.h:231: error: 'string' is not a member of 'std'
+</I>&gt;<i> ttt.h:231: error: 'string' is not a member of 'std'
+</I>&gt;<i> ttt.h:231: error: template argument 1 is invalid
+</I>&gt;<i> ttt.h:231: error: template argument 2 is invalid
+</I>&gt;<i> ttt.h:231: error: invalid type in declaration before ';' token
+</I>&gt;<i> ttt.h:431: error: 'string' is not a member of 'std'
+</I>&gt;<i> ttt.h:431: error: 'string' is not a member of 'std'
+</I>&gt;<i> ttt.h:431: error: template argument 1 is invalid
+</I>&gt;<i> ttt.h:431: error: template argument 2 is invalid
+</I>&gt;<i> ttt.h:431: error: expected unqualified-id before '&amp;' token
+</I>&gt;<i> ttt.h:431: error: expected ')' before '&amp;' token
+</I>&gt;<i> ttt.h:431: error: expected initializer before '&amp;' token
+</I>&gt;<i> tedop.cpp: In member function 'bool
+</I>&gt;<i> tedop::SweepLine::coincideOK(tedop::plysegment*, tedop::plysegment*,
+</I>&gt;<i> float, float)':
+</I>&gt;<i> tedop.cpp:266: warning: suggest explicit braces to avoid ambiguous 'else'
+</I>&gt;<i> tedop.cpp:269: warning: suggest explicit braces to avoid ambiguous 'else'
+</I>&gt;<i> make[2]: *** [tedop.lo] Error 1
+</I>&gt;<i> make[2]: *** Waiting for unfinished jobs....
+</I>&gt;<i> mv -f .deps/avl.Tpo .deps/avl.Plo
+</I>&gt;<i> ttt.cpp: In member function 'DBbox DBbox::getcorner(byte)':
+</I>&gt;<i> ttt.cpp:236: warning: control reaches end of non-void function
+</I>&gt;<i> libtool: compile:  g++ -DHAVE_CONFIG_H -I. -I.. -Wall -g -fexceptions
+</I>&gt;<i> -I/usr/lib/wx/include/gtk2-unicode-release-2.8 -I/usr/include/wx-2.8
+</I>&gt;<i> -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXGTK__ -O2 -g -pipe -Wall
+</I>&gt;<i> -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector
+</I>&gt;<i> --param=ssp-buffer-size=4 -m32 -march=i586 -mtune=generic
+</I>&gt;<i> -fasynchronous-unwind-tables -MT ttt.lo -MD -MP -MF .deps/ttt.Tpo -c
+</I>&gt;<i> ttt.cpp -o ttt.o &gt;/dev/null 2&gt;&amp;1
+</I>&gt;<i> mv -f .deps/ttt.Tpo .deps/ttt.Plo
+</I>&gt;<i> make[2]: Leaving directory `/home/chitlesh/rpmbuild/BUILD/toped/tpd_common'
+</I>&gt;<i> make[1]: *** [all-recursive] Error 1
+</I>&gt;<i> make[1]: Leaving directory `/home/chitlesh/rpmbuild/BUILD/toped'
+</I>&gt;<i> make: *** [all] Error 2
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I currently don't have enough time to look at it. I would appreciate
+</I>&gt;<i> if you could look whether there are some missing headers somewhere.
+</I>&gt;<i>
+</I>&gt;<i> Chitlesh
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000169.html">[Toped-development] release candidate 0.94
+</A></li>
+	<LI>Next message: <A HREF="000171.html">[Toped-development] release candidate 0.94
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/toped-development">More information about the Toped-development
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,96 @@
+From toped-development at lists.berlios.de  Tue Mar  3 00:47:27 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Mon, 02 Mar 2009 23:47:27 +0000
+Subject: [Toped-development] Welcome Sandesh!
+Message-ID: <49AC700F.2080206@googlemail.com>
+
+Sandesh,
+
+We would like to welcome you among the Toped developers. We really hope 
+that it will be a pleasant and rewarding experience for you.
+
+Have fun!
+
+Sergey & Svilen
+
+
+From toped-development at lists.berlios.de  Wed Mar  4 21:15:53 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Wed, 4 Mar 2009 21:15:53 +0100
+Subject: [Toped-development] Toped release schedule
+In-Reply-To: <49A4917A.80401@tiscali.co.uk>
+References: <541586.52201.qm@web202.biz.mail.re2.yahoo.com>
+	<49A4917A.80401@tiscali.co.uk>
+Message-ID: <13dbfe4f0903041215l6e427d45g867b15c0e66fce81@mail.gmail.com>
+
+On Wed, Feb 25, 2009 at 1:31 AM,  wrote:
+> OK,
+> let's postpone the next release for May and try to make it together with
+> FC11 release.
+
+Hello,
+
+is it possible to release a "Release Candidate" very soon ?
+
+I would appreciate if the final release would be out during the first
+week of April. It will help me prepare the toped rpm properly and do
+some testing as well. Also, we will be having the freeze very soon in
+April, I hope to get it on the LiveDVD.
+
+FYI: toped with nvidia
+https://www.redhat.com/archives/fedora-electronic-lab-list/2009-March/msg00018.html
+
+thanks,
+Chitlesh
+
+
+From toped-development at lists.berlios.de  Sat Mar  7 15:07:12 2009
+From: toped-development at lists.berlios.de (toped-development at lists.berlios.de)
+Date: Sat, 07 Mar 2009 14:07:12 +0000
+Subject: [Toped-development] Toped release schedule
+In-Reply-To: <13dbfe4f0903041215l6e427d45g867b15c0e66fce81@mail.gmail.com>
+References: <541586.52201.qm@web202.biz.mail.re2.yahoo.com>	<49A4917A.80401@tiscali.co.uk>
+	<13dbfe4f0903041215l6e427d45g867b15c0e66fce81@mail.gmail.com>
+Message-ID: <49B27F90.2030907@googlemail.com>
+
+Chitlesh,
+
+Sorry for the late answer. We'll see what we can do. I'm in the middle 
+of something and right now the main development trunk is now quite 
+appropriate to be even called "release candidate". I'll have you request 
+in mind and let you know what's going on in a couple of weeks time.
+
+Hope that's OK.
+
+Regards
+Svilen
+toped-development at lists.berlios.de wrote:
+> On Wed, Feb 25, 2009 at 1:31 AM,  wrote:
+>   
+>> OK,
+>> let's postpone the next release for May and try to make it together with
+>> FC11 release.
+>>     
+>
+> Hello,
+>
+> is it possible to release a "Release Candidate" very soon ?
+>
+> I would appreciate if the final release would be out during the first
+> week of April. It will help me prepare the toped rpm properly and do
+> some testing as well. Also, we will be having the freeze very soon in
+> April, I hope to get it on the LiveDVD.
+>
+> FYI: toped with nvidia
+> https://www.redhat.com/archives/fedora-electronic-lab-list/2009-March/msg00018.html
+>
+> thanks,
+> Chitlesh
+> _______________________________________________
+> Toped-development mailing list
+> Toped-development at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/toped-development
+>   
+
+
+
